@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+    }
+  </style>
+  <script src="node_modules/webcomponents.js/webcomponents.js"></script>
+  <script src="node_modules/systemjs/dist/system.src.js"></script>
+  <script type="text/javascript">
+    System.config({
+      "transpiler": "babel",
+      "map": {
+        "babel": "node_modules/babel-core/browser.js",
+        "dlib": "node_modules/dlib",
+        "text": "node_modules/plugin-text/text.js",
+        "dnit": "src/index.js"
+      }
+    });
+    System.import("dnit");
+  </script>
+</head>
+<body>
+  <dnit-main></dnit-main>
+</body>
+</html>
