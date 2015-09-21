@@ -5,13 +5,11 @@
   "main": "src/index.js",
   "scripts": {
     "start": "browser-sync start --files \"src/**/*\" --server --no-notify",
-    "init": "jspm init --yes",
-    "install": "jspm install",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Damien Mortini",
   "license": "MIT",
-  "devDependencies": {
+  "dependencies": {
     "browser-sync": "^2.9.3",
     "jspm": "^0.16.6"
   },
@@ -19,11 +17,6 @@
     "dependencies": {
       "dlib": "github:dmmn/dlib@master",
       "text": "github:systemjs/plugin-text@^0.0.2"
-    },
-    "devDependencies": {
-      "babel": "npm:babel-core@^5.8.24",
-      "babel-runtime": "npm:babel-runtime@^5.8.24",
-      "core-js": "npm:core-js@^1.1.4"
     }
   }
 }
