@@ -11,19 +11,10 @@
       margin: 0;
     }
   </style>
-  <script src="node_modules/webcomponents.js/webcomponents.js"></script>
-  <script src="node_modules/systemjs/dist/system.src.js"></script>
+  <script src="jspm_packages/system.js"></script>
+  <script src="config.js"></script>
   <script type="text/javascript">
-    System.config({
-      "transpiler": "babel",
-      "map": {
-        "babel": "node_modules/babel-core/browser.js",
-        "dlib": "node_modules/dlib",
-        "text": "node_modules/systemjs-plugin-text/text.js",
-        "dnit": "src/index.js"
-      }
-    });
-    System.import("dnit");
+    System.import("src/index.js");
   </script>
 </head>
 <body>
