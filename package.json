@@ -4,7 +4,7 @@
   "description": "",
   "main": "src/index.js",
   "scripts": {
-    "start": "browser-sync start --files \"src/**/*\" --server --no-notify",
+    "start": "browser-sync start --files \"src\" --server --no-notify",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Damien Mortini",
