@@ -9,12 +9,19 @@
     html, body {
       height: 100%;
       margin: 0;
+      overflow: hidden;
+    }
+    dnit-main {
+      height: 100%;
     }
   </style>
   <script src="jspm_packages/system.js"></script>
   <script src="config.js"></script>
   <script type="text/javascript">
-    System.import("src/index.js");
+    System.import("THREE").then(function(module) {
+      window.THREE = module;
+      System.import("src/index.js");
+    });
   </script>
 </head>
 <body>

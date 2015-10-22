@@ -15,6 +15,7 @@
   },
   "jspm": {
     "dependencies": {
+      "THREE": "github:mrdoob/three.js@r73",
       "dlib": "github:dmmn/dlib@master",
       "text": "github:systemjs/plugin-text@^0.0.2"
     },
