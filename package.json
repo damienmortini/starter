@@ -4,7 +4,9 @@
   "description": "",
   "main": "src/index.js",
   "scripts": {
+    "init": "npm update --save && jspm init --yes && jspm update",
     "start": "browser-sync start --files \"src\" --server --no-notify",
+    "build": "jspm bundle src/index.js build/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Damien Mortini",
