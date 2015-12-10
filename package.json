@@ -5,15 +5,17 @@
   "main": "src/index.js",
   "scripts": {
     "init": "npm update --save && jspm init --yes && jspm update",
+    "install": "npm install && jspm install",
     "start": "browser-sync start --files \"src\" --server --no-notify",
     "build": "jspm bundle src/index.js build/index.js",
+    "release": "jspm bundle src/index.js build/index.js --minify",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Damien Mortini",
   "license": "MIT",
   "dependencies": {
     "browser-sync": "^2.9.11",
-    "jspm": "^0.16.13"
+    "jspm": "^0.16.15"
   },
   "jspm": {
     "dependencies": {
