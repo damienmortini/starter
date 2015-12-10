@@ -18,9 +18,19 @@
   <script src="jspm_packages/system.js"></script>
   <script src="config.js"></script>
   <script type="text/javascript">
-    System.import("THREE").then(function(module) {
+    (!/dev/.test(window.location.search) ? System.import("build/index.js") : Promise.resolve())
+    .catch(function(e) {
+      console.log(e);
+    })
+    .then(function() {
+      System.import("THREE");
+    }
+    .then(function(module) {
       window.THREE = module;
-      System.import("src/index.js");
+      return System.import("src/index.js");
+    })
+    .catch(function(e) {
+      console.log(e);
     });
   </script>
 </head>
