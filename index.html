@@ -14,7 +14,16 @@
   <script src="jspm_packages/system.js"></script>
   <script src="config.js"></script>
   <script type="text/javascript">
-    System.import("src/index.js");
+    (!/dev/.test(window.location.search) ? System.import("build/index.js") : Promise.resolve())
+    .catch(function(e) {
+      console.log(e);
+    })
+    .then(function() {
+      return System.import("src/index.js");
+    })
+    .catch(function(e) {
+      console.log(e);
+    });
   </script>
 </head>
 <body>
