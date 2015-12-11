@@ -23,8 +23,8 @@
       console.log(e);
     })
     .then(function() {
-      System.import("THREE");
-    }
+      return System.import("THREE");
+    })
     .then(function(module) {
       window.THREE = module;
       return System.import("src/index.js");
