@@ -22,12 +22,15 @@ class DnitMain extends LoopElement {
     this.view = new View(this.canvas);
 
     this.resize();
+
+    window.addEventListener("resize", this.resize.bind(this));
   }
 
   resize() {
     let width = this.canvas.offsetWidth * window.devicePixelRatio;
     let height = this.canvas.offsetHeight * window.devicePixelRatio;
     this.view.resize(width, height);
+    this.update();
   }
 
   update() {
