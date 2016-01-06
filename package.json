@@ -14,14 +14,15 @@
   "author": "Damien Mortini",
   "license": "MIT",
   "dependencies": {
-    "browser-sync": "^2.9.11",
-    "jspm": "^0.16.15"
+    "browser-sync": "^2.11.0",
+    "jspm": "^0.16.19"
   },
   "jspm": {
     "dependencies": {
       "THREE": "github:mrdoob/three.js@r73",
-      "dlib": "github:dmmn/dlib@master",
-      "text": "github:systemjs/plugin-text@^0.0.2"
+      "dlib": "npm:dlib@^0.0.2",
+      "text": "github:systemjs/plugin-text@^0.0.2",
+      "webcomponents.js": "npm:webcomponents.js@^0.7.20"
     },
     "devDependencies": {
       "babel": "npm:babel-core@^5.8.24",

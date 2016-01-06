@@ -18,7 +18,7 @@
   <script src="jspm_packages/system.js"></script>
   <script src="config.js"></script>
   <script type="text/javascript">
-    (!/dev/.test(window.location.search) ? System.import("build/index.js") : Promise.resolve())
+    (!/dev/.test(window.location.search) ? System.import("build/index.js") : System.import("webcomponents.js"))
     .catch(function(e) {
       console.log(e);
     })
