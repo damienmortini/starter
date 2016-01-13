@@ -1,5 +1,6 @@
 import LoopElement from "dlib/dom/LoopElement.js";
 
+import Scene from "./Scene.js";
 import View from "./View.js";
 
 import templateContent from "./template.html!text";
@@ -21,6 +22,8 @@ class DnitMain extends LoopElement {
 
     this.view = new View(this.canvas);
 
+    this.scene = new Scene();
+
     this.resize();
 
     window.addEventListener("resize", this.resize.bind(this));
@@ -29,13 +32,15 @@ class DnitMain extends LoopElement {
   resize() {
     let width = this.canvas.offsetWidth * window.devicePixelRatio;
     let height = this.canvas.offsetHeight * window.devicePixelRatio;
+    this.scene.resize(width, height);
     this.view.resize(width, height);
     this.update();
   }
 
   update() {
     super.update();
-    this.view.update();
+    this.scene.update();
+    this.view.render(this.scene);
   }
 }
 
