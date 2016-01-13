@@ -15,8 +15,6 @@ class Main extends LoopElement {
     this.appendChild(templateClone);
 
     this.canvas = this.querySelector("canvas");
-    this.canvas.style.width = "100%";
-    this.canvas.style.height = "100%";
 
     this.view = new View(this.canvas);
 
