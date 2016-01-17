@@ -8,7 +8,7 @@ export default class View {
   }
 
   resize(width, height) {
-    this.renderer.setSize(width, height, false);
+    this.renderer.setSize(width * window.devicePixelRatio, height * window.devicePixelRatio, false);
   }
 
   render(scene) {

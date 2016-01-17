@@ -26,8 +26,8 @@ class Main extends LoopElement {
   }
 
   resize() {
-    let width = this.canvas.offsetWidth * window.devicePixelRatio;
-    let height = this.canvas.offsetHeight * window.devicePixelRatio;
+    let width = this.canvas.offsetWidth;
+    let height = this.canvas.offsetHeight;
     this.scene.resize(width, height);
     this.view.resize(width, height);
     this.update();
