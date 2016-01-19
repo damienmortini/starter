@@ -13,9 +13,7 @@ export default class Scene extends THREE.Scene {
     this.camera.position.z = 5;
     this.controls = new THREE.TrackballControls(this.camera);
 
-    let geometry = new THREE.BoxGeometry(1, 1, 1);
-    let material = new THREE.MeshNormalMaterial();
-    let cube = new THREE.Mesh(geometry, material);
+    let cube = new THREE.Mesh(new THREE.BoxGeometry(1, 1, 1), new THREE.MeshNormalMaterial());
 
     this.add(cube);
   }
