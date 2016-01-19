@@ -19,10 +19,17 @@ class Main extends LoopElement {
     this.view = new View(this.canvas);
 
     this.scene = new Scene();
+  }
 
-    this.resize();
-
+  attachedCallback() {
+    super.attachedCallback();
     window.addEventListener("resize", this.resize.bind(this));
+    this.resize();
+  }
+
+  detachedCallback() {
+    super.detachedCallback();
+    window.removeEventListener("resize", this.resize.bind(this));
   }
 
   resize() {
