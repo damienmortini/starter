@@ -37,7 +37,7 @@ class Main extends LoopElement {
     let height = this.canvas.offsetHeight;
     this.scene.resize(width, height);
     this.view.resize(width, height);
-    this.update();
+    this.view.render(this.scene);
   }
 
   update() {
