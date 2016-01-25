@@ -13,11 +13,11 @@ System.config({
   },
 
   map: {
-    "babel": "npm:babel-core@5.8.34",
-    "babel-runtime": "npm:babel-runtime@5.8.34",
+    "babel": "npm:babel-core@5.8.35",
+    "babel-runtime": "npm:babel-runtime@5.8.35",
     "core-js": "npm:core-js@1.2.6",
-    "dlib": "npm:dlib@0.0.2",
-    "text": "github:systemjs/plugin-text@0.0.2",
+    "dlib": "npm:dlib@0.0.4",
+    "text": "github:systemjs/plugin-text@0.0.4",
     "webcomponents.js": "npm:webcomponents.js@0.7.20",
     "github:jspm/nodelibs-assert@0.1.0": {
       "assert": "npm:assert@1.3.0"
@@ -40,7 +40,7 @@ System.config({
     "npm:assert@1.3.0": {
       "util": "npm:util@0.10.3"
     },
-    "npm:babel-runtime@5.8.34": {
+    "npm:babel-runtime@5.8.35": {
       "process": "github:jspm/nodelibs-process@0.1.2"
     },
     "npm:buffer@3.6.0": {
@@ -60,10 +60,10 @@ System.config({
     "npm:d@0.1.1": {
       "es5-ext": "npm:es5-ext@0.10.11"
     },
-    "npm:dlib@0.0.2": {
+    "npm:dlib@0.0.4": {
       "event-emitter": "npm:event-emitter@0.3.4",
       "gl-matrix": "npm:gl-matrix@2.3.1",
-      "howler": "npm:howler@1.1.28",
+      "howler": "npm:howler@1.1.29",
       "min-signal": "npm:min-signal@0.0.5",
       "webcomponents.js": "npm:webcomponents.js@0.7.20"
     },
@@ -89,7 +89,7 @@ System.config({
     "npm:gl-matrix@2.3.1": {
       "fs": "github:jspm/nodelibs-fs@0.1.2"
     },
-    "npm:howler@1.1.28": {
+    "npm:howler@1.1.29": {
       "buffer": "github:jspm/nodelibs-buffer@0.1.0"
     },
     "npm:inherits@2.0.1": {
