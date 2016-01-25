@@ -1,8 +1,8 @@
 import CustomElement from "dlib/dom/CustomElement.js";
 
-import templateContent from "./template.html!text";
+import templateHTML from "./template.html!text";
 let template = document.createElement("template");
-template.innerHTML = templateContent;
+template.innerHTML = templateHTML;
 
 class Main extends CustomElement {
   createdCallback() {
