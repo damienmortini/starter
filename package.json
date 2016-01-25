@@ -5,7 +5,7 @@
   "main": "src/index.js",
   "scripts": {
     "init": "npm update --save && jspm init --yes && jspm update",
-    "install": "npm install && jspm install",
+    "install": "jspm install",
     "start": "browser-sync start --files \"src\" --server --no-notify",
     "build": "jspm bundle src/index.js build/index.js",
     "release": "jspm bundle src/index.js build/index.js --minify",
@@ -14,14 +14,14 @@
   "author": "Damien Mortini",
   "license": "MIT",
   "dependencies": {
-    "browser-sync": "^2.11.0",
-    "jspm": "^0.16.19"
+    "browser-sync": "^2.11.1",
+    "jspm": "^0.16.25"
   },
   "jspm": {
     "dependencies": {
       "THREE": "github:mrdoob/three.js@r73",
-      "dlib": "npm:dlib@^0.0.2",
-      "text": "github:systemjs/plugin-text@^0.0.2",
+      "dlib": "npm:dlib@^0.0.4",
+      "text": "github:systemjs/plugin-text@^0.0.4",
       "webcomponents.js": "npm:webcomponents.js@^0.7.20"
     },
     "devDependencies": {
