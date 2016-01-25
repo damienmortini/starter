@@ -14,13 +14,13 @@ System.config({
 
   map: {
     "THREE": "github:mrdoob/three.js@r73",
-    "THREE.TrackballControls": "github:mrdoob/three.js@r73/examples/js/controls/TrackballControls.js",
-    "THREE.EffectComposer": "github:mrdoob/three.js@r73/examples/js/postprocessing/EffectComposer.js",
-    "THREE.RenderPass": "github:mrdoob/three.js@r73/examples/js/postprocessing/RenderPass.js",
-    "THREE.MaskPass": "github:mrdoob/three.js@r73/examples/js/postprocessing/MaskPass.js",
-    "THREE.ShaderPass": "github:mrdoob/three.js@r73/examples/js/postprocessing/ShaderPass.js",
     "THREE.CopyShader": "github:mrdoob/three.js@r73/examples/js/shaders/CopyShader.js",
+    "THREE.EffectComposer": "github:mrdoob/three.js@r73/examples/js/postprocessing/EffectComposer.js",
     "THREE.FXAAShader": "github:mrdoob/three.js@r73/examples/js/shaders/FXAAShader.js",
+    "THREE.MaskPass": "github:mrdoob/three.js@r73/examples/js/postprocessing/MaskPass.js",
+    "THREE.RenderPass": "github:mrdoob/three.js@r73/examples/js/postprocessing/RenderPass.js",
+    "THREE.ShaderPass": "github:mrdoob/three.js@r73/examples/js/postprocessing/ShaderPass.js",
+    "THREE.TrackballControls": "github:mrdoob/three.js@r73/examples/js/controls/TrackballControls.js",
     "babel": "npm:babel-core@5.8.35",
     "babel-runtime": "npm:babel-runtime@5.8.35",
     "core-js": "npm:core-js@1.2.6",
