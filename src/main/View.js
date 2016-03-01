@@ -1,10 +1,10 @@
 import THREE from "THREE";
-import "THREE.EffectComposer";
-import "THREE.ShaderPass";
-import "THREE.MaskPass";
-import "THREE.RenderPass";
-import "THREE.CopyShader";
-import "THREE.FXAAShader";
+import "THREE/examples/js/postprocessing/EffectComposer.js";
+import "THREE/examples/js/postprocessing/ShaderPass.js";
+import "THREE/examples/js/postprocessing/MaskPass.js";
+import "THREE/examples/js/postprocessing/RenderPass.js";
+import "THREE/examples/js/shaders/CopyShader.js";
+import "THREE/examples/js/shaders/FXAAShader.js";
 
 export default class View {
   constructor(canvas) {
