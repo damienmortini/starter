@@ -6,7 +6,7 @@
   "scripts": {
     "init": "npm update --save && jspm init --yes && jspm update && npm start",
     "install": "jspm install",
-    "start": "browser-sync start --files \"src\" --server --no-notify",
+    "start": "browser-sync start --files \"src\" --server --no-notify --startPath \"?dev\"",
     "build": "jspm bundle src/index.js build/index.js",
     "release": "jspm bundle src/index.js build/index.js --minify",
     "test": "echo \"Error: no test specified\" && exit 1"
