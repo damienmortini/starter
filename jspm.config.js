@@ -1,21 +1,22 @@
 SystemJS.config({
   transpiler: "plugin-babel",
+  babelOptions: {
+    "optional": [
+      "runtime",
+      "optimisation.modules.system"
+    ]
+  },
   meta: {
     "*.js": {
       babelOptions: {
         es2015: false
       }
     },
-    // babelOptions: {
-    //   "optional": [
-    //     "runtime",
-    //     "optimisation.modules.system"
-    //   ]
-    // },
     "github:mrdoob/three.js@r73/build/three.js": {
       "format": "global"
     }
-  }
+  },
+  packages: {}
 });
 
 SystemJS.config({
