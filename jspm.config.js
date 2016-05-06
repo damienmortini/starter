@@ -1,11 +1,7 @@
 SystemJS.config({
   transpiler: "plugin-babel",
   babelOptions: {
-    "es2015": false,
-    "optional": [
-      "runtime",
-      "optimisation.modules.system"
-    ]
+    "es2015": false
   },
   meta: {
     "github:mrdoob/three.js@r73/build/three.js": {
