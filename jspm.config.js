@@ -1,18 +1,12 @@
 SystemJS.config({
   transpiler: "plugin-babel",
-  meta: {
-    "*.js": {
-      babelOptions: {
-        es2015: false
-      }
-    }
+  babelOptions: {
+    "es2015": false,
+    "optional": [
+      "runtime",
+      "optimisation.modules.system"
+    ]
   },
-  // babelOptions: {
-  //   "optional": [
-  //     "runtime",
-  //     "optimisation.modules.system"
-  //   ]
-  // },
   packages: {}
 });
 
