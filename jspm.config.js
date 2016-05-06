@@ -7,6 +7,12 @@ SystemJS.config({
       }
     }
   },
+  // babelOptions: {
+  //   "optional": [
+  //     "runtime",
+  //     "optimisation.modules.system"
+  //   ]
+  // },
   packages: {}
 });
 
