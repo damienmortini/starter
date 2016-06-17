@@ -1,11 +1,10 @@
 node_modules
 
-build
-jspm_packages
+build/*
+jspm_packages/*
 
-# build/*.map
-# jspm_packages/github
-# jspm_packages/npm
-# jspm_packages/.*
-# jspm_packages/*.map
+# Uncomment to deploy
+
+# !build/index.js
+# !jspm_packages/*.js
 # jspm_packages/*.src.js
