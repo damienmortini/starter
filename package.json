@@ -13,28 +13,30 @@
   "author": "Damien Mortini",
   "license": "MIT",
   "dependencies": {
-    "browser-sync": "^2.12.5",
-    "jspm": "^0.17.0-beta.14"
+    "browser-sync": "^2.13.0",
+    "jspm": "^0.17.0-beta.22"
   },
   "jspm": {
     "dependencies": {
-      "THREE": "github:mrdoob/three.js@r73",
-      "dlib": "npm:dlib@^0.0.4",
-      "text": "github:systemjs/plugin-text@^0.0.4",
-      "webcomponents.js": "npm:webcomponents.js@^0.7.20"
+      "dlib": "npm:dlib@^0.0.9",
+      "text": "github:systemjs/plugin-text@^0.0.8",
+      "webcomponents.js": "npm:webcomponents.js@^0.7.22"
     },
     "devDependencies": {
       "babel": "npm:babel-core@^5.8.24",
       "babel-runtime": "npm:babel-runtime@^5.8.24",
       "core-js": "npm:core-js@^1.1.4",
-      "fs": "github:jspm/nodelibs-fs@^0.2.0-alpha",
-      "path": "github:jspm/nodelibs-path@^0.2.0-alpha",
-      "plugin-babel": "npm:systemjs-plugin-babel@^0.0.10",
-      "process": "github:jspm/nodelibs-process@^0.2.0-alpha"
+      "plugin-babel": "npm:systemjs-plugin-babel@^0.0.10"
     },
     "peerDependencies": {
+      "assert": "github:jspm/nodelibs-assert@^0.2.0-alpha",
       "buffer": "github:jspm/nodelibs-buffer@^0.2.0-alpha",
-      "events": "github:jspm/nodelibs-events@^0.2.0-alpha"
+      "events": "github:jspm/nodelibs-events@^0.2.0-alpha",
+      "fs": "github:jspm/nodelibs-fs@^0.2.0-alpha",
+      "path": "github:jspm/nodelibs-path@^0.2.0-alpha",
+      "process": "github:jspm/nodelibs-process@^0.2.0-alpha",
+      "stream": "github:jspm/nodelibs-stream@^0.2.0-alpha",
+      "util": "github:jspm/nodelibs-util@^0.2.0-alpha"
     },
     "overrides": {
       "npm:babel-core@5.8.38": {
@@ -56,6 +58,41 @@
         "dependencies": {},
         "optionalDependencies": {
           "core-js": "^1.2.0"
+        }
+      },
+      "npm:inherits@2.0.1": {
+        "ignore": [
+          "test.js"
+        ]
+      },
+      "npm:readable-stream@1.0.34": {
+        "map": {
+          "stream": "stream-browserify/index"
+        },
+        "systemjs": {
+          "main": "readable.js"
+        },
+        "dependencies": {
+          "core-util-is": "~1.0.0",
+          "isarray": "0.0.1",
+          "string_decoder": "~0.10.0",
+          "inherits": "~2.0.1",
+          "stream-browserify": "~1.0.0"
+        }
+      },
+      "npm:readable-stream@1.1.14": {
+        "map": {
+          "stream": "stream-browserify/index"
+        },
+        "systemjs": {
+          "main": "readable.js"
+        },
+        "dependencies": {
+          "core-util-is": "~1.0.0",
+          "isarray": "0.0.1",
+          "string_decoder": "~0.10.0",
+          "inherits": "~2.0.1",
+          "stream-browserify": "~1.0.0"
         }
       }
     }
