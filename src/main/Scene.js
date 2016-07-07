@@ -1,5 +1,5 @@
-import THREE from "THREE";
-import "THREE/examples/js/controls/TrackballControls";
+import THREE from "three";
+import "three/examples/js/controls/TrackballControls";
 
 export default class Scene extends THREE.Scene {
   constructor() {

@@ -16,6 +16,11 @@ SystemJS.config({
   transpiler: "plugin-babel",
   babelOptions: {
     "es2015": false
+  },
+  meta: {
+    "npm:three@0.78.0/build/three.js": {
+      "format": "global"
+    }
   }
 });
 
@@ -35,6 +40,7 @@ SystemJS.config({
     "process": "github:jspm/nodelibs-process@0.2.0-alpha",
     "stream": "github:jspm/nodelibs-stream@0.2.0-alpha",
     "text": "github:systemjs/plugin-text@0.0.8",
+    "three": "npm:three@0.78.0",
     "util": "github:jspm/nodelibs-util@0.2.0-alpha",
     "webcomponents.js": "npm:webcomponents.js@0.7.22"
   },

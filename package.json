@@ -20,6 +20,7 @@
     "dependencies": {
       "dlib": "npm:dlib@^0.0.9",
       "text": "github:systemjs/plugin-text@^0.0.8",
+      "three": "npm:three@^0.78.0",
       "webcomponents.js": "npm:webcomponents.js@^0.7.22"
     },
     "devDependencies": {

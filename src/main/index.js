@@ -1,7 +1,7 @@
 import LoopElement from "dlib/dom/LoopElement.js";
 
 import Scene from "./Scene.js";
-import View from "./View.js";
+import Renderer from "./Renderer.js";
 
 import templateHTML from "./template.html!text";
 let template = document.createElement("template");
@@ -16,7 +16,7 @@ class Main extends LoopElement {
 
     this.canvas = this.querySelector("canvas");
 
-    this.view = new View(this.canvas);
+    this.renderer = new Renderer(this.canvas);
 
     this.scene = new Scene();
   }
@@ -36,14 +36,14 @@ class Main extends LoopElement {
     let width = this.canvas.offsetWidth;
     let height = this.canvas.offsetHeight;
     this.scene.resize(width, height);
-    this.view.resize(width, height);
-    this.view.render(this.scene);
+    this.renderer.resize(width, height);
+    this.renderer.render(this.scene);
   }
 
   update() {
     super.update();
     this.scene.update();
-    this.view.render(this.scene);
+    this.renderer.render(this.scene);
   }
 }
 

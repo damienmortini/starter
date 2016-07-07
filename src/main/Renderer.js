@@ -1,12 +1,12 @@
-import THREE from "THREE";
-import "THREE/examples/js/postprocessing/EffectComposer.js";
-import "THREE/examples/js/postprocessing/ShaderPass.js";
-import "THREE/examples/js/postprocessing/MaskPass.js";
-import "THREE/examples/js/postprocessing/RenderPass.js";
-import "THREE/examples/js/shaders/CopyShader.js";
-import "THREE/examples/js/shaders/FXAAShader.js";
+import THREE from "three";
+import "three/examples/js/postprocessing/EffectComposer.js";
+import "three/examples/js/postprocessing/ShaderPass.js";
+import "three/examples/js/postprocessing/MaskPass.js";
+import "three/examples/js/postprocessing/RenderPass.js";
+import "three/examples/js/shaders/CopyShader.js";
+import "three/examples/js/shaders/FXAAShader.js";
 
-export default class View {
+export default class Renderer {
   constructor(canvas) {
     this.renderer = new THREE.WebGLRenderer({
       canvas: canvas
