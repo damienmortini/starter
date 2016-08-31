@@ -19,6 +19,13 @@ SystemJS.config({
     }
   },
   transpiler: "plugin-babel",
+  meta: {
+    "*.js": {
+      babelOptions: {
+        es2015: false
+      }
+    }
+  },
   packages: {
     "npm:dlib@0.0.11": {
       "meta": {
