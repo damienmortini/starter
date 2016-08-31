@@ -3,7 +3,7 @@ import LoopElement from "dlib/dom/LoopElement.js";
 import Scene from "./Scene.js";
 import Renderer from "./Renderer.js";
 
-import templateHTML from "./template.html!text";
+import templateHTML from "./template.html";
 let template = document.createElement("template");
 template.innerHTML = templateHTML;
 

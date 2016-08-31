@@ -18,10 +18,9 @@
     }
   </style>
   <script src="jspm_packages/system.js"></script>
-  <script src="jspm.browser.js"></script>
   <script src="jspm.config.js"></script>
   <script type="text/javascript">
-    (!/\bdev\b/.test(window.location.search) ? System.import("build/index.js") : System.import("webcomponents.js"))
+    (!/\bdev\b/.test(window.location.search) ? System.import("build/index.js") : Promise.resolve())
     .catch(function(e) {
       console.log(e);
       console.warn("The project hasn't been built yet, add the \"dev\" query string parameter to launch it from the \"src\" folder.");
