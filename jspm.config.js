@@ -19,6 +19,13 @@ SystemJS.config({
     }
   },
   transpiler: "plugin-babel",
+  meta: {
+    "*.js": {
+      babelOptions: {
+        es2015: false
+      }
+    }
+  },
   packages: {
     "dnit": {
       "main": "index.js",
