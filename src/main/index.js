@@ -1,6 +1,6 @@
 import CustomElement from "dlib/dom/CustomElement.js";
 
-import templateHTML from "./template.html!text";
+import templateHTML from "./template.html";
 let template = document.createElement("template");
 template.innerHTML = templateHTML;
 

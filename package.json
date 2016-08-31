@@ -2,9 +2,8 @@
   "name": "dnit",
   "version": "0.0.0",
   "description": "",
-  "main": "src/index.js",
+  "main": "dnit.js",
   "scripts": {
-    "init": "npm update --save && jspm init --yes && jspm update && npm start",
     "install": "jspm install",
     "start": "browser-sync start --files \"src\" --server --no-notify --no-ghost-mode --startPath \"?dev\"",
     "build": "jspm bundle src/index.js build/index.js",
@@ -13,54 +12,37 @@
   },
   "author": "Damien Mortini",
   "license": "MIT",
-  "dependencies": {
-    "browser-sync": "^2.13.0",
-    "jspm": "^0.17.0-beta.22"
+  "devDependencies": {
+    "browser-sync": "^2.14.3",
+    "jspm": "^0.17.0-beta.28"
   },
   "jspm": {
+    "name": "dnit",
+    "main": "dnit.js",
     "dependencies": {
-      "dlib": "npm:dlib@^0.0.9",
-      "text": "github:systemjs/plugin-text@^0.0.8",
-      "webcomponents.js": "npm:webcomponents.js@^0.7.22"
+      "dlib": "npm:dlib@^0.0.11",
+      "text": "github:systemjs/plugin-text@^0.0.8"
     },
     "devDependencies": {
-      "babel": "npm:babel-core@^5.8.24",
-      "babel-runtime": "npm:babel-runtime@^5.8.24",
-      "core-js": "npm:core-js@^1.1.4",
-      "plugin-babel": "npm:systemjs-plugin-babel@^0.0.10"
+      "plugin-babel": "npm:systemjs-plugin-babel@^0.0.13"
     },
     "peerDependencies": {
       "assert": "github:jspm/nodelibs-assert@^0.2.0-alpha",
       "buffer": "github:jspm/nodelibs-buffer@^0.2.0-alpha",
+      "child_process": "github:jspm/nodelibs-child_process@^0.2.0-alpha",
+      "constants": "github:jspm/nodelibs-constants@^0.2.0-alpha",
+      "crypto": "github:jspm/nodelibs-crypto@^0.2.0-alpha",
       "events": "github:jspm/nodelibs-events@^0.2.0-alpha",
       "fs": "github:jspm/nodelibs-fs@^0.2.0-alpha",
+      "os": "github:jspm/nodelibs-os@^0.2.0-alpha",
       "path": "github:jspm/nodelibs-path@^0.2.0-alpha",
       "process": "github:jspm/nodelibs-process@^0.2.0-alpha",
       "stream": "github:jspm/nodelibs-stream@^0.2.0-alpha",
-      "util": "github:jspm/nodelibs-util@^0.2.0-alpha"
+      "string_decoder": "github:jspm/nodelibs-string_decoder@^0.2.0-alpha",
+      "util": "github:jspm/nodelibs-util@^0.2.0-alpha",
+      "vm": "github:jspm/nodelibs-vm@^0.2.0-alpha"
     },
     "overrides": {
-      "npm:babel-core@5.8.38": {
-        "main": "browser.js",
-        "dependencies": {},
-        "jspmNodeConversion": false,
-        "map": {
-          "regenerator/runtime": "babel-runtime/regenerator/runtime"
-        },
-        "meta": {
-          "browser.js": {
-            "exports": "babel",
-            "format": "global"
-          }
-        }
-      },
-      "npm:babel-runtime@5.8.38": {
-        "main": false,
-        "dependencies": {},
-        "optionalDependencies": {
-          "core-js": "^1.2.0"
-        }
-      },
       "npm:inherits@2.0.1": {
         "ignore": [
           "test.js"
