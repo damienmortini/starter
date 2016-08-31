@@ -20,9 +20,9 @@
     "name": "dnit",
     "main": "dnit.js",
     "dependencies": {
-      "dlib": "npm:dlib@^0.0.11",
+      "dlib": "npm:dlib@0.0.11",
       "text": "github:systemjs/plugin-text@^0.0.8",
-      "three": "npm:three@^0.78.0"
+      "three": "npm:three@^0.80.1"
     },
     "devDependencies": {
       "plugin-babel": "npm:systemjs-plugin-babel@^0.0.13"

@@ -1,40 +1,80 @@
-import THREE from "three";
-import "three/examples/js/postprocessing/EffectComposer.js";
-import "three/examples/js/postprocessing/ShaderPass.js";
-import "three/examples/js/postprocessing/MaskPass.js";
-import "three/examples/js/postprocessing/RenderPass.js";
-import "three/examples/js/shaders/CopyShader.js";
-import "three/examples/js/shaders/FXAAShader.js";
+import { ShaderMaterial, WebGLRenderer, WebGLRenderTarget, RGBAFormat, LinearFilter, UnsignedShortType, DepthTexture, OrthographicCamera, Scene, Mesh, PlaneBufferGeometry } from "three";
+import { Vector2 } from "three/src/math/Vector2.js";
+
+import THREEShader from "dlib/three/THREEShader.js";
+import AntialiasGLSL from "dlib/webgl/shaders/AntialiasGLSL.js";
 
 export default class Renderer {
   constructor(canvas) {
-    this.renderer = new THREE.WebGLRenderer({
+    this.renderer = new WebGLRenderer({
+      antialias: true,
       canvas: canvas
     });
 
-    this.effectComposer = new THREE.EffectComposer(this.renderer);
-    this.renderPass = new THREE.RenderPass();
-    this.effectComposer.addPass(this.renderPass);
-    this.fxaaShaderPass = new THREE.ShaderPass(THREE.FXAAShader);
-    this.effectComposer.addPass(this.fxaaShaderPass);
-    this.copyShaderPass = new THREE.ShaderPass(THREE.CopyShader);
-    this.effectComposer.addPass(this.copyShaderPass);
+    this.camera = new OrthographicCamera(-1, 1, 1, -1, 0, 1);
+    this.scene = new Scene();
 
-    this.effectComposer.passes[this.effectComposer.passes.length - 1].renderToScreen = true;
+    this.antialias = new ShaderMaterial(new THREEShader({
+      vertexShader: `
+        uniform vec2 resolution;
+
+        varying vec2 vUv;
+
+        ${AntialiasGLSL.vertex()}
+
+        void main() {
+          computeFXAATextureCoordinates(uv, resolution);
+          vUv = uv;
+
+          gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );
+        }
+      `,
+      fragmentShader: `
+        uniform vec2 resolution;
+        uniform sampler2D texture;
+
+        varying vec2 vUv;
+
+        ${AntialiasGLSL.fragment()}
+
+        void main() {
+          gl_FragColor = fxaa(texture, vUv, resolution);
+        }
+      `
+    }));
+
+    this.quad = new Mesh(new PlaneBufferGeometry(2, 2), null);
+    this.scene.add(this.quad);
+  }
+
+  applyFilter(filter) {
+    this.quad.material = filter;
+    filter.uniforms.texture.value = this._renderTarget1.texture;
+    if (filter.uniforms.depthTexture) {
+      filter.uniforms.depthTexture.value = this._renderTarget1.depthTexture;
+    }
+    this.renderer.render(this.scene, this.camera, this._renderTarget2);
+    [this._renderTarget1, this._renderTarget2] = [this._renderTarget2, this._renderTarget1];
   }
 
   resize(width, height) {
     width *= window.devicePixelRatio;
     height *= window.devicePixelRatio;
+
     this.renderer.setSize(width, height, false);
-    this.fxaaShaderPass.uniforms.resolution.value.set(1 / width, 1 / height);
-    this.effectComposer.setSize(width, height);
+    this.antialias.uniforms.resolution.value.set(width, height);
+    this._renderTarget1.setSize(width, height);
+    this._renderTarget2.setSize(width, height);
   }
 
   render(scene) {
-    this.renderPass.scene = scene;
-    this.renderPass.camera = scene.camera;
+    this.renderer.render(scene, scene.camera, this._renderTarget1);
 
-    this.effectComposer.render();
+    this.applyFilter(this.antialias);
+
+    [this._renderTarget1, this._renderTarget2] = [this._renderTarget2, this._renderTarget1];
+
+    this.renderer.render(this.scene, this.camera);
+    // this.renderer.render(scene, scene.camera);
   }
 }

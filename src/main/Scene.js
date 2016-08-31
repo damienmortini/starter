@@ -1,16 +1,22 @@
-import THREE from "three";
-import "three/examples/js/controls/TrackballControls";
+import {
+  PerspectiveCamera,
+  Mesh,
+  BoxGeometry,
+  MeshNormalMaterial,
+  Scene as THREEScene
+} from "three";
 
-export default class Scene extends THREE.Scene {
+import THREETrackballController from "dlib/three/THREETrackballController.js";
+
+export default class Scene extends THREEScene {
   constructor() {
     super();
 
-    this.camera = new THREE.PerspectiveCamera(65, window.innerWidth / window.innerHeight, 0.1, 10000);
+    this.camera = new PerspectiveCamera(65, window.innerWidth / window.innerHeight, 0.1, 10000);
 
-    this.camera.position.z = 5;
-    this.controls = new THREE.TrackballControls(this.camera);
+    this.controls = new THREETrackballController(this.camera, {distance: 5});
 
-    let cube = new THREE.Mesh(new THREE.BoxGeometry(1, 1, 1), new THREE.MeshNormalMaterial());
+    let cube = new Mesh(new BoxGeometry(1, 1, 1), new MeshNormalMaterial());
 
     this.add(cube);
   }

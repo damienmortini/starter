@@ -20,8 +20,14 @@ SystemJS.config({
   },
   transpiler: "plugin-babel",
   packages: {
-    "npm:three@0.78.0/build/three.js": {
-      "format": "global"
+    "npm:dlib@0.0.11": {
+      "meta": {
+        "*.js": {
+          babelOptions: {
+            es2015: false
+          }
+        }
+      }
     },
     "dnit": {
       "main": "index.js",
@@ -56,7 +62,7 @@ SystemJS.config({
     "stream": "github:jspm/nodelibs-stream@0.2.0-alpha",
     "string_decoder": "github:jspm/nodelibs-string_decoder@0.2.0-alpha",
     "text": "github:systemjs/plugin-text@0.0.8",
-    "three": "npm:three@0.78.0",
+    "three": "npm:three@0.80.1",
     "util": "github:jspm/nodelibs-util@0.2.0-alpha",
     "vm": "github:jspm/nodelibs-vm@0.2.0-alpha"
   },
