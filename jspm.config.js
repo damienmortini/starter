@@ -27,15 +27,6 @@ SystemJS.config({
     }
   },
   packages: {
-    "npm:dlib@0.0.11": {
-      "meta": {
-        "*.js": {
-          babelOptions: {
-            es2015: false
-          }
-        }
-      }
-    },
     "dnit": {
       "main": "index.js",
       "format": "esm",
