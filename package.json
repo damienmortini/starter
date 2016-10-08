@@ -20,7 +20,7 @@
     "name": "dnit",
     "main": "dnit.js",
     "dependencies": {
-      "dlib": "npm:dlib@0.0.11",
+      "dlib": "npm:dlib@0.0.13",
       "text": "github:systemjs/plugin-text@^0.0.8",
       "three": "npm:three@^0.80.1"
     },
@@ -44,7 +44,7 @@
       "vm": "github:jspm/nodelibs-vm@^0.2.0-alpha"
     },
     "overrides": {
-      "npm:inherits@2.0.1": {
+      "npm:inherits@2.0.3": {
         "ignore": [
           "test.js"
         ]
