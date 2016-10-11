@@ -1,21 +1,3 @@
-System.registerDynamic('github:systemjs/plugin-text@0.0.8/text.js', [], true, function ($__require, exports, module) {
-  var define,
-      global = this || self,
-      GLOBAL = global;
-  /*
-    Text plugin
-  */
-  exports.translate = function (load) {
-    if (this.builder && this.transpiler) {
-      load.metadata.format = 'esm';
-      return 'export default ' + JSON.stringify(load.source) + ';';
-    }
-
-    load.metadata.format = 'amd';
-    return 'def' + 'ine(function() {\nreturn ' + JSON.stringify(load.source) + ';\n});';
-  };
-  return module.exports;
-});
 System.registerDynamic("github:jspm/nodelibs-process@0.2.0-alpha.json", [], false, function() {
   return {
     "main": "./process.js"
@@ -7467,17 +7449,6 @@ System.registerDynamic('npm:webcomponents.js@0.7.22/webcomponents.js', ['process
   })(window.WebComponents);
   return module.exports;
 });
-System.registerDynamic("npm:dlib@0.0.13.json", [], false, function() {
-  return {
-    "format": "es6",
-    "meta": {
-      "*.json": {
-        "format": "json"
-      }
-    }
-  };
-});
-
 System.register("npm:dlib@0.0.13/dom/CustomElement.js", ["webcomponents.js"], function (_export, _context) {
   "use strict";
 
@@ -7514,35 +7485,110 @@ System.register("npm:dlib@0.0.13/dom/CustomElement.js", ["webcomponents.js"], fu
     }
   };
 });
-System.registerDynamic("github:systemjs/plugin-text@0.0.8.json", [], false, function() {
+System.registerDynamic("npm:dlib@0.0.13.json", [], false, function() {
   return {
-    "main": "text"
+    "format": "es6",
+    "meta": {
+      "*.json": {
+        "format": "json"
+      }
+    }
   };
 });
 
-System.register("dnit/main/template.html", [], function (_export, _context) {
+System.register("npm:dlib@0.0.13/utils/Loader.js", [], function (_export, _context) {
   "use strict";
 
   return {
     setters: [],
     execute: function () {
-      _export("default", "<h1>dnit-main</h1>\n");
+      const PROMISES = new Map();
+
+      class Loader {
+        static get onLoad() {
+          return Promise.all(PROMISES.values());
+        }
+
+        static get promises() {
+          return PROMISES;
+        }
+
+        static load(values) {
+          if (!(values instanceof Array)) {
+            values = [values];
+          }
+
+          let promises = [];
+
+          for (let value of values) {
+            let promise = PROMISES.get(value) || new Promise(function (resolve, reject) {
+              let onLoad = response => {
+                PROMISES.delete(value);
+                if (value instanceof HTMLElement) {
+                  value.removeEventListener("load", onLoad);
+                  value.removeEventListener("canplaythrough", onLoad);
+                  resolve(value);
+                } else {
+                  resolve(response);
+                }
+              };
+
+              if (typeof value === "string") {
+                let tagName;
+                if (/\.(png|jpg|gif)$/.test(value)) {
+                  tagName = "img";
+                } else if (/\.(mp4|webm)$/.test(value)) {
+                  tagName = "video";
+                } else if (/\.(mp3|ogg)$/.test(value)) {
+                  tagName = "audio";
+                }
+                if (tagName) {
+                  let element = document.createElement(tagName);
+                  element.src = value;
+                  value = element;
+                }
+              }
+
+              if (value instanceof HTMLElement) {
+                if (value instanceof HTMLMediaElement) {
+                  value.addEventListener("canplaythrough", onLoad);
+                } else {
+                  value.addEventListener("load", onLoad);
+                };
+              } else {
+                fetch(value).then(response => {
+                  return response.text();
+                }).then(onLoad);
+              }
+            });
+            promises.push(promise);
+            PROMISES.set(value, promise);
+          }
+
+          return promises.length > 1 ? Promise.all(promises) : promises[0];
+        }
+      }
+
+      _export("default", Loader);
     }
   };
 });
-System.register("dnit/main/index.js", ["text", "dlib/dom/CustomElement.js", "./template.html"], function (_export, _context) {
+System.register("dnit/main/index.js", ["dlib/dom/CustomElement.js", "dlib/utils/Loader.js"], function (_export, _context) {
   "use strict";
 
-  var CustomElement, templateHTML;
+  var CustomElement, Loader;
   return {
-    setters: [function (_text) {}, function (_dlibDomCustomElementJs) {
+    setters: [function (_dlibDomCustomElementJs) {
       CustomElement = _dlibDomCustomElementJs.default;
-    }, function (_templateHtml) {
-      templateHTML = _templateHtml.default;
+    }, function (_dlibUtilsLoaderJs) {
+      Loader = _dlibUtilsLoaderJs.default;
     }],
     execute: function () {
+
       let template = document.createElement("template");
-      template.innerHTML = templateHTML;
+      Loader.load("src/main/template.html").then(value => {
+        template.innerHTML = value;
+      });
 
       class Main extends CustomElement {
         createdCallback() {
@@ -7553,7 +7599,9 @@ System.register("dnit/main/index.js", ["text", "dlib/dom/CustomElement.js", "./t
         }
       }
 
-      Main.register("dnit-main");
+      Loader.onLoad.then(() => {
+        Main.register("dnit-main");
+      });
     }
   };
 });
