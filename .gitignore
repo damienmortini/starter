@@ -5,6 +5,6 @@ jspm_packages/*
 
 # Uncomment to deploy
 
-# !build/index.js
-# !jspm_packages/*.js
-# jspm_packages/*.src.js
+!build/index.js
+!jspm_packages/*.js
+jspm_packages/*.src.js
