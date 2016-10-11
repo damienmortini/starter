@@ -63,7 +63,8 @@ SystemJS.config({
         "gl-matrix": "npm:gl-matrix@2.3.2",
         "gl-shader": "npm:gl-shader@4.2.1",
         "min-signal": "npm:min-signal@0.0.6",
-        "gl-texture-cube": "npm:gl-texture-cube@1.0.1"
+        "gl-texture-cube": "npm:gl-texture-cube@1.0.1",
+        "whatwg-fetch": "npm:whatwg-fetch@1.0.0"
       }
     },
     "npm:gl-fbo@2.0.5": {
