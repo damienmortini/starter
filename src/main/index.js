@@ -1,3 +1,4 @@
+import "text";
 import CustomElement from "dlib/dom/CustomElement.js";
 
 import templateHTML from "./template.html";

@@ -1,3 +1,21 @@
+System.registerDynamic('github:systemjs/plugin-text@0.0.8/text.js', [], true, function ($__require, exports, module) {
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  /*
+    Text plugin
+  */
+  exports.translate = function (load) {
+    if (this.builder && this.transpiler) {
+      load.metadata.format = 'esm';
+      return 'export default ' + JSON.stringify(load.source) + ';';
+    }
+
+    load.metadata.format = 'amd';
+    return 'def' + 'ine(function() {\nreturn ' + JSON.stringify(load.source) + ';\n});';
+  };
+  return module.exports;
+});
 System.registerDynamic("github:jspm/nodelibs-process@0.2.0-alpha.json", [], false, function() {
   return {
     "main": "./process.js"
@@ -7496,6 +7514,12 @@ System.register("npm:dlib@0.0.13/dom/CustomElement.js", ["webcomponents.js"], fu
     }
   };
 });
+System.registerDynamic("github:systemjs/plugin-text@0.0.8.json", [], false, function() {
+  return {
+    "main": "text"
+  };
+});
+
 System.register("dnit/main/template.html", [], function (_export, _context) {
   "use strict";
 
@@ -7506,12 +7530,12 @@ System.register("dnit/main/template.html", [], function (_export, _context) {
     }
   };
 });
-System.register("dnit/main/index.js", ["dlib/dom/CustomElement.js", "./template.html"], function (_export, _context) {
+System.register("dnit/main/index.js", ["text", "dlib/dom/CustomElement.js", "./template.html"], function (_export, _context) {
   "use strict";
 
   var CustomElement, templateHTML;
   return {
-    setters: [function (_dlibDomCustomElementJs) {
+    setters: [function (_text) {}, function (_dlibDomCustomElementJs) {
       CustomElement = _dlibDomCustomElementJs.default;
     }, function (_templateHtml) {
       templateHTML = _templateHtml.default;
