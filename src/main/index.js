@@ -1,9 +1,10 @@
-import "text";
 import CustomElement from "dlib/dom/CustomElement.js";
+import Loader from "dlib/utils/Loader.js";
 
-import templateHTML from "./template.html";
 let template = document.createElement("template");
-template.innerHTML = templateHTML;
+Loader.load("src/main/template.html").then((value) => {
+  template.innerHTML = value;
+});
 
 class Main extends CustomElement {
   createdCallback() {
@@ -14,4 +15,6 @@ class Main extends CustomElement {
   }
 }
 
-Main.register("dnit-main");
+Loader.onLoad.then(() => {
+  Main.register("dnit-main");
+});
