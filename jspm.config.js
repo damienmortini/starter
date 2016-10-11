@@ -1,9 +1,9 @@
 SystemJS.config({
   browserConfig: {
     "paths": {
-      "npm:": "/jspm_packages/npm/",
-      "github:": "/jspm_packages/github/",
-      "dnit/": "/src/"
+      "npm:": "jspm_packages/npm/",
+      "github:": "jspm_packages/github/",
+      "dnit/": "src/"
     }
   },
   nodeConfig: {
