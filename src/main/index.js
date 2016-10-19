@@ -1,11 +1,13 @@
 import LoopElement from "dlib/dom/LoopElement.js";
+import Loader from "dlib/utils/Loader.js";
 
 import Scene from "./Scene.js";
 import Renderer from "./Renderer.js";
 
-import templateHTML from "./template.html";
 let template = document.createElement("template");
-template.innerHTML = templateHTML;
+Loader.load("src/main/template.html").then((value) => {
+  template.innerHTML = value;
+});
 
 class Main extends LoopElement {
   createdCallback() {
@@ -47,4 +49,6 @@ class Main extends LoopElement {
   }
 }
 
-Main.register("dnit-main");
+Loader.onLoad.then(() => {
+  Main.register("dnit-main");
+});

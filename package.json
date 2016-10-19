@@ -21,11 +21,10 @@
     "main": "dnit.js",
     "dependencies": {
       "dlib": "npm:dlib@0.0.13",
-      "text": "github:systemjs/plugin-text@^0.0.8",
       "three": "npm:three@^0.80.1"
     },
     "devDependencies": {
-      "plugin-babel": "npm:systemjs-plugin-babel@^0.0.13"
+      "plugin-babel": "npm:systemjs-plugin-babel@^0.0.16"
     },
     "peerDependencies": {
       "assert": "github:jspm/nodelibs-assert@^0.2.0-alpha",
