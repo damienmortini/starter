@@ -1,4 +1,5 @@
-import CustomElement from "dlib/dom/CustomElement.js";
+import "@webcomponents/custom-elements";
+
 import Loader from "dlib/utils/Loader.js";
 
 let template = document.createElement("template");
@@ -6,9 +7,9 @@ Loader.load("src/main/template.html").then((value) => {
   template.innerHTML = value;
 });
 
-class Main extends CustomElement {
-  createdCallback() {
-    super.createdCallback();
+class Main extends HTMLElement {
+  constructor() {
+    super();
 
     let templateClone = document.importNode(template.content, true);
     this.appendChild(templateClone);
@@ -16,5 +17,5 @@ class Main extends CustomElement {
 }
 
 Loader.onLoad.then(() => {
-  Main.register("dnit-main");
+  window.customElements.define("dnit-main", Main);
 });

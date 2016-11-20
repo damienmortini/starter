@@ -19,7 +19,7 @@ SystemJS.config({
   },
   packages: {
     "dnit": {
-      "main": "dnit.js",
+      "main": "src/index.js",
       "meta": {
         "*.js": {
           "loader": "plugin-babel"
@@ -36,37 +36,24 @@ SystemJS.config({
     "github:*/*.json"
   ],
   map: {
-    "assert": "github:jspm/nodelibs-assert@0.2.0-alpha",
-    "buffer": "github:jspm/nodelibs-buffer@0.2.0-alpha",
-    "child_process": "github:jspm/nodelibs-child_process@0.2.0-alpha",
-    "constants": "github:jspm/nodelibs-constants@0.2.0-alpha",
-    "crypto": "github:jspm/nodelibs-crypto@0.2.0-alpha",
-    "dlib": "npm:dlib@0.0.13",
-    "events": "github:jspm/nodelibs-events@0.2.0-alpha",
-    "fs": "github:jspm/nodelibs-fs@0.2.0-alpha",
-    "os": "github:jspm/nodelibs-os@0.2.0-alpha",
-    "path": "github:jspm/nodelibs-path@0.2.0-alpha",
-    "process": "github:jspm/nodelibs-process@0.2.0-alpha",
-    "stream": "github:jspm/nodelibs-stream@0.2.0-alpha",
-    "string_decoder": "github:jspm/nodelibs-string_decoder@0.2.0-alpha",
-    "util": "github:jspm/nodelibs-util@0.2.0-alpha",
-    "vm": "github:jspm/nodelibs-vm@0.2.0-alpha"
+    "@webcomponents/custom-elements": "npm:@webcomponents/custom-elements@1.0.0-alpha.3",
+    "assert": "npm:jspm-nodelibs-assert@0.2.0",
+    "buffer": "npm:jspm-nodelibs-buffer@0.2.0",
+    "child_process": "npm:jspm-nodelibs-child_process@0.2.0",
+    "constants": "npm:jspm-nodelibs-constants@0.2.0",
+    "crypto": "npm:jspm-nodelibs-crypto@0.2.0",
+    "dlib": "npm:dlib@0.0.16",
+    "events": "npm:jspm-nodelibs-events@0.2.0",
+    "fs": "npm:jspm-nodelibs-fs@0.2.0",
+    "os": "npm:jspm-nodelibs-os@0.2.0",
+    "path": "npm:jspm-nodelibs-path@0.2.1",
+    "process": "npm:jspm-nodelibs-process@0.2.0",
+    "stream": "npm:jspm-nodelibs-stream@0.2.0",
+    "string_decoder": "npm:jspm-nodelibs-string_decoder@0.2.0",
+    "util": "npm:jspm-nodelibs-util@0.2.1",
+    "vm": "npm:jspm-nodelibs-vm@0.2.0"
   },
   packages: {
-    "npm:dlib@0.0.13": {
-      "map": {
-        "webcomponents.js": "npm:webcomponents.js@0.7.22",
-        "controlkit": "npm:controlkit@0.1.9",
-        "gl-texture2d": "npm:gl-texture2d@2.0.11",
-        "gl-fbo": "npm:gl-fbo@2.0.5",
-        "gl-buffer": "npm:gl-buffer@2.1.2",
-        "gl-matrix": "npm:gl-matrix@2.3.2",
-        "gl-shader": "npm:gl-shader@4.2.1",
-        "min-signal": "npm:min-signal@0.0.6",
-        "gl-texture-cube": "npm:gl-texture-cube@1.0.1",
-        "whatwg-fetch": "npm:whatwg-fetch@1.0.0"
-      }
-    },
     "npm:gl-fbo@2.0.5": {
       "map": {
         "gl-texture2d": "npm:gl-texture2d@2.0.11"
@@ -97,21 +84,6 @@ SystemJS.config({
         "cwise-compiler": "npm:cwise-compiler@1.1.2"
       }
     },
-    "github:jspm/nodelibs-crypto@0.2.0-alpha": {
-      "map": {
-        "crypto-browserify": "npm:crypto-browserify@3.11.0"
-      }
-    },
-    "github:jspm/nodelibs-os@0.2.0-alpha": {
-      "map": {
-        "os-browserify": "npm:os-browserify@0.2.1"
-      }
-    },
-    "github:jspm/nodelibs-string_decoder@0.2.0-alpha": {
-      "map": {
-        "string_decoder-browserify": "npm:string_decoder@0.10.31"
-      }
-    },
     "npm:cwise-compiler@1.1.2": {
       "map": {
         "uniq": "npm:uniq@1.0.1"
@@ -129,16 +101,6 @@ SystemJS.config({
         "pbkdf2": "npm:pbkdf2@3.0.9",
         "diffie-hellman": "npm:diffie-hellman@5.0.2",
         "randombytes": "npm:randombytes@2.0.3"
-      }
-    },
-    "github:jspm/nodelibs-stream@0.2.0-alpha": {
-      "map": {
-        "stream-browserify": "npm:stream-browserify@2.0.1"
-      }
-    },
-    "github:jspm/nodelibs-buffer@0.2.0-alpha": {
-      "map": {
-        "buffer-browserify": "npm:buffer@4.9.1"
       }
     },
     "npm:stream-browserify@2.0.1": {
@@ -371,6 +333,45 @@ SystemJS.config({
         "stream-browserify": "npm:stream-browserify@1.0.0",
         "core-util-is": "npm:core-util-is@1.0.2",
         "string_decoder": "npm:string_decoder@0.10.31"
+      }
+    },
+    "npm:jspm-nodelibs-buffer@0.2.0": {
+      "map": {
+        "buffer-browserify": "npm:buffer@4.9.1"
+      }
+    },
+    "npm:jspm-nodelibs-os@0.2.0": {
+      "map": {
+        "os-browserify": "npm:os-browserify@0.2.1"
+      }
+    },
+    "npm:jspm-nodelibs-crypto@0.2.0": {
+      "map": {
+        "crypto-browserify": "npm:crypto-browserify@3.11.0"
+      }
+    },
+    "npm:jspm-nodelibs-string_decoder@0.2.0": {
+      "map": {
+        "string_decoder-browserify": "npm:string_decoder@0.10.31"
+      }
+    },
+    "npm:jspm-nodelibs-stream@0.2.0": {
+      "map": {
+        "stream-browserify": "npm:stream-browserify@2.0.1"
+      }
+    },
+    "npm:dlib@0.0.16": {
+      "map": {
+        "controlkit": "npm:controlkit@0.1.9",
+        "gl-buffer": "npm:gl-buffer@2.1.2",
+        "gl-fbo": "npm:gl-fbo@2.0.5",
+        "gl-matrix": "npm:gl-matrix@2.3.2",
+        "gl-shader": "npm:gl-shader@4.2.1",
+        "gl-texture-cube": "npm:gl-texture-cube@1.0.1",
+        "gl-texture2d": "npm:gl-texture2d@2.0.11",
+        "min-signal": "npm:min-signal@0.0.6",
+        "webcomponents.js": "npm:webcomponents.js@0.7.22",
+        "whatwg-fetch": "npm:whatwg-fetch@1.0.0"
       }
     }
   }
