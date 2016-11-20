@@ -1,4 +1,6 @@
-import LoopElement from "dlib/dom/LoopElement.js";
+import "@webcomponents/custom-elements";
+
+import LoopElement from "dlib/customelements/LoopElement.js";
 import Loader from "dlib/utils/Loader.js";
 
 import Scene from "./Scene.js";
@@ -10,8 +12,8 @@ Loader.load("src/main/template.html").then((value) => {
 });
 
 class Main extends LoopElement {
-  createdCallback() {
-    super.createdCallback();
+  constructor() {
+    super();
 
     let templateClone = document.importNode(template.content, true);
     this.appendChild(templateClone);
@@ -23,14 +25,14 @@ class Main extends LoopElement {
     this.scene = new Scene();
   }
 
-  attachedCallback() {
-    super.attachedCallback();
+  connectedCallback() {
+    super.connectedCallback();
     window.addEventListener("resize", this.resize.bind(this));
     this.resize();
   }
 
-  detachedCallback() {
-    super.detachedCallback();
+  disconnectedCallback() {
+    super.disconnectedCallback();
     window.removeEventListener("resize", this.resize.bind(this));
   }
 
@@ -50,5 +52,5 @@ class Main extends LoopElement {
 }
 
 Loader.onLoad.then(() => {
-  Main.register("dnit-main");
+  window.customElements.define("dnit-main", Main);
 });
