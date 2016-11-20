@@ -2,7 +2,7 @@
   "name": "dnit",
   "version": "0.0.0",
   "description": "",
-  "main": "dnit.js",
+  "main": "src/index.js",
   "scripts": {
     "install": "jspm install",
     "start": "browser-sync start --files \"src\" --server --no-notify --no-ghost-mode --startPath \"?dev\"",
