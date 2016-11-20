@@ -1,5 +1,7 @@
 import "@webcomponents/custom-elements";
 
+import "three";
+
 import LoopElement from "dlib/customelements/LoopElement.js";
 import Loader from "dlib/utils/Loader.js";
 
