@@ -57,7 +57,7 @@ SystemJS.config({
   packages: {
     "npm:gl-fbo@2.0.5": {
       "map": {
-        "gl-texture2d": "npm:gl-texture2d@2.0.12"
+        "gl-texture2d": "npm:gl-texture2d@2.1.0"
       }
     },
     "npm:gl-buffer@2.1.2": {
@@ -339,17 +339,11 @@ SystemJS.config({
         "gl-matrix": "npm:gl-matrix@2.3.2",
         "gl-shader": "npm:gl-shader@4.2.1",
         "gl-texture-cube": "npm:gl-texture-cube@1.0.1",
-        "gl-texture2d": "npm:gl-texture2d@2.0.12",
+        "gl-texture2d": "npm:gl-texture2d@2.1.0",
         "min-signal": "npm:min-signal@0.0.6",
         "webcomponents.js": "npm:webcomponents.js@0.7.23",
-        "whatwg-fetch": "npm:whatwg-fetch@1.1.1"
-      }
-    },
-    "npm:gl-texture2d@2.0.12": {
-      "map": {
-        "typedarray-pool": "npm:typedarray-pool@1.1.0",
-        "ndarray-ops": "npm:ndarray-ops@1.2.2",
-        "ndarray": "npm:ndarray@1.0.18"
+        "whatwg-fetch": "npm:whatwg-fetch@1.1.1",
+        "@webcomponents/custom-elements": "npm:@webcomponents/custom-elements@1.0.0-alpha.3"
       }
     },
     "npm:readable-stream@2.2.2": {
@@ -373,6 +367,13 @@ SystemJS.config({
         "bn.js": "npm:bn.js@4.11.6",
         "inherits": "npm:inherits@2.0.3",
         "minimalistic-assert": "npm:minimalistic-assert@1.0.0"
+      }
+    },
+    "npm:gl-texture2d@2.1.0": {
+      "map": {
+        "ndarray": "npm:ndarray@1.0.18",
+        "ndarray-ops": "npm:ndarray-ops@1.2.2",
+        "typedarray-pool": "npm:typedarray-pool@1.1.0"
       }
     }
   }

@@ -24,7 +24,7 @@ class Main extends LoopElement {
 
     this.renderer = new Renderer(this.canvas);
 
-    this.scene = new Scene();
+    this.scene = new Scene({canvas: this.canvas});
   }
 
   connectedCallback() {
