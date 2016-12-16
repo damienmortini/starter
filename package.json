@@ -5,7 +5,7 @@
   "main": "src/index.js",
   "scripts": {
     "install": "jspm install",
-    "start": "browser-sync start --files \"src\" --server --no-notify --no-ghost-mode --startPath \"?dev\"",
+    "start": "browser-sync start --files \"src\" --server --https --no-notify --no-ghost-mode --startPath \"?dev\"",
     "build": "jspm bundle src/index.js build/index.js",
     "release": "jspm bundle src/index.js build/index.js --minify",
     "test": "echo \"Error: no test specified\" && exit 1"
