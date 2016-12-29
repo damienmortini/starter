@@ -23,8 +23,8 @@
     "main": "src/index.js",
     "dependencies": {
       "@webcomponents/custom-elements": "npm:@webcomponents/custom-elements@^1.0.0-alpha.3",
-      "dlib": "npm:dlib@0.0.18",
-      "three": "npm:three@^0.82.1"
+      "dlib": "npm:dlib@0.0.19",
+      "three": "npm:three@^0.83.0"
     },
     "devDependencies": {
       "plugin-babel": "npm:systemjs-plugin-babel@^0.0.16"
@@ -64,36 +64,6 @@
         "ignore": [
           "test.js"
         ]
-      },
-      "npm:readable-stream@1.0.34": {
-        "map": {
-          "stream": "stream-browserify/index"
-        },
-        "systemjs": {
-          "main": "readable.js"
-        },
-        "dependencies": {
-          "core-util-is": "~1.0.0",
-          "isarray": "0.0.1",
-          "string_decoder": "~0.10.0",
-          "inherits": "~2.0.1",
-          "stream-browserify": "~1.0.0"
-        }
-      },
-      "npm:readable-stream@1.1.14": {
-        "map": {
-          "stream": "stream-browserify/index"
-        },
-        "systemjs": {
-          "main": "readable.js"
-        },
-        "dependencies": {
-          "core-util-is": "~1.0.0",
-          "isarray": "0.0.1",
-          "string_decoder": "~0.10.0",
-          "inherits": "~2.0.1",
-          "stream-browserify": "~1.0.0"
-        }
       },
       "npm:ws@1.1.1": {
         "dependencies": {
