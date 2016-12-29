@@ -7,7 +7,7 @@ import "three/examples/js/postprocessing/RenderPass.js";
 import "three/examples/js/shaders/CopyShader.js";
 
 import THREEShader from "dlib/three/THREEShader.js";
-import AntialiasGLSL from "dlib/webgl/shaders/AntialiasGLSL.js";
+import AntialiasGLSL from "dlib/shaders/AntialiasGLSL.js";
 
 export default class Renderer {
   constructor(canvas) {

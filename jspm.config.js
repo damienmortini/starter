@@ -42,17 +42,22 @@ SystemJS.config({
     "child_process": "npm:jspm-nodelibs-child_process@0.2.0",
     "constants": "npm:jspm-nodelibs-constants@0.2.0",
     "crypto": "npm:jspm-nodelibs-crypto@0.2.0",
-    "dlib": "npm:dlib@0.0.16",
+    "dlib": "npm:dlib@0.0.18",
     "events": "npm:jspm-nodelibs-events@0.2.0",
     "fs": "npm:jspm-nodelibs-fs@0.2.0",
+    "http": "npm:jspm-nodelibs-http@0.2.0",
+    "https": "npm:jspm-nodelibs-https@0.2.1",
     "os": "npm:jspm-nodelibs-os@0.2.0",
     "path": "npm:jspm-nodelibs-path@0.2.1",
     "process": "npm:jspm-nodelibs-process@0.2.0",
     "stream": "npm:jspm-nodelibs-stream@0.2.0",
     "string_decoder": "npm:jspm-nodelibs-string_decoder@0.2.0",
     "three": "npm:three@0.82.1",
+    "tls": "npm:jspm-nodelibs-tls@0.2.0",
+    "url": "npm:jspm-nodelibs-url@0.2.0",
     "util": "npm:jspm-nodelibs-util@0.2.1",
-    "vm": "npm:jspm-nodelibs-vm@0.2.0"
+    "vm": "npm:jspm-nodelibs-vm@0.2.0",
+    "zlib": "npm:jspm-nodelibs-zlib@0.2.2"
   },
   packages: {
     "npm:gl-fbo@2.0.5": {
@@ -157,7 +162,7 @@ SystemJS.config({
     },
     "npm:gl-shader@4.2.1": {
       "map": {
-        "weakmap-shim": "npm:weakmap-shim@1.1.0",
+        "weakmap-shim": "npm:weakmap-shim@1.1.1",
         "gl-format-compiler-error": "npm:gl-format-compiler-error@1.0.2"
       }
     },
@@ -209,7 +214,7 @@ SystemJS.config({
         "create-hash": "npm:create-hash@1.1.2",
         "evp_bytestokey": "npm:evp_bytestokey@1.0.0",
         "pbkdf2": "npm:pbkdf2@3.0.9",
-        "asn1.js": "npm:asn1.js@4.9.0"
+        "asn1.js": "npm:asn1.js@4.9.1"
       }
     },
     "npm:browserify-rsa@4.0.1": {
@@ -331,21 +336,6 @@ SystemJS.config({
         "stream-browserify": "npm:stream-browserify@2.0.1"
       }
     },
-    "npm:dlib@0.0.16": {
-      "map": {
-        "controlkit": "npm:controlkit@0.1.9",
-        "gl-buffer": "npm:gl-buffer@2.1.2",
-        "gl-fbo": "npm:gl-fbo@2.0.5",
-        "gl-matrix": "npm:gl-matrix@2.3.2",
-        "gl-shader": "npm:gl-shader@4.2.1",
-        "gl-texture-cube": "npm:gl-texture-cube@1.0.1",
-        "gl-texture2d": "npm:gl-texture2d@2.1.0",
-        "min-signal": "npm:min-signal@0.0.6",
-        "webcomponents.js": "npm:webcomponents.js@0.7.23",
-        "whatwg-fetch": "npm:whatwg-fetch@1.1.1",
-        "@webcomponents/custom-elements": "npm:@webcomponents/custom-elements@1.0.0-alpha.3"
-      }
-    },
     "npm:readable-stream@2.2.2": {
       "map": {
         "core-util-is": "npm:core-util-is@1.0.2",
@@ -362,18 +352,89 @@ SystemJS.config({
         "inherits": "npm:inherits@2.0.3"
       }
     },
-    "npm:asn1.js@4.9.0": {
-      "map": {
-        "bn.js": "npm:bn.js@4.11.6",
-        "inherits": "npm:inherits@2.0.3",
-        "minimalistic-assert": "npm:minimalistic-assert@1.0.0"
-      }
-    },
     "npm:gl-texture2d@2.1.0": {
       "map": {
         "ndarray": "npm:ndarray@1.0.18",
         "ndarray-ops": "npm:ndarray-ops@1.2.2",
         "typedarray-pool": "npm:typedarray-pool@1.1.0"
+      }
+    },
+    "npm:dlib@0.0.18": {
+      "map": {
+        "whatwg-fetch": "npm:whatwg-fetch@1.1.1",
+        "ws": "npm:ws@1.1.1",
+        "mobile-detect": "npm:mobile-detect@1.3.5",
+        "gl-buffer": "npm:gl-buffer@2.1.2",
+        "controlkit": "npm:controlkit@0.1.9",
+        "gl-matrix": "npm:gl-matrix@2.3.2",
+        "gl-fbo": "npm:gl-fbo@2.0.5",
+        "gl-texture2d": "npm:gl-texture2d@2.1.0",
+        "gl-shader": "npm:gl-shader@4.2.1",
+        "gl-texture-cube": "npm:gl-texture-cube@1.0.1",
+        "@webcomponents/custom-elements": "npm:@webcomponents/custom-elements@1.0.0-alpha.3"
+      }
+    },
+    "npm:ws@1.1.1": {
+      "map": {
+        "bufferutil": "npm:bufferutil@1.2.1",
+        "ultron": "npm:ultron@1.0.2",
+        "utf-8-validate": "npm:utf-8-validate@1.2.2",
+        "options": "npm:options@0.0.6"
+      }
+    },
+    "npm:bufferutil@1.2.1": {
+      "map": {
+        "bindings": "npm:bindings@1.2.1",
+        "nan": "npm:nan@2.5.0"
+      }
+    },
+    "npm:utf-8-validate@1.2.2": {
+      "map": {
+        "bindings": "npm:bindings@1.2.1",
+        "nan": "npm:nan@2.4.0"
+      }
+    },
+    "npm:jspm-nodelibs-zlib@0.2.2": {
+      "map": {
+        "browserify-zlib": "npm:browserify-zlib@0.1.4"
+      }
+    },
+    "npm:jspm-nodelibs-url@0.2.0": {
+      "map": {
+        "url-browserify": "npm:url@0.11.0"
+      }
+    },
+    "npm:jspm-nodelibs-http@0.2.0": {
+      "map": {
+        "http-browserify": "npm:stream-http@2.5.0"
+      }
+    },
+    "npm:browserify-zlib@0.1.4": {
+      "map": {
+        "pako": "npm:pako@0.2.9",
+        "readable-stream": "npm:readable-stream@2.2.2"
+      }
+    },
+    "npm:stream-http@2.5.0": {
+      "map": {
+        "readable-stream": "npm:readable-stream@2.2.2",
+        "to-arraybuffer": "npm:to-arraybuffer@1.0.1",
+        "inherits": "npm:inherits@2.0.3",
+        "builtin-status-codes": "npm:builtin-status-codes@2.0.0",
+        "xtend": "npm:xtend@4.0.1"
+      }
+    },
+    "npm:url@0.11.0": {
+      "map": {
+        "punycode": "npm:punycode@1.3.2",
+        "querystring": "npm:querystring@0.2.0"
+      }
+    },
+    "npm:asn1.js@4.9.1": {
+      "map": {
+        "bn.js": "npm:bn.js@4.11.6",
+        "inherits": "npm:inherits@2.0.3",
+        "minimalistic-assert": "npm:minimalistic-assert@1.0.0"
       }
     }
   }

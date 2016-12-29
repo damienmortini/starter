@@ -12,16 +12,18 @@
   },
   "author": "Damien Mortini",
   "license": "MIT",
-  "devDependencies": {
-    "browser-sync": "^2.18.1",
+  "dependencies": {
     "jspm": "^0.17.0-beta.32"
+  },
+  "devDependencies": {
+    "browser-sync": "^2.18.5"
   },
   "jspm": {
     "name": "dnit",
     "main": "src/index.js",
     "dependencies": {
       "@webcomponents/custom-elements": "npm:@webcomponents/custom-elements@^1.0.0-alpha.3",
-      "dlib": "npm:dlib@0.0.16",
+      "dlib": "npm:dlib@0.0.18",
       "three": "npm:three@^0.82.1"
     },
     "devDependencies": {
@@ -35,15 +37,29 @@
       "crypto": "npm:jspm-nodelibs-crypto@^0.2.0",
       "events": "npm:jspm-nodelibs-events@^0.2.0",
       "fs": "npm:jspm-nodelibs-fs@^0.2.0",
+      "http": "npm:jspm-nodelibs-http@^0.2.0",
+      "https": "npm:jspm-nodelibs-https@^0.2.0",
       "os": "npm:jspm-nodelibs-os@^0.2.0",
       "path": "npm:jspm-nodelibs-path@^0.2.0",
       "process": "npm:jspm-nodelibs-process@^0.2.0",
       "stream": "npm:jspm-nodelibs-stream@^0.2.0",
       "string_decoder": "npm:jspm-nodelibs-string_decoder@^0.2.0",
+      "tls": "npm:jspm-nodelibs-tls@^0.2.0",
+      "url": "npm:jspm-nodelibs-url@^0.2.0",
       "util": "npm:jspm-nodelibs-util@^0.2.0",
-      "vm": "npm:jspm-nodelibs-vm@^0.2.0"
+      "vm": "npm:jspm-nodelibs-vm@^0.2.0",
+      "zlib": "npm:jspm-nodelibs-zlib@^0.2.0"
     },
     "overrides": {
+      "npm:browserify-zlib@0.1.4": {
+        "dependencies": {
+          "readable-stream": "^2.0.2",
+          "pako": "~0.2.0"
+        },
+        "map": {
+          "_stream_transform": "readable-stream/transform"
+        }
+      },
       "npm:inherits@2.0.3": {
         "ignore": [
           "test.js"
@@ -77,6 +93,14 @@
           "string_decoder": "~0.10.0",
           "inherits": "~2.0.1",
           "stream-browserify": "~1.0.0"
+        }
+      },
+      "npm:ws@1.1.1": {
+        "dependencies": {
+          "options": ">=0.0.5",
+          "ultron": "1.0.x",
+          "utf-8-validate": "1.2.x",
+          "bufferutil": "1.2.x"
         }
       }
     }
