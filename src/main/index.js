@@ -22,7 +22,7 @@ class Main extends LoopElement {
 
     this.canvas = this.querySelector("canvas");
 
-    this.renderer = new Renderer(this.canvas);
+    this.renderer = new Renderer({canvas: this.canvas});
 
     this.scene = new Scene({canvas: this.canvas});
   }
