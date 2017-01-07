@@ -17,6 +17,7 @@
     "systemjs": "^0.19.41"
   },
   "devDependencies": {
+    "babili": "0.0.9",
     "browser-sync": "^2.18.6",
     "jspm": "^0.17.0-beta.32"
   }
