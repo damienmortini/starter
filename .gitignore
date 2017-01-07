@@ -1,13 +1,1 @@
 node_modules
-
-build/*
-jspm_packages/*.*
-jspm_packages/npm/*
-jspm_packages/github/*
-
-# Uncomment to deploy
-
-!build/index.js
-!jspm_packages/*.js
-!jspm_packages/npm/systemjs-plugin-babel*.json
-jspm_packages/*.src.js
