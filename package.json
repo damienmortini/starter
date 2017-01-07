@@ -13,7 +13,7 @@
   "license": "MIT",
   "dependencies": {
     "@webcomponents/custom-elements": "^1.0.0-alpha.3",
-    "dlib": "0.0.20",
+    "dlib": "0.0.21",
     "systemjs": "^0.19.41",
     "three": "^0.83.0"
   },
