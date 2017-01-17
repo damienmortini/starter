@@ -6,28 +6,28 @@ import Environment from "dlib/utils/Environment.js";
 
 export default class Renderer extends THREERenderer {
   constructor(options) {
-    super(Object.assign({antialias: true}, options));
+    super(options = Object.assign({antialias: true}, options));
 
-    if(!this.context.getContextAttributes().antialias && !Environment.mobile) {
+    if(options.antialias && !this.context.getContextAttributes().antialias && !Environment.mobile) {
       this.filters.push(this.fxaaFilter = new THREEShaderMaterial({
         vertexShader: `
-        uniform vec2 resolution;
-        varying vec2 vUv;
-        ${AntialiasGLSL.vertex()}
-        void main() {
-          computeFXAATextureCoordinates(uv, resolution);
-          vUv = uv;
-          gl_Position = vec4(position, 1.);
-        }
+          uniform vec2 resolution;
+          varying vec2 vUv;
+          ${AntialiasGLSL.vertex()}
+          void main() {
+            computeFXAATextureCoordinates(uv, resolution);
+            vUv = uv;
+            gl_Position = vec4(position, 1.);
+          }
         `,
         fragmentShader: `
-        uniform vec2 resolution;
-        uniform sampler2D texture;
-        varying vec2 vUv;
-        ${AntialiasGLSL.fragment()}
-        void main() {
-          gl_FragColor = fxaa(texture, vUv, resolution);
-        }
+          uniform vec2 resolution;
+          uniform sampler2D renderTargetTexture;
+          varying vec2 vUv;
+          ${AntialiasGLSL.fragment()}
+          void main() {
+            gl_FragColor = fxaa(renderTargetTexture, vUv, resolution);
+          }
         `
       }));
     }
