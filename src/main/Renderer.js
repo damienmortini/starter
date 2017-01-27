@@ -6,9 +6,9 @@ import Environment from "dlib/utils/Environment.js";
 
 export default class Renderer extends THREERenderer {
   constructor(options) {
-    super(options = Object.assign({antialias: true}, options));
+    super(options);
 
-    if(options.antialias && !this.context.getContextAttributes().antialias && !Environment.mobile) {
+    if(options.antialias !== false && !this.context.getContextAttributes().antialias && !Environment.mobile) {
       this.filters.push(this.fxaaFilter = new THREEShaderMaterial({
         vertexShader: `
           uniform vec2 resolution;
