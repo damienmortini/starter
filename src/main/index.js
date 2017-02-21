@@ -7,15 +7,11 @@ Loader.load("src/main/template.html").then((value) => {
   template.innerHTML = value;
 });
 
-class Main extends HTMLElement {
-  constructor() {
-    super();
-
-    let templateClone = document.importNode(template.content, true);
-    this.appendChild(templateClone);
-  }
-}
-
 Loader.onLoad.then(() => {
-  window.customElements.define("dnit-main", Main);
+  window.customElements.define("dnit-main", class extends HTMLElement {
+    connectedCallback() {
+      let templateClone = document.importNode(template.content, true);
+      this.appendChild(templateClone);
+    }
+  });
 });
