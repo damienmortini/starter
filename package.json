@@ -13,7 +13,7 @@
   "license": "MIT",
   "dependencies": {
     "@webcomponents/custom-elements": "^1.0.0",
-    "dlib": "0.0.29",
+    "dlib": "0.0.30",
     "systemjs": "^0.20.13",
     "systemjs-plugin-babel": "0.0.21"
   },
