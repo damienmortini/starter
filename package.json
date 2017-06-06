@@ -5,7 +5,7 @@
   "main": "src/index.js",
   "scripts": {
     "start": "browser-sync start --files \"src\" --server --https --no-notify --no-ghost-mode --startPath \"?dev\"",
-    "build": "jspm build src/index.js build/index.js",
+    "build": "node build.js",
     "release": "npm run build && babili build/index.js -o build/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -20,6 +20,6 @@
   "devDependencies": {
     "babili": "^0.1.2",
     "browser-sync": "^2.18.12",
-    "jspm": "^0.17.0-beta.41"
+    "systemjs-builder": "^0.16.6"
   }
 }
