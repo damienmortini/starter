@@ -1,8 +1,8 @@
 SystemJS.config({
   baseURL: "node_modules",
   paths: {
-      "src": "./src",
-      "dnit": "./src"
+      "src/": "./src/",
+      "dnit/": "./src/"
   },
   packageConfigPaths: [
     "*/package.json",

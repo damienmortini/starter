@@ -32,7 +32,7 @@
         script.onload = function() {
           let config = document.createElement("script");
           script.parentNode.insertBefore(config, script.nextSibling);
-          config.src = "jspm.config.js";
+          config.src = "systemjs.config.js";
           config.onload = function() {
             System.import("src/index.js");
           }

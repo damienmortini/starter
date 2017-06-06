@@ -2,13 +2,11 @@ import THREERenderer from "dlib/three/THREERenderer.js";
 import THREEShaderMaterial from "dlib/three/THREEShaderMaterial.js";
 import AntialiasGLSL from "dlib/shaders/AntialiasGLSL.js";
 
-import Environment from "dlib/utils/Environment.js";
-
 export default class Renderer extends THREERenderer {
   constructor(options) {
     super(options);
 
-    if(options.antialias !== false && !this.context.getContextAttributes().antialias && !Environment.mobile) {
+    if(options.antialias !== false && !this.context.getContextAttributes().antialias) {
       this.filters.push(this.fxaaFilter = new THREEShaderMaterial({
         vertexShader: `
           uniform vec2 resolution;
