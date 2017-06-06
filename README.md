@@ -2,13 +2,13 @@
 
 # dnit
 
-## Initialization
+## Initialization
 
 * Install dependencies with `npm install`
 
-## Launch
+## Launch
 
-* Launch the project with `npm start`
+* Launch the project with `npm start`, by default it will launch the development version, remove `?dev` from the URL to load the build version
 
 ## Build
 
@@ -16,6 +16,6 @@
 
 * Concatenated build with `npm run release`
 
-## Query string parameters
+## Query string parameters
 
 * `dev` to launch the development version from `src` folder
