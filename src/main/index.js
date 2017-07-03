@@ -22,7 +22,13 @@ Loader.onLoad.then(() => {
 
       this.view = new View({canvas: this.canvas});
 
+      window.addEventListener("resize", this._resizeBinded = this.resize.bind(this));
+
       this.resize();
+    }
+
+    disconnectedCallback() {
+      window.removeEventListener("resize", this._resizeBinded);
     }
 
     resize() {
