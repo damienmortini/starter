@@ -12,8 +12,8 @@
   "author": "Damien Mortini",
   "license": "MIT",
   "dependencies": {
-    "@webcomponents/custom-elements": "^1.0.4",
-    "dlib": "0.0.56",
+    "@webcomponents/custom-elements": "^1.0.6",
+    "dlib": "0.0.58",
     "systemjs": "^0.20.19",
     "systemjs-plugin-babel": "0.0.25",
     "three": "^0.88.0"
