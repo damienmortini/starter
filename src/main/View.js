@@ -7,7 +7,7 @@ import TrackballController from "dlib/3d/controllers/TrackballController.js";
 export default class View {
   constructor({canvas} = {}) {
     this.canvas = canvas;
-    this.gl = this.canvas.getContext("webgl", {
+    this.gl = this.canvas.getContext("webgl2", {
       depth: true,
       alpha: false,
       antialias: true
@@ -34,10 +34,10 @@ export default class View {
           uniform mat4 projectionView;
           uniform mat4 transform;
 
-          attribute vec3 normal;
-          attribute vec3 position;
+          in vec3 normal;
+          in vec3 position;
 
-          varying vec3 vNormal;
+          out vec3 vNormal;
         `],
         ["end", `
           gl_Position = projectionView * transform * vec4(position, 1.);
@@ -47,10 +47,11 @@ export default class View {
       fragmentShaderChunks: [
         ["start", `
           precision highp float;
-          varying vec3 vNormal;
+
+          in vec3 vNormal;
         `],
         ["end", `
-          gl_FragColor = vec4(vNormal * .5 + .5, 1.);
+          fragColor = vec4(vNormal * .5 + .5, 1.);
         `]
       ]
     });
