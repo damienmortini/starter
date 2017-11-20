@@ -83,7 +83,7 @@ export default class View {
     this.cameraController.update();
     
     this.program.use();
-    this.program.uniforms.set("projectionView", this.camera.projectionViewMatrix);
+    this.program.uniforms.set("projectionView", this.camera.projectionView);
     this.program.attributes.set(this.mesh.attributes);
 
     this.mesh.bind();
