@@ -7,7 +7,7 @@ import TrackballController from "dlib/3d/controllers/TrackballController.js";
 export default class View {
   constructor({canvas} = {}) {
     this.canvas = canvas;
-    this.gl = this.canvas.getContext("webgl2", {
+    this.gl = this.canvas.getContext(window.WebGL2RenderingContext ? "webgl2" : "webgl", {
       depth: true,
       alpha: false,
       antialias: true
