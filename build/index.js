@@ -1,25 +1,5735 @@
-!function(_){function g(n){Object.defineProperty(this,n,{enumerable:!0,get:function(){return this[t][n]}})}function h(n){if("undefined"!=typeof System&&System.isModule?System.isModule(n):"[object Module]"===Object.prototype.toString.call(n))return n;var a={default:n,__useDefault:n};if(n&&n.__esModule)for(var t in n)Object.hasOwnProperty.call(n,t)&&(a[t]=n[t]);return new E(a)}function E(n){Object.defineProperty(this,t,{value:n}),Object.keys(n).forEach(g,this)}function b(t){return"@node/"===t.substr(0,6)?u(t,h(p(t.substr(6))),{}):a[t]}function r(a){var e=b(a);if(!e)throw new Error("Module \""+a+"\" expected, but not contained in build.");if(e.module)return e.module;var o=e.linkRecord;return n(e,o),s(e,o,[]),e.module}function n(a,e){if(!e.depLoads){e.declare&&i(a,e),e.depLoads=[];for(var t,o=0;o<e.deps.length;o++){t=b(e.deps[o]),e.depLoads.push(t),t.linkRecord&&n(t,t.linkRecord);var r=e.setters&&e.setters[o];r&&(r(t.module||t.linkRecord.moduleObj),t.importerSetters.push(r))}return a}}function i(e,t){var a=t.moduleObj,r=e.importerSetters,n=!1,o=t.declare.call(_,function(o,d){if(!n){if("object"==typeof o)for(var t in o)"__useDefault"!==t&&(a[t]=o[t]);else a[o]=d;n=!0;for(var l=0;l<r.length;l++)r[l](a);return n=!1,d}},{id:e.key});"function"==typeof o?(t.setters=[],t.execute=o):(t.setters=o.setters,t.execute=o.execute)}function o(n,o,i){return a[n]={key:n,module:void 0,importerSetters:[],linkRecord:{deps:o,depLoads:void 0,declare:i,setters:void 0,execute:void 0,moduleObj:{}}}}function d(i,d,l,s){var c={};return a[i]={key:i,module:void 0,importerSetters:[],linkRecord:{deps:d,depLoads:void 0,declare:void 0,execute:s,executingRequire:l,moduleObj:{default:c,__useDefault:c},setters:void 0}}}function e(a,e,t){return function(r){for(var o=0;o<a.length;o++)if(a[o]===r){var n,l=e[o],i=l.linkRecord;return n=i?-1===t.indexOf(l)?s(l,i,t):i.moduleObj:l.module,"__useDefault"in n?n.__useDefault:n}}}function s(a,t,r){if(r.push(a),a.module)return a.module;var n;if(t.setters){for(var o=0;o<t.deps.length;o++){var i=t.depLoads[o],d=i.linkRecord;d&&-1===r.indexOf(i)&&(n=s(i,d,d.setters?r:[]))}t.execute.call(v)}else{var l={id:a.key},u=t.moduleObj;Object.defineProperty(l,"exports",{configurable:!0,set:function(t){u.default=u.__useDefault=t},get:function(){return u.__useDefault}});var c=e(t.deps,t.depLoads,r);if(!t.executingRequire)for(var o=0;o<t.deps.length;o++)c(t.deps[o]);var p=t.execute.call(_,c,u.__useDefault,l);void 0===p?l.exports!==u.__useDefault&&(u.default=u.__useDefault=l.exports):u.default=u.__useDefault=p;var g=u.__useDefault;if(g&&g.__esModule)for(var m in g)Object.hasOwnProperty.call(g,m)&&(u[m]=g[m])}var l=a.module=new E(t.moduleObj);if(!t.setters)for(var o=0;o<a.importerSetters.length;o++)a.importerSetters[o](l);return l}function u(n,r){return a[n]={key:n,module:r,importerSetters:[],linkRecord:void 0}}var a={},t="undefined"==typeof Symbol?"@@baseObject":Symbol();E.prototype=Object.create(null),"undefined"!=typeof Symbol&&Symbol.toStringTag&&(E.prototype[Symbol.toStringTag]="Module");var p="undefined"!=typeof System&&System._nodeRequire||"undefined"!=typeof require&&"undefined"!=typeof require.resolve&&"undefined"!=typeof process&&process.platform&&require,v={};return Object.freeze&&Object.freeze(v),function(s,e,t,n){return function(i){i(function(){u("@empty",new E({}));for(var i=0;i<e.length;i++)u(e[i],h(arguments[i],{}));n({_nodeRequire:p,register:o,registerDynamic:d,registry:{get:function(t){return a[t].module},set:u},newModule:function(t){return new E(t)}});var _=r(s[0]);if(1<s.length)for(var i=1;i<s.length;i++)r(s[i]);return t?_.__useDefault:(_ instanceof E&&Object.defineProperty(_,"__esModule",{value:!0}),_)})}}}("undefined"==typeof self?"undefined"==typeof global?this:global:self)(["a"],[],!1,function(d){var e=this.require,t=this.exports,n=this.module;!function(p){function e(t,e){for(var a=t.split(".");a.length;)e=e[a.shift()];return e}function u(a){if("string"==typeof a)return e(a,p);if(!(a instanceof Array))throw new Error("Global exports must be a string or array.");for(var r={},t=0;t<a.length;t++)r[a[t].split(".").pop()]=e(a[t],p);return r}function n(e){if(-1===o.indexOf(e)){try{var t=p[e]}catch(t){o.push(e)}this(e,t)}}var t,r=d,o=["_g","sessionStorage","localStorage","clipboardData","frames","frameElement","external","mozAnimationStartTime","webkitStorageInfo","webkitIndexedDB","mozInnerScreenY","mozInnerScreenX"];r.registry.set("@@global-helpers",r.newModule({prepareGlobal:function(e,o,r){var d=p.define;p.define=void 0;var m;if(r)for(var a in m={},r)m[a]=p[a],p[a]=r[a];return o||(t={},Object.keys(p).forEach(n,function(n,e){t[n]=e})),function(){var s,r=o?u(o):{},a=!!o;if(o||Object.keys(p).forEach(n,function(i,e){t[i]!==e&&void 0!==e&&(o||(r[i]=e,void 0==s?s=e:a||s===e||(a=!0)))}),r=a?r:s,m)for(var e in m)p[e]=m[e];return p.define=d,r}}}))}("undefined"==typeof self?global:self),d.registerDynamic("b",[],!1,function(e,t,n){var a=d.registry.get("@@global-helpers").prepareGlobal(n.id,null,null);return function(){(function(){"use strict";function o(e){var t=h.has(e);return e=/^[a-z][.0-9_a-z]*-[\-.0-9_a-z]*$/.test(e),!t&&e}function i(e){var t=e.isConnected;if(void 0!==t)return t;for(;e&&!(e.__CE_isImportDocument||e instanceof Document);)e=e.parentNode||(window.ShadowRoot&&e instanceof ShadowRoot?e.host:void 0);return e&&(e.__CE_isImportDocument||e instanceof Document)}function n(e,t){for(;t&&t!==e&&!t.nextSibling;)t=t.parentNode;return t&&t!==e?t.nextSibling:null}function l(t,r,a){a=a?a:new Set;for(var o=t;o;){if(o.nodeType===Node.ELEMENT_NODE){var i=o;r(i);var e=i.localName;if("link"===e&&"import"===i.getAttribute("rel")){if(o=i.import,o instanceof Node&&!a.has(o))for(a.add(o),o=o.firstChild;o;o=o.nextSibling)l(o,r,a);o=n(t,i);continue}else if("template"===e){o=n(t,i);continue}if(i=i.__CE_shadowRoot)for(i=i.firstChild;i;i=i.nextSibling)l(i,r,a)}o=o.firstChild?o.firstChild:n(t,o)}}function e(e,t,n){e[t]=n}function t(){this.a=new Map,this.o=new Map,this.f=[],this.b=!1}function s(e,t,n){e.a.set(t,n),e.o.set(n.constructor,n)}function r(e,t){e.b=!0,e.f.push(t)}function p(e,t){e.b&&l(t,function(t){return u(e,t)})}function u(e,t){if(e.b&&!t.__CE_patched){t.__CE_patched=!0;for(var n=0;n<e.f.length;n++)e.f[n](t)}}function m(e,t){var n=[];for(l(t,function(e){return n.push(e)}),t=0;t<n.length;t++){var a=n[t];1===a.__CE_state?e.connectedCallback(a):y(e,a)}}function _(e,t){var n=[];for(l(t,function(e){return n.push(e)}),t=0;t<n.length;t++){var a=n[t];1===a.__CE_state&&e.disconnectedCallback(a)}}function g(t,n,a){a=a?a:{};var r=a.w||new Set,o=a.s||function(e){return y(t,e)},i=[];if(l(n,function(n){if("link"===n.localName&&"import"===n.getAttribute("rel")){var a=n.import;a instanceof Node&&"complete"===a.readyState?(a.__CE_isImportDocument=!0,a.__CE_hasRegistry=!0):n.addEventListener("load",function(){var a=n.import;if(!a.__CE_documentLoadHandled){a.__CE_documentLoadHandled=!0,a.__CE_isImportDocument=!0,a.__CE_hasRegistry=!0;var i=new Set(r);i.delete(a),g(t,a,{w:i,s:o})}})}else i.push(n)},r),t.b)for(n=0;n<i.length;n++)u(t,i[n]);for(n=0;n<i.length;n++)o(i[n])}function y(t,n){if(void 0===n.__CE_state){var a=t.a.get(n.localName);if(a){a.constructionStack.push(n);var r=a.constructor;try{try{if(new r!==n)throw Error("The custom element constructor did not produce the element being upgraded.")}finally{a.constructionStack.pop()}}catch(e){throw n.__CE_state=2,e}if(n.__CE_state=1,n.__CE_definition=a,a.attributeChangedCallback)for(a=a.observedAttributes,r=0;r<a.length;r++){var o=a[r],e=n.getAttribute(o);null!==e&&t.attributeChangedCallback(n,o,null,e,null)}i(n)&&t.connectedCallback(n)}}}function a(e,t){this.c=e,this.a=t,this.b=void 0,g(this.c,this.a),"loading"===this.a.readyState&&(this.b=new MutationObserver(this.f.bind(this)),this.b.observe(this.a,{childList:!0,subtree:!0}))}function f(e){e.b&&e.b.disconnect()}function d(){var e=this;this.b=this.a=void 0,this.f=new Promise(function(t){e.b=t,e.a&&t(e.a)})}function E(e){if(e.a)throw Error("Already resolved.");e.a=void 0,e.b&&e.b(void 0)}function c(e){this.i=!1,this.c=e,this.m=new Map,this.j=function(e){return e()},this.g=!1,this.l=[],this.u=new a(e,document)}function b(t){if(!1!==t.g){t.g=!1;for(var n=t.l,o=[],i=new Map,a=0;a<n.length;a++)i.set(n[a].localName,[]);for(g(t.c,document,{s:function(n){if(void 0===n.__CE_state){var a=n.localName,e=i.get(a);e?e.push(n):t.c.a.get(a)&&o.push(n)}}}),a=0;a<o.length;a++)y(t.c,o[a]);for(;0<n.length;){for(var e=n.shift(),a=e.localName,e=i.get(e.localName),d=0;d<e.length;d++)y(t.c,e[d]);(a=t.m.get(a))&&E(a)}}}function v(){var t=le;window.HTMLElement=function(){function e(){var n=this.constructor,r=t.o.get(n);if(!r)throw Error("The custom element being constructed was not registered with `customElements`.");var o=r.constructionStack;if(!o.length)return o=B.call(document,r.localName),Object.setPrototypeOf(o,n.prototype),o.__CE_state=1,o.__CE_definition=r,u(t,o),o;var r=o.length-1,e=o[r];if(e===A)throw Error("The HTMLElement constructor was either called reentrantly for this constructor or called multiple times.");return o[r]=A,Object.setPrototypeOf(e,n.prototype),u(t,e),e}return e.prototype=oe.prototype,e}()}function x(t,e,n){function a(n){return function(){for(var a=[],e=0;e<arguments.length;++e)a[e-0]=arguments[e];for(var r,e=[],o=[],d=0;d<a.length;d++)if(r=a[d],r instanceof Element&&i(r)&&o.push(r),r instanceof DocumentFragment)for(r=r.firstChild;r;r=r.nextSibling)e.push(r);else e.push(r);for(n.apply(this,a),a=0;a<o.length;a++)_(t,o[a]);if(i(this))for(a=0;a<e.length;a++)o=e[a],o instanceof Element&&m(t,o)}}n.h&&(e.prepend=a(n.h)),n.append&&(e.append=a(n.append))}function C(){var t=le;e(Document.prototype,"createElement",function(e){if(this.__CE_hasRegistry){var n=t.a.get(e);if(n)return new n.constructor}return e=B.call(this,e),u(t,e),e}),e(Document.prototype,"importNode",function(e,n){return e=F.call(this,e,n),this.__CE_hasRegistry?g(t,e):p(t,e),e}),e(Document.prototype,"createElementNS",function(e,n){if(this.__CE_hasRegistry&&(null===e||"http://www.w3.org/1999/xhtml"===e)){var a=t.a.get(n);if(a)return new a.constructor}return e=z.call(this,e,n),u(t,e),e}),x(t,Document.prototype,{h:j,append:Y})}function D(){function t(e,t){Object.defineProperty(e,"textContent",{enumerable:t.enumerable,configurable:!0,get:t.get,set:function(r){if(this.nodeType===Node.TEXT_NODE)t.set.call(this,r);else{var a;if(this.firstChild){var e=this.childNodes,o=e.length;if(0<o&&i(this))for(var a=Array(o),d=0;d<o;d++)a[d]=e[d]}if(t.set.call(this,r),a)for(r=0;r<a.length;r++)_(n,a[r])}}})}var n=le;e(Node.prototype,"insertBefore",function(t,a){if(t instanceof DocumentFragment){var r=Array.prototype.slice.apply(t.childNodes);if(t=J.call(this,t,a),i(this))for(a=0;a<r.length;a++)m(n,r[a]);return t}return r=i(t),a=J.call(this,t,a),r&&_(n,t),i(this)&&m(n,t),a}),e(Node.prototype,"appendChild",function(t){if(t instanceof DocumentFragment){var a=Array.prototype.slice.apply(t.childNodes);if(t=I.call(this,t),i(this))for(var r=0;r<a.length;r++)m(n,a[r]);return t}return a=i(t),r=I.call(this,t),a&&_(n,t),i(this)&&m(n,t),r}),e(Node.prototype,"cloneNode",function(e){return e=q.call(this,e),this.ownerDocument.__CE_hasRegistry?g(n,e):p(n,e),e}),e(Node.prototype,"removeChild",function(t){var a=i(t),r=$.call(this,t);return a&&_(n,t),r}),e(Node.prototype,"replaceChild",function(t,a){if(t instanceof DocumentFragment){var r=Array.prototype.slice.apply(t.childNodes);if(t=L.call(this,t,a),i(this))for(_(n,a),a=0;a<r.length;a++)m(n,r[a]);return t}var r=i(t),e=L.call(this,t,a),o=i(this);return o&&_(n,a),r&&_(n,t),o&&m(n,t),e}),M&&M.get?t(Node.prototype,M):r(n,function(e){t(e,{enumerable:!0,configurable:!0,get:function(){for(var e=[],t=0;t<this.childNodes.length;t++)e.push(this.childNodes[t].textContent);return e.join("")},set:function(e){for(;this.firstChild;)$.call(this,this.firstChild);I.call(this,document.createTextNode(e))}})})}function k(t){function n(e){return function(){for(var n=[],a=0;a<arguments.length;++a)n[a-0]=arguments[a];for(var r,a=[],o=[],d=0;d<n.length;d++)if(r=n[d],r instanceof Element&&i(r)&&o.push(r),r instanceof DocumentFragment)for(r=r.firstChild;r;r=r.nextSibling)a.push(r);else a.push(r);for(e.apply(this,n),n=0;n<o.length;n++)_(t,o[n]);if(i(this))for(n=0;n<a.length;n++)o=a[n],o instanceof Element&&m(t,o)}}var r=Element.prototype;ne&&(r.before=n(ne)),ne&&(r.after=n(V)),ae&&e(r,"replaceWith",function(){for(var n=[],e=0;e<arguments.length;++e)n[e-0]=arguments[e];for(var a,e=[],r=[],o=0;o<n.length;o++)if(a=n[o],a instanceof Element&&i(a)&&r.push(a),a instanceof DocumentFragment)for(a=a.firstChild;a;a=a.nextSibling)e.push(a);else e.push(a);for(o=i(this),ae.apply(this,n),n=0;n<r.length;n++)_(t,r[n]);if(o)for(_(t,this),n=0;n<e.length;n++)r=e[n],r instanceof Element&&m(t,r)}),re&&e(r,"remove",function(){var e=i(this);re.call(this),e&&_(t,this)})}function w(){function t(e,t){Object.defineProperty(e,"innerHTML",{enumerable:t.enumerable,configurable:!0,get:t.get,set:function(n){var s,d=this;if(i(this)&&(s=[],l(this,function(e){e!==d&&s.push(e)})),t.set.call(this,n),s)for(var e,a=0;a<s.length;a++)e=s[a],1===e.__CE_state&&o.disconnectedCallback(e);return this.ownerDocument.__CE_hasRegistry?g(o,this):p(o,this),n}})}function n(t,n){e(t,"insertAdjacentElement",function(t,a){var e=i(a);return t=n.call(this,t,a),e&&_(o,a),i(t)&&m(o,a),t})}var o=le;if(N&&e(Element.prototype,"attachShadow",function(e){return this.__CE_shadowRoot=e=N.call(this,e)}),O&&O.get)t(Element.prototype,O);else if(ie&&ie.get)t(HTMLElement.prototype,ie);else{var d=B.call(document,"div");r(o,function(e){t(e,{enumerable:!0,configurable:!0,get:function(){return q.call(this,!0).innerHTML},set:function(e){var t="template"===this.localName?this.content:this;for(d.innerHTML=e;0<t.childNodes.length;)$.call(t,t.childNodes[0]);for(;0<d.childNodes.length;)I.call(t,d.childNodes[0])}})})}e(Element.prototype,"setAttribute",function(t,n){if(1!==this.__CE_state)return Q.call(this,t,n);var a=P.call(this,t);Q.call(this,t,n),n=P.call(this,t),o.attributeChangedCallback(this,t,a,n,null)}),e(Element.prototype,"setAttributeNS",function(t,n,a){if(1!==this.__CE_state)return T.call(this,t,n,a);var r=S.call(this,t,n);T.call(this,t,n,a),a=S.call(this,t,n),o.attributeChangedCallback(this,n,r,a,t)}),e(Element.prototype,"removeAttribute",function(e){if(1!==this.__CE_state)return R.call(this,e);var t=P.call(this,e);R.call(this,e),null!==t&&o.attributeChangedCallback(this,e,t,null,null)}),e(Element.prototype,"removeAttributeNS",function(t,n){if(1!==this.__CE_state)return U.call(this,t,n);var a=S.call(this,t,n);U.call(this,t,n);var r=S.call(this,t,n);a!==r&&o.attributeChangedCallback(this,n,a,r,t)}),W?n(HTMLElement.prototype,W):K?n(Element.prototype,K):console.warn("Custom Elements: `Element#insertAdjacentElement` was not patched."),x(o,Element.prototype,{h:ee,append:te}),k(o)}var A=new function(){},h=new Set(["annotation-xml","color-profile","font-face","font-face-src","font-face-uri","font-face-format","font-face-name","missing-glyph"]);t.prototype.connectedCallback=function(e){var t=e.__CE_definition;t.connectedCallback&&t.connectedCallback.call(e)},t.prototype.disconnectedCallback=function(e){var t=e.__CE_definition;t.disconnectedCallback&&t.disconnectedCallback.call(e)},t.prototype.attributeChangedCallback=function(t,n,a,r,o){var e=t.__CE_definition;e.attributeChangedCallback&&-1<e.observedAttributes.indexOf(n)&&e.attributeChangedCallback.call(t,n,a,r,o)},a.prototype.f=function(e){var t=this.a.readyState;for("interactive"!==t&&"complete"!==t||f(this),t=0;t<e.length;t++)for(var n=e[t].addedNodes,a=0;a<n.length;a++)g(this.c,n[a])},c.prototype.define=function(t,n){var i=this;if(!(n instanceof Function))throw new TypeError("Custom element constructors must be functions.");if(!o(t))throw new SyntaxError("The element name '"+t+"' is not valid.");if(this.c.a.get(t))throw Error("A custom element with name '"+t+"' has already been defined.");if(this.i)throw Error("A custom element is already being defined.");this.i=!0;var d,p,u,m,_;try{var h=function(e){var t=g[e];if(void 0!==t&&!(t instanceof Function))throw Error("The '"+e+"' callback must be a function.");return t},g=n.prototype;if(!(g instanceof Object))throw new TypeError("The custom element constructor's prototype is not an object.");d=h("connectedCallback"),p=h("disconnectedCallback"),u=h("adoptedCallback"),m=h("attributeChangedCallback"),_=n.observedAttributes||[]}catch(e){return}finally{this.i=!1}n={localName:t,constructor:n,connectedCallback:d,disconnectedCallback:p,adoptedCallback:u,attributeChangedCallback:m,observedAttributes:_,constructionStack:[]},s(this.c,t,n),this.l.push(n),this.g||(this.g=!0,this.j(function(){return b(i)}))},c.prototype.get=function(e){if(e=this.c.a.get(e))return e.constructor},c.prototype.whenDefined=function(e){if(!o(e))return Promise.reject(new SyntaxError("'"+e+"' is not a valid custom element name."));var t=this.m.get(e);return t?t.f:(t=new d,this.m.set(e,t),this.c.a.get(e)&&!this.l.some(function(t){return t.localName===e})&&E(t),t.f)},c.prototype.v=function(e){f(this.u);var t=this.j;this.j=function(n){return e(function(){return t(n)})}},window.CustomElementRegistry=c,c.prototype.define=c.prototype.define,c.prototype.get=c.prototype.get,c.prototype.whenDefined=c.prototype.whenDefined,c.prototype.polyfillWrapFlushCallback=c.prototype.v;var B=window.Document.prototype.createElement,z=window.Document.prototype.createElementNS,F=window.Document.prototype.importNode,j=window.Document.prototype.prepend,Y=window.Document.prototype.append,H=window.DocumentFragment.prototype.prepend,G=window.DocumentFragment.prototype.append,q=window.Node.prototype.cloneNode,I=window.Node.prototype.appendChild,J=window.Node.prototype.insertBefore,$=window.Node.prototype.removeChild,L=window.Node.prototype.replaceChild,M=Object.getOwnPropertyDescriptor(window.Node.prototype,"textContent"),N=window.Element.prototype.attachShadow,O=Object.getOwnPropertyDescriptor(window.Element.prototype,"innerHTML"),P=window.Element.prototype.getAttribute,Q=window.Element.prototype.setAttribute,R=window.Element.prototype.removeAttribute,S=window.Element.prototype.getAttributeNS,T=window.Element.prototype.setAttributeNS,U=window.Element.prototype.removeAttributeNS,K=window.Element.prototype.insertAdjacentElement,ee=window.Element.prototype.prepend,te=window.Element.prototype.append,ne=window.Element.prototype.before,V=window.Element.prototype.after,ae=window.Element.prototype.replaceWith,re=window.Element.prototype.remove,oe=window.HTMLElement,ie=Object.getOwnPropertyDescriptor(window.HTMLElement.prototype,"innerHTML"),W=window.HTMLElement.prototype.insertAdjacentElement,de=window.customElements;if(!de||de.forcePolyfill||"function"!=typeof de.define||"function"!=typeof de.get){var le=new t;v(),C(),x(le,DocumentFragment.prototype,{h:H,append:G}),D(),w(),document.__CE_hasRegistry=!0;var X=new c(le);Object.defineProperty(window,"customElements",{configurable:!0,enumerable:!0,value:X})}}).call(self)}(this),a()}),d.register("a",["b"],function(){"use strict";return{setters:[function(){}],execute:function(){function e(e,t){return e[0]=t[0],e[1]=t[1],e[2]=t[2],e[3]=t[3],e[4]=t[4],e[5]=t[5],e[6]=t[6],e[7]=t[7],e[8]=t[8],e[9]=t[9],e[10]=t[10],e[11]=t[11],e[12]=t[12],e[13]=t[13],e[14]=t[14],e[15]=t[15],e}function t(e,t,n,a,r,o,i,d,l,s,c,p,u,m,_,g,h){return e[0]=t,e[1]=n,e[2]=a,e[3]=r,e[4]=o,e[5]=i,e[6]=d,e[7]=l,e[8]=s,e[9]=c,e[10]=p,e[11]=u,e[12]=m,e[13]=_,e[14]=g,e[15]=h,e}function n(e){return e[0]=1,e[1]=0,e[2]=0,e[3]=0,e[4]=0,e[5]=1,e[6]=0,e[7]=0,e[8]=0,e[9]=0,e[10]=1,e[11]=0,e[12]=0,e[13]=0,e[14]=0,e[15]=1,e}function a(e,t){let n=t[0],a=t[1],r=t[2],o=t[3],i=t[4],d=t[5],l=t[6],s=t[7],c=t[8],p=t[9],u=t[10],m=t[11],_=t[12],g=t[13],h=t[14],f=t[15],y=n*d-a*i,b=n*l-r*i,E=n*s-o*i,v=a*l-r*d,x=a*s-o*d,C=r*s-o*l,S=c*g-p*_,T=c*h-u*_,R=c*f-m*_,D=p*h-u*g,k=p*f-m*g,w=u*f-m*h,M=y*w-b*k+E*D+v*R-x*T+C*S;return M?(M=1/M,e[0]=(d*w-l*k+s*D)*M,e[1]=(r*k-a*w-o*D)*M,e[2]=(g*C-h*x+f*v)*M,e[3]=(u*x-p*C-m*v)*M,e[4]=(l*R-i*w-s*T)*M,e[5]=(n*w-r*R+o*T)*M,e[6]=(h*E-_*C-f*b)*M,e[7]=(c*C-u*E+m*b)*M,e[8]=(i*k-d*R+s*S)*M,e[9]=(a*R-n*k-o*S)*M,e[10]=(_*x-g*E+f*y)*M,e[11]=(p*E-c*x-m*y)*M,e[12]=(d*T-i*D-l*S)*M,e[13]=(n*D-a*T+r*S)*M,e[14]=(g*b-_*v-h*y)*M,e[15]=(c*v-p*b+u*y)*M,e):null}function r(e,t,n){let a=t[0],r=t[1],o=t[2],i=t[3],d=t[4],l=t[5],s=t[6],c=t[7],p=t[8],u=t[9],m=t[10],_=t[11],g=t[12],h=t[13],f=t[14],y=t[15],b=n[0],E=n[1],v=n[2],x=n[3];return e[0]=b*a+E*d+v*p+x*g,e[1]=b*r+E*l+v*u+x*h,e[2]=b*o+E*s+v*m+x*f,e[3]=b*i+E*c+v*_+x*y,b=n[4],E=n[5],v=n[6],x=n[7],e[4]=b*a+E*d+v*p+x*g,e[5]=b*r+E*l+v*u+x*h,e[6]=b*o+E*s+v*m+x*f,e[7]=b*i+E*c+v*_+x*y,b=n[8],E=n[9],v=n[10],x=n[11],e[8]=b*a+E*d+v*p+x*g,e[9]=b*r+E*l+v*u+x*h,e[10]=b*o+E*s+v*m+x*f,e[11]=b*i+E*c+v*_+x*y,b=n[12],E=n[13],v=n[14],x=n[15],e[12]=b*a+E*d+v*p+x*g,e[13]=b*r+E*l+v*u+x*h,e[14]=b*o+E*s+v*m+x*f,e[15]=b*i+E*c+v*_+x*y,e}function o(e,t,n){let a,r,o,i,d,l,s,c,p,u,m,_,g=n[0],h=n[1],f=n[2];return t===e?(e[12]=t[0]*g+t[4]*h+t[8]*f+t[12],e[13]=t[1]*g+t[5]*h+t[9]*f+t[13],e[14]=t[2]*g+t[6]*h+t[10]*f+t[14],e[15]=t[3]*g+t[7]*h+t[11]*f+t[15]):(a=t[0],r=t[1],o=t[2],i=t[3],d=t[4],l=t[5],s=t[6],c=t[7],p=t[8],u=t[9],m=t[10],_=t[11],e[0]=a,e[1]=r,e[2]=o,e[3]=i,e[4]=d,e[5]=l,e[6]=s,e[7]=c,e[8]=p,e[9]=u,e[10]=m,e[11]=_,e[12]=a*g+d*h+p*f+t[12],e[13]=r*g+l*h+u*f+t[13],e[14]=o*g+s*h+m*f+t[14],e[15]=i*g+c*h+_*f+t[15]),e}function i(e,t,n){let a=n[0],r=n[1],o=n[2];return e[0]=t[0]*a,e[1]=t[1]*a,e[2]=t[2]*a,e[3]=t[3]*a,e[4]=t[4]*r,e[5]=t[5]*r,e[6]=t[6]*r,e[7]=t[7]*r,e[8]=t[8]*o,e[9]=t[9]*o,e[10]=t[10]*o,e[11]=t[11]*o,e[12]=t[12],e[13]=t[13],e[14]=t[14],e[15]=t[15],e}function d(e,t,n){let a=Te(n),r=Se(n),o=t[4],i=t[5],d=t[6],l=t[7],s=t[8],c=t[9],p=t[10],u=t[11];return t!==e&&(e[0]=t[0],e[1]=t[1],e[2]=t[2],e[3]=t[3],e[12]=t[12],e[13]=t[13],e[14]=t[14],e[15]=t[15]),e[4]=o*r+s*a,e[5]=i*r+c*a,e[6]=d*r+p*a,e[7]=l*r+u*a,e[8]=s*r-o*a,e[9]=c*r-i*a,e[10]=p*r-d*a,e[11]=u*r-l*a,e}function l(e,t,n){let a=Te(n),r=Se(n),o=t[0],i=t[1],d=t[2],l=t[3],s=t[8],c=t[9],p=t[10],u=t[11];return t!==e&&(e[4]=t[4],e[5]=t[5],e[6]=t[6],e[7]=t[7],e[12]=t[12],e[13]=t[13],e[14]=t[14],e[15]=t[15]),e[0]=o*r-s*a,e[1]=i*r-c*a,e[2]=d*r-p*a,e[3]=l*r-u*a,e[8]=o*a+s*r,e[9]=i*a+c*r,e[10]=d*a+p*r,e[11]=l*a+u*r,e}function s(e,t,n){let a=Te(n),r=Se(n),o=t[0],i=t[1],d=t[2],l=t[3],s=t[4],c=t[5],p=t[6],u=t[7];return t!==e&&(e[8]=t[8],e[9]=t[9],e[10]=t[10],e[11]=t[11],e[12]=t[12],e[13]=t[13],e[14]=t[14],e[15]=t[15]),e[0]=o*r+s*a,e[1]=i*r+c*a,e[2]=d*r+p*a,e[3]=l*r+u*a,e[4]=s*r-o*a,e[5]=c*r-i*a,e[6]=p*r-d*a,e[7]=u*r-l*a,e}function c(e,t){let n=t[0],a=t[1],r=t[2],o=t[3],i=n+n,d=a+a,l=r+r,s=n*i,c=a*i,p=a*d,u=r*i,m=r*d,_=r*l,g=o*i,h=o*d,f=o*l;return e[0]=1-p-_,e[1]=c+f,e[2]=u-h,e[3]=0,e[4]=c-f,e[5]=1-s-_,e[6]=m+g,e[7]=0,e[8]=u+h,e[9]=m-g,e[10]=1-s-p,e[11]=0,e[12]=0,e[13]=0,e[14]=0,e[15]=1,e}function p(e,t,n,a,r){let o=1/Math.tan(t/2),i=1/(a-r);return e[0]=o/n,e[1]=0,e[2]=0,e[3]=0,e[4]=0,e[5]=o,e[6]=0,e[7]=0,e[8]=0,e[9]=0,e[10]=(r+a)*i,e[11]=-1,e[12]=0,e[13]=0,e[14]=2*r*a*i,e[15]=0,e}function u(){let e=new Ne(2);return e[0]=0,e[1]=0,e}function m(e,t){return e[0]=t[0],e[1]=t[1],e}function _(e,t,n){return e[0]=t,e[1]=n,e}function g(e,t,n){return e[0]=t[0]+n[0],e[1]=t[1]+n[1],e}function h(e,t,n){return e[0]=t[0]-n[0],e[1]=t[1]-n[1],e}function f(e,t,n){return e[0]=t[0]*n[0],e[1]=t[1]*n[1],e}function y(e,t,n){return e[0]=t[0]/n[0],e[1]=t[1]/n[1],e}function b(e,t,n){return e[0]=t[0]*n,e[1]=t[1]*n,e}function E(e,t){var n=t[0]-e[0],a=t[1]-e[1];return ve(n*n+a*a)}function v(e,t){var n=t[0]-e[0],a=t[1]-e[1];return n*n+a*a}function x(e){var t=e[0],n=e[1];return ve(t*t+n*n)}function C(e){var t=e[0],n=e[1];return t*t+n*n}function S(e,t){return e[0]=-t[0],e[1]=-t[1],e}function T(e,t){var n=t[0],a=t[1],r=n*n+a*a;return 0<r&&(r=1/ve(r),e[0]=t[0]*r,e[1]=t[1]*r),e}function R(e,t){return e[0]*t[0]+e[1]*t[1]}function D(e,t,n){var a=t[0]*n[1]-t[1]*n[0];return e[0]=e[1]=0,e[2]=a,e}function k(e,n,a,r){var t=n[0],o=n[1];return e[0]=t+r*(a[0]-t),e[1]=o+r*(a[1]-o),e}function w(e,t,n){var a=t[0],r=t[1];return e[0]=n[0]*a+n[3]*r+n[6],e[1]=n[1]*a+n[4]*r+n[7],e}function M(e,t,n){let a=t[0],r=t[1];return e[0]=n[0]*a+n[4]*r+n[12],e[1]=n[1]*a+n[5]*r+n[13],e}function P(e,t){return e[0]===t[0]&&e[1]===t[1]}function L(){let e=new Ne(3);return e[0]=0,e[1]=0,e[2]=0,e}function A(e){let t=e[0],n=e[1],a=e[2];return ve(t*t+n*n+a*a)}function N(e,t,n){let a=new Ne(3);return a[0]=e,a[1]=t,a[2]=n,a}function B(e,t){return e[0]=t[0],e[1]=t[1],e[2]=t[2],e}function F(e,t,n,a){return e[0]=t,e[1]=n,e[2]=a,e}function z(e,t,n){return e[0]=t[0]+n[0],e[1]=t[1]+n[1],e[2]=t[2]+n[2],e}function j(e,t,n){return e[0]=t[0]-n[0],e[1]=t[1]-n[1],e[2]=t[2]-n[2],e}function O(e,t,n){return e[0]=t[0]*n,e[1]=t[1]*n,e[2]=t[2]*n,e}function U(e){let t=e[0],n=e[1],a=e[2];return t*t+n*n+a*a}function I(e,t){return e[0]=-t[0],e[1]=-t[1],e[2]=-t[2],e}function Y(e,t){let n=t[0],a=t[1],r=t[2],o=n*n+a*a+r*r;return 0<o&&(o=1/ve(o),e[0]=t[0]*o,e[1]=t[1]*o,e[2]=t[2]*o),e}function H(e,t){return e[0]*t[0]+e[1]*t[1]+e[2]*t[2]}function V(e,t,n){let a=t[0],r=t[1],o=t[2],i=n[0],d=n[1],l=n[2];return e[0]=r*l-o*d,e[1]=o*i-a*l,e[2]=a*d-r*i,e}function X(e,t,n){let a=t[0],r=t[1],o=t[2],i=n[3]*a+n[7]*r+n[11]*o+n[15];return i=i||1,e[0]=(n[0]*a+n[4]*r+n[8]*o+n[12])/i,e[1]=(n[1]*a+n[5]*r+n[9]*o+n[13])/i,e[2]=(n[2]*a+n[6]*r+n[10]*o+n[14])/i,e}function G(e,t){let n=N(e[0],e[1],e[2]),a=N(t[0],t[1],t[2]);Y(n,n),Y(a,a);let r=H(n,a);return 1<r?0:-1>r?Ee:ye(r)}function q(e,t){return e[0]===t[0]&&e[1]===t[1]&&e[2]===t[2]}function W(e){var t=/^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(e);return t?[parseInt(t[1],16)/255,parseInt(t[2],16)/255,parseInt(t[3],16)/255]:null}function Q(){let e=new Ne(4);return e[0]=0,e[1]=0,e[2]=0,e[3]=0,e}function J(e,t,n,a,r){return e[0]=t,e[1]=n,e[2]=a,e[3]=r,e}function Z(){let e=new Ne(9);return e[0]=1,e[1]=0,e[2]=0,e[3]=0,e[4]=1,e[5]=0,e[6]=0,e[7]=0,e[8]=1,e}function $(e,t){return e[0]=t[0],e[1]=t[1],e[2]=t[2],e[3]=t[4],e[4]=t[5],e[5]=t[6],e[6]=t[8],e[7]=t[9],e[8]=t[10],e}function K(e,t){return e[0]=t[0],e[1]=t[1],e[2]=t[2],e[3]=t[3],e[4]=t[4],e[5]=t[5],e[6]=t[6],e[7]=t[7],e[8]=t[8],e}function ee(e,t,n,a,r,o,i,d,l,s){return e[0]=t,e[1]=n,e[2]=a,e[3]=r,e[4]=o,e[5]=i,e[6]=d,e[7]=l,e[8]=s,e}function te(e){return e[0]=1,e[1]=0,e[2]=0,e[3]=0,e[4]=1,e[5]=0,e[6]=0,e[7]=0,e[8]=1,e}function ne(e,t){let n=t[0],a=t[1],r=t[2],o=t[3],i=t[4],d=t[5],l=t[6],s=t[7],c=t[8],p=c*i-d*s,u=-c*o+d*l,m=s*o-i*l,_=n*p+a*u+r*m;return _?(_=1/_,e[0]=p*_,e[1]=(-c*a+r*s)*_,e[2]=(d*a-r*i)*_,e[3]=u*_,e[4]=(c*n-r*l)*_,e[5]=(-d*n+r*o)*_,e[6]=m*_,e[7]=(-s*n+a*l)*_,e[8]=(i*n-a*o)*_,e):null}function ae(e,t,n){let a=t[0],r=t[1],o=t[2],i=t[3],d=t[4],l=t[5],s=t[6],c=t[7],p=t[8],u=n[0],m=n[1],_=n[2],g=n[3],h=n[4],f=n[5],y=n[6],b=n[7],E=n[8];return e[0]=u*a+m*i+_*s,e[1]=u*r+m*d+_*c,e[2]=u*o+m*l+_*p,e[3]=g*a+h*i+f*s,e[4]=g*r+h*d+f*c,e[5]=g*o+h*l+f*p,e[6]=y*a+b*i+E*s,e[7]=y*r+b*d+E*c,e[8]=y*o+b*l+E*p,e}function re(e,t,n){let a=t[0],r=t[1],o=t[2],i=t[3],d=t[4],l=t[5],s=t[6],c=t[7],p=t[8],u=n[0],m=n[1];return e[0]=a,e[1]=r,e[2]=o,e[3]=i,e[4]=d,e[5]=l,e[6]=u*a+m*i+s,e[7]=u*r+m*d+c,e[8]=u*o+m*l+p,e}function oe(e,t,n){let a=n[0],r=n[1];return e[0]=a*t[0],e[1]=a*t[1],e[2]=a*t[2],e[3]=r*t[3],e[4]=r*t[4],e[5]=r*t[5],e[6]=t[6],e[7]=t[7],e[8]=t[8],e}function ie(e,t){let n=t[0],a=t[1],r=t[2],o=t[3],i=n+n,d=a+a,l=r+r,s=n*i,c=a*i,p=a*d,u=r*i,m=r*d,_=r*l,g=o*i,h=o*d,f=o*l;return e[0]=1-p-_,e[3]=c-f,e[6]=u+h,e[1]=c+f,e[4]=1-s-_,e[7]=m-g,e[2]=u-h,e[5]=m+g,e[8]=1-s-p,e}function de(e,t,n){return e[0]=t[0]-n[0],e[1]=t[1]-n[1],e[2]=t[2]-n[2],e[3]=t[3]-n[3],e[4]=t[4]-n[4],e[5]=t[5]-n[5],e[6]=t[6]-n[6],e[7]=t[7]-n[7],e[8]=t[8]-n[8],e}function le(){let e=new Ne(4);return e[0]=0,e[1]=0,e[2]=0,e[3]=1,e}function se(e){return e[0]=0,e[1]=0,e[2]=0,e[3]=1,e}function ce(e,t,n){n*=0.5;let a=Te(n);return e[0]=a*t[0],e[1]=a*t[1],e[2]=a*t[2],e[3]=Se(n),e}function pe(e,t,n){let a=t[0],r=t[1],o=t[2],i=t[3],d=n[0],l=n[1],s=n[2],c=n[3];return e[0]=a*c+i*d+r*s-o*l,e[1]=r*c+i*l+o*d-a*s,e[2]=o*c+i*s+a*l-r*d,e[3]=i*c-a*d-r*l-o*s,e}function ue(e,t,n){n*=0.5;let a=t[0],r=t[1],o=t[2],i=t[3],d=Te(n),l=Se(n);return e[0]=a*l+i*d,e[1]=r*l+o*d,e[2]=o*l-r*d,e[3]=i*l-a*d,e}function me(e,t,n){n*=0.5;let a=t[0],r=t[1],o=t[2],i=t[3],d=Te(n),l=Se(n);return e[0]=a*l-o*d,e[1]=r*l+i*d,e[2]=o*l+a*d,e[3]=i*l-r*d,e}function _e(e,t,n){n*=0.5;let a=t[0],r=t[1],o=t[2],i=t[3],d=Te(n),l=Se(n);return e[0]=a*l+r*d,e[1]=r*l-a*d,e[2]=o*l+i*d,e[3]=i*l-o*d,e}function ge(e,n,a,r){let t,o,i,d,l,s=n[0],c=n[1],p=n[2],u=n[3],m=a[0],_=a[1],g=a[2],h=a[3];return o=s*m+c*_+p*g+u*h,0>o&&(o=-o,m=-m,_=-_,g=-g,h=-h),1e-6<1-o?(t=ye(o),i=Te(t),d=Te((1-r)*t)/i,l=Te(r*t)/i):(d=1-r,l=r),e[0]=d*s+l*m,e[1]=d*c+l*_,e[2]=d*p+l*g,e[3]=d*u+l*h,e}function he(e,t){let n=t[0],a=t[1],r=t[2],o=t[3],i=n*n+a*a+r*r+o*o,d=i?1/i:0;return e[0]=-n*d,e[1]=-a*d,e[2]=-r*d,e[3]=o*d,e}function fe(e,t){let n,a=t[0]+t[4]+t[8];if(0<a)n=ve(a+1),e[3]=0.5*n,n=0.5/n,e[0]=(t[5]-t[7])*n,e[1]=(t[6]-t[2])*n,e[2]=(t[1]-t[3])*n;else{let a=0;t[4]>t[0]&&(a=1),t[8]>t[3*a+a]&&(a=2);let r=(a+1)%3,o=(a+2)%3;n=ve(t[3*a+a]-t[3*r+r]-t[3*o+o]+1),e[a]=0.5*n,n=0.5/n,e[3]=(t[3*r+o]-t[3*o+r])*n,e[r]=(t[3*r+a]+t[3*a+r])*n,e[o]=(t[3*o+a]+t[3*a+o])*n}return e}var ye=Math.acos,be=Math.abs,Ee=Math.PI,ve=Math.sqrt,xe=Math.max,Ce=Math.min,Se=Math.cos,Te=Math.sin;class Re extends Set{constructor(){super(),this._onceCallbacks=new Set}add(e,{once:t=!1}={}){t&&this._onceCallbacks.add(e),super.add(e)}dispatch(e){for(let t of this)t(e),this._onceCallbacks.has(t)&&(this._onceCallbacks.delete(t),this.delete(t))}}var De=new class extends Re{constructor(){super(),this._updateBinded=this.update.bind(this),this._previousTimestamp=0,this.deltaTime=0,this.timeScale=1,this.update()}update(e){requestAnimationFrame(this._updateBinded);let t=window.performance?window.performance.now():Date.now();this.deltaTime=.001*(t-this._previousTimestamp),this.timeScale=this.deltaTime/.0166666667,this._previousTimestamp=t,this.dispatch(e)}};class ke extends HTMLElement{constructor({autoplay:e=!0,background:t=!1}={}){super(),this._autoplay=e||this.hasAttribute("autoplay"),this._background=t||this.hasAttribute("background"),this.paused=!0,this._updateBinded=this.update.bind(this)}connectedCallback(){this._background||(window.addEventListener("blur",this._pauseBinded=this.pause.bind(this)),window.addEventListener("focus",this._playBinded=this.play.bind(this))),this._autoplay&&this.play()}disconnectedCallback(){this.pause(),window.removeEventListener("blur",this._pauseBinded),window.removeEventListener("focus",this._playBinded)}play(){this.paused=!1,De.add(this._updateBinded),this.dispatchEvent(new Event("playing"))}pause(){this.paused=!0,De.delete(this._updateBinded),this.dispatchEvent(new Event("pause"))}update(){}}window.customElements.define("dlib-loop",ke);const we=new Map,Me=new Map,Pe=new Map([["text",new Set(["txt","html","css","js","svg"])],["json",new Set(["json"])],["binary",new Set(["bin"])]]);class Le{static get onLoad(){return Promise.all(we.values())}static get promises(){return we}static get typeMap(){return Pe}static get(e){return Me.get(e)}static load(e){const t=e instanceof Array;t||(e=[e]);let n=[];for(let t of e){if(!t)continue;let e=we.get(t)||new Promise(function(e){if(Le.get(t))return void e(Le.get(t));let n,a=(n)=>{we.delete(t),Me.set(t,n),e(n)};if("string"==typeof t){let e=/[\\/](.*)\.(.*)$/.exec(t)[2];if(/\.(png|jpg|gif)$/.test(t))n=document.createElement("img");else if(/\.(mp4|webm)$/.test(t))n=document.createElement("video");else if(/\.(mp3|ogg)$/.test(t))n=document.createElement("audio");else if(/\.(woff|woff2)$/.test(t)){let e=new FontFace(/([^\/]*)\.(woff|woff2)$/.exec(t)[1],`url("${t}")`);e.load().then(a),document.fonts.add(e)}else fetch(t).then((t)=>{let n;return n=Le.typeMap.get("json").has(e)?"json":Le.typeMap.get("binary").has(e)?"arrayBuffer":Le.typeMap.get("text").has(e)?"text":"blob",t[n]()}).then(a)}if(t instanceof HTMLElement&&(n=t),n){const e=n.src||t,r=()=>{n.removeEventListener("canplaythrough",r),n.removeEventListener("load",r),a(n)};n.play?fetch(e).then(()=>{if(n.addEventListener("canplaythrough",r),n.play(),!n.autoplay){let e=function(){n.pause(),n.removeEventListener("playing",e)};n.addEventListener("playing",e)}}):n.addEventListener("load",r),n.src=e}});n.push(e),we.set(t,e)}return t?Promise.all(n):n[0]}}const Ae=1e-6;let Ne="undefined"==typeof Float32Array?Array:Float32Array;const Be=Math.random;class ze extends Float32Array{constructor(e=[1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1]){return super(e),this}set x(e){this[12]=e}get x(){return this[12]}set y(e){this[13]=e}get y(){return this[13]}set z(e){this[14]=e}get z(){return this[14]}set w(e){this[15]=e}get w(){return this[15]}copy(t){return e(this,t),this}set(e,n,a,r,o,i,d,l,s,c,p,u,m,_,g,h){return e.length?this.copy(e):(t(this,e,n,a,r,o,i,d,l,s,c,p,u,m,_,g,h),this)}translate(e,t=this){return o(this,t,e),this}rotateX(e,t=this){return d(this,t,e),this}rotateY(e,t=this){return l(this,t,e),this}rotateZ(e,t=this){return s(this,t,e),this}scale(e,t=this){return i(this,t,"number"==typeof e?[e,e,e]:e),this}multiply(e,t){return t?r(this,e,t):r(this,this,e),this}identity(){return n(this),this}copy(t){return e(this,t),this}fromPerspective({fov:e,aspectRatio:t,near:n,far:a}={}){return p(this,e,t,n,a),this}fromQuaternion(e){return c(this,e),this}setPosition(e){return this.x=e[0],this.y=e[1],this.z=e[2],this}invert(e=this){return a(this,e),this}}const Fe=function(){let e=u();return function(t,n,a,r,o,d){let s,i;for(n||(n=2),a||(a=0),i=r?Ce(r*n+a,t.length):t.length,s=a;s<i;s+=n)e[0]=t[s],e[1]=t[s+1],o(e,e,d),t[s]=e[0],t[s+1]=e[1];return t}}();var je=Object.freeze({create:u,clone:function(e){let t=new Ne(2);return t[0]=e[0],t[1]=e[1],t},fromValues:function(e,t){let n=new Ne(2);return n[0]=e,n[1]=t,n},copy:m,set:_,add:g,subtract:h,multiply:f,divide:y,ceil:function(e,t){var n=Math.ceil;return e[0]=n(t[0]),e[1]=n(t[1]),e},floor:function(e,t){var n=Math.floor;return e[0]=n(t[0]),e[1]=n(t[1]),e},min:function(e,t,n){return e[0]=Ce(t[0],n[0]),e[1]=Ce(t[1],n[1]),e},max:function(e,t,n){return e[0]=xe(t[0],n[0]),e[1]=xe(t[1],n[1]),e},round:function(e,t){var n=Math.round;return e[0]=n(t[0]),e[1]=n(t[1]),e},scale:b,scaleAndAdd:function(e,t,n,a){return e[0]=t[0]+n[0]*a,e[1]=t[1]+n[1]*a,e},distance:E,squaredDistance:v,length:x,squaredLength:C,negate:S,inverse:function(e,t){return e[0]=1/t[0],e[1]=1/t[1],e},normalize:T,dot:R,cross:D,lerp:k,random:function(e,t){t=t||1;var n=2*Be()*Ee;return e[0]=Se(n)*t,e[1]=Te(n)*t,e},transformMat2:function(e,t,n){var a=t[0],r=t[1];return e[0]=n[0]*a+n[2]*r,e[1]=n[1]*a+n[3]*r,e},transformMat2d:function(e,t,n){var a=t[0],r=t[1];return e[0]=n[0]*a+n[2]*r+n[4],e[1]=n[1]*a+n[3]*r+n[5],e},transformMat3:w,transformMat4:M,str:function(e){return"vec2("+e[0]+", "+e[1]+")"},exactEquals:P,equals:function(e,t){let n=e[0],a=e[1],r=t[0],o=t[1];return be(n-r)<=Ae*xe(1,be(n),be(r))&&be(a-o)<=Ae*xe(1,be(a),be(o))},len:x,sub:h,mul:f,div:y,dist:E,sqrDist:v,sqrLen:C,forEach:Fe});class Oe extends Float32Array{constructor(e=0,t=0){return super(2),this.set(e,t),this}get x(){return this[0]}set x(e){this[0]=e}get y(){return this[1]}set y(e){this[1]=e}set(e,t){return _(this,e,t),this}copy(e){return m(this,e),this}add(e){return g(this,this,e),this}get size(){return x(this)}get squaredSize(){return C(this)}subtract(e){return h(this,this,e),this}negate(e=this){return S(this,e),this}cross(e,t){return D(this,e,t),this}scale(e){return b(this,this,e),this}normalize(){T(this,this)}dot(e){return R(this,e)}equals(e){return P(this,e)}applyMatrix3(e){return w(this,this,e),this}applyMatrix4(e){return M(this,this,e),this}angle(e){return je.angle(this,e)}lerp(e,t){k(this,this,e,t)}clone(){return new Vector3(this.x,this.y,this.z)}}(function(){let e=L();return function(t,n,a,r,o,d){let s,i;for(n||(n=3),a||(a=0),i=r?Ce(r*n+a,t.length):t.length,s=a;s<i;s+=n)e[0]=t[s],e[1]=t[s+1],e[2]=t[s+2],o(e,e,d),t[s]=e[0],t[s+1]=e[1],t[s+2]=e[2];return t}})();class Ue extends Float32Array{constructor(e=[0,0,0]){return super(e),this}get x(){return this[0]}set x(e){this[0]=e}get y(){return this[1]}set y(e){this[1]=e}get z(){return this[2]}set z(e){this[2]=e}set(e,t,n){return F(this,e,t,n),this}copy(e){return B(this,e),this}add(e){return z(this,this,e),this}get size(){return A(this)}get squaredSize(){return U(this)}subtract(e){return j(this,this,e),this}negate(e=this){return I(this,e),this}cross(e,t){return V(this,e,t),this}scale(e){return O(this,this,e),this}normalize(){return Y(this,this),this}dot(e){return H(this,e)}equals(e){return q(this,e)}applyMatrix4(e){return X(this,this,e),this}angle(e){return G(this,e)}clone(){return new Ue(this.x,this.y,this.z)}fromHex(e){return this.copy(W(e)),this}}(function(){let e=Q();return function(t,n,a,r,o,d){let s,i;for(n||(n=4),a||(a=0),i=r?Ce(r*n+a,t.length):t.length,s=a;s<i;s+=n)e[0]=t[s],e[1]=t[s+1],e[2]=t[s+2],e[3]=t[s+3],o(e,e,d),t[s]=e[0],t[s+1]=e[1],t[s+2]=e[2],t[s+3]=e[3];return t}})();class Ie extends Float32Array{constructor(e=0,t=0,n=0,a=0){return super(4),this.set(e,t,n,a),this}get x(){return this[0]}set x(e){this[0]=e}get y(){return this[1]}set y(e){this[1]=e}get z(){return this[2]}set z(e){this[2]=e}get w(){return this[3]}set w(e){this[3]=e}set(e,t,n,a){return J(this,e,t,n,a),this}}var Ye=Object.freeze({create:Z,fromMat4:$,clone:function(e){let t=new Ne(9);return t[0]=e[0],t[1]=e[1],t[2]=e[2],t[3]=e[3],t[4]=e[4],t[5]=e[5],t[6]=e[6],t[7]=e[7],t[8]=e[8],t},copy:K,fromValues:function(e,t,n,a,r,o,i,d,l){let s=new Ne(9);return s[0]=e,s[1]=t,s[2]=n,s[3]=a,s[4]=r,s[5]=o,s[6]=i,s[7]=d,s[8]=l,s},set:ee,identity:te,transpose:function(e,t){if(e===t){let n=t[1],a=t[2],r=t[5];e[1]=t[3],e[2]=t[6],e[3]=n,e[5]=t[7],e[6]=a,e[7]=r}else e[0]=t[0],e[1]=t[3],e[2]=t[6],e[3]=t[1],e[4]=t[4],e[5]=t[7],e[6]=t[2],e[7]=t[5],e[8]=t[8];return e},invert:ne,adjoint:function(e,t){let n=t[0],a=t[1],r=t[2],o=t[3],i=t[4],d=t[5],l=t[6],s=t[7],c=t[8];return e[0]=i*c-d*s,e[1]=r*s-a*c,e[2]=a*d-r*i,e[3]=d*l-o*c,e[4]=n*c-r*l,e[5]=r*o-n*d,e[6]=o*s-i*l,e[7]=a*l-n*s,e[8]=n*i-a*o,e},determinant:function(e){let t=e[0],n=e[1],a=e[2],r=e[3],o=e[4],i=e[5],d=e[6],l=e[7],s=e[8];return t*(s*o-i*l)+n*(-s*r+i*d)+a*(l*r-o*d)},multiply:ae,translate:re,rotate:function(e,t,n){let a=t[0],r=t[1],o=t[2],i=t[3],d=t[4],l=t[5],p=t[6],u=t[7],m=t[8],_=Te(n),s=Se(n);return e[0]=s*a+_*i,e[1]=s*r+_*d,e[2]=s*o+_*l,e[3]=s*i-_*a,e[4]=s*d-_*r,e[5]=s*l-_*o,e[6]=p,e[7]=u,e[8]=m,e},scale:oe,fromTranslation:function(e,t){return e[0]=1,e[1]=0,e[2]=0,e[3]=0,e[4]=1,e[5]=0,e[6]=t[0],e[7]=t[1],e[8]=1,e},fromRotation:function(e,t){let n=Te(t),a=Se(t);return e[0]=a,e[1]=n,e[2]=0,e[3]=-n,e[4]=a,e[5]=0,e[6]=0,e[7]=0,e[8]=1,e},fromScaling:function(e,t){return e[0]=t[0],e[1]=0,e[2]=0,e[3]=0,e[4]=t[1],e[5]=0,e[6]=0,e[7]=0,e[8]=1,e},fromMat2d:function(e,t){return e[0]=t[0],e[1]=t[1],e[2]=0,e[3]=t[2],e[4]=t[3],e[5]=0,e[6]=t[4],e[7]=t[5],e[8]=1,e},fromQuat:ie,normalFromMat4:function(e,t){let n=t[0],a=t[1],r=t[2],o=t[3],i=t[4],d=t[5],l=t[6],s=t[7],c=t[8],p=t[9],u=t[10],m=t[11],_=t[12],g=t[13],h=t[14],f=t[15],y=n*d-a*i,b=n*l-r*i,E=n*s-o*i,v=a*l-r*d,x=a*s-o*d,C=r*s-o*l,S=c*g-p*_,T=c*h-u*_,R=c*f-m*_,D=p*h-u*g,k=p*f-m*g,w=u*f-m*h,M=y*w-b*k+E*D+v*R-x*T+C*S;return M?(M=1/M,e[0]=(d*w-l*k+s*D)*M,e[1]=(l*R-i*w-s*T)*M,e[2]=(i*k-d*R+s*S)*M,e[3]=(r*k-a*w-o*D)*M,e[4]=(n*w-r*R+o*T)*M,e[5]=(a*R-n*k-o*S)*M,e[6]=(g*C-h*x+f*v)*M,e[7]=(h*E-_*C-f*b)*M,e[8]=(_*x-g*E+f*y)*M,e):null},projection:function(e,t,n){return e[0]=2/t,e[1]=0,e[2]=0,e[3]=0,e[4]=-2/n,e[5]=0,e[6]=-1,e[7]=1,e[8]=1,e},str:function(e){return"mat3("+e[0]+", "+e[1]+", "+e[2]+", "+e[3]+", "+e[4]+", "+e[5]+", "+e[6]+", "+e[7]+", "+e[8]+")"},frob:function(e){var t=Math.pow;return ve(t(e[0],2)+t(e[1],2)+t(e[2],2)+t(e[3],2)+t(e[4],2)+t(e[5],2)+t(e[6],2)+t(e[7],2)+t(e[8],2))},add:function(e,t,n){return e[0]=t[0]+n[0],e[1]=t[1]+n[1],e[2]=t[2]+n[2],e[3]=t[3]+n[3],e[4]=t[4]+n[4],e[5]=t[5]+n[5],e[6]=t[6]+n[6],e[7]=t[7]+n[7],e[8]=t[8]+n[8],e},subtract:de,multiplyScalar:function(e,t,n){return e[0]=t[0]*n,e[1]=t[1]*n,e[2]=t[2]*n,e[3]=t[3]*n,e[4]=t[4]*n,e[5]=t[5]*n,e[6]=t[6]*n,e[7]=t[7]*n,e[8]=t[8]*n,e},multiplyScalarAndAdd:function(e,t,n,a){return e[0]=t[0]+n[0]*a,e[1]=t[1]+n[1]*a,e[2]=t[2]+n[2]*a,e[3]=t[3]+n[3]*a,e[4]=t[4]+n[4]*a,e[5]=t[5]+n[5]*a,e[6]=t[6]+n[6]*a,e[7]=t[7]+n[7]*a,e[8]=t[8]+n[8]*a,e},exactEquals:function(e,t){return e[0]===t[0]&&e[1]===t[1]&&e[2]===t[2]&&e[3]===t[3]&&e[4]===t[4]&&e[5]===t[5]&&e[6]===t[6]&&e[7]===t[7]&&e[8]===t[8]},equals:function(e,t){let n=e[0],a=e[1],r=e[2],o=e[3],i=e[4],d=e[5],l=e[6],s=e[7],c=e[8],p=t[0],u=t[1],m=t[2],_=t[3],g=t[4],h=t[5],f=t[6],y=t[7],b=t[8];return be(n-p)<=Ae*xe(1,be(n),be(p))&&be(a-u)<=Ae*xe(1,be(a),be(u))&&be(r-m)<=Ae*xe(1,be(r),be(m))&&be(o-_)<=Ae*xe(1,be(o),be(_))&&be(i-g)<=Ae*xe(1,be(i),be(g))&&be(d-h)<=Ae*xe(1,be(d),be(h))&&be(l-f)<=Ae*xe(1,be(l),be(f))&&be(s-y)<=Ae*xe(1,be(s),be(y))&&be(c-b)<=Ae*xe(1,be(c),be(b))},mul:ae,sub:de});class He extends Float32Array{constructor(e=[1,0,0,0,1,0,0,0,1]){return super(e),this}set(e,t,n,a,r,o,i,d,l){return ee(this,e,t,n,a,r,o,i,d,l),this}translate(e,t=this){return re(this,t,e),this}rotate(e,t=this){return Ye.rotateX(this,t,e),this}scale(e,t=this){return oe(this,t,e),this}multiply(e,t){return t?ae(this,e,t):ae(this,this,e),this}identity(){return te(this),this}copy(e){return K(this,e),this}fromMatrix4(e){return $(this,e),this}fromQuaternion(e){return ie(this,e),this}fromBasis(e,t,n){return this.set(e[0],e[1],e[2],t[0],t[1],t[2],n[0],n[1],n[2]),this}invert(e=this){return ne(this,e),this}}class Ve{static add(e="void main() {}",t){for(let[n,a]of t)e="start"===n?`${a}\n${e}`:"end"===n?e.replace(/(}\s*$)/,`\n${a}\n$1`):"main"===n?e.replace(/(\bvoid\b +\bmain\b[\s\S]*?{\s*)/,`$1\n${a}\n`):e.replace(n,a);return e}constructor({vertexShader:e=`
+!function(e){function t(e){Object.defineProperty(this,e,{enumerable:!0,get:function(){return this[v][e]}})}function r(e){if("undefined"!=typeof System&&System.isModule?System.isModule(e):"[object Module]"===Object.prototype.toString.call(e))return e;var t={default:e,__useDefault:e};if(e&&e.__esModule)for(var r in e)Object.hasOwnProperty.call(e,r)&&(t[r]=e[r]);return new o(t)}function o(e){Object.defineProperty(this,v,{value:e}),Object.keys(e).forEach(t,this)}function n(e){return"@node/"===e.substr(0,6)?c(e,r(m(e.substr(6))),{}):p[e]}function u(e){var t=n(e);if(!t)throw new Error('Module "'+e+'" expected, but not contained in build.');if(t.module)return t.module;var r=t.linkRecord;return i(t,r),a(t,r,[]),t.module}function i(e,t){if(!t.depLoads){t.declare&&d(e,t),t.depLoads=[];for(var r=0;r<t.deps.length;r++){var o=n(t.deps[r]);t.depLoads.push(o),o.linkRecord&&i(o,o.linkRecord);var u=t.setters&&t.setters[r];u&&(u(o.module||o.linkRecord.moduleObj),o.importerSetters.push(u))}return e}}function d(t,r){var o=r.moduleObj,n=t.importerSetters,u=!1,i=r.declare.call(e,function(e,t){if(!u){if("object"==typeof e)for(var r in e)"__useDefault"!==r&&(o[r]=e[r]);else o[e]=t;u=!0;for(var i=0;i<n.length;i++)n[i](o);return u=!1,t}},{id:t.key});"function"!=typeof i?(r.setters=i.setters,r.execute=i.execute):(r.setters=[],r.execute=i)}function l(e,t,r){return p[e]={key:e,module:void 0,importerSetters:[],linkRecord:{deps:t,depLoads:void 0,declare:r,setters:void 0,execute:void 0,moduleObj:{}}}}function f(e,t,r,o){var n={};return p[e]={key:e,module:void 0,importerSetters:[],linkRecord:{deps:t,depLoads:void 0,declare:void 0,execute:o,executingRequire:r,moduleObj:{default:n,__useDefault:n},setters:void 0}}}function s(e,t,r){return function(o){for(var n=0;n<e.length;n++)if(e[n]===o){var u,i=t[n],d=i.linkRecord;return u=d?-1===r.indexOf(i)?a(i,d,r):d.moduleObj:i.module,"__useDefault"in u?u.__useDefault:u}}}function a(t,r,n){if(n.push(t),t.module)return t.module;var u;if(r.setters){for(var i=0;i<r.deps.length;i++){var d=r.depLoads[i],l=d.linkRecord;l&&-1===n.indexOf(d)&&(u=a(d,l,l.setters?n:[]))}r.execute.call(y)}else{var f={id:t.key},c=r.moduleObj;Object.defineProperty(f,"exports",{configurable:!0,set:function(e){c.default=c.__useDefault=e},get:function(){return c.__useDefault}});var p=s(r.deps,r.depLoads,n);if(!r.executingRequire)for(var i=0;i<r.deps.length;i++)p(r.deps[i]);var v=r.execute.call(e,p,c.__useDefault,f);void 0!==v?c.default=c.__useDefault=v:f.exports!==c.__useDefault&&(c.default=c.__useDefault=f.exports);var m=c.__useDefault;if(m&&m.__esModule)for(var b in m)Object.hasOwnProperty.call(m,b)&&(c[b]=m[b])}var f=t.module=new o(r.moduleObj);if(!r.setters)for(var i=0;i<t.importerSetters.length;i++)t.importerSetters[i](f);return f}function c(e,t){return p[e]={key:e,module:t,importerSetters:[],linkRecord:void 0}}var p={},v="undefined"!=typeof Symbol?Symbol():"@@baseObject";o.prototype=Object.create(null),"undefined"!=typeof Symbol&&Symbol.toStringTag&&(o.prototype[Symbol.toStringTag]="Module");var m="undefined"!=typeof System&&System._nodeRequire||"undefined"!=typeof require&&"undefined"!=typeof require.resolve&&"undefined"!=typeof process&&process.platform&&require,y={};return Object.freeze&&Object.freeze(y),function(e,t,n,i){return function(d){d(function(d){var s={_nodeRequire:m,register:l,registerDynamic:f,registry:{get:function(e){return p[e].module},set:c},newModule:function(e){return new o(e)}};c("@empty",new o({}));for(var a=0;a<t.length;a++)c(t[a],r(arguments[a],{}));i(s);var v=u(e[0]);if(e.length>1)for(var a=1;a<e.length;a++)u(e[a]);return n?v.__useDefault:(v instanceof o&&Object.defineProperty(v,"__esModule",{value:!0}),v)})}}}("undefined"!=typeof self?self:"undefined"!=typeof global?global:this)
+
+(["a"], [], false, function($__System) {
+var require = this.require, exports = this.exports, module = this.module;
+!function(e){function r(e,r){for(var n=e.split(".");n.length;)r=r[n.shift()];return r}function n(n){if("string"==typeof n)return r(n,e);if(!(n instanceof Array))throw new Error("Global exports must be a string or array.");for(var t={},o=0;o<n.length;o++)t[n[o].split(".").pop()]=r(n[o],e);return t}function t(r){if(-1===a.indexOf(r)){try{var n=e[r]}catch(e){a.push(r)}this(r,n)}}var o,i=$__System,a=["_g","sessionStorage","localStorage","clipboardData","frames","frameElement","external","mozAnimationStartTime","webkitStorageInfo","webkitIndexedDB","mozInnerScreenY","mozInnerScreenX"];i.registry.set("@@global-helpers",i.newModule({prepareGlobal:function(r,i,a){var f=e.define;e.define=void 0;var s;if(a){s={};for(var l in a)s[l]=e[l],e[l]=a[l]}return i||(o={},Object.keys(e).forEach(t,function(e,r){o[e]=r})),function(){var r,a=i?n(i):{},l=!!i;if(i||Object.keys(e).forEach(t,function(e,n){o[e]!==n&&void 0!==n&&(i||(a[e]=n,void 0!==r?l||r===n||(l=!0):r=n))}),a=l?a:r,s)for(var c in s)e[c]=s[c];return e.define=f,a}}}))}("undefined"!=typeof self?self:global);
+$__System.registerDynamic("b", [], false, function ($__require, $__exports, $__module) {
+  var _retrieveGlobal = $__System.registry.get("@@global-helpers").prepareGlobal($__module.id, null, null);
+
+  (function ($__global) {
+    (function () {
+      'use strict';
+      var h = new function () {}();var aa = new Set("annotation-xml color-profile font-face font-face-src font-face-uri font-face-format font-face-name missing-glyph".split(" "));function n(b) {
+        var a = aa.has(b);b = /^[a-z][.0-9_a-z]*-[\-.0-9_a-z]*$/.test(b);return !a && b;
+      }function p(b) {
+        var a = b.isConnected;if (void 0 !== a) return a;for (; b && !(b.__CE_isImportDocument || b instanceof Document);) b = b.parentNode || (window.ShadowRoot && b instanceof ShadowRoot ? b.host : void 0);return !(!b || !(b.__CE_isImportDocument || b instanceof Document));
+      }
+      function q(b, a) {
+        for (; a && a !== b && !a.nextSibling;) a = a.parentNode;return a && a !== b ? a.nextSibling : null;
+      }
+      function t(b, a, c) {
+        c = c ? c : new Set();for (var d = b; d;) {
+          if (d.nodeType === Node.ELEMENT_NODE) {
+            var e = d;a(e);var f = e.localName;if ("link" === f && "import" === e.getAttribute("rel")) {
+              d = e.import;if (d instanceof Node && !c.has(d)) for (c.add(d), d = d.firstChild; d; d = d.nextSibling) t(d, a, c);d = q(b, e);continue;
+            } else if ("template" === f) {
+              d = q(b, e);continue;
+            }if (e = e.__CE_shadowRoot) for (e = e.firstChild; e; e = e.nextSibling) t(e, a, c);
+          }d = d.firstChild ? d.firstChild : q(b, d);
+        }
+      }function u(b, a, c) {
+        b[a] = c;
+      };function v() {
+        this.a = new Map();this.o = new Map();this.f = [];this.b = !1;
+      }function ba(b, a, c) {
+        b.a.set(a, c);b.o.set(c.constructor, c);
+      }function w(b, a) {
+        b.b = !0;b.f.push(a);
+      }function x(b, a) {
+        b.b && t(a, function (a) {
+          return y(b, a);
+        });
+      }function y(b, a) {
+        if (b.b && !a.__CE_patched) {
+          a.__CE_patched = !0;for (var c = 0; c < b.f.length; c++) b.f[c](a);
+        }
+      }function z(b, a) {
+        var c = [];t(a, function (b) {
+          return c.push(b);
+        });for (a = 0; a < c.length; a++) {
+          var d = c[a];1 === d.__CE_state ? b.connectedCallback(d) : A(b, d);
+        }
+      }
+      function B(b, a) {
+        var c = [];t(a, function (b) {
+          return c.push(b);
+        });for (a = 0; a < c.length; a++) {
+          var d = c[a];1 === d.__CE_state && b.disconnectedCallback(d);
+        }
+      }
+      function C(b, a, c) {
+        c = c ? c : {};var d = c.w || new Set(),
+            e = c.s || function (a) {
+          return A(b, a);
+        },
+            f = [];t(a, function (a) {
+          if ("link" === a.localName && "import" === a.getAttribute("rel")) {
+            var c = a.import;c instanceof Node && (c.__CE_isImportDocument = !0, c.__CE_hasRegistry = !0);c && "complete" === c.readyState ? c.__CE_documentLoadHandled = !0 : a.addEventListener("load", function () {
+              var c = a.import;if (!c.__CE_documentLoadHandled) {
+                c.__CE_documentLoadHandled = !0;var f = new Set(d);f.delete(c);C(b, c, { w: f, s: e });
+              }
+            });
+          } else f.push(a);
+        }, d);if (b.b) for (a = 0; a < f.length; a++) y(b, f[a]);for (a = 0; a < f.length; a++) e(f[a]);
+      }
+      function A(b, a) {
+        if (void 0 === a.__CE_state) {
+          var c = a.ownerDocument;if (c.defaultView || c.__CE_isImportDocument && c.__CE_hasRegistry) if (c = b.a.get(a.localName)) {
+            c.constructionStack.push(a);var d = c.constructor;try {
+              try {
+                if (new d() !== a) throw Error("The custom element constructor did not produce the element being upgraded.");
+              } finally {
+                c.constructionStack.pop();
+              }
+            } catch (m) {
+              throw a.__CE_state = 2, m;
+            }a.__CE_state = 1;a.__CE_definition = c;if (c.attributeChangedCallback) for (c = c.observedAttributes, d = 0; d < c.length; d++) {
+              var e = c[d],
+                  f = a.getAttribute(e);null !== f && b.attributeChangedCallback(a, e, null, f, null);
+            }p(a) && b.connectedCallback(a);
+          }
+        }
+      }v.prototype.connectedCallback = function (b) {
+        var a = b.__CE_definition;a.connectedCallback && a.connectedCallback.call(b);
+      };v.prototype.disconnectedCallback = function (b) {
+        var a = b.__CE_definition;a.disconnectedCallback && a.disconnectedCallback.call(b);
+      };
+      v.prototype.attributeChangedCallback = function (b, a, c, d, e) {
+        var f = b.__CE_definition;f.attributeChangedCallback && -1 < f.observedAttributes.indexOf(a) && f.attributeChangedCallback.call(b, a, c, d, e);
+      };function D(b, a) {
+        this.c = b;this.a = a;this.b = void 0;C(this.c, this.a);"loading" === this.a.readyState && (this.b = new MutationObserver(this.f.bind(this)), this.b.observe(this.a, { childList: !0, subtree: !0 }));
+      }function E(b) {
+        b.b && b.b.disconnect();
+      }D.prototype.f = function (b) {
+        var a = this.a.readyState;"interactive" !== a && "complete" !== a || E(this);for (a = 0; a < b.length; a++) for (var c = b[a].addedNodes, d = 0; d < c.length; d++) C(this.c, c[d]);
+      };function ca() {
+        var b = this;this.b = this.a = void 0;this.f = new Promise(function (a) {
+          b.b = a;b.a && a(b.a);
+        });
+      }function F(b) {
+        if (b.a) throw Error("Already resolved.");b.a = void 0;b.b && b.b(void 0);
+      };function G(b) {
+        this.i = !1;this.c = b;this.m = new Map();this.j = function (b) {
+          return b();
+        };this.g = !1;this.l = [];this.u = new D(b, document);
+      }
+      G.prototype.define = function (b, a) {
+        var c = this;if (!(a instanceof Function)) throw new TypeError("Custom element constructors must be functions.");if (!n(b)) throw new SyntaxError("The element name '" + b + "' is not valid.");if (this.c.a.get(b)) throw Error("A custom element with name '" + b + "' has already been defined.");if (this.i) throw Error("A custom element is already being defined.");this.i = !0;var d, e, f, m, l;try {
+          var g = function (b) {
+            var a = k[b];if (void 0 !== a && !(a instanceof Function)) throw Error("The '" + b + "' callback must be a function.");
+            return a;
+          },
+              k = a.prototype;if (!(k instanceof Object)) throw new TypeError("The custom element constructor's prototype is not an object.");d = g("connectedCallback");e = g("disconnectedCallback");f = g("adoptedCallback");m = g("attributeChangedCallback");l = a.observedAttributes || [];
+        } catch (r) {
+          return;
+        } finally {
+          this.i = !1;
+        }a = { localName: b, constructor: a, connectedCallback: d, disconnectedCallback: e, adoptedCallback: f, attributeChangedCallback: m, observedAttributes: l, constructionStack: [] };ba(this.c, b, a);this.l.push(a);this.g || (this.g = !0, this.j(function () {
+          return da(c);
+        }));
+      };function da(b) {
+        if (!1 !== b.g) {
+          b.g = !1;for (var a = b.l, c = [], d = new Map(), e = 0; e < a.length; e++) d.set(a[e].localName, []);C(b.c, document, { s: function (a) {
+              if (void 0 === a.__CE_state) {
+                var e = a.localName,
+                    f = d.get(e);f ? f.push(a) : b.c.a.get(e) && c.push(a);
+              }
+            } });for (e = 0; e < c.length; e++) A(b.c, c[e]);for (; 0 < a.length;) {
+            for (var f = a.shift(), e = f.localName, f = d.get(f.localName), m = 0; m < f.length; m++) A(b.c, f[m]);(e = b.m.get(e)) && F(e);
+          }
+        }
+      }G.prototype.get = function (b) {
+        if (b = this.c.a.get(b)) return b.constructor;
+      };
+      G.prototype.whenDefined = function (b) {
+        if (!n(b)) return Promise.reject(new SyntaxError("'" + b + "' is not a valid custom element name."));var a = this.m.get(b);if (a) return a.f;a = new ca();this.m.set(b, a);this.c.a.get(b) && !this.l.some(function (a) {
+          return a.localName === b;
+        }) && F(a);return a.f;
+      };G.prototype.v = function (b) {
+        E(this.u);var a = this.j;this.j = function (c) {
+          return b(function () {
+            return a(c);
+          });
+        };
+      };window.CustomElementRegistry = G;G.prototype.define = G.prototype.define;G.prototype.get = G.prototype.get;
+      G.prototype.whenDefined = G.prototype.whenDefined;G.prototype.polyfillWrapFlushCallback = G.prototype.v;var H = window.Document.prototype.createElement,
+          ea = window.Document.prototype.createElementNS,
+          fa = window.Document.prototype.importNode,
+          ga = window.Document.prototype.prepend,
+          ha = window.Document.prototype.append,
+          ia = window.DocumentFragment.prototype.prepend,
+          ja = window.DocumentFragment.prototype.append,
+          I = window.Node.prototype.cloneNode,
+          J = window.Node.prototype.appendChild,
+          K = window.Node.prototype.insertBefore,
+          L = window.Node.prototype.removeChild,
+          M = window.Node.prototype.replaceChild,
+          N = Object.getOwnPropertyDescriptor(window.Node.prototype, "textContent"),
+          O = window.Element.prototype.attachShadow,
+          P = Object.getOwnPropertyDescriptor(window.Element.prototype, "innerHTML"),
+          Q = window.Element.prototype.getAttribute,
+          R = window.Element.prototype.setAttribute,
+          S = window.Element.prototype.removeAttribute,
+          T = window.Element.prototype.getAttributeNS,
+          U = window.Element.prototype.setAttributeNS,
+          ka = window.Element.prototype.removeAttributeNS,
+          la = window.Element.prototype.insertAdjacentElement,
+          ma = window.Element.prototype.prepend,
+          na = window.Element.prototype.append,
+          V = window.Element.prototype.before,
+          oa = window.Element.prototype.after,
+          pa = window.Element.prototype.replaceWith,
+          qa = window.Element.prototype.remove,
+          ra = window.HTMLElement,
+          W = Object.getOwnPropertyDescriptor(window.HTMLElement.prototype, "innerHTML"),
+          sa = window.HTMLElement.prototype.insertAdjacentElement;function ta() {
+        var b = X;window.HTMLElement = function () {
+          function a() {
+            var a = this.constructor,
+                d = b.o.get(a);if (!d) throw Error("The custom element being constructed was not registered with `customElements`.");var e = d.constructionStack;if (!e.length) return e = H.call(document, d.localName), Object.setPrototypeOf(e, a.prototype), e.__CE_state = 1, e.__CE_definition = d, y(b, e), e;var d = e.length - 1,
+                f = e[d];if (f === h) throw Error("The HTMLElement constructor was either called reentrantly for this constructor or called multiple times.");
+            e[d] = h;Object.setPrototypeOf(f, a.prototype);y(b, f);return f;
+          }a.prototype = ra.prototype;return a;
+        }();
+      };function Y(b, a, c) {
+        function d(a) {
+          return function (d) {
+            for (var c = [], e = 0; e < arguments.length; ++e) c[e - 0] = arguments[e];for (var e = [], f = [], k = 0; k < c.length; k++) {
+              var r = c[k];r instanceof Element && p(r) && f.push(r);if (r instanceof DocumentFragment) for (r = r.firstChild; r; r = r.nextSibling) e.push(r);else e.push(r);
+            }a.apply(this, c);for (c = 0; c < f.length; c++) B(b, f[c]);if (p(this)) for (c = 0; c < e.length; c++) f = e[c], f instanceof Element && z(b, f);
+          };
+        }c.h && (a.prepend = d(c.h));c.append && (a.append = d(c.append));
+      };function ua() {
+        var b = X;u(Document.prototype, "createElement", function (a) {
+          if (this.__CE_hasRegistry) {
+            var c = b.a.get(a);if (c) return new c.constructor();
+          }a = H.call(this, a);y(b, a);return a;
+        });u(Document.prototype, "importNode", function (a, c) {
+          a = fa.call(this, a, c);this.__CE_hasRegistry ? C(b, a) : x(b, a);return a;
+        });u(Document.prototype, "createElementNS", function (a, c) {
+          if (this.__CE_hasRegistry && (null === a || "http://www.w3.org/1999/xhtml" === a)) {
+            var d = b.a.get(c);if (d) return new d.constructor();
+          }a = ea.call(this, a, c);y(b, a);return a;
+        });
+        Y(b, Document.prototype, { h: ga, append: ha });
+      };function va() {
+        var b = X;function a(a, d) {
+          Object.defineProperty(a, "textContent", { enumerable: d.enumerable, configurable: !0, get: d.get, set: function (a) {
+              if (this.nodeType === Node.TEXT_NODE) d.set.call(this, a);else {
+                var c = void 0;if (this.firstChild) {
+                  var e = this.childNodes,
+                      l = e.length;if (0 < l && p(this)) for (var c = Array(l), g = 0; g < l; g++) c[g] = e[g];
+                }d.set.call(this, a);if (c) for (a = 0; a < c.length; a++) B(b, c[a]);
+              }
+            } });
+        }u(Node.prototype, "insertBefore", function (a, d) {
+          if (a instanceof DocumentFragment) {
+            var c = Array.prototype.slice.apply(a.childNodes);
+            a = K.call(this, a, d);if (p(this)) for (d = 0; d < c.length; d++) z(b, c[d]);return a;
+          }c = p(a);d = K.call(this, a, d);c && B(b, a);p(this) && z(b, a);return d;
+        });u(Node.prototype, "appendChild", function (a) {
+          if (a instanceof DocumentFragment) {
+            var c = Array.prototype.slice.apply(a.childNodes);a = J.call(this, a);if (p(this)) for (var e = 0; e < c.length; e++) z(b, c[e]);return a;
+          }c = p(a);e = J.call(this, a);c && B(b, a);p(this) && z(b, a);return e;
+        });u(Node.prototype, "cloneNode", function (a) {
+          a = I.call(this, a);this.ownerDocument.__CE_hasRegistry ? C(b, a) : x(b, a);
+          return a;
+        });u(Node.prototype, "removeChild", function (a) {
+          var c = p(a),
+              e = L.call(this, a);c && B(b, a);return e;
+        });u(Node.prototype, "replaceChild", function (a, d) {
+          if (a instanceof DocumentFragment) {
+            var e = Array.prototype.slice.apply(a.childNodes);a = M.call(this, a, d);if (p(this)) for (B(b, d), d = 0; d < e.length; d++) z(b, e[d]);return a;
+          }var e = p(a),
+              c = M.call(this, a, d),
+              m = p(this);m && B(b, d);e && B(b, a);m && z(b, a);return c;
+        });N && N.get ? a(Node.prototype, N) : w(b, function (b) {
+          a(b, { enumerable: !0, configurable: !0, get: function () {
+              for (var a = [], b = 0; b < this.childNodes.length; b++) a.push(this.childNodes[b].textContent);return a.join("");
+            }, set: function (a) {
+              for (; this.firstChild;) L.call(this, this.firstChild);J.call(this, document.createTextNode(a));
+            } });
+        });
+      };function wa(b) {
+        var a = Element.prototype;function c(a) {
+          return function (c) {
+            for (var d = [], e = 0; e < arguments.length; ++e) d[e - 0] = arguments[e];for (var e = [], l = [], g = 0; g < d.length; g++) {
+              var k = d[g];k instanceof Element && p(k) && l.push(k);if (k instanceof DocumentFragment) for (k = k.firstChild; k; k = k.nextSibling) e.push(k);else e.push(k);
+            }a.apply(this, d);for (d = 0; d < l.length; d++) B(b, l[d]);if (p(this)) for (d = 0; d < e.length; d++) l = e[d], l instanceof Element && z(b, l);
+          };
+        }V && (a.before = c(V));V && (a.after = c(oa));pa && u(a, "replaceWith", function (a) {
+          for (var d = [], c = 0; c < arguments.length; ++c) d[c - 0] = arguments[c];for (var c = [], m = [], l = 0; l < d.length; l++) {
+            var g = d[l];g instanceof Element && p(g) && m.push(g);if (g instanceof DocumentFragment) for (g = g.firstChild; g; g = g.nextSibling) c.push(g);else c.push(g);
+          }l = p(this);pa.apply(this, d);for (d = 0; d < m.length; d++) B(b, m[d]);if (l) for (B(b, this), d = 0; d < c.length; d++) m = c[d], m instanceof Element && z(b, m);
+        });qa && u(a, "remove", function () {
+          var a = p(this);qa.call(this);a && B(b, this);
+        });
+      };function xa() {
+        var b = X;function a(a, c) {
+          Object.defineProperty(a, "innerHTML", { enumerable: c.enumerable, configurable: !0, get: c.get, set: function (a) {
+              var d = this,
+                  e = void 0;p(this) && (e = [], t(this, function (a) {
+                a !== d && e.push(a);
+              }));c.set.call(this, a);if (e) for (var f = 0; f < e.length; f++) {
+                var k = e[f];1 === k.__CE_state && b.disconnectedCallback(k);
+              }this.ownerDocument.__CE_hasRegistry ? C(b, this) : x(b, this);return a;
+            } });
+        }function c(a, c) {
+          u(a, "insertAdjacentElement", function (a, d) {
+            var e = p(d);a = c.call(this, a, d);e && B(b, d);p(a) && z(b, d);
+            return a;
+          });
+        }O && u(Element.prototype, "attachShadow", function (a) {
+          return this.__CE_shadowRoot = a = O.call(this, a);
+        });P && P.get ? a(Element.prototype, P) : W && W.get ? a(HTMLElement.prototype, W) : w(b, function (b) {
+          a(b, { enumerable: !0, configurable: !0, get: function () {
+              return I.call(this, !0).innerHTML;
+            }, set: function (a) {
+              var b = "template" === this.localName,
+                  d = b ? this.content : this,
+                  c = H.call(document, this.localName);for (c.innerHTML = a; 0 < d.childNodes.length;) L.call(d, d.childNodes[0]);for (a = b ? c.content : c; 0 < a.childNodes.length;) J.call(d, a.childNodes[0]);
+            } });
+        });u(Element.prototype, "setAttribute", function (a, c) {
+          if (1 !== this.__CE_state) return R.call(this, a, c);var d = Q.call(this, a);R.call(this, a, c);c = Q.call(this, a);b.attributeChangedCallback(this, a, d, c, null);
+        });u(Element.prototype, "setAttributeNS", function (a, c, f) {
+          if (1 !== this.__CE_state) return U.call(this, a, c, f);var d = T.call(this, a, c);U.call(this, a, c, f);f = T.call(this, a, c);b.attributeChangedCallback(this, c, d, f, a);
+        });u(Element.prototype, "removeAttribute", function (a) {
+          if (1 !== this.__CE_state) return S.call(this, a);var c = Q.call(this, a);S.call(this, a);null !== c && b.attributeChangedCallback(this, a, c, null, null);
+        });u(Element.prototype, "removeAttributeNS", function (a, c) {
+          if (1 !== this.__CE_state) return ka.call(this, a, c);var d = T.call(this, a, c);ka.call(this, a, c);var e = T.call(this, a, c);d !== e && b.attributeChangedCallback(this, c, d, e, a);
+        });sa ? c(HTMLElement.prototype, sa) : la ? c(Element.prototype, la) : console.warn("Custom Elements: `Element#insertAdjacentElement` was not patched.");Y(b, Element.prototype, { h: ma, append: na });wa(b);
+      }; /*
+         Copyright (c) 2016 The Polymer Project Authors. All rights reserved.
+         This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+         The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+         The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+         Code distributed by Google as part of the polymer project is also
+         subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+         */
+      var Z = window.customElements;if (!Z || Z.forcePolyfill || "function" != typeof Z.define || "function" != typeof Z.get) {
+        var X = new v();ta();ua();Y(X, DocumentFragment.prototype, { h: ia, append: ja });va();xa();document.__CE_hasRegistry = !0;var customElements = new G(X);Object.defineProperty(window, "customElements", { configurable: !0, enumerable: !0, value: customElements });
+      };
+    }).call(self);
+
+  })(this);
+
+  return _retrieveGlobal();
+});
+$__System.register("a", ["b"], function (_export, _context) {
+  "use strict";
+
+  return {
+    setters: [function (_b) {}],
+    execute: function () {
+
+      class Signal extends Set {
+        constructor() {
+          super();
+
+          this._onceCallbacks = new Set();
+        }
+
+        add(value, { once = false } = {}) {
+          if (once) {
+            this._onceCallbacks.add(value);
+          }
+
+          super.add(value);
+        }
+
+        dispatch(value) {
+          for (let callback of this) {
+            callback(value);
+
+            if (this._onceCallbacks.has(callback)) {
+              this._onceCallbacks.delete(callback);
+              this.delete(callback);
+            }
+          }
+        }
+      }
+
+      class Ticker extends Signal {
+        constructor() {
+          super();
+
+          this._updateBinded = this.update.bind(this);
+
+          this._previousTimestamp = 0;
+          this.deltaTime = 0;
+          this.timeScale = 1;
+
+          this.update();
+        }
+
+        update(time) {
+          requestAnimationFrame(this._updateBinded);
+
+          let timestamp = window.performance ? window.performance.now() : Date.now();
+          this.deltaTime = (timestamp - this._previousTimestamp) * .001;
+          this.timeScale = this.deltaTime / .0166666667;
+          this._previousTimestamp = timestamp;
+
+          this.dispatch(time);
+        }
+      }
+
+      var Ticker$1 = new Ticker();
+
+      class LoopElement extends HTMLElement {
+        constructor({ autoplay = true, background = false } = {}) {
+          super();
+          this._autoplay = autoplay || this.hasAttribute("autoplay");
+          this._background = background || this.hasAttribute("background");
+
+          this.paused = true;
+
+          this._updateBinded = this.update.bind(this);
+        }
+
+        connectedCallback() {
+          if (!this._background) {
+            window.addEventListener("blur", this._pauseBinded = this.pause.bind(this));
+            window.addEventListener("focus", this._playBinded = this.play.bind(this));
+          }
+          if (this._autoplay) {
+            this.play();
+          }
+        }
+
+        disconnectedCallback() {
+          this.pause();
+          window.removeEventListener("blur", this._pauseBinded);
+          window.removeEventListener("focus", this._playBinded);
+        }
+
+        play() {
+          this.paused = false;
+          Ticker$1.add(this._updateBinded);
+          this.dispatchEvent(new Event("playing"));
+        }
+
+        pause() {
+          this.paused = true;
+          Ticker$1.delete(this._updateBinded);
+          this.dispatchEvent(new Event("pause"));
+        }
+
+        update() {}
+      }
+
+      window.customElements.define("dlib-loop", LoopElement);
+
+      let baseURI = "";
+
+      const PROMISES = new Map();
+      const OBJECTS = new Map();
+
+      const TYPE_MAP = new Map([["text", new Set(["txt", "html", "css", "js", "svg"])], ["json", new Set(["json"])], ["binary", new Set(["bin"])]]);
+
+      class Loader {
+        static get onLoad() {
+          return Promise.all(PROMISES.values());
+        }
+
+        static get promises() {
+          return PROMISES;
+        }
+
+        static get typeMap() {
+          return TYPE_MAP;
+        }
+
+        static get(value) {
+          return OBJECTS.get(value);
+        }
+
+        static get baseURI() {
+          return baseURI;
+        }
+
+        static set baseURI(value) {
+          baseURI = value;
+        }
+
+        static load(values) {
+          const returnArray = values instanceof Array;
+
+          if (!returnArray) {
+            values = [values];
+          }
+
+          let promises = [];
+
+          for (let value of values) {
+            if (!value) {
+              continue;
+            }
+
+            let promise = new Promise(function (resolve, reject) {
+              if (PROMISES.get(value)) {
+                PROMISES.get(value).then(resolve);
+                return;
+              }
+
+              if (Loader.get(value)) {
+                resolve(Loader.get(value));
+                return;
+              }
+
+              let onLoad = response => {
+                PROMISES.delete(value);
+                OBJECTS.set(value, response);
+                resolve(response);
+              };
+
+              let element;
+
+              if (typeof value === "string") {
+                let extension = /[\\/](.*)\.(.*)$/.exec(value)[2];
+
+                if (/\.(png|jpg|gif)$/.test(value)) {
+                  element = document.createElement("img");
+                } else if (/\.(mp4|webm)$/.test(value)) {
+                  element = document.createElement("video");
+                } else if (/\.(mp3|ogg)$/.test(value)) {
+                  element = document.createElement("audio");
+                } else if (/\.(woff|woff2|ttf)$/.test(value)) {
+                  let fontFace = new FontFace(/([^\/]*)\.(woff|woff2|ttf)$/.exec(value)[1], `url("${value}")`);
+                  fontFace.load().then(onLoad);
+                  document.fonts.add(fontFace);
+                } else {
+                  fetch(`${baseURI}${value}`).then(response => {
+                    let method;
+                    if (Loader.typeMap.get("json").has(extension)) {
+                      method = "json";
+                    } else if (Loader.typeMap.get("binary").has(extension)) {
+                      method = "arrayBuffer";
+                    } else if (Loader.typeMap.get("text").has(extension)) {
+                      method = "text";
+                    } else {
+                      method = "blob";
+                    }
+                    return response[method]();
+                  }).then(onLoad);
+                }
+              }
+
+              if (value instanceof HTMLElement) {
+                element = value;
+              }
+
+              if (element) {
+                const src = `${baseURI}${element.src || value}`;
+                const loaded = () => {
+                  element.removeEventListener("canplaythrough", loaded);
+                  element.removeEventListener("load", loaded);
+                  onLoad(element);
+                };
+                if (element.play) {
+                  fetch(src).then(() => {
+                    element.addEventListener("canplaythrough", loaded);
+                    element.play();
+                    // TODO: Check if this is still needed
+                    if (!element.autoplay) {
+                      let pauseElement = function () {
+                        element.pause();
+                        element.removeEventListener("playing", pauseElement);
+                      };
+                      element.addEventListener("playing", pauseElement);
+                    }
+                  });
+                } else {
+                  element.addEventListener("load", loaded);
+                }
+                element.src = src;
+              }
+            });
+
+            promises.push(promise);
+            PROMISES.set(value, promise);
+          }
+
+          return returnArray ? Promise.all(promises) : promises[0];
+        }
+      }
+
+      /* Copyright (c) 2015, Brandon Jones, Colin MacKenzie IV.
+      
+      Permission is hereby granted, free of charge, to any person obtaining a copy
+      of this software and associated documentation files (the "Software"), to deal
+      in the Software without restriction, including without limitation the rights
+      to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+      copies of the Software, and to permit persons to whom the Software is
+      furnished to do so, subject to the following conditions:
+      
+      The above copyright notice and this permission notice shall be included in
+      all copies or substantial portions of the Software.
+      
+      THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+      IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+      FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+      AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+      LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+      OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+      THE SOFTWARE. */
+
+      /**
+       * Common utilities
+       * @module glMatrix
+       */
+
+      // Configuration Constants
+      const EPSILON = 0.000001;
+      let ARRAY_TYPE = typeof Float32Array !== 'undefined' ? Float32Array : Array;
+      const RANDOM = Math.random;
+
+      /**
+       * Sets the type of array used when creating new vectors and matrices
+       *
+       * @param {Type} type Array type, such as Float32Array or Array
+       */
+
+      /**
+       * Convert Degree To Radian
+       *
+       * @param {Number} a Angle in Degrees
+       */
+
+      /**
+       * Tests whether or not the arguments have approximately the same value, within an absolute
+       * or relative tolerance of glMatrix.EPSILON (an absolute tolerance is used for values less
+       * than or equal to 1.0, and a relative tolerance is used for larger values)
+       *
+       * @param {Number} a The first number to test.
+       * @param {Number} b The second number to test.
+       * @returns {Boolean} True if the numbers are approximately equal, false otherwise.
+       */
+
+      /* Copyright (c) 2015, Brandon Jones, Colin MacKenzie IV.
+      
+      Permission is hereby granted, free of charge, to any person obtaining a copy
+      of this software and associated documentation files (the "Software"), to deal
+      in the Software without restriction, including without limitation the rights
+      to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+      copies of the Software, and to permit persons to whom the Software is
+      furnished to do so, subject to the following conditions:
+      
+      The above copyright notice and this permission notice shall be included in
+      all copies or substantial portions of the Software.
+      
+      THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+      IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+      FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+      AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+      LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+      OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+      THE SOFTWARE. */
+
+      /**
+       * 4x4 Matrix
+       * @module mat4
+       */
+
+      /**
+       * Creates a new identity mat4
+       *
+       * @returns {mat4} a new 4x4 matrix
+       */
+
+      /**
+       * Creates a new mat4 initialized with values from an existing matrix
+       *
+       * @param {mat4} a matrix to clone
+       * @returns {mat4} a new 4x4 matrix
+       */
+
+      /**
+       * Copy the values from one mat4 to another
+       *
+       * @param {mat4} out the receiving matrix
+       * @param {mat4} a the source matrix
+       * @returns {mat4} out
+       */
+      function copy(out, a) {
+        out[0] = a[0];
+        out[1] = a[1];
+        out[2] = a[2];
+        out[3] = a[3];
+        out[4] = a[4];
+        out[5] = a[5];
+        out[6] = a[6];
+        out[7] = a[7];
+        out[8] = a[8];
+        out[9] = a[9];
+        out[10] = a[10];
+        out[11] = a[11];
+        out[12] = a[12];
+        out[13] = a[13];
+        out[14] = a[14];
+        out[15] = a[15];
+        return out;
+      }
+
+      /**
+       * Create a new mat4 with the given values
+       *
+       * @param {Number} m00 Component in column 0, row 0 position (index 0)
+       * @param {Number} m01 Component in column 0, row 1 position (index 1)
+       * @param {Number} m02 Component in column 0, row 2 position (index 2)
+       * @param {Number} m03 Component in column 0, row 3 position (index 3)
+       * @param {Number} m10 Component in column 1, row 0 position (index 4)
+       * @param {Number} m11 Component in column 1, row 1 position (index 5)
+       * @param {Number} m12 Component in column 1, row 2 position (index 6)
+       * @param {Number} m13 Component in column 1, row 3 position (index 7)
+       * @param {Number} m20 Component in column 2, row 0 position (index 8)
+       * @param {Number} m21 Component in column 2, row 1 position (index 9)
+       * @param {Number} m22 Component in column 2, row 2 position (index 10)
+       * @param {Number} m23 Component in column 2, row 3 position (index 11)
+       * @param {Number} m30 Component in column 3, row 0 position (index 12)
+       * @param {Number} m31 Component in column 3, row 1 position (index 13)
+       * @param {Number} m32 Component in column 3, row 2 position (index 14)
+       * @param {Number} m33 Component in column 3, row 3 position (index 15)
+       * @returns {mat4} A new mat4
+       */
+
+      /**
+       * Set the components of a mat4 to the given values
+       *
+       * @param {mat4} out the receiving matrix
+       * @param {Number} m00 Component in column 0, row 0 position (index 0)
+       * @param {Number} m01 Component in column 0, row 1 position (index 1)
+       * @param {Number} m02 Component in column 0, row 2 position (index 2)
+       * @param {Number} m03 Component in column 0, row 3 position (index 3)
+       * @param {Number} m10 Component in column 1, row 0 position (index 4)
+       * @param {Number} m11 Component in column 1, row 1 position (index 5)
+       * @param {Number} m12 Component in column 1, row 2 position (index 6)
+       * @param {Number} m13 Component in column 1, row 3 position (index 7)
+       * @param {Number} m20 Component in column 2, row 0 position (index 8)
+       * @param {Number} m21 Component in column 2, row 1 position (index 9)
+       * @param {Number} m22 Component in column 2, row 2 position (index 10)
+       * @param {Number} m23 Component in column 2, row 3 position (index 11)
+       * @param {Number} m30 Component in column 3, row 0 position (index 12)
+       * @param {Number} m31 Component in column 3, row 1 position (index 13)
+       * @param {Number} m32 Component in column 3, row 2 position (index 14)
+       * @param {Number} m33 Component in column 3, row 3 position (index 15)
+       * @returns {mat4} out
+       */
+      function set(out, m00, m01, m02, m03, m10, m11, m12, m13, m20, m21, m22, m23, m30, m31, m32, m33) {
+        out[0] = m00;
+        out[1] = m01;
+        out[2] = m02;
+        out[3] = m03;
+        out[4] = m10;
+        out[5] = m11;
+        out[6] = m12;
+        out[7] = m13;
+        out[8] = m20;
+        out[9] = m21;
+        out[10] = m22;
+        out[11] = m23;
+        out[12] = m30;
+        out[13] = m31;
+        out[14] = m32;
+        out[15] = m33;
+        return out;
+      }
+
+      /**
+       * Set a mat4 to the identity matrix
+       *
+       * @param {mat4} out the receiving matrix
+       * @returns {mat4} out
+       */
+      function identity(out) {
+        out[0] = 1;
+        out[1] = 0;
+        out[2] = 0;
+        out[3] = 0;
+        out[4] = 0;
+        out[5] = 1;
+        out[6] = 0;
+        out[7] = 0;
+        out[8] = 0;
+        out[9] = 0;
+        out[10] = 1;
+        out[11] = 0;
+        out[12] = 0;
+        out[13] = 0;
+        out[14] = 0;
+        out[15] = 1;
+        return out;
+      }
+
+      /**
+       * Transpose the values of a mat4
+       *
+       * @param {mat4} out the receiving matrix
+       * @param {mat4} a the source matrix
+       * @returns {mat4} out
+       */
+
+      /**
+       * Inverts a mat4
+       *
+       * @param {mat4} out the receiving matrix
+       * @param {mat4} a the source matrix
+       * @returns {mat4} out
+       */
+      function invert(out, a) {
+        let a00 = a[0],
+            a01 = a[1],
+            a02 = a[2],
+            a03 = a[3];
+        let a10 = a[4],
+            a11 = a[5],
+            a12 = a[6],
+            a13 = a[7];
+        let a20 = a[8],
+            a21 = a[9],
+            a22 = a[10],
+            a23 = a[11];
+        let a30 = a[12],
+            a31 = a[13],
+            a32 = a[14],
+            a33 = a[15];
+
+        let b00 = a00 * a11 - a01 * a10;
+        let b01 = a00 * a12 - a02 * a10;
+        let b02 = a00 * a13 - a03 * a10;
+        let b03 = a01 * a12 - a02 * a11;
+        let b04 = a01 * a13 - a03 * a11;
+        let b05 = a02 * a13 - a03 * a12;
+        let b06 = a20 * a31 - a21 * a30;
+        let b07 = a20 * a32 - a22 * a30;
+        let b08 = a20 * a33 - a23 * a30;
+        let b09 = a21 * a32 - a22 * a31;
+        let b10 = a21 * a33 - a23 * a31;
+        let b11 = a22 * a33 - a23 * a32;
+
+        // Calculate the determinant
+        let det = b00 * b11 - b01 * b10 + b02 * b09 + b03 * b08 - b04 * b07 + b05 * b06;
+
+        if (!det) {
+          return null;
+        }
+        det = 1.0 / det;
+
+        out[0] = (a11 * b11 - a12 * b10 + a13 * b09) * det;
+        out[1] = (a02 * b10 - a01 * b11 - a03 * b09) * det;
+        out[2] = (a31 * b05 - a32 * b04 + a33 * b03) * det;
+        out[3] = (a22 * b04 - a21 * b05 - a23 * b03) * det;
+        out[4] = (a12 * b08 - a10 * b11 - a13 * b07) * det;
+        out[5] = (a00 * b11 - a02 * b08 + a03 * b07) * det;
+        out[6] = (a32 * b02 - a30 * b05 - a33 * b01) * det;
+        out[7] = (a20 * b05 - a22 * b02 + a23 * b01) * det;
+        out[8] = (a10 * b10 - a11 * b08 + a13 * b06) * det;
+        out[9] = (a01 * b08 - a00 * b10 - a03 * b06) * det;
+        out[10] = (a30 * b04 - a31 * b02 + a33 * b00) * det;
+        out[11] = (a21 * b02 - a20 * b04 - a23 * b00) * det;
+        out[12] = (a11 * b07 - a10 * b09 - a12 * b06) * det;
+        out[13] = (a00 * b09 - a01 * b07 + a02 * b06) * det;
+        out[14] = (a31 * b01 - a30 * b03 - a32 * b00) * det;
+        out[15] = (a20 * b03 - a21 * b01 + a22 * b00) * det;
+
+        return out;
+      }
+
+      /**
+       * Calculates the adjugate of a mat4
+       *
+       * @param {mat4} out the receiving matrix
+       * @param {mat4} a the source matrix
+       * @returns {mat4} out
+       */
+
+      /**
+       * Calculates the determinant of a mat4
+       *
+       * @param {mat4} a the source matrix
+       * @returns {Number} determinant of a
+       */
+
+      /**
+       * Multiplies two mat4s
+       *
+       * @param {mat4} out the receiving matrix
+       * @param {mat4} a the first operand
+       * @param {mat4} b the second operand
+       * @returns {mat4} out
+       */
+      function multiply(out, a, b) {
+        let a00 = a[0],
+            a01 = a[1],
+            a02 = a[2],
+            a03 = a[3];
+        let a10 = a[4],
+            a11 = a[5],
+            a12 = a[6],
+            a13 = a[7];
+        let a20 = a[8],
+            a21 = a[9],
+            a22 = a[10],
+            a23 = a[11];
+        let a30 = a[12],
+            a31 = a[13],
+            a32 = a[14],
+            a33 = a[15];
+
+        // Cache only the current line of the second matrix
+        let b0 = b[0],
+            b1 = b[1],
+            b2 = b[2],
+            b3 = b[3];
+        out[0] = b0 * a00 + b1 * a10 + b2 * a20 + b3 * a30;
+        out[1] = b0 * a01 + b1 * a11 + b2 * a21 + b3 * a31;
+        out[2] = b0 * a02 + b1 * a12 + b2 * a22 + b3 * a32;
+        out[3] = b0 * a03 + b1 * a13 + b2 * a23 + b3 * a33;
+
+        b0 = b[4];b1 = b[5];b2 = b[6];b3 = b[7];
+        out[4] = b0 * a00 + b1 * a10 + b2 * a20 + b3 * a30;
+        out[5] = b0 * a01 + b1 * a11 + b2 * a21 + b3 * a31;
+        out[6] = b0 * a02 + b1 * a12 + b2 * a22 + b3 * a32;
+        out[7] = b0 * a03 + b1 * a13 + b2 * a23 + b3 * a33;
+
+        b0 = b[8];b1 = b[9];b2 = b[10];b3 = b[11];
+        out[8] = b0 * a00 + b1 * a10 + b2 * a20 + b3 * a30;
+        out[9] = b0 * a01 + b1 * a11 + b2 * a21 + b3 * a31;
+        out[10] = b0 * a02 + b1 * a12 + b2 * a22 + b3 * a32;
+        out[11] = b0 * a03 + b1 * a13 + b2 * a23 + b3 * a33;
+
+        b0 = b[12];b1 = b[13];b2 = b[14];b3 = b[15];
+        out[12] = b0 * a00 + b1 * a10 + b2 * a20 + b3 * a30;
+        out[13] = b0 * a01 + b1 * a11 + b2 * a21 + b3 * a31;
+        out[14] = b0 * a02 + b1 * a12 + b2 * a22 + b3 * a32;
+        out[15] = b0 * a03 + b1 * a13 + b2 * a23 + b3 * a33;
+        return out;
+      }
+
+      /**
+       * Translate a mat4 by the given vector
+       *
+       * @param {mat4} out the receiving matrix
+       * @param {mat4} a the matrix to translate
+       * @param {vec3} v vector to translate by
+       * @returns {mat4} out
+       */
+      function translate(out, a, v) {
+        let x = v[0],
+            y = v[1],
+            z = v[2];
+        let a00, a01, a02, a03;
+        let a10, a11, a12, a13;
+        let a20, a21, a22, a23;
+
+        if (a === out) {
+          out[12] = a[0] * x + a[4] * y + a[8] * z + a[12];
+          out[13] = a[1] * x + a[5] * y + a[9] * z + a[13];
+          out[14] = a[2] * x + a[6] * y + a[10] * z + a[14];
+          out[15] = a[3] * x + a[7] * y + a[11] * z + a[15];
+        } else {
+          a00 = a[0];a01 = a[1];a02 = a[2];a03 = a[3];
+          a10 = a[4];a11 = a[5];a12 = a[6];a13 = a[7];
+          a20 = a[8];a21 = a[9];a22 = a[10];a23 = a[11];
+
+          out[0] = a00;out[1] = a01;out[2] = a02;out[3] = a03;
+          out[4] = a10;out[5] = a11;out[6] = a12;out[7] = a13;
+          out[8] = a20;out[9] = a21;out[10] = a22;out[11] = a23;
+
+          out[12] = a00 * x + a10 * y + a20 * z + a[12];
+          out[13] = a01 * x + a11 * y + a21 * z + a[13];
+          out[14] = a02 * x + a12 * y + a22 * z + a[14];
+          out[15] = a03 * x + a13 * y + a23 * z + a[15];
+        }
+
+        return out;
+      }
+
+      /**
+       * Scales the mat4 by the dimensions in the given vec3 not using vectorization
+       *
+       * @param {mat4} out the receiving matrix
+       * @param {mat4} a the matrix to scale
+       * @param {vec3} v the vec3 to scale the matrix by
+       * @returns {mat4} out
+       **/
+      function scale(out, a, v) {
+        let x = v[0],
+            y = v[1],
+            z = v[2];
+
+        out[0] = a[0] * x;
+        out[1] = a[1] * x;
+        out[2] = a[2] * x;
+        out[3] = a[3] * x;
+        out[4] = a[4] * y;
+        out[5] = a[5] * y;
+        out[6] = a[6] * y;
+        out[7] = a[7] * y;
+        out[8] = a[8] * z;
+        out[9] = a[9] * z;
+        out[10] = a[10] * z;
+        out[11] = a[11] * z;
+        out[12] = a[12];
+        out[13] = a[13];
+        out[14] = a[14];
+        out[15] = a[15];
+        return out;
+      }
+
+      /**
+       * Rotates a mat4 by the given angle around the given axis
+       *
+       * @param {mat4} out the receiving matrix
+       * @param {mat4} a the matrix to rotate
+       * @param {Number} rad the angle to rotate the matrix by
+       * @param {vec3} axis the axis to rotate around
+       * @returns {mat4} out
+       */
+
+      /**
+       * Rotates a matrix by the given angle around the X axis
+       *
+       * @param {mat4} out the receiving matrix
+       * @param {mat4} a the matrix to rotate
+       * @param {Number} rad the angle to rotate the matrix by
+       * @returns {mat4} out
+       */
+      function rotateX(out, a, rad) {
+        let s = Math.sin(rad);
+        let c = Math.cos(rad);
+        let a10 = a[4];
+        let a11 = a[5];
+        let a12 = a[6];
+        let a13 = a[7];
+        let a20 = a[8];
+        let a21 = a[9];
+        let a22 = a[10];
+        let a23 = a[11];
+
+        if (a !== out) {
+          // If the source and destination differ, copy the unchanged rows
+          out[0] = a[0];
+          out[1] = a[1];
+          out[2] = a[2];
+          out[3] = a[3];
+          out[12] = a[12];
+          out[13] = a[13];
+          out[14] = a[14];
+          out[15] = a[15];
+        }
+
+        // Perform axis-specific matrix multiplication
+        out[4] = a10 * c + a20 * s;
+        out[5] = a11 * c + a21 * s;
+        out[6] = a12 * c + a22 * s;
+        out[7] = a13 * c + a23 * s;
+        out[8] = a20 * c - a10 * s;
+        out[9] = a21 * c - a11 * s;
+        out[10] = a22 * c - a12 * s;
+        out[11] = a23 * c - a13 * s;
+        return out;
+      }
+
+      /**
+       * Rotates a matrix by the given angle around the Y axis
+       *
+       * @param {mat4} out the receiving matrix
+       * @param {mat4} a the matrix to rotate
+       * @param {Number} rad the angle to rotate the matrix by
+       * @returns {mat4} out
+       */
+      function rotateY(out, a, rad) {
+        let s = Math.sin(rad);
+        let c = Math.cos(rad);
+        let a00 = a[0];
+        let a01 = a[1];
+        let a02 = a[2];
+        let a03 = a[3];
+        let a20 = a[8];
+        let a21 = a[9];
+        let a22 = a[10];
+        let a23 = a[11];
+
+        if (a !== out) {
+          // If the source and destination differ, copy the unchanged rows
+          out[4] = a[4];
+          out[5] = a[5];
+          out[6] = a[6];
+          out[7] = a[7];
+          out[12] = a[12];
+          out[13] = a[13];
+          out[14] = a[14];
+          out[15] = a[15];
+        }
+
+        // Perform axis-specific matrix multiplication
+        out[0] = a00 * c - a20 * s;
+        out[1] = a01 * c - a21 * s;
+        out[2] = a02 * c - a22 * s;
+        out[3] = a03 * c - a23 * s;
+        out[8] = a00 * s + a20 * c;
+        out[9] = a01 * s + a21 * c;
+        out[10] = a02 * s + a22 * c;
+        out[11] = a03 * s + a23 * c;
+        return out;
+      }
+
+      /**
+       * Rotates a matrix by the given angle around the Z axis
+       *
+       * @param {mat4} out the receiving matrix
+       * @param {mat4} a the matrix to rotate
+       * @param {Number} rad the angle to rotate the matrix by
+       * @returns {mat4} out
+       */
+      function rotateZ(out, a, rad) {
+        let s = Math.sin(rad);
+        let c = Math.cos(rad);
+        let a00 = a[0];
+        let a01 = a[1];
+        let a02 = a[2];
+        let a03 = a[3];
+        let a10 = a[4];
+        let a11 = a[5];
+        let a12 = a[6];
+        let a13 = a[7];
+
+        if (a !== out) {
+          // If the source and destination differ, copy the unchanged last row
+          out[8] = a[8];
+          out[9] = a[9];
+          out[10] = a[10];
+          out[11] = a[11];
+          out[12] = a[12];
+          out[13] = a[13];
+          out[14] = a[14];
+          out[15] = a[15];
+        }
+
+        // Perform axis-specific matrix multiplication
+        out[0] = a00 * c + a10 * s;
+        out[1] = a01 * c + a11 * s;
+        out[2] = a02 * c + a12 * s;
+        out[3] = a03 * c + a13 * s;
+        out[4] = a10 * c - a00 * s;
+        out[5] = a11 * c - a01 * s;
+        out[6] = a12 * c - a02 * s;
+        out[7] = a13 * c - a03 * s;
+        return out;
+      }
+
+      /**
+       * Creates a matrix from a vector translation
+       * This is equivalent to (but much faster than):
+       *
+       *     mat4.identity(dest);
+       *     mat4.translate(dest, dest, vec);
+       *
+       * @param {mat4} out mat4 receiving operation result
+       * @param {vec3} v Translation vector
+       * @returns {mat4} out
+       */
+
+      /**
+       * Creates a matrix from a vector scaling
+       * This is equivalent to (but much faster than):
+       *
+       *     mat4.identity(dest);
+       *     mat4.scale(dest, dest, vec);
+       *
+       * @param {mat4} out mat4 receiving operation result
+       * @param {vec3} v Scaling vector
+       * @returns {mat4} out
+       */
+
+      /**
+       * Creates a matrix from a given angle around a given axis
+       * This is equivalent to (but much faster than):
+       *
+       *     mat4.identity(dest);
+       *     mat4.rotate(dest, dest, rad, axis);
+       *
+       * @param {mat4} out mat4 receiving operation result
+       * @param {Number} rad the angle to rotate the matrix by
+       * @param {vec3} axis the axis to rotate around
+       * @returns {mat4} out
+       */
+
+      /**
+       * Creates a matrix from the given angle around the X axis
+       * This is equivalent to (but much faster than):
+       *
+       *     mat4.identity(dest);
+       *     mat4.rotateX(dest, dest, rad);
+       *
+       * @param {mat4} out mat4 receiving operation result
+       * @param {Number} rad the angle to rotate the matrix by
+       * @returns {mat4} out
+       */
+
+      /**
+       * Creates a matrix from the given angle around the Y axis
+       * This is equivalent to (but much faster than):
+       *
+       *     mat4.identity(dest);
+       *     mat4.rotateY(dest, dest, rad);
+       *
+       * @param {mat4} out mat4 receiving operation result
+       * @param {Number} rad the angle to rotate the matrix by
+       * @returns {mat4} out
+       */
+
+      /**
+       * Creates a matrix from the given angle around the Z axis
+       * This is equivalent to (but much faster than):
+       *
+       *     mat4.identity(dest);
+       *     mat4.rotateZ(dest, dest, rad);
+       *
+       * @param {mat4} out mat4 receiving operation result
+       * @param {Number} rad the angle to rotate the matrix by
+       * @returns {mat4} out
+       */
+
+      /**
+       * Creates a matrix from a quaternion rotation and vector translation
+       * This is equivalent to (but much faster than):
+       *
+       *     mat4.identity(dest);
+       *     mat4.translate(dest, vec);
+       *     let quatMat = mat4.create();
+       *     quat4.toMat4(quat, quatMat);
+       *     mat4.multiply(dest, quatMat);
+       *
+       * @param {mat4} out mat4 receiving operation result
+       * @param {quat4} q Rotation quaternion
+       * @param {vec3} v Translation vector
+       * @returns {mat4} out
+       */
+
+      /**
+       * Returns the translation vector component of a transformation
+       *  matrix. If a matrix is built with fromRotationTranslation,
+       *  the returned vector will be the same as the translation vector
+       *  originally supplied.
+       * @param  {vec3} out Vector to receive translation component
+       * @param  {mat4} mat Matrix to be decomposed (input)
+       * @return {vec3} out
+       */
+
+      /**
+       * Returns the scaling factor component of a transformation
+       *  matrix. If a matrix is built with fromRotationTranslationScale
+       *  with a normalized Quaternion paramter, the returned vector will be
+       *  the same as the scaling vector
+       *  originally supplied.
+       * @param  {vec3} out Vector to receive scaling factor component
+       * @param  {mat4} mat Matrix to be decomposed (input)
+       * @return {vec3} out
+       */
+
+      /**
+       * Returns a quaternion representing the rotational component
+       *  of a transformation matrix. If a matrix is built with
+       *  fromRotationTranslation, the returned quaternion will be the
+       *  same as the quaternion originally supplied.
+       * @param {quat} out Quaternion to receive the rotation component
+       * @param {mat4} mat Matrix to be decomposed (input)
+       * @return {quat} out
+       */
+
+      /**
+       * Creates a matrix from a quaternion rotation, vector translation and vector scale
+       * This is equivalent to (but much faster than):
+       *
+       *     mat4.identity(dest);
+       *     mat4.translate(dest, vec);
+       *     let quatMat = mat4.create();
+       *     quat4.toMat4(quat, quatMat);
+       *     mat4.multiply(dest, quatMat);
+       *     mat4.scale(dest, scale)
+       *
+       * @param {mat4} out mat4 receiving operation result
+       * @param {quat4} q Rotation quaternion
+       * @param {vec3} v Translation vector
+       * @param {vec3} s Scaling vector
+       * @returns {mat4} out
+       */
+
+      /**
+       * Creates a matrix from a quaternion rotation, vector translation and vector scale, rotating and scaling around the given origin
+       * This is equivalent to (but much faster than):
+       *
+       *     mat4.identity(dest);
+       *     mat4.translate(dest, vec);
+       *     mat4.translate(dest, origin);
+       *     let quatMat = mat4.create();
+       *     quat4.toMat4(quat, quatMat);
+       *     mat4.multiply(dest, quatMat);
+       *     mat4.scale(dest, scale)
+       *     mat4.translate(dest, negativeOrigin);
+       *
+       * @param {mat4} out mat4 receiving operation result
+       * @param {quat4} q Rotation quaternion
+       * @param {vec3} v Translation vector
+       * @param {vec3} s Scaling vector
+       * @param {vec3} o The origin vector around which to scale and rotate
+       * @returns {mat4} out
+       */
+
+      /**
+       * Calculates a 4x4 matrix from the given quaternion
+       *
+       * @param {mat4} out mat4 receiving operation result
+       * @param {quat} q Quaternion to create matrix from
+       *
+       * @returns {mat4} out
+       */
+      function fromQuat(out, q) {
+        let x = q[0],
+            y = q[1],
+            z = q[2],
+            w = q[3];
+        let x2 = x + x;
+        let y2 = y + y;
+        let z2 = z + z;
+
+        let xx = x * x2;
+        let yx = y * x2;
+        let yy = y * y2;
+        let zx = z * x2;
+        let zy = z * y2;
+        let zz = z * z2;
+        let wx = w * x2;
+        let wy = w * y2;
+        let wz = w * z2;
+
+        out[0] = 1 - yy - zz;
+        out[1] = yx + wz;
+        out[2] = zx - wy;
+        out[3] = 0;
+
+        out[4] = yx - wz;
+        out[5] = 1 - xx - zz;
+        out[6] = zy + wx;
+        out[7] = 0;
+
+        out[8] = zx + wy;
+        out[9] = zy - wx;
+        out[10] = 1 - xx - yy;
+        out[11] = 0;
+
+        out[12] = 0;
+        out[13] = 0;
+        out[14] = 0;
+        out[15] = 1;
+
+        return out;
+      }
+
+      /**
+       * Generates a frustum matrix with the given bounds
+       *
+       * @param {mat4} out mat4 frustum matrix will be written into
+       * @param {Number} left Left bound of the frustum
+       * @param {Number} right Right bound of the frustum
+       * @param {Number} bottom Bottom bound of the frustum
+       * @param {Number} top Top bound of the frustum
+       * @param {Number} near Near bound of the frustum
+       * @param {Number} far Far bound of the frustum
+       * @returns {mat4} out
+       */
+
+      /**
+       * Generates a perspective projection matrix with the given bounds
+       *
+       * @param {mat4} out mat4 frustum matrix will be written into
+       * @param {number} fovy Vertical field of view in radians
+       * @param {number} aspect Aspect ratio. typically viewport width/height
+       * @param {number} near Near bound of the frustum
+       * @param {number} far Far bound of the frustum
+       * @returns {mat4} out
+       */
+      function perspective(out, fovy, aspect, near, far) {
+        let f = 1.0 / Math.tan(fovy / 2);
+        let nf = 1 / (near - far);
+        out[0] = f / aspect;
+        out[1] = 0;
+        out[2] = 0;
+        out[3] = 0;
+        out[4] = 0;
+        out[5] = f;
+        out[6] = 0;
+        out[7] = 0;
+        out[8] = 0;
+        out[9] = 0;
+        out[10] = (far + near) * nf;
+        out[11] = -1;
+        out[12] = 0;
+        out[13] = 0;
+        out[14] = 2 * far * near * nf;
+        out[15] = 0;
+        return out;
+      }
+
+      /**
+       * Generates a perspective projection matrix with the given field of view.
+       * This is primarily useful for generating projection matrices to be used
+       * with the still experiemental WebVR API.
+       *
+       * @param {mat4} out mat4 frustum matrix will be written into
+       * @param {Object} fov Object containing the following values: upDegrees, downDegrees, leftDegrees, rightDegrees
+       * @param {number} near Near bound of the frustum
+       * @param {number} far Far bound of the frustum
+       * @returns {mat4} out
+       */
+
+      /**
+       * Generates a orthogonal projection matrix with the given bounds
+       *
+       * @param {mat4} out mat4 frustum matrix will be written into
+       * @param {number} left Left bound of the frustum
+       * @param {number} right Right bound of the frustum
+       * @param {number} bottom Bottom bound of the frustum
+       * @param {number} top Top bound of the frustum
+       * @param {number} near Near bound of the frustum
+       * @param {number} far Far bound of the frustum
+       * @returns {mat4} out
+       */
+
+      /**
+       * Generates a look-at matrix with the given eye position, focal point, and up axis
+       *
+       * @param {mat4} out mat4 frustum matrix will be written into
+       * @param {vec3} eye Position of the viewer
+       * @param {vec3} center Point the viewer is looking at
+       * @param {vec3} up vec3 pointing up
+       * @returns {mat4} out
+       */
+
+      /**
+       * Generates a matrix that makes something look at something else.
+       *
+       * @param {mat4} out mat4 frustum matrix will be written into
+       * @param {vec3} eye Position of the viewer
+       * @param {vec3} center Point the viewer is looking at
+       * @param {vec3} up vec3 pointing up
+       * @returns {mat4} out
+       */
+
+      /**
+       * Returns a string representation of a mat4
+       *
+       * @param {mat4} a matrix to represent as a string
+       * @returns {String} string representation of the matrix
+       */
+
+      /**
+       * Returns Frobenius norm of a mat4
+       *
+       * @param {mat4} a the matrix to calculate Frobenius norm of
+       * @returns {Number} Frobenius norm
+       */
+
+      /**
+       * Adds two mat4's
+       *
+       * @param {mat4} out the receiving matrix
+       * @param {mat4} a the first operand
+       * @param {mat4} b the second operand
+       * @returns {mat4} out
+       */
+
+      /**
+       * Subtracts matrix b from matrix a
+       *
+       * @param {mat4} out the receiving matrix
+       * @param {mat4} a the first operand
+       * @param {mat4} b the second operand
+       * @returns {mat4} out
+       */
+
+      /**
+       * Multiply each element of the matrix by a scalar.
+       *
+       * @param {mat4} out the receiving matrix
+       * @param {mat4} a the matrix to scale
+       * @param {Number} b amount to scale the matrix's elements by
+       * @returns {mat4} out
+       */
+
+      /**
+       * Adds two mat4's after multiplying each element of the second operand by a scalar value.
+       *
+       * @param {mat4} out the receiving vector
+       * @param {mat4} a the first operand
+       * @param {mat4} b the second operand
+       * @param {Number} scale the amount to scale b's elements by before adding
+       * @returns {mat4} out
+       */
+
+      /**
+       * Returns whether or not the matrices have exactly the same elements in the same position (when compared with ===)
+       *
+       * @param {mat4} a The first matrix.
+       * @param {mat4} b The second matrix.
+       * @returns {Boolean} True if the matrices are equal, false otherwise.
+       */
+
+      /**
+       * Returns whether or not the matrices have approximately the same elements in the same position.
+       *
+       * @param {mat4} a The first matrix.
+       * @param {mat4} b The second matrix.
+       * @returns {Boolean} True if the matrices are equal, false otherwise.
+       */
+
+      /**
+       * Alias for {@link mat4.multiply}
+       * @function
+       */
+
+      /**
+       * Alias for {@link mat4.subtract}
+       * @function
+       */
+
+      class Matrix4 extends Float32Array {
+        constructor(array = [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1]) {
+          super(array);
+          return this;
+        }
+
+        set x(value) {
+          this[12] = value;
+        }
+
+        get x() {
+          return this[12];
+        }
+
+        set y(value) {
+          this[13] = value;
+        }
+
+        get y() {
+          return this[13];
+        }
+
+        set z(value) {
+          this[14] = value;
+        }
+
+        get z() {
+          return this[14];
+        }
+
+        set w(value) {
+          this[15] = value;
+        }
+
+        get w() {
+          return this[15];
+        }
+
+        copy(matrix4) {
+          copy(this, matrix4);
+          return this;
+        }
+
+        set(m00, m01, m02, m03, m10, m11, m12, m13, m20, m21, m22, m23, m30, m31, m32, m33) {
+          if (m00.length) {
+            return this.copy(m00);
+          }
+          set(this, m00, m01, m02, m03, m10, m11, m12, m13, m20, m21, m22, m23, m30, m31, m32, m33);
+          return this;
+        }
+
+        translate(vector3, matrix4 = this) {
+          translate(this, matrix4, vector3);
+          return this;
+        }
+
+        rotateX(value, matrix4 = this) {
+          rotateX(this, matrix4, value);
+          return this;
+        }
+
+        rotateY(value, matrix4 = this) {
+          rotateY(this, matrix4, value);
+          return this;
+        }
+
+        rotateZ(value, matrix4 = this) {
+          rotateZ(this, matrix4, value);
+          return this;
+        }
+
+        scale(value, matrix4 = this) {
+          scale(this, matrix4, typeof value === "number" ? [value, value, value] : value);
+          return this;
+        }
+
+        multiply(matrix4a, matrix4b) {
+          if (matrix4b) {
+            multiply(this, matrix4a, matrix4b);
+          } else {
+            multiply(this, this, matrix4a);
+          }
+          return this;
+        }
+
+        identity() {
+          identity(this);
+          return this;
+        }
+
+        copy(matrix4) {
+          copy(this, matrix4);
+          return this;
+        }
+
+        fromPerspective({ fov, aspectRatio, near, far } = {}) {
+          perspective(this, fov, aspectRatio, near, far);
+          return this;
+        }
+
+        fromQuaternion(quaternion) {
+          fromQuat(this, quaternion);
+          return this;
+        }
+
+        setPosition(vector3) {
+          this.x = vector3[0];
+          this.y = vector3[1];
+          this.z = vector3[2];
+          return this;
+        }
+
+        invert(matrix4 = this) {
+          invert(this, matrix4);
+          return this;
+        }
+      }
+
+      /* Copyright (c) 2015, Brandon Jones, Colin MacKenzie IV.
+      
+      Permission is hereby granted, free of charge, to any person obtaining a copy
+      of this software and associated documentation files (the "Software"), to deal
+      in the Software without restriction, including without limitation the rights
+      to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+      copies of the Software, and to permit persons to whom the Software is
+      furnished to do so, subject to the following conditions:
+      
+      The above copyright notice and this permission notice shall be included in
+      all copies or substantial portions of the Software.
+      
+      THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+      IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+      FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+      AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+      LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+      OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+      THE SOFTWARE. */
+
+      /**
+       * 2 Dimensional Vector
+       * @module vec2
+       */
+
+      /**
+       * Creates a new, empty vec2
+       *
+       * @returns {vec2} a new 2D vector
+       */
+      function create$1() {
+        let out = new ARRAY_TYPE(2);
+        out[0] = 0;
+        out[1] = 0;
+        return out;
+      }
+
+      /**
+       * Creates a new vec2 initialized with values from an existing vector
+       *
+       * @param {vec2} a vector to clone
+       * @returns {vec2} a new 2D vector
+       */
+
+      /**
+       * Creates a new vec2 initialized with the given values
+       *
+       * @param {Number} x X component
+       * @param {Number} y Y component
+       * @returns {vec2} a new 2D vector
+       */
+
+      /**
+       * Copy the values from one vec2 to another
+       *
+       * @param {vec2} out the receiving vector
+       * @param {vec2} a the source vector
+       * @returns {vec2} out
+       */
+      function copy$1(out, a) {
+        out[0] = a[0];
+        out[1] = a[1];
+        return out;
+      }
+
+      /**
+       * Set the components of a vec2 to the given values
+       *
+       * @param {vec2} out the receiving vector
+       * @param {Number} x X component
+       * @param {Number} y Y component
+       * @returns {vec2} out
+       */
+      function set$1(out, x, y) {
+        out[0] = x;
+        out[1] = y;
+        return out;
+      }
+
+      /**
+       * Adds two vec2's
+       *
+       * @param {vec2} out the receiving vector
+       * @param {vec2} a the first operand
+       * @param {vec2} b the second operand
+       * @returns {vec2} out
+       */
+      function add$1(out, a, b) {
+        out[0] = a[0] + b[0];
+        out[1] = a[1] + b[1];
+        return out;
+      }
+
+      /**
+       * Subtracts vector b from vector a
+       *
+       * @param {vec2} out the receiving vector
+       * @param {vec2} a the first operand
+       * @param {vec2} b the second operand
+       * @returns {vec2} out
+       */
+      function subtract$1(out, a, b) {
+        out[0] = a[0] - b[0];
+        out[1] = a[1] - b[1];
+        return out;
+      }
+
+      /**
+       * Multiplies two vec2's
+       *
+       * @param {vec2} out the receiving vector
+       * @param {vec2} a the first operand
+       * @param {vec2} b the second operand
+       * @returns {vec2} out
+       */
+
+      /**
+       * Divides two vec2's
+       *
+       * @param {vec2} out the receiving vector
+       * @param {vec2} a the first operand
+       * @param {vec2} b the second operand
+       * @returns {vec2} out
+       */
+
+      /**
+       * Math.ceil the components of a vec2
+       *
+       * @param {vec2} out the receiving vector
+       * @param {vec2} a vector to ceil
+       * @returns {vec2} out
+       */
+
+      /**
+       * Math.floor the components of a vec2
+       *
+       * @param {vec2} out the receiving vector
+       * @param {vec2} a vector to floor
+       * @returns {vec2} out
+       */
+
+      /**
+       * Returns the minimum of two vec2's
+       *
+       * @param {vec2} out the receiving vector
+       * @param {vec2} a the first operand
+       * @param {vec2} b the second operand
+       * @returns {vec2} out
+       */
+
+      /**
+       * Returns the maximum of two vec2's
+       *
+       * @param {vec2} out the receiving vector
+       * @param {vec2} a the first operand
+       * @param {vec2} b the second operand
+       * @returns {vec2} out
+       */
+
+      /**
+       * Math.round the components of a vec2
+       *
+       * @param {vec2} out the receiving vector
+       * @param {vec2} a vector to round
+       * @returns {vec2} out
+       */
+
+      /**
+       * Scales a vec2 by a scalar number
+       *
+       * @param {vec2} out the receiving vector
+       * @param {vec2} a the vector to scale
+       * @param {Number} b amount to scale the vector by
+       * @returns {vec2} out
+       */
+      function scale$1(out, a, b) {
+        out[0] = a[0] * b;
+        out[1] = a[1] * b;
+        return out;
+      }
+
+      /**
+       * Adds two vec2's after scaling the second operand by a scalar value
+       *
+       * @param {vec2} out the receiving vector
+       * @param {vec2} a the first operand
+       * @param {vec2} b the second operand
+       * @param {Number} scale the amount to scale b by before adding
+       * @returns {vec2} out
+       */
+
+      /**
+       * Calculates the euclidian distance between two vec2's
+       *
+       * @param {vec2} a the first operand
+       * @param {vec2} b the second operand
+       * @returns {Number} distance between a and b
+       */
+
+      /**
+       * Calculates the squared euclidian distance between two vec2's
+       *
+       * @param {vec2} a the first operand
+       * @param {vec2} b the second operand
+       * @returns {Number} squared distance between a and b
+       */
+
+      /**
+       * Calculates the length of a vec2
+       *
+       * @param {vec2} a vector to calculate length of
+       * @returns {Number} length of a
+       */
+      function length(a) {
+        var x = a[0],
+            y = a[1];
+        return Math.sqrt(x * x + y * y);
+      }
+
+      /**
+       * Calculates the squared length of a vec2
+       *
+       * @param {vec2} a vector to calculate squared length of
+       * @returns {Number} squared length of a
+       */
+      function squaredLength(a) {
+        var x = a[0],
+            y = a[1];
+        return x * x + y * y;
+      }
+
+      /**
+       * Negates the components of a vec2
+       *
+       * @param {vec2} out the receiving vector
+       * @param {vec2} a vector to negate
+       * @returns {vec2} out
+       */
+      function negate(out, a) {
+        out[0] = -a[0];
+        out[1] = -a[1];
+        return out;
+      }
+
+      /**
+       * Returns the inverse of the components of a vec2
+       *
+       * @param {vec2} out the receiving vector
+       * @param {vec2} a vector to invert
+       * @returns {vec2} out
+       */
+
+      /**
+       * Normalize a vec2
+       *
+       * @param {vec2} out the receiving vector
+       * @param {vec2} a vector to normalize
+       * @returns {vec2} out
+       */
+      function normalize(out, a) {
+        var x = a[0],
+            y = a[1];
+        var len = x * x + y * y;
+        if (len > 0) {
+          //TODO: evaluate use of glm_invsqrt here?
+          len = 1 / Math.sqrt(len);
+          out[0] = a[0] * len;
+          out[1] = a[1] * len;
+        }
+        return out;
+      }
+
+      /**
+       * Calculates the dot product of two vec2's
+       *
+       * @param {vec2} a the first operand
+       * @param {vec2} b the second operand
+       * @returns {Number} dot product of a and b
+       */
+      function dot(a, b) {
+        return a[0] * b[0] + a[1] * b[1];
+      }
+
+      /**
+       * Computes the cross product of two vec2's
+       * Note that the cross product must by definition produce a 3D vector
+       *
+       * @param {vec3} out the receiving vector
+       * @param {vec2} a the first operand
+       * @param {vec2} b the second operand
+       * @returns {vec3} out
+       */
+      function cross(out, a, b) {
+        var z = a[0] * b[1] - a[1] * b[0];
+        out[0] = out[1] = 0;
+        out[2] = z;
+        return out;
+      }
+
+      /**
+       * Performs a linear interpolation between two vec2's
+       *
+       * @param {vec2} out the receiving vector
+       * @param {vec2} a the first operand
+       * @param {vec2} b the second operand
+       * @param {Number} t interpolation amount between the two inputs
+       * @returns {vec2} out
+       */
+      function lerp(out, a, b, t) {
+        var ax = a[0],
+            ay = a[1];
+        out[0] = ax + t * (b[0] - ax);
+        out[1] = ay + t * (b[1] - ay);
+        return out;
+      }
+
+      /**
+       * Generates a random vector with the given scale
+       *
+       * @param {vec2} out the receiving vector
+       * @param {Number} [scale] Length of the resulting vector. If ommitted, a unit vector will be returned
+       * @returns {vec2} out
+       */
+
+      /**
+       * Transforms the vec2 with a mat2
+       *
+       * @param {vec2} out the receiving vector
+       * @param {vec2} a the vector to transform
+       * @param {mat2} m matrix to transform with
+       * @returns {vec2} out
+       */
+
+      /**
+       * Transforms the vec2 with a mat2d
+       *
+       * @param {vec2} out the receiving vector
+       * @param {vec2} a the vector to transform
+       * @param {mat2d} m matrix to transform with
+       * @returns {vec2} out
+       */
+
+      /**
+       * Transforms the vec2 with a mat3
+       * 3rd vector component is implicitly '1'
+       *
+       * @param {vec2} out the receiving vector
+       * @param {vec2} a the vector to transform
+       * @param {mat3} m matrix to transform with
+       * @returns {vec2} out
+       */
+      function transformMat3(out, a, m) {
+        var x = a[0],
+            y = a[1];
+        out[0] = m[0] * x + m[3] * y + m[6];
+        out[1] = m[1] * x + m[4] * y + m[7];
+        return out;
+      }
+
+      /**
+       * Transforms the vec2 with a mat4
+       * 3rd vector component is implicitly '0'
+       * 4th vector component is implicitly '1'
+       *
+       * @param {vec2} out the receiving vector
+       * @param {vec2} a the vector to transform
+       * @param {mat4} m matrix to transform with
+       * @returns {vec2} out
+       */
+      function transformMat4(out, a, m) {
+        let x = a[0];
+        let y = a[1];
+        out[0] = m[0] * x + m[4] * y + m[12];
+        out[1] = m[1] * x + m[5] * y + m[13];
+        return out;
+      }
+
+      /**
+       * Returns a string representation of a vector
+       *
+       * @param {vec2} a vector to represent as a string
+       * @returns {String} string representation of the vector
+       */
+
+      /**
+       * Returns whether or not the vectors exactly have the same elements in the same position (when compared with ===)
+       *
+       * @param {vec2} a The first vector.
+       * @param {vec2} b The second vector.
+       * @returns {Boolean} True if the vectors are equal, false otherwise.
+       */
+      function exactEquals$1(a, b) {
+        return a[0] === b[0] && a[1] === b[1];
+      }
+
+      /**
+       * Returns whether or not the vectors have approximately the same elements in the same position.
+       *
+       * @param {vec2} a The first vector.
+       * @param {vec2} b The second vector.
+       * @returns {Boolean} True if the vectors are equal, false otherwise.
+       */
+
+      /**
+       * Alias for {@link vec2.length}
+       * @function
+       */
+
+      /**
+       * Alias for {@link vec2.subtract}
+       * @function
+       */
+
+      /**
+       * Alias for {@link vec2.multiply}
+       * @function
+       */
+
+      /**
+       * Alias for {@link vec2.divide}
+       * @function
+       */
+
+      /**
+       * Alias for {@link vec2.distance}
+       * @function
+       */
+
+      /**
+       * Alias for {@link vec2.squaredDistance}
+       * @function
+       */
+
+      /**
+       * Alias for {@link vec2.squaredLength}
+       * @function
+       */
+
+      /**
+       * Perform some operation over an array of vec2s.
+       *
+       * @param {Array} a the array of vectors to iterate over
+       * @param {Number} stride Number of elements between the start of each vec2. If 0 assumes tightly packed
+       * @param {Number} offset Number of elements to skip at the beginning of the array
+       * @param {Number} count Number of vec2s to iterate over. If 0 iterates over entire array
+       * @param {Function} fn Function to call for each vector in the array
+       * @param {Object} [arg] additional argument to pass to fn
+       * @returns {Array} a
+       * @function
+       */
+      const forEach = function () {
+        let vec = create$1();
+
+        return function (a, stride, offset, count, fn, arg) {
+          let i, l;
+          if (!stride) {
+            stride = 2;
+          }
+
+          if (!offset) {
+            offset = 0;
+          }
+
+          if (count) {
+            l = Math.min(count * stride + offset, a.length);
+          } else {
+            l = a.length;
+          }
+
+          for (i = offset; i < l; i += stride) {
+            vec[0] = a[i];vec[1] = a[i + 1];
+            fn(vec, vec, arg);
+            a[i] = vec[0];a[i + 1] = vec[1];
+          }
+
+          return a;
+        };
+      }();
+
+      class Vector2 extends Float32Array {
+        constructor(x = 0, y = 0) {
+          super(2);
+          this.set(x, y);
+          return this;
+        }
+
+        get x() {
+          return this[0];
+        }
+
+        set x(value) {
+          this[0] = value;
+        }
+
+        get y() {
+          return this[1];
+        }
+
+        set y(value) {
+          this[1] = value;
+        }
+
+        set(x, y) {
+          set$1(this, x, y);
+          return this;
+        }
+
+        copy(vector2) {
+          copy$1(this, vector2);
+          return this;
+        }
+
+        add(vector2) {
+          add$1(this, this, vector2);
+          return this;
+        }
+
+        get size() {
+          return length(this);
+        }
+
+        get squaredSize() {
+          return squaredLength(this);
+        }
+
+        subtract(vector2) {
+          subtract$1(this, this, vector2);
+          return this;
+        }
+
+        negate(vector2 = this) {
+          negate(this, vector2);
+          return this;
+        }
+
+        cross(vector2a, vector2b) {
+          cross(this, vector2a, vector2b);
+          return this;
+        }
+
+        scale(value) {
+          scale$1(this, this, value);
+          return this;
+        }
+
+        normalize() {
+          normalize(this, this);
+        }
+
+        dot(vector2) {
+          return dot(this, vector2);
+        }
+
+        equals(vector2) {
+          return exactEquals$1(this, vector2);
+        }
+
+        applyMatrix3(matrix3) {
+          transformMat3(this, this, matrix3);
+          return this;
+        }
+
+        applyMatrix4(matrix4) {
+          transformMat4(this, this, matrix4);
+          return this;
+        }
+
+        lerp(vector2, value) {
+          lerp(this, this, vector2, value);
+        }
+
+        clone() {
+          return new Vector2(this.x, this.y);
+        }
+      }
+
+      /* Copyright (c) 2015, Brandon Jones, Colin MacKenzie IV.
+      
+      Permission is hereby granted, free of charge, to any person obtaining a copy
+      of this software and associated documentation files (the "Software"), to deal
+      in the Software without restriction, including without limitation the rights
+      to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+      copies of the Software, and to permit persons to whom the Software is
+      furnished to do so, subject to the following conditions:
+      
+      The above copyright notice and this permission notice shall be included in
+      all copies or substantial portions of the Software.
+      
+      THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+      IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+      FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+      AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+      LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+      OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+      THE SOFTWARE. */
+
+      /**
+       * 3 Dimensional Vector
+       * @module vec3
+       */
+
+      /**
+       * Creates a new, empty vec3
+       *
+       * @returns {vec3} a new 3D vector
+       */
+      function create$2() {
+        let out = new ARRAY_TYPE(3);
+        out[0] = 0;
+        out[1] = 0;
+        out[2] = 0;
+        return out;
+      }
+
+      /**
+       * Creates a new vec3 initialized with values from an existing vector
+       *
+       * @param {vec3} a vector to clone
+       * @returns {vec3} a new 3D vector
+       */
+
+      /**
+       * Calculates the length of a vec3
+       *
+       * @param {vec3} a vector to calculate length of
+       * @returns {Number} length of a
+       */
+      function length$1(a) {
+        let x = a[0];
+        let y = a[1];
+        let z = a[2];
+        return Math.sqrt(x * x + y * y + z * z);
+      }
+
+      /**
+       * Creates a new vec3 initialized with the given values
+       *
+       * @param {Number} x X component
+       * @param {Number} y Y component
+       * @param {Number} z Z component
+       * @returns {vec3} a new 3D vector
+       */
+      function fromValues$2(x, y, z) {
+        let out = new ARRAY_TYPE(3);
+        out[0] = x;
+        out[1] = y;
+        out[2] = z;
+        return out;
+      }
+
+      /**
+       * Copy the values from one vec3 to another
+       *
+       * @param {vec3} out the receiving vector
+       * @param {vec3} a the source vector
+       * @returns {vec3} out
+       */
+      function copy$2(out, a) {
+        out[0] = a[0];
+        out[1] = a[1];
+        out[2] = a[2];
+        return out;
+      }
+
+      /**
+       * Set the components of a vec3 to the given values
+       *
+       * @param {vec3} out the receiving vector
+       * @param {Number} x X component
+       * @param {Number} y Y component
+       * @param {Number} z Z component
+       * @returns {vec3} out
+       */
+      function set$2(out, x, y, z) {
+        out[0] = x;
+        out[1] = y;
+        out[2] = z;
+        return out;
+      }
+
+      /**
+       * Adds two vec3's
+       *
+       * @param {vec3} out the receiving vector
+       * @param {vec3} a the first operand
+       * @param {vec3} b the second operand
+       * @returns {vec3} out
+       */
+      function add$2(out, a, b) {
+        out[0] = a[0] + b[0];
+        out[1] = a[1] + b[1];
+        out[2] = a[2] + b[2];
+        return out;
+      }
+
+      /**
+       * Subtracts vector b from vector a
+       *
+       * @param {vec3} out the receiving vector
+       * @param {vec3} a the first operand
+       * @param {vec3} b the second operand
+       * @returns {vec3} out
+       */
+      function subtract$2(out, a, b) {
+        out[0] = a[0] - b[0];
+        out[1] = a[1] - b[1];
+        out[2] = a[2] - b[2];
+        return out;
+      }
+
+      /**
+       * Multiplies two vec3's
+       *
+       * @param {vec3} out the receiving vector
+       * @param {vec3} a the first operand
+       * @param {vec3} b the second operand
+       * @returns {vec3} out
+       */
+
+      /**
+       * Divides two vec3's
+       *
+       * @param {vec3} out the receiving vector
+       * @param {vec3} a the first operand
+       * @param {vec3} b the second operand
+       * @returns {vec3} out
+       */
+
+      /**
+       * Math.ceil the components of a vec3
+       *
+       * @param {vec3} out the receiving vector
+       * @param {vec3} a vector to ceil
+       * @returns {vec3} out
+       */
+
+      /**
+       * Math.floor the components of a vec3
+       *
+       * @param {vec3} out the receiving vector
+       * @param {vec3} a vector to floor
+       * @returns {vec3} out
+       */
+
+      /**
+       * Returns the minimum of two vec3's
+       *
+       * @param {vec3} out the receiving vector
+       * @param {vec3} a the first operand
+       * @param {vec3} b the second operand
+       * @returns {vec3} out
+       */
+
+      /**
+       * Returns the maximum of two vec3's
+       *
+       * @param {vec3} out the receiving vector
+       * @param {vec3} a the first operand
+       * @param {vec3} b the second operand
+       * @returns {vec3} out
+       */
+
+      /**
+       * Math.round the components of a vec3
+       *
+       * @param {vec3} out the receiving vector
+       * @param {vec3} a vector to round
+       * @returns {vec3} out
+       */
+
+      /**
+       * Scales a vec3 by a scalar number
+       *
+       * @param {vec3} out the receiving vector
+       * @param {vec3} a the vector to scale
+       * @param {Number} b amount to scale the vector by
+       * @returns {vec3} out
+       */
+      function scale$2(out, a, b) {
+        out[0] = a[0] * b;
+        out[1] = a[1] * b;
+        out[2] = a[2] * b;
+        return out;
+      }
+
+      /**
+       * Adds two vec3's after scaling the second operand by a scalar value
+       *
+       * @param {vec3} out the receiving vector
+       * @param {vec3} a the first operand
+       * @param {vec3} b the second operand
+       * @param {Number} scale the amount to scale b by before adding
+       * @returns {vec3} out
+       */
+
+      /**
+       * Calculates the euclidian distance between two vec3's
+       *
+       * @param {vec3} a the first operand
+       * @param {vec3} b the second operand
+       * @returns {Number} distance between a and b
+       */
+
+      /**
+       * Calculates the squared euclidian distance between two vec3's
+       *
+       * @param {vec3} a the first operand
+       * @param {vec3} b the second operand
+       * @returns {Number} squared distance between a and b
+       */
+
+      /**
+       * Calculates the squared length of a vec3
+       *
+       * @param {vec3} a vector to calculate squared length of
+       * @returns {Number} squared length of a
+       */
+      function squaredLength$1(a) {
+        let x = a[0];
+        let y = a[1];
+        let z = a[2];
+        return x * x + y * y + z * z;
+      }
+
+      /**
+       * Negates the components of a vec3
+       *
+       * @param {vec3} out the receiving vector
+       * @param {vec3} a vector to negate
+       * @returns {vec3} out
+       */
+      function negate$1(out, a) {
+        out[0] = -a[0];
+        out[1] = -a[1];
+        out[2] = -a[2];
+        return out;
+      }
+
+      /**
+       * Returns the inverse of the components of a vec3
+       *
+       * @param {vec3} out the receiving vector
+       * @param {vec3} a vector to invert
+       * @returns {vec3} out
+       */
+
+      /**
+       * Normalize a vec3
+       *
+       * @param {vec3} out the receiving vector
+       * @param {vec3} a vector to normalize
+       * @returns {vec3} out
+       */
+      function normalize$1(out, a) {
+        let x = a[0];
+        let y = a[1];
+        let z = a[2];
+        let len = x * x + y * y + z * z;
+        if (len > 0) {
+          //TODO: evaluate use of glm_invsqrt here?
+          len = 1 / Math.sqrt(len);
+          out[0] = a[0] * len;
+          out[1] = a[1] * len;
+          out[2] = a[2] * len;
+        }
+        return out;
+      }
+
+      /**
+       * Calculates the dot product of two vec3's
+       *
+       * @param {vec3} a the first operand
+       * @param {vec3} b the second operand
+       * @returns {Number} dot product of a and b
+       */
+      function dot$1(a, b) {
+        return a[0] * b[0] + a[1] * b[1] + a[2] * b[2];
+      }
+
+      /**
+       * Computes the cross product of two vec3's
+       *
+       * @param {vec3} out the receiving vector
+       * @param {vec3} a the first operand
+       * @param {vec3} b the second operand
+       * @returns {vec3} out
+       */
+      function cross$1(out, a, b) {
+        let ax = a[0],
+            ay = a[1],
+            az = a[2];
+        let bx = b[0],
+            by = b[1],
+            bz = b[2];
+
+        out[0] = ay * bz - az * by;
+        out[1] = az * bx - ax * bz;
+        out[2] = ax * by - ay * bx;
+        return out;
+      }
+
+      /**
+       * Performs a linear interpolation between two vec3's
+       *
+       * @param {vec3} out the receiving vector
+       * @param {vec3} a the first operand
+       * @param {vec3} b the second operand
+       * @param {Number} t interpolation amount between the two inputs
+       * @returns {vec3} out
+       */
+
+      /**
+       * Performs a hermite interpolation with two control points
+       *
+       * @param {vec3} out the receiving vector
+       * @param {vec3} a the first operand
+       * @param {vec3} b the second operand
+       * @param {vec3} c the third operand
+       * @param {vec3} d the fourth operand
+       * @param {Number} t interpolation amount between the two inputs
+       * @returns {vec3} out
+       */
+
+      /**
+       * Performs a bezier interpolation with two control points
+       *
+       * @param {vec3} out the receiving vector
+       * @param {vec3} a the first operand
+       * @param {vec3} b the second operand
+       * @param {vec3} c the third operand
+       * @param {vec3} d the fourth operand
+       * @param {Number} t interpolation amount between the two inputs
+       * @returns {vec3} out
+       */
+
+      /**
+       * Generates a random vector with the given scale
+       *
+       * @param {vec3} out the receiving vector
+       * @param {Number} [scale] Length of the resulting vector. If ommitted, a unit vector will be returned
+       * @returns {vec3} out
+       */
+
+      /**
+       * Transforms the vec3 with a mat4.
+       * 4th vector component is implicitly '1'
+       *
+       * @param {vec3} out the receiving vector
+       * @param {vec3} a the vector to transform
+       * @param {mat4} m matrix to transform with
+       * @returns {vec3} out
+       */
+      function transformMat4$1(out, a, m) {
+        let x = a[0],
+            y = a[1],
+            z = a[2];
+        let w = m[3] * x + m[7] * y + m[11] * z + m[15];
+        w = w || 1.0;
+        out[0] = (m[0] * x + m[4] * y + m[8] * z + m[12]) / w;
+        out[1] = (m[1] * x + m[5] * y + m[9] * z + m[13]) / w;
+        out[2] = (m[2] * x + m[6] * y + m[10] * z + m[14]) / w;
+        return out;
+      }
+
+      /**
+       * Transforms the vec3 with a mat3.
+       *
+       * @param {vec3} out the receiving vector
+       * @param {vec3} a the vector to transform
+       * @param {mat3} m the 3x3 matrix to transform with
+       * @returns {vec3} out
+       */
+
+      /**
+       * Transforms the vec3 with a quat
+       *
+       * @param {vec3} out the receiving vector
+       * @param {vec3} a the vector to transform
+       * @param {quat} q quaternion to transform with
+       * @returns {vec3} out
+       */
+
+      /**
+       * Rotate a 3D vector around the x-axis
+       * @param {vec3} out The receiving vec3
+       * @param {vec3} a The vec3 point to rotate
+       * @param {vec3} b The origin of the rotation
+       * @param {Number} c The angle of rotation
+       * @returns {vec3} out
+       */
+
+      /**
+       * Rotate a 3D vector around the y-axis
+       * @param {vec3} out The receiving vec3
+       * @param {vec3} a The vec3 point to rotate
+       * @param {vec3} b The origin of the rotation
+       * @param {Number} c The angle of rotation
+       * @returns {vec3} out
+       */
+
+      /**
+       * Rotate a 3D vector around the z-axis
+       * @param {vec3} out The receiving vec3
+       * @param {vec3} a The vec3 point to rotate
+       * @param {vec3} b The origin of the rotation
+       * @param {Number} c The angle of rotation
+       * @returns {vec3} out
+       */
+
+      /**
+       * Get the angle between two 3D vectors
+       * @param {vec3} a The first operand
+       * @param {vec3} b The second operand
+       * @returns {Number} The angle in radians
+       */
+      function angle(a, b) {
+        let tempA = fromValues$2(a[0], a[1], a[2]);
+        let tempB = fromValues$2(b[0], b[1], b[2]);
+
+        normalize$1(tempA, tempA);
+        normalize$1(tempB, tempB);
+
+        let cosine = dot$1(tempA, tempB);
+
+        if (cosine > 1.0) {
+          return 0;
+        } else if (cosine < -1.0) {
+          return Math.PI;
+        } else {
+          return Math.acos(cosine);
+        }
+      }
+
+      /**
+       * Returns a string representation of a vector
+       *
+       * @param {vec3} a vector to represent as a string
+       * @returns {String} string representation of the vector
+       */
+
+      /**
+       * Returns whether or not the vectors have exactly the same elements in the same position (when compared with ===)
+       *
+       * @param {vec3} a The first vector.
+       * @param {vec3} b The second vector.
+       * @returns {Boolean} True if the vectors are equal, false otherwise.
+       */
+      function exactEquals$2(a, b) {
+        return a[0] === b[0] && a[1] === b[1] && a[2] === b[2];
+      }
+
+      /**
+       * Returns whether or not the vectors have approximately the same elements in the same position.
+       *
+       * @param {vec3} a The first vector.
+       * @param {vec3} b The second vector.
+       * @returns {Boolean} True if the vectors are equal, false otherwise.
+       */
+
+      /**
+       * Alias for {@link vec3.subtract}
+       * @function
+       */
+
+      /**
+       * Alias for {@link vec3.multiply}
+       * @function
+       */
+
+      /**
+       * Alias for {@link vec3.divide}
+       * @function
+       */
+
+      /**
+       * Alias for {@link vec3.distance}
+       * @function
+       */
+
+      /**
+       * Alias for {@link vec3.squaredDistance}
+       * @function
+       */
+
+      /**
+       * Alias for {@link vec3.length}
+       * @function
+       */
+      const len$1 = length$1;
+
+      /**
+       * Alias for {@link vec3.squaredLength}
+       * @function
+       */
+
+      /**
+       * Perform some operation over an array of vec3s.
+       *
+       * @param {Array} a the array of vectors to iterate over
+       * @param {Number} stride Number of elements between the start of each vec3. If 0 assumes tightly packed
+       * @param {Number} offset Number of elements to skip at the beginning of the array
+       * @param {Number} count Number of vec3s to iterate over. If 0 iterates over entire array
+       * @param {Function} fn Function to call for each vector in the array
+       * @param {Object} [arg] additional argument to pass to fn
+       * @returns {Array} a
+       * @function
+       */
+      const forEach$1 = function () {
+        let vec = create$2();
+
+        return function (a, stride, offset, count, fn, arg) {
+          let i, l;
+          if (!stride) {
+            stride = 3;
+          }
+
+          if (!offset) {
+            offset = 0;
+          }
+
+          if (count) {
+            l = Math.min(count * stride + offset, a.length);
+          } else {
+            l = a.length;
+          }
+
+          for (i = offset; i < l; i += stride) {
+            vec[0] = a[i];vec[1] = a[i + 1];vec[2] = a[i + 2];
+            fn(vec, vec, arg);
+            a[i] = vec[0];a[i + 1] = vec[1];a[i + 2] = vec[2];
+          }
+
+          return a;
+        };
+      }();
+
+      class Vector3 extends Float32Array {
+        constructor(array = [0, 0, 0]) {
+          super(array);
+          return this;
+        }
+
+        get x() {
+          return this[0];
+        }
+
+        set x(value) {
+          this[0] = value;
+        }
+
+        get y() {
+          return this[1];
+        }
+
+        set y(value) {
+          this[1] = value;
+        }
+
+        get z() {
+          return this[2];
+        }
+
+        set z(value) {
+          this[2] = value;
+        }
+
+        set(x, y, z) {
+          set$2(this, x, y, z);
+          return this;
+        }
+
+        copy(vector3) {
+          copy$2(this, vector3);
+          return this;
+        }
+
+        add(vector3) {
+          add$2(this, this, vector3);
+          return this;
+        }
+
+        get size() {
+          return length$1(this);
+        }
+
+        get squaredSize() {
+          return squaredLength$1(this);
+        }
+
+        subtract(vector3) {
+          subtract$2(this, this, vector3);
+          return this;
+        }
+
+        negate(vector3 = this) {
+          negate$1(this, vector3);
+          return this;
+        }
+
+        cross(vector3a, vector3b) {
+          cross$1(this, vector3a, vector3b);
+          return this;
+        }
+
+        scale(value) {
+          scale$2(this, this, value);
+          return this;
+        }
+
+        normalize() {
+          normalize$1(this, this);
+          return this;
+        }
+
+        dot(vector3) {
+          return dot$1(this, vector3);
+        }
+
+        equals(vector3) {
+          return exactEquals$2(this, vector3);
+        }
+
+        applyMatrix4(matrix4) {
+          transformMat4$1(this, this, matrix4);
+          return this;
+        }
+
+        angle(vector3) {
+          return angle(this, vector3);
+        }
+
+        clone() {
+          return new Vector3(this.x, this.y, this.z);
+        }
+      }
+
+      /* Copyright (c) 2015, Brandon Jones, Colin MacKenzie IV.
+      
+      Permission is hereby granted, free of charge, to any person obtaining a copy
+      of this software and associated documentation files (the "Software"), to deal
+      in the Software without restriction, including without limitation the rights
+      to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+      copies of the Software, and to permit persons to whom the Software is
+      furnished to do so, subject to the following conditions:
+      
+      The above copyright notice and this permission notice shall be included in
+      all copies or substantial portions of the Software.
+      
+      THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+      IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+      FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+      AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+      LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+      OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+      THE SOFTWARE. */
+
+      /**
+       * 4 Dimensional Vector
+       * @module vec4
+       */
+
+      /**
+       * Creates a new, empty vec4
+       *
+       * @returns {vec4} a new 4D vector
+       */
+      function create$3() {
+        let out = new ARRAY_TYPE(4);
+        out[0] = 0;
+        out[1] = 0;
+        out[2] = 0;
+        out[3] = 0;
+        return out;
+      }
+
+      /**
+       * Creates a new vec4 initialized with values from an existing vector
+       *
+       * @param {vec4} a vector to clone
+       * @returns {vec4} a new 4D vector
+       */
+
+      /**
+       * Creates a new vec4 initialized with the given values
+       *
+       * @param {Number} x X component
+       * @param {Number} y Y component
+       * @param {Number} z Z component
+       * @param {Number} w W component
+       * @returns {vec4} a new 4D vector
+       */
+
+      /**
+       * Copy the values from one vec4 to another
+       *
+       * @param {vec4} out the receiving vector
+       * @param {vec4} a the source vector
+       * @returns {vec4} out
+       */
+      function copy$3(out, a) {
+        out[0] = a[0];
+        out[1] = a[1];
+        out[2] = a[2];
+        out[3] = a[3];
+        return out;
+      }
+
+      /**
+       * Set the components of a vec4 to the given values
+       *
+       * @param {vec4} out the receiving vector
+       * @param {Number} x X component
+       * @param {Number} y Y component
+       * @param {Number} z Z component
+       * @param {Number} w W component
+       * @returns {vec4} out
+       */
+      function set$3(out, x, y, z, w) {
+        out[0] = x;
+        out[1] = y;
+        out[2] = z;
+        out[3] = w;
+        return out;
+      }
+
+      /**
+       * Adds two vec4's
+       *
+       * @param {vec4} out the receiving vector
+       * @param {vec4} a the first operand
+       * @param {vec4} b the second operand
+       * @returns {vec4} out
+       */
+
+      /**
+       * Subtracts vector b from vector a
+       *
+       * @param {vec4} out the receiving vector
+       * @param {vec4} a the first operand
+       * @param {vec4} b the second operand
+       * @returns {vec4} out
+       */
+
+      /**
+       * Multiplies two vec4's
+       *
+       * @param {vec4} out the receiving vector
+       * @param {vec4} a the first operand
+       * @param {vec4} b the second operand
+       * @returns {vec4} out
+       */
+
+      /**
+       * Divides two vec4's
+       *
+       * @param {vec4} out the receiving vector
+       * @param {vec4} a the first operand
+       * @param {vec4} b the second operand
+       * @returns {vec4} out
+       */
+
+      /**
+       * Math.ceil the components of a vec4
+       *
+       * @param {vec4} out the receiving vector
+       * @param {vec4} a vector to ceil
+       * @returns {vec4} out
+       */
+
+      /**
+       * Math.floor the components of a vec4
+       *
+       * @param {vec4} out the receiving vector
+       * @param {vec4} a vector to floor
+       * @returns {vec4} out
+       */
+
+      /**
+       * Returns the minimum of two vec4's
+       *
+       * @param {vec4} out the receiving vector
+       * @param {vec4} a the first operand
+       * @param {vec4} b the second operand
+       * @returns {vec4} out
+       */
+
+      /**
+       * Returns the maximum of two vec4's
+       *
+       * @param {vec4} out the receiving vector
+       * @param {vec4} a the first operand
+       * @param {vec4} b the second operand
+       * @returns {vec4} out
+       */
+
+      /**
+       * Math.round the components of a vec4
+       *
+       * @param {vec4} out the receiving vector
+       * @param {vec4} a vector to round
+       * @returns {vec4} out
+       */
+
+      /**
+       * Scales a vec4 by a scalar number
+       *
+       * @param {vec4} out the receiving vector
+       * @param {vec4} a the vector to scale
+       * @param {Number} b amount to scale the vector by
+       * @returns {vec4} out
+       */
+      function scale$3(out, a, b) {
+        out[0] = a[0] * b;
+        out[1] = a[1] * b;
+        out[2] = a[2] * b;
+        out[3] = a[3] * b;
+        return out;
+      }
+
+      /**
+       * Adds two vec4's after scaling the second operand by a scalar value
+       *
+       * @param {vec4} out the receiving vector
+       * @param {vec4} a the first operand
+       * @param {vec4} b the second operand
+       * @param {Number} scale the amount to scale b by before adding
+       * @returns {vec4} out
+       */
+
+      /**
+       * Calculates the euclidian distance between two vec4's
+       *
+       * @param {vec4} a the first operand
+       * @param {vec4} b the second operand
+       * @returns {Number} distance between a and b
+       */
+
+      /**
+       * Calculates the squared euclidian distance between two vec4's
+       *
+       * @param {vec4} a the first operand
+       * @param {vec4} b the second operand
+       * @returns {Number} squared distance between a and b
+       */
+
+      /**
+       * Calculates the length of a vec4
+       *
+       * @param {vec4} a vector to calculate length of
+       * @returns {Number} length of a
+       */
+
+      /**
+       * Calculates the squared length of a vec4
+       *
+       * @param {vec4} a vector to calculate squared length of
+       * @returns {Number} squared length of a
+       */
+
+      /**
+       * Negates the components of a vec4
+       *
+       * @param {vec4} out the receiving vector
+       * @param {vec4} a vector to negate
+       * @returns {vec4} out
+       */
+
+      /**
+       * Returns the inverse of the components of a vec4
+       *
+       * @param {vec4} out the receiving vector
+       * @param {vec4} a vector to invert
+       * @returns {vec4} out
+       */
+
+      /**
+       * Normalize a vec4
+       *
+       * @param {vec4} out the receiving vector
+       * @param {vec4} a vector to normalize
+       * @returns {vec4} out
+       */
+      function normalize$2(out, a) {
+        let x = a[0];
+        let y = a[1];
+        let z = a[2];
+        let w = a[3];
+        let len = x * x + y * y + z * z + w * w;
+        if (len > 0) {
+          len = 1 / Math.sqrt(len);
+          out[0] = x * len;
+          out[1] = y * len;
+          out[2] = z * len;
+          out[3] = w * len;
+        }
+        return out;
+      }
+
+      /**
+       * Calculates the dot product of two vec4's
+       *
+       * @param {vec4} a the first operand
+       * @param {vec4} b the second operand
+       * @returns {Number} dot product of a and b
+       */
+
+      /**
+       * Performs a linear interpolation between two vec4's
+       *
+       * @param {vec4} out the receiving vector
+       * @param {vec4} a the first operand
+       * @param {vec4} b the second operand
+       * @param {Number} t interpolation amount between the two inputs
+       * @returns {vec4} out
+       */
+
+      /**
+       * Generates a random vector with the given scale
+       *
+       * @param {vec4} out the receiving vector
+       * @param {Number} [scale] Length of the resulting vector. If ommitted, a unit vector will be returned
+       * @returns {vec4} out
+       */
+
+      /**
+       * Transforms the vec4 with a mat4.
+       *
+       * @param {vec4} out the receiving vector
+       * @param {vec4} a the vector to transform
+       * @param {mat4} m matrix to transform with
+       * @returns {vec4} out
+       */
+
+      /**
+       * Transforms the vec4 with a quat
+       *
+       * @param {vec4} out the receiving vector
+       * @param {vec4} a the vector to transform
+       * @param {quat} q quaternion to transform with
+       * @returns {vec4} out
+       */
+
+      /**
+       * Returns a string representation of a vector
+       *
+       * @param {vec4} a vector to represent as a string
+       * @returns {String} string representation of the vector
+       */
+
+      /**
+       * Returns whether or not the vectors have exactly the same elements in the same position (when compared with ===)
+       *
+       * @param {vec4} a The first vector.
+       * @param {vec4} b The second vector.
+       * @returns {Boolean} True if the vectors are equal, false otherwise.
+       */
+
+      /**
+       * Returns whether or not the vectors have approximately the same elements in the same position.
+       *
+       * @param {vec4} a The first vector.
+       * @param {vec4} b The second vector.
+       * @returns {Boolean} True if the vectors are equal, false otherwise.
+       */
+
+      /**
+       * Alias for {@link vec4.subtract}
+       * @function
+       */
+
+      /**
+       * Alias for {@link vec4.multiply}
+       * @function
+       */
+
+      /**
+       * Alias for {@link vec4.divide}
+       * @function
+       */
+
+      /**
+       * Alias for {@link vec4.distance}
+       * @function
+       */
+
+      /**
+       * Alias for {@link vec4.squaredDistance}
+       * @function
+       */
+
+      /**
+       * Alias for {@link vec4.length}
+       * @function
+       */
+
+      /**
+       * Alias for {@link vec4.squaredLength}
+       * @function
+       */
+
+      /**
+       * Perform some operation over an array of vec4s.
+       *
+       * @param {Array} a the array of vectors to iterate over
+       * @param {Number} stride Number of elements between the start of each vec4. If 0 assumes tightly packed
+       * @param {Number} offset Number of elements to skip at the beginning of the array
+       * @param {Number} count Number of vec4s to iterate over. If 0 iterates over entire array
+       * @param {Function} fn Function to call for each vector in the array
+       * @param {Object} [arg] additional argument to pass to fn
+       * @returns {Array} a
+       * @function
+       */
+      const forEach$2 = function () {
+        let vec = create$3();
+
+        return function (a, stride, offset, count, fn, arg) {
+          let i, l;
+          if (!stride) {
+            stride = 4;
+          }
+
+          if (!offset) {
+            offset = 0;
+          }
+
+          if (count) {
+            l = Math.min(count * stride + offset, a.length);
+          } else {
+            l = a.length;
+          }
+
+          for (i = offset; i < l; i += stride) {
+            vec[0] = a[i];vec[1] = a[i + 1];vec[2] = a[i + 2];vec[3] = a[i + 3];
+            fn(vec, vec, arg);
+            a[i] = vec[0];a[i + 1] = vec[1];a[i + 2] = vec[2];a[i + 3] = vec[3];
+          }
+
+          return a;
+        };
+      }();
+
+      class Vector4 extends Float32Array {
+        constructor(array = [0, 0, 0, 0]) {
+          super(array);
+          return this;
+        }
+
+        get x() {
+          return this[0];
+        }
+
+        set x(value) {
+          this[0] = value;
+        }
+
+        get y() {
+          return this[1];
+        }
+
+        set y(value) {
+          this[1] = value;
+        }
+
+        get z() {
+          return this[2];
+        }
+
+        set z(value) {
+          this[2] = value;
+        }
+
+        get w() {
+          return this[3];
+        }
+
+        set w(value) {
+          this[3] = value;
+        }
+
+        set(x, y, z, w) {
+          set$3(this, x, y, z, w);
+          return this;
+        }
+      }
+
+      /* Copyright (c) 2015, Brandon Jones, Colin MacKenzie IV.
+      
+      Permission is hereby granted, free of charge, to any person obtaining a copy
+      of this software and associated documentation files (the "Software"), to deal
+      in the Software without restriction, including without limitation the rights
+      to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+      copies of the Software, and to permit persons to whom the Software is
+      furnished to do so, subject to the following conditions:
+      
+      The above copyright notice and this permission notice shall be included in
+      all copies or substantial portions of the Software.
+      
+      THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+      IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+      FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+      AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+      LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+      OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+      THE SOFTWARE. */
+
+      /**
+       * 3x3 Matrix
+       * @module mat3
+       */
+
+      /**
+       * Creates a new identity mat3
+       *
+       * @returns {mat3} a new 3x3 matrix
+       */
+      function create$4() {
+        let out = new ARRAY_TYPE(9);
+        out[0] = 1;
+        out[1] = 0;
+        out[2] = 0;
+        out[3] = 0;
+        out[4] = 1;
+        out[5] = 0;
+        out[6] = 0;
+        out[7] = 0;
+        out[8] = 1;
+        return out;
+      }
+
+      /**
+       * Copies the upper-left 3x3 values into the given mat3.
+       *
+       * @param {mat3} out the receiving 3x3 matrix
+       * @param {mat4} a   the source 4x4 matrix
+       * @returns {mat3} out
+       */
+      function fromMat4(out, a) {
+        out[0] = a[0];
+        out[1] = a[1];
+        out[2] = a[2];
+        out[3] = a[4];
+        out[4] = a[5];
+        out[5] = a[6];
+        out[6] = a[8];
+        out[7] = a[9];
+        out[8] = a[10];
+        return out;
+      }
+
+      /**
+       * Creates a new mat3 initialized with values from an existing matrix
+       *
+       * @param {mat3} a matrix to clone
+       * @returns {mat3} a new 3x3 matrix
+       */
+
+      /**
+       * Copy the values from one mat3 to another
+       *
+       * @param {mat3} out the receiving matrix
+       * @param {mat3} a the source matrix
+       * @returns {mat3} out
+       */
+      function copy$4(out, a) {
+        out[0] = a[0];
+        out[1] = a[1];
+        out[2] = a[2];
+        out[3] = a[3];
+        out[4] = a[4];
+        out[5] = a[5];
+        out[6] = a[6];
+        out[7] = a[7];
+        out[8] = a[8];
+        return out;
+      }
+
+      /**
+       * Create a new mat3 with the given values
+       *
+       * @param {Number} m00 Component in column 0, row 0 position (index 0)
+       * @param {Number} m01 Component in column 0, row 1 position (index 1)
+       * @param {Number} m02 Component in column 0, row 2 position (index 2)
+       * @param {Number} m10 Component in column 1, row 0 position (index 3)
+       * @param {Number} m11 Component in column 1, row 1 position (index 4)
+       * @param {Number} m12 Component in column 1, row 2 position (index 5)
+       * @param {Number} m20 Component in column 2, row 0 position (index 6)
+       * @param {Number} m21 Component in column 2, row 1 position (index 7)
+       * @param {Number} m22 Component in column 2, row 2 position (index 8)
+       * @returns {mat3} A new mat3
+       */
+
+      /**
+       * Set the components of a mat3 to the given values
+       *
+       * @param {mat3} out the receiving matrix
+       * @param {Number} m00 Component in column 0, row 0 position (index 0)
+       * @param {Number} m01 Component in column 0, row 1 position (index 1)
+       * @param {Number} m02 Component in column 0, row 2 position (index 2)
+       * @param {Number} m10 Component in column 1, row 0 position (index 3)
+       * @param {Number} m11 Component in column 1, row 1 position (index 4)
+       * @param {Number} m12 Component in column 1, row 2 position (index 5)
+       * @param {Number} m20 Component in column 2, row 0 position (index 6)
+       * @param {Number} m21 Component in column 2, row 1 position (index 7)
+       * @param {Number} m22 Component in column 2, row 2 position (index 8)
+       * @returns {mat3} out
+       */
+      function set$4(out, m00, m01, m02, m10, m11, m12, m20, m21, m22) {
+        out[0] = m00;
+        out[1] = m01;
+        out[2] = m02;
+        out[3] = m10;
+        out[4] = m11;
+        out[5] = m12;
+        out[6] = m20;
+        out[7] = m21;
+        out[8] = m22;
+        return out;
+      }
+
+      /**
+       * Set a mat3 to the identity matrix
+       *
+       * @param {mat3} out the receiving matrix
+       * @returns {mat3} out
+       */
+      function identity$1(out) {
+        out[0] = 1;
+        out[1] = 0;
+        out[2] = 0;
+        out[3] = 0;
+        out[4] = 1;
+        out[5] = 0;
+        out[6] = 0;
+        out[7] = 0;
+        out[8] = 1;
+        return out;
+      }
+
+      /**
+       * Transpose the values of a mat3
+       *
+       * @param {mat3} out the receiving matrix
+       * @param {mat3} a the source matrix
+       * @returns {mat3} out
+       */
+
+      /**
+       * Inverts a mat3
+       *
+       * @param {mat3} out the receiving matrix
+       * @param {mat3} a the source matrix
+       * @returns {mat3} out
+       */
+      function invert$1(out, a) {
+        let a00 = a[0],
+            a01 = a[1],
+            a02 = a[2];
+        let a10 = a[3],
+            a11 = a[4],
+            a12 = a[5];
+        let a20 = a[6],
+            a21 = a[7],
+            a22 = a[8];
+
+        let b01 = a22 * a11 - a12 * a21;
+        let b11 = -a22 * a10 + a12 * a20;
+        let b21 = a21 * a10 - a11 * a20;
+
+        // Calculate the determinant
+        let det = a00 * b01 + a01 * b11 + a02 * b21;
+
+        if (!det) {
+          return null;
+        }
+        det = 1.0 / det;
+
+        out[0] = b01 * det;
+        out[1] = (-a22 * a01 + a02 * a21) * det;
+        out[2] = (a12 * a01 - a02 * a11) * det;
+        out[3] = b11 * det;
+        out[4] = (a22 * a00 - a02 * a20) * det;
+        out[5] = (-a12 * a00 + a02 * a10) * det;
+        out[6] = b21 * det;
+        out[7] = (-a21 * a00 + a01 * a20) * det;
+        out[8] = (a11 * a00 - a01 * a10) * det;
+        return out;
+      }
+
+      /**
+       * Calculates the adjugate of a mat3
+       *
+       * @param {mat3} out the receiving matrix
+       * @param {mat3} a the source matrix
+       * @returns {mat3} out
+       */
+
+      /**
+       * Calculates the determinant of a mat3
+       *
+       * @param {mat3} a the source matrix
+       * @returns {Number} determinant of a
+       */
+
+      /**
+       * Multiplies two mat3's
+       *
+       * @param {mat3} out the receiving matrix
+       * @param {mat3} a the first operand
+       * @param {mat3} b the second operand
+       * @returns {mat3} out
+       */
+      function multiply$4(out, a, b) {
+        let a00 = a[0],
+            a01 = a[1],
+            a02 = a[2];
+        let a10 = a[3],
+            a11 = a[4],
+            a12 = a[5];
+        let a20 = a[6],
+            a21 = a[7],
+            a22 = a[8];
+
+        let b00 = b[0],
+            b01 = b[1],
+            b02 = b[2];
+        let b10 = b[3],
+            b11 = b[4],
+            b12 = b[5];
+        let b20 = b[6],
+            b21 = b[7],
+            b22 = b[8];
+
+        out[0] = b00 * a00 + b01 * a10 + b02 * a20;
+        out[1] = b00 * a01 + b01 * a11 + b02 * a21;
+        out[2] = b00 * a02 + b01 * a12 + b02 * a22;
+
+        out[3] = b10 * a00 + b11 * a10 + b12 * a20;
+        out[4] = b10 * a01 + b11 * a11 + b12 * a21;
+        out[5] = b10 * a02 + b11 * a12 + b12 * a22;
+
+        out[6] = b20 * a00 + b21 * a10 + b22 * a20;
+        out[7] = b20 * a01 + b21 * a11 + b22 * a21;
+        out[8] = b20 * a02 + b21 * a12 + b22 * a22;
+        return out;
+      }
+
+      /**
+       * Translate a mat3 by the given vector
+       *
+       * @param {mat3} out the receiving matrix
+       * @param {mat3} a the matrix to translate
+       * @param {vec2} v vector to translate by
+       * @returns {mat3} out
+       */
+      function translate$1(out, a, v) {
+        let a00 = a[0],
+            a01 = a[1],
+            a02 = a[2],
+            a10 = a[3],
+            a11 = a[4],
+            a12 = a[5],
+            a20 = a[6],
+            a21 = a[7],
+            a22 = a[8],
+            x = v[0],
+            y = v[1];
+
+        out[0] = a00;
+        out[1] = a01;
+        out[2] = a02;
+
+        out[3] = a10;
+        out[4] = a11;
+        out[5] = a12;
+
+        out[6] = x * a00 + y * a10 + a20;
+        out[7] = x * a01 + y * a11 + a21;
+        out[8] = x * a02 + y * a12 + a22;
+        return out;
+      }
+
+      /**
+       * Rotates a mat3 by the given angle
+       *
+       * @param {mat3} out the receiving matrix
+       * @param {mat3} a the matrix to rotate
+       * @param {Number} rad the angle to rotate the matrix by
+       * @returns {mat3} out
+       */
+      function rotate$1(out, a, rad) {
+        let a00 = a[0],
+            a01 = a[1],
+            a02 = a[2],
+            a10 = a[3],
+            a11 = a[4],
+            a12 = a[5],
+            a20 = a[6],
+            a21 = a[7],
+            a22 = a[8],
+            s = Math.sin(rad),
+            c = Math.cos(rad);
+
+        out[0] = c * a00 + s * a10;
+        out[1] = c * a01 + s * a11;
+        out[2] = c * a02 + s * a12;
+
+        out[3] = c * a10 - s * a00;
+        out[4] = c * a11 - s * a01;
+        out[5] = c * a12 - s * a02;
+
+        out[6] = a20;
+        out[7] = a21;
+        out[8] = a22;
+        return out;
+      }
+
+      /**
+       * Scales the mat3 by the dimensions in the given vec2
+       *
+       * @param {mat3} out the receiving matrix
+       * @param {mat3} a the matrix to rotate
+       * @param {vec2} v the vec2 to scale the matrix by
+       * @returns {mat3} out
+       **/
+      function scale$4(out, a, v) {
+        let x = v[0],
+            y = v[1];
+
+        out[0] = x * a[0];
+        out[1] = x * a[1];
+        out[2] = x * a[2];
+
+        out[3] = y * a[3];
+        out[4] = y * a[4];
+        out[5] = y * a[5];
+
+        out[6] = a[6];
+        out[7] = a[7];
+        out[8] = a[8];
+        return out;
+      }
+
+      /**
+       * Creates a matrix from a vector translation
+       * This is equivalent to (but much faster than):
+       *
+       *     mat3.identity(dest);
+       *     mat3.translate(dest, dest, vec);
+       *
+       * @param {mat3} out mat3 receiving operation result
+       * @param {vec2} v Translation vector
+       * @returns {mat3} out
+       */
+
+      /**
+       * Creates a matrix from a given angle
+       * This is equivalent to (but much faster than):
+       *
+       *     mat3.identity(dest);
+       *     mat3.rotate(dest, dest, rad);
+       *
+       * @param {mat3} out mat3 receiving operation result
+       * @param {Number} rad the angle to rotate the matrix by
+       * @returns {mat3} out
+       */
+
+      /**
+       * Creates a matrix from a vector scaling
+       * This is equivalent to (but much faster than):
+       *
+       *     mat3.identity(dest);
+       *     mat3.scale(dest, dest, vec);
+       *
+       * @param {mat3} out mat3 receiving operation result
+       * @param {vec2} v Scaling vector
+       * @returns {mat3} out
+       */
+
+      /**
+       * Copies the values from a mat2d into a mat3
+       *
+       * @param {mat3} out the receiving matrix
+       * @param {mat2d} a the matrix to copy
+       * @returns {mat3} out
+       **/
+
+      /**
+      * Calculates a 3x3 matrix from the given quaternion
+      *
+      * @param {mat3} out mat3 receiving operation result
+      * @param {quat} q Quaternion to create matrix from
+      *
+      * @returns {mat3} out
+      */
+      function fromQuat$1(out, q) {
+        let x = q[0],
+            y = q[1],
+            z = q[2],
+            w = q[3];
+        let x2 = x + x;
+        let y2 = y + y;
+        let z2 = z + z;
+
+        let xx = x * x2;
+        let yx = y * x2;
+        let yy = y * y2;
+        let zx = z * x2;
+        let zy = z * y2;
+        let zz = z * z2;
+        let wx = w * x2;
+        let wy = w * y2;
+        let wz = w * z2;
+
+        out[0] = 1 - yy - zz;
+        out[3] = yx - wz;
+        out[6] = zx + wy;
+
+        out[1] = yx + wz;
+        out[4] = 1 - xx - zz;
+        out[7] = zy - wx;
+
+        out[2] = zx - wy;
+        out[5] = zy + wx;
+        out[8] = 1 - xx - yy;
+
+        return out;
+      }
+
+      /**
+      * Calculates a 3x3 normal matrix (transpose inverse) from the 4x4 matrix
+      *
+      * @param {mat3} out mat3 receiving operation result
+      * @param {mat4} a Mat4 to derive the normal matrix from
+      *
+      * @returns {mat3} out
+      */
+
+      /**
+       * Generates a 2D projection matrix with the given bounds
+       *
+       * @param {mat3} out mat3 frustum matrix will be written into
+       * @param {number} width Width of your gl context
+       * @param {number} height Height of gl context
+       * @returns {mat3} out
+       */
+
+      /**
+       * Returns a string representation of a mat3
+       *
+       * @param {mat3} a matrix to represent as a string
+       * @returns {String} string representation of the matrix
+       */
+
+      /**
+       * Returns Frobenius norm of a mat3
+       *
+       * @param {mat3} a the matrix to calculate Frobenius norm of
+       * @returns {Number} Frobenius norm
+       */
+
+      /**
+       * Adds two mat3's
+       *
+       * @param {mat3} out the receiving matrix
+       * @param {mat3} a the first operand
+       * @param {mat3} b the second operand
+       * @returns {mat3} out
+       */
+
+      /**
+       * Subtracts matrix b from matrix a
+       *
+       * @param {mat3} out the receiving matrix
+       * @param {mat3} a the first operand
+       * @param {mat3} b the second operand
+       * @returns {mat3} out
+       */
+
+      /**
+       * Multiply each element of the matrix by a scalar.
+       *
+       * @param {mat3} out the receiving matrix
+       * @param {mat3} a the matrix to scale
+       * @param {Number} b amount to scale the matrix's elements by
+       * @returns {mat3} out
+       */
+
+      /**
+       * Adds two mat3's after multiplying each element of the second operand by a scalar value.
+       *
+       * @param {mat3} out the receiving vector
+       * @param {mat3} a the first operand
+       * @param {mat3} b the second operand
+       * @param {Number} scale the amount to scale b's elements by before adding
+       * @returns {mat3} out
+       */
+
+      /**
+       * Returns whether or not the matrices have exactly the same elements in the same position (when compared with ===)
+       *
+       * @param {mat3} a The first matrix.
+       * @param {mat3} b The second matrix.
+       * @returns {Boolean} True if the matrices are equal, false otherwise.
+       */
+
+      /**
+       * Returns whether or not the matrices have approximately the same elements in the same position.
+       *
+       * @param {mat3} a The first matrix.
+       * @param {mat3} b The second matrix.
+       * @returns {Boolean} True if the matrices are equal, false otherwise.
+       */
+
+      /**
+       * Alias for {@link mat3.multiply}
+       * @function
+       */
+
+      /**
+       * Alias for {@link mat3.subtract}
+       * @function
+       */
+
+      class Matrix3 extends Float32Array {
+        constructor(array = [1, 0, 0, 0, 1, 0, 0, 0, 1]) {
+          super(array);
+          return this;
+        }
+
+        set(m00, m01, m02, m10, m11, m12, m20, m21, m22) {
+          set$4(this, m00, m01, m02, m10, m11, m12, m20, m21, m22);
+          return this;
+        }
+
+        translate(vector2, matrix3 = this) {
+          translate$1(this, matrix3, vector2);
+          return this;
+        }
+
+        rotate(value, matrix3 = this) {
+          rotate$1(this, matrix3, value);
+          return this;
+        }
+
+        scale(vector2, matrix3 = this) {
+          scale$4(this, matrix3, vector2);
+          return this;
+        }
+
+        multiply(matrix3a, matrix3b) {
+          if (matrix3b) {
+            multiply$4(this, matrix3a, matrix3b);
+          } else {
+            multiply$4(this, this, matrix3a);
+          }
+          return this;
+        }
+
+        identity() {
+          identity$1(this);
+          return this;
+        }
+
+        copy(matrix3) {
+          copy$4(this, matrix3);
+          return this;
+        }
+
+        fromMatrix4(matrix4) {
+          fromMat4(this, matrix4);
+          return this;
+        }
+
+        fromQuaternion(quaternion) {
+          fromQuat$1(this, quaternion);
+          return this;
+        }
+
+        fromBasis(vector3a, vector3b, vector3c) {
+          this.set(vector3a[0], vector3a[1], vector3a[2], vector3b[0], vector3b[1], vector3b[2], vector3c[0], vector3c[1], vector3c[2]);
+          return this;
+        }
+
+        invert(matrix3 = this) {
+          invert$1(this, matrix3);
+          return this;
+        }
+      }
+
+      class Shader {
+        static add(string = "void main() {}", chunks) {
+          function regExpFromKey(key) {
+            let regExpString = key instanceof RegExp ? key.source : key.replace(/[|\\{}()[\]^$+*?.]/g, "\\$&");
+            return new RegExp(`(${regExpString})`);
+          }
+
+          for (let [key, chunk] of chunks) {
+            switch (key) {
+              case "start":
+                string = string.replace(/(#version .*?)\n([\s\S]*)/, `$1\n${chunk}\n$2`);
+                break;
+              case "end":
+                string = string.replace(/(}\s*$)/, `\n${chunk}\n$1`);
+                break;
+              case "main":
+                string = string.replace(/(\bvoid\b +\bmain\b[\s\S]*?{\s*)/, `$1\n${chunk}\n`);
+                break;
+              default:
+                string = string.replace(key, chunk);
+            }
+          }
+
+          return string;
+        }
+
+        constructor({ vertexShader = `#version 300 es
     void main() {
       gl_Position = vec4(0., 0., 0., 1.);
     }
-  `,fragmentShader:t=`
+  `, fragmentShader = `#version 300 es
+    precision highp float;
+
+    out vec4 fragColor;
+
     void main() {
-      gl_FragColor = vec4(1.);
+      fragColor = vec4(1.);
     }
-  `,uniforms:n=[],vertexShaderChunks:a=[],fragmentShaderChunks:r=[],shaders:o=[]}={}){this.uniforms=new Map,this._uniformTypes=new Map,this.vertexShader=e,this.fragmentShader=t,this._vertexShaderChunks=[],this._fragmentShaderChunks=[],this.add({vertexShaderChunks:a,fragmentShaderChunks:r,uniforms:n});for(let i of o)this.add(i)}add({vertexShaderChunks:e=[],fragmentShaderChunks:t=[],uniforms:n=[]}={}){this.vertexShader=Ve.add(this.vertexShader,e),this._vertexShaderChunks.push(...e),this.fragmentShader=Ve.add(this.fragmentShader,t),this._fragmentShaderChunks.push(...t);for(let[a,r]of n)this.uniforms.set(a,r)}set vertexShader(e){this._vertexShader=e,this._parseUniforms(this._vertexShader)}get vertexShader(){return this._vertexShader}set fragmentShader(e){this._fragmentShader=e,this._parseUniforms(this._fragmentShader)}get fragmentShader(){return this._fragmentShader}get vertexShaderChunks(){return this._vertexShaderChunks}get fragmentShaderChunks(){return this._fragmentShaderChunks}_parseUniforms(e,t){t=Object.assign({Vector2:new Float32Array(2),Vector3:new Float32Array(3),Vector4:new Float32Array(4),Matrix3:new Float32Array([1,0,0,0,1,0,0,0,1]),Matrix4:new Float32Array([1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1]),Texture2D:class{},TextureCube:class{}},t);for(let n,a=/^\s*uniform (.[^ ]+) (.[^ ;\[\]]+)\[? *(\d+)? *\]?/gm;n=a.exec(e);){let[,e,a,r]=n,o=parseInt(r);if(this.uniforms.has(a))continue;let i,d;if(this._uniformTypes.set(a,e),/float|double/.test(e))i=isNaN(o)?0:Array(o).fill(0);else if(/int|uint/.test(e))i=isNaN(o)?0:Array(o).fill(0);else if(/sampler2D/.test(e))i=isNaN(o)?new t.Texture2D:Array(o).fill().map(()=>new t.Texture2D);else if(/samplerCube/.test(e))i=isNaN(o)?new t.TextureCube:Array(o).fill().map(()=>new t.TextureCube);else if(d=/(.?)vec(\d)/.exec(e)){let e=d[2];i=isNaN(o)?new t[`Vector${e}`]:Array(o).fill().map(()=>new t[`Vector${e}`])}else if(d=/mat(\d)/.exec(e)){let e=d[1];i=isNaN(o)?new t[`Matrix${e}`]:Array(o).fill().map(()=>new t[`Matrix${e}`])}else i=null;this.uniforms.set(a,i)}}}class Xe{constructor({gl:e,data:t=void 0,color:n=[1,1,1,1],minFilter:a=e.NEAREST_MIPMAP_LINEAR,magFilter:r=e.LINEAR,wrapS:o=e.REPEAT,wrapT:i=e.REPEAT,generateMipmap:d=!1}={}){this.gl=e,this._texture=this.gl.createTexture(),t?this.data=t:this.color=n,this._minFilter=this.gl.NEAREST_MIPMAP_LINEAR,this._magFilter=this.gl.LINEAR,this._wrapS=this.gl.REPEAT,this._wrapT=this.gl.REPEAT,this.minFilter=a,this.magFilter=r,this.wrapS=o,this.wrapT=i}generateMipmap(){this.gl.generateMipmap(this.gl.TEXTURE_2D)}set data(e){this.bind(),this.gl.texImage2D(this.gl.TEXTURE_2D,0,this.gl.RGBA,this.gl.RGBA,this.gl.UNSIGNED_BYTE,e)}set color(e){this.bind(),this.gl.texImage2D(this.gl.TEXTURE_2D,0,this.gl.RGBA,1,1,0,this.gl.RGBA,this.gl.UNSIGNED_BYTE,new Uint8Array([255*e[0],255*e[1],255*e[2],255*e[3]]))}set minFilter(e){this._minFilter===e||(this._minFilter=e,this.bind(),this.gl.texParameteri(this.gl.TEXTURE_2D,this.gl.TEXTURE_MIN_FILTER,this._minFilter))}get minFilter(){return this._minFilter}set magFilter(e){this._magFilter===e||(this._magFilter=e,this.bind(),this.gl.texParameteri(this.gl.TEXTURE_2D,this.gl.TEXTURE_MAG_FILTER,this._magFilter))}get magFilter(){return this._magFilter}set wrapS(e){this._wrapS===e||(this._wrapS=e,this.bind(),this.gl.texParameteri(this.gl.TEXTURE_2D,this.gl.TEXTURE_WRAP_S,this._wrapS))}get wrapS(){return this._wrapS}set wrapT(e){this._wrapT===e||(this._wrapT=e,this.bind(),this.gl.texParameteri(this.gl.TEXTURE_2D,this.gl.TEXTURE_WRAP_T,this._wrapT))}get wrapT(){return this._wrapT}bind({unit:e=0}={}){this.gl.activeTexture(this.gl[`TEXTURE${e}`]),this.gl.bindTexture(this.gl.TEXTURE_2D,this._texture)}unbind(){this.gl.bindTexture(this.gl.TEXTURE_2D,null)}}class Ge extends Ve{constructor({gl:e,vertexShader:t=void 0,fragmentShader:n=void 0,uniforms:a=void 0,attributes:r=void 0,vertexShaderChunks:o=void 0,fragmentShaderChunks:i=void 0,shaders:d=void 0}={}){super({vertexShader:t,fragmentShader:n,uniforms:a,attributes:r,vertexShaderChunks:o,fragmentShaderChunks:i,shaders:d}),this._attachedShaders=new Map;const l=e.createProgram(),s=this,c=new Map;class p extends Map{set(t,{buffer:n,location:o=c.get(t),size:a,type:i=e.FLOAT,normalized:d=!1,stride:s=0,offset:p=0,divisor:r}={}){if(t instanceof Map){for(let[e,n]of t)this.set(e,n);return}n.bind(),o||(o=e.getAttribLocation(l,t),-1===o&&console.warn(`Attribute "${t}" is missing or never used`),c.set(t,o)),e.enableVertexAttribArray(o),e.vertexAttribPointer(o,a,i,d,s,p),r!==void 0&&e.vertexAttribDivisor(o,r),super.set(t,{buffer:n,size:a,type:i,normalized:d,stride:s,offset:p})}}const u=new Map,m=new Map;class _ extends Map{set(t,...n){let a=u.get(t);a||(a=e.getUniformLocation(l,t),u.set(t,a));let r=m.get(t);r||(r=/int|ivec|sampler2D|samplerCube/.test(s._uniformTypes.get(t))?"iv":"fv",m.set(t,r));let o=n[0];o.length===void 0&&(1<n.length?(o=s.uniforms.get(t),o.set(...n)):o=n),4>=o.length?e[`uniform${o.length||1}${r}`](a,o):9===o.length?e.uniformMatrix3fv(a,!1,o):16===o.length&&e.uniformMatrix4fv(a,!1,o),super.set(t,o)}}this.gl=e,this._program=l,this.vertexShader=this.vertexShader,this.fragmentShader=this.fragmentShader,this.use(),this.attributes=new p,this.uniforms=new _([...this.uniforms])}set vertexShader(e){super.vertexShader=e,this.gl&&this._updateShader(this.gl.VERTEX_SHADER,this.vertexShader)}get vertexShader(){return super.vertexShader}set fragmentShader(e){super.fragmentShader=e,this.gl&&this._updateShader(this.gl.FRAGMENT_SHADER,this.fragmentShader)}get fragmentShader(){return super.fragmentShader}use(){this.gl.useProgram(this._program)}_updateShader(e,t){if(t){const n=this.gl.createShader(e);if(this.gl.shaderSource(n,t),this.gl.compileShader(n),!this.gl.getShaderParameter(n,this.gl.COMPILE_STATUS)){const e=this.gl.getShaderInfoLog(n),a=parseFloat(/ERROR: 0:(\d+):/.exec(e)[1]),r=t.split("\n");console.error(`${e}\nat: ${r[a-1].replace(/^\s*/,"")}`)}const a=this._attachedShaders.get(e);a&&(this.gl.detachShader(this._program,a),this.gl.deleteShader(a)),this._attachedShaders.set(e,n),this.gl.attachShader(this._program,n),this.gl.linkProgram(this._program)}}_parseUniforms(e){super._parseUniforms(e,{Vector2:Oe,Vector3:Ue,Vector4:Ie,Matrix3:He,Matrix4:ze,GLTexture:Xe})}}class qe{constructor({gl:e,size:t=0,data:n=new ArrayBuffer(t),target:a=e.ARRAY_BUFFER,usage:r=e.STATIC_DRAW}={}){this.gl=e,this._target=a,this._usage=r,this._buffer=this.gl.createBuffer(),this.data=n}set data(e){this._data=e,this.bind(),this.gl.bufferData(this._target,this._data,this._usage)}get data(){return this._data}bind(){this.gl.bindBuffer(this._target,this._buffer)}unbind(){this.gl.bindBuffer(this._target,null)}}class We{constructor({gl:e,attributes:t,indiceData:n}={}){this.gl=e,this.gl.getExtension("OES_element_index_uint"),this.attributes=new Map(t);for(let[a,r]of this.attributes)r.buffer=new qe({gl:this.gl,data:r.data}),r.count=r.count||r.data.length/r.size;n&&(this.indices={buffer:new qe({gl:this.gl,data:n,target:this.gl.ELEMENT_ARRAY_BUFFER}),type:n instanceof Uint8Array?this.gl.UNSIGNED_BYTE:n instanceof Uint16Array?this.gl.UNSIGNED_SHORT:this.gl.UNSIGNED_INT,offset:0,count:n?n.length:0})}bind(){for(let e of this.attributes.values())e.buffer.bind();this.indices&&this.indices.buffer.bind()}unbind(){for(let e of this.attributes.values())e.buffer.unbind();this.indices&&this.indices.buffer.unbind()}draw({mode:t=this.gl.TRIANGLES,elements:n=!!this.indices,count:a=n?this.indices.count:this.attributes.get("position").count,offset:r=this.indices?this.indices.offset:0,type:o=this.indices?this.indices.type:null,first:i=0,instanceCount:e}={}){n?e===void 0?this.gl.drawElements(t,a,o,r):this.gl.drawElementsInstanced(t,a,o,r,e):e===void 0?this.gl.drawArrays(t,i,a):this.gl.drawArraysInstanced(t,i,a,e)}}class Qe{constructor({near:e=0.01,far:t=1e3,aspectRatio:n=1,fov:a=Ee/3}={}){this._near=e,this._far=t,this._aspectRatio=n,this._fov=a,this.transform=new ze,this._projectionMatrix=new ze,this._projectionViewMatrix=new ze,this._inverseMatrix=new ze,this._updateProjectionMatrix()}set near(e){this._near=e,this._updateProjectionMatrix()}get near(){return this._near}set far(e){this._far=e,this._updateProjectionMatrix()}get far(){return this._far}set fov(e){this._fov=e,this._updateProjectionMatrix()}get fov(){return this._fov}set aspectRatio(e){this._aspectRatio=e,this._updateProjectionMatrix()}get aspectRatio(){return this._aspectRatio}get projectionMatrix(){return this._projectionMatrix}get inverseMatrix(){return this._inverseMatrix.invert(this.transform)}get projectionViewMatrix(){return this._projectionViewMatrix.copy(this.projectionMatrix).multiply(this.inverseMatrix)}_updateProjectionMatrix(){this._projectionMatrix.fromPerspective(this)}}let Je=new Map;class Ze extends Oe{static get TOUCH_TYPE(){return"touchtype"}static get MOUSE_TYPE(){return"mousetype"}static get(e){let t=Je.get(e);return t||(t=new Ze(e)),t}get downed(){return this._downed}constructor(e=document.body){super(),this.domElement=e,this.type=Ze.TOUCH_TYPE,this._position=new Oe,this.velocity=new Oe,this.dragOffset=new Oe,this.centered=new Oe,this.centeredFlippedY=new Oe,this.normalized=new Oe,this.normalizedFlippedY=new Oe,this.normalizedCentered=new Oe,this.normalizedCenteredFlippedY=new Oe,this._downed=!1,Je.set(this.domElement,this),this.onDown=new Re,this.onMove=new Re,this.onUp=new Re,this.onClick=new Re,this.onTypeChange=new Re,this._preventMouseTypeChange=!1,this._onPointerMoveBinded=this._onPointerMove.bind(this),this._onPointerDownBinded=this._onPointerDown.bind(this),this._onPointerUpBinded=this._onPointerUp.bind(this),this._updateBinded=this._update.bind(this),this._resizeBinded=this.resize.bind(this),this.resize(),this.enable()}resize(){this._domElementBoundingRect=this.domElement.getBoundingClientRect()}_onPointerDown(t){"touchstart"===t.type&&(this._preventMouseTypeChange=!0,this._changeType(Ze.TOUCH_TYPE)),this._downed=!0,this.dragOffset.set(0,0),this.copy(this._position),this._onPointerEvent(t),this._updatePositions(),this.onDown.dispatch(t)}_onPointerMove(t){if("mousemove"===t.type){if(this._preventMouseTypeChange)return;this._changeType(Ze.MOUSE_TYPE)}this._onPointerEvent(t),this.onMove.dispatch(t)}_onPointerUp(t){this._downed=!1,this._onPointerEvent(t),this._updatePositions(),this.onUp.dispatch(t),4>this.dragOffset.length&&this.onClick.dispatch(t),clearTimeout(this._timeout),this._timeout=setTimeout(()=>{this._preventMouseTypeChange=!1},2e3)}_onPointerEvent(t){!!window.TouchEvent&&t instanceof window.TouchEvent&&("touchend"===t.type?t=t.changedTouches[0]:t=t.touches[0]),this._position.x=t.clientX-this._domElementBoundingRect.left,this._position.y=t.clientY-this._domElementBoundingRect.top}_changeType(e){this.type===e||(this.type=e,this.disable(),this.enable(),this.onTypeChange.dispatch(this.type))}_update(){(this.x||this.y)&&(this.velocity.x=this._position.x-this.x,this.velocity.y=this._position.y-this.y,this.downed&&this.dragOffset.add(this.velocity)),this._updatePositions()}_updatePositions(){this.x=this._position.x,this.y=this._position.y,this.centered.x=this.centeredFlippedY.x=this.x-.5*this._domElementBoundingRect.width,this.centered.y=this.centeredFlippedY.y=this.y-.5*this._domElementBoundingRect.height,this.centeredFlippedY.y*=-1,this.normalized.x=this.normalizedFlippedY.x=this.x/this._domElementBoundingRect.width,this.normalized.y=this.normalizedFlippedY.y=this.y/this._domElementBoundingRect.height,this.normalizedFlippedY.y=1-this.normalizedFlippedY.y,this.normalizedCentered.x=this.normalizedCenteredFlippedY.x=2*this.normalized.x-1,this.normalizedCentered.y=this.normalizedCenteredFlippedY.y=2*this.normalized.y-1,this.normalizedCenteredFlippedY.y*=-1}enable(){this.disable(),this.resize(),this.type===Ze.TOUCH_TYPE?(this.domElement.addEventListener("touchmove",this._onPointerMoveBinded),window.addEventListener("touchend",this._onPointerUpBinded)):(this.domElement.addEventListener("mousedown",this._onPointerDownBinded),window.addEventListener("mouseup",this._onPointerUpBinded)),this.domElement.addEventListener("touchstart",this._onPointerDownBinded),this.domElement.addEventListener("mousemove",this._onPointerMoveBinded),window.addEventListener("resize",this._resizeBinded),De.add(this._updateBinded=this._updateBinded||this._update.bind(this))}disable(){De.delete(this._updateBinded),this.domElement.removeEventListener("touchstart",this._onPointerDownBinded),this.domElement.removeEventListener("mousedown",this._onPointerDownBinded),this.domElement.removeEventListener("touchmove",this._onPointerMoveBinded),this.domElement.removeEventListener("mousemove",this._onPointerMoveBinded),window.removeEventListener("touchend",this._onPointerUpBinded),window.removeEventListener("mouseup",this._onPointerUpBinded),window.removeEventListener("resize",this._resizeBinded)}}const $e=function(e,t){return e[0]=t[0],e[1]=t[1],e[2]=t[2],e[3]=t[3],e},Ke=function(e,t){let n=t[0],a=t[1],r=t[2],o=t[3],i=n*n+a*a+r*r+o*o;return 0<i&&(i=1/ve(i),e[0]=n*i,e[1]=a*i,e[2]=r*i,e[3]=o*i),e},et=function(){let e=L(),t=N(1,0,0),n=N(0,1,0);return function(r,o,a){let i=H(o,a);return-0.999999>i?(V(e,t,o),1e-6>A(e)&&V(e,n,o),Y(e,e),ce(r,e,Math.PI),r):0.999999<i?(r[0]=0,r[1]=0,r[2]=0,r[3]=1,r):(V(e,o,a),r[0]=e[0],r[1]=e[1],r[2]=e[2],r[3]=1+i,Ke(r,r))}}(),tt=function(){let e=le(),n=le();return function(r,o,a,i,l,d){return ge(e,o,l,d),ge(n,a,i,d),ge(r,e,n,2*d*(1-d)),r}}(),nt=function(){let e=Z();return function(t,n,a,r){return e[0]=a[0],e[3]=a[1],e[6]=a[2],e[1]=r[0],e[4]=r[1],e[7]=r[2],e[2]=-n[0],e[5]=-n[1],e[8]=-n[2],Ke(t,fe(t,e))}}();class at extends Float32Array{constructor(e=0,t=0,n=0,a=1){return super(4),this.set(e,t,n,a),this}get x(){return this[0]}set x(e){this[0]=e}get y(){return this[1]}set y(e){this[1]=e}get z(){return this[2]}set z(e){this[2]=e}get w(){return this[3]}set w(e){this[3]=e}identity(){return se(this),this}set(e,t,n,a){return J(this,e,t,n,a),this}rotateX(e){return ue(this,this,e),this}rotateY(e){return me(this,this,e),this}rotateZ(e){return _e(this,this,e),this}invert(e=this){return he(this,e),this}copy(e){return $e(this,e),this}normalize(e=this){return Ke(this,this),this}multiply(e,t){return t?pe(this,e,t):pe(this,this,e),this}fromMatrix3(e){return fe(this,e),this}}class rt{constructor({matrix:e=new ze,domElement:t=document.body,distance:n=0,invertRotation:a=!0,rotationEaseRatio:r=.04,zoomSpeed:o=.1,zoomEaseRatio:i=.1,minDistance:d=0,maxDistance:l=Infinity,autoupdate:s=!0}={}){this.matrix=e,this.disabled=!1,this._distance=n,this.invertRotation=a,this.rotationEaseRatio=r,this.maxDistance=l,this.minDistance=d,this.zoomSpeed=o,this.zoomEaseRatio=i,this._pointer=Ze.get(t),this._nextDistance=this._distance,this._cachedQuaternion=new at,this._cachedMatrix=new ze,this._cachedVector3=new Ue,this._velocity=new Oe,this._velocityOrigin=new Oe,this._position=new Ue([this.matrix.x,this.matrix.y,this.matrix.z]),this._positionPrevious=this._position.clone(),this._positionOffset=new Ue,t.addEventListener("wheel",this.onWheel.bind(this)),this.update()}set distance(e){this._distance=this._nextDistance=e}get distance(){return this._distance}onWheel(t){this._nextDistance+=t.deltaY*this.zoomSpeed,this._nextDistance=xe(Ce(this._nextDistance,this.maxDistance),this.minDistance)}update(){this.disabled||(this._cachedMatrix.identity(),this._cachedQuaternion.identity(),this._distance+=(this._nextDistance-this._distance)*this.zoomEaseRatio,this._position.set(this.matrix.x,this.matrix.y,this.matrix.z).subtract(this._positionOffset),this.matrix.x=0,this.matrix.y=0,this.matrix.z=0,this._pointer.downed&&this._velocity.copy(this._pointer.velocity).scale(.003),this._velocity.lerp(this._velocityOrigin,this.rotationEaseRatio),this._cachedQuaternion.rotateY(this.invertRotation?-this._velocity.x:this._velocity.x),this._cachedQuaternion.rotateX(this.invertRotation?-this._velocity.y:this._velocity.y),this._cachedMatrix.fromQuaternion(this._cachedQuaternion),this.matrix.multiply(this._cachedMatrix),this._positionOffset.set(0,0,1),this._positionOffset.applyMatrix4(this.matrix),this._positionOffset.scale(this._distance),this._cachedVector3.copy(this._position).add(this._positionOffset),this.matrix.x=this._cachedVector3.x,this.matrix.y=this._cachedVector3.y,this.matrix.z=this._cachedVector3.z)}}class ot{constructor({canvas:e}={}){this.canvas=e,this.gl=this.canvas.getContext("webgl",{depth:!0,alpha:!1,antialias:!0}),this.camera=new Qe,this.cameraController=new rt({matrix:this.camera.transform,distance:5}),this.gl.clearColor(0,0,0,1),this.gl.enable(this.gl.CULL_FACE),this.gl.enable(this.gl.DEPTH_TEST),this.program=new Ge({gl:this.gl,uniforms:[["transform",new ze]],vertexShaderChunks:[["start",`
+  `, uniforms = [], vertexShaderChunks = [], fragmentShaderChunks = [], shaders = [] } = {}) {
+          this.uniforms = new Map();
+          this._glslUniformTypes = new Map();
+
+          this.vertexShader = vertexShader;
+          this.fragmentShader = fragmentShader;
+          this._vertexShaderChunks = [];
+          this._fragmentShaderChunks = [];
+
+          this.add({ vertexShaderChunks, fragmentShaderChunks, uniforms });
+
+          for (let shader of shaders) {
+            this.add(shader);
+          }
+        }
+
+        add({ vertexShaderChunks = [], fragmentShaderChunks = [], uniforms = [] } = {}) {
+          this.vertexShader = Shader.add(this.vertexShader, vertexShaderChunks);
+          this._vertexShaderChunks.push(...vertexShaderChunks);
+          this.fragmentShader = Shader.add(this.fragmentShader, fragmentShaderChunks);
+          this._fragmentShaderChunks.push(...fragmentShaderChunks);
+          for (let [key, value] of uniforms) {
+            this.uniforms.set(key, value);
+          }
+        }
+
+        set vertexShader(value) {
+          this._vertexShader = value;
+          this._parseUniforms(this._vertexShader);
+        }
+
+        get vertexShader() {
+          return this._vertexShader;
+        }
+
+        set fragmentShader(value) {
+          this._fragmentShader = value;
+          this._parseUniforms(this._fragmentShader);
+        }
+
+        get fragmentShader() {
+          return this._fragmentShader;
+        }
+
+        get vertexShaderChunks() {
+          return this._vertexShaderChunks;
+        }
+
+        get fragmentShaderChunks() {
+          return this._fragmentShaderChunks;
+        }
+
+        /**
+         * Parse shader strings to extract uniforms
+         */
+        _parseUniforms(string, classes) {
+          classes = Object.assign({
+            Vector2: class Vector2 extends Float32Array {
+              constructor() {
+                super(2);
+              }
+            },
+            Vector3: class Vector3 extends Float32Array {
+              constructor() {
+                super(3);
+              }
+            },
+            Vector4: class Vector4 extends Float32Array {
+              constructor() {
+                super(4);
+              }
+            },
+            Matrix3: class Matrix3 extends Float32Array {
+              constructor() {
+                super([1, 0, 0, 0, 1, 0, 0, 0, 1]);
+              }
+            },
+            Matrix4: class Matrix3 extends Float32Array {
+              constructor() {
+                super([1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1]);
+              }
+            },
+            Texture: class Texture {},
+            TextureCube: class TextureCube {}
+          }, classes);
+
+          let regExp = /^\s*uniform (.[^ ]+) (.[^ ;\[\]]+)\[? *(\d+)? *\]?/gm;
+
+          let match;
+
+          while (match = regExp.exec(string)) {
+            let [, glslType, variableName, lengthStr] = match;
+            let length = parseInt(lengthStr);
+
+            if (this.uniforms.has(variableName)) {
+              continue;
+            }
+
+            let value;
+            let typeMatch;
+
+            this._glslUniformTypes.set(variableName, glslType);
+
+            if (/float|double/.test(glslType)) {
+              if (isNaN(length)) {
+                value = 0;
+              } else {
+                value = new Array(length).fill(0);
+              }
+            } else if (/int|uint/.test(glslType)) {
+              if (isNaN(length)) {
+                value = 0;
+              } else {
+                value = new Array(length).fill(0);
+              }
+            } else if (/sampler2D/.test(glslType)) {
+              if (isNaN(length)) {
+                value = new classes.Texture();
+              } else {
+                value = new Array(length).fill().map(value => new classes.Texture());
+              }
+            } else if (/samplerCube/.test(glslType)) {
+              if (isNaN(length)) {
+                value = new classes.TextureCube();
+              } else {
+                value = new Array(length).fill().map(value => new classes.TextureCube());
+              }
+            } else if (typeMatch = /(.?)vec(\d)/.exec(glslType)) {
+              let vectorLength = typeMatch[2];
+              if (isNaN(length)) {
+                value = new classes[`Vector${vectorLength}`]();
+              } else {
+                value = new Array(length).fill().map(value => new classes[`Vector${vectorLength}`]());
+              }
+            } else if (typeMatch = /mat(\d)/.exec(glslType)) {
+              let matrixLength = typeMatch[1];
+              if (isNaN(length)) {
+                value = new classes[`Matrix${matrixLength}`]();
+              } else {
+                value = new Array(length).fill().map(value => new classes[`Matrix${matrixLength}`]());
+              }
+            } else {
+              value = undefined;
+            }
+
+            this.uniforms.set(variableName, value);
+          }
+        }
+      }
+
+      class GLTexture {
+        constructor({
+          gl,
+          data = null,
+          width = undefined,
+          height = undefined,
+          level = 0,
+          internalformat = gl.RGBA,
+          format = gl.RGBA,
+          type = gl.UNSIGNED_BYTE,
+          minFilter = gl.NEAREST_MIPMAP_LINEAR,
+          magFilter = gl.LINEAR,
+          wrapS = gl.REPEAT,
+          wrapT = gl.REPEAT
+        } = {}) {
+          this.gl = gl;
+          this._texture = this.gl.createTexture();
+          this._width = width;
+          this._height = height;
+
+          this.level = level;
+          this.internalformat = internalformat;
+          this.format = format;
+          this.type = type;
+          this.minFilter = minFilter;
+          this.magFilter = magFilter;
+          this.wrapS = wrapS;
+          this.wrapT = wrapT;
+          if (data || this._width && this._height) {
+            this.data = data;
+          }
+        }
+
+        generateMipmap() {
+          this.gl.generateMipmap(this.gl.TEXTURE_2D);
+        }
+
+        set data(value) {
+          this._data = value;
+          this.bind();
+          const width = this._width || this._data.width || this._data.videoWidth;
+          const height = this._height || this._data.height || this._data.videoHeight;
+          if (this.gl instanceof WebGLRenderingContext && (this._data.width || this._data.videoWidth)) {
+            this.gl.texImage2D(this.gl.TEXTURE_2D, this.level, this.internalformat, this.format, this.type, this._data);
+          } else {
+            this.gl.texImage2D(this.gl.TEXTURE_2D, this.level, this.internalformat, width, height, 0, this.format, this.type, this._data);
+          }
+        }
+
+        get data() {
+          return this._data;
+        }
+
+        get width() {
+          return this._width;
+        }
+
+        get height() {
+          return this._height;
+        }
+
+        set minFilter(value) {
+          if (this._minFilter === value) {
+            return;
+          }
+          this._minFilter = value;
+          this.bind();
+          this.gl.texParameteri(this.gl.TEXTURE_2D, this.gl.TEXTURE_MIN_FILTER, this._minFilter);
+        }
+
+        get minFilter() {
+          return this._minFilter;
+        }
+
+        set magFilter(value) {
+          if (this._magFilter === value) {
+            return;
+          }
+          this._magFilter = value;
+          this.bind();
+          this.gl.texParameteri(this.gl.TEXTURE_2D, this.gl.TEXTURE_MAG_FILTER, this._magFilter);
+        }
+
+        get magFilter() {
+          return this._magFilter;
+        }
+
+        set wrapS(value) {
+          if (this._wrapS === value) {
+            return;
+          }
+          this._wrapS = value;
+          this.bind();
+          this.gl.texParameteri(this.gl.TEXTURE_2D, this.gl.TEXTURE_WRAP_S, this._wrapS);
+        }
+
+        get wrapS() {
+          return this._wrapS;
+        }
+
+        set wrapT(value) {
+          if (this._wrapT === value) {
+            return;
+          }
+          this._wrapT = value;
+          this.bind();
+          this.gl.texParameteri(this.gl.TEXTURE_2D, this.gl.TEXTURE_WRAP_T, this._wrapT);
+        }
+
+        get wrapT() {
+          return this._wrapT;
+        }
+
+        bind({ unit = 0 } = {}) {
+          this.gl.activeTexture(this.gl[`TEXTURE${unit}`]);
+          this.gl.bindTexture(this.gl.TEXTURE_2D, this._texture);
+        }
+
+        unbind() {
+          this.gl.bindTexture(this.gl.TEXTURE_2D, null);
+        }
+      }
+
+      class GLProgram extends Shader {
+        constructor({ gl,
+          vertexShader = undefined,
+          fragmentShader = undefined,
+          uniforms = undefined,
+          attributes = undefined,
+          vertexShaderChunks = undefined,
+          fragmentShaderChunks = undefined,
+          shaders = undefined
+        } = {}) {
+          super({ vertexShader, fragmentShader, uniforms, attributes, vertexShaderChunks, fragmentShaderChunks, shaders });
+
+          this.gl = gl;
+          this._program = gl.createProgram();
+          this._attachedShaders = new Map();
+
+          const self = this;
+
+          this._vertexAttribDivisor = function () {};
+          const instancedArraysExtension = this.gl.getExtension("ANGLE_instanced_arrays");
+          if (instancedArraysExtension) {
+            this._vertexAttribDivisor = instancedArraysExtension.vertexAttribDivisorANGLE.bind(instancedArraysExtension);
+          } else if (this.gl.vertexAttribDivisor) {
+            this._vertexAttribDivisor = this.gl.vertexAttribDivisor.bind(this.gl);
+          }
+
+          const attributesLocations = new Map();
+          class Attributes extends Map {
+            set(name, { buffer, location = attributesLocations.get(name), size, type = gl.FLOAT, normalized = false, stride = 0, offset = 0, divisor } = {}) {
+              if (name instanceof Map) {
+                for (let [key, value] of name) {
+                  this.set(key, value);
+                }
+                return;
+              }
+              buffer.bind();
+              if (!location) {
+                location = gl.getAttribLocation(self._program, name);
+                if (location === -1) {
+                  console.warn(`Attribute "${name}" is missing or never used`);
+                }
+                attributesLocations.set(name, location);
+              }
+              gl.enableVertexAttribArray(location);
+              gl.vertexAttribPointer(location, size, type, normalized, stride, offset);
+              if (divisor !== undefined) {
+                self._vertexAttribDivisor(location, divisor);
+              }
+              super.set(name, { buffer, size, type, normalized, stride, offset });
+            }
+          }
+
+          this._uniformLocations = new Map();
+          this._uniformTypes = new Map();
+          class Uniforms extends Map {
+            set(name, ...values) {
+              let value = values[0];
+              if (value === undefined) {
+                return;
+              }
+
+              let location = self._uniformLocations.get(name);
+              if (location === undefined) {
+                location = gl.getUniformLocation(self._program, name);
+                self._uniformLocations.set(name, location);
+              }
+
+              if (value.length === undefined) {
+                if (value instanceof Object) {
+                  for (let key in value) {
+                    self.uniforms.set(`${name}.${key}`, value[key]);
+                  }
+                  return;
+                }
+                if (values.length > 1) {
+                  value = self.uniforms.get(name);
+                  value.set(...values);
+                } else {
+                  value = values;
+                }
+              } else if (value[0] instanceof Object) {
+                for (let i = 0; i < value.length; i++) {
+                  if (value[0].length) {
+                    self.uniforms.set(`${name}[${i}]`, value[i]);
+                  } else {
+                    for (let key in value[i]) {
+                      self.uniforms.set(`${name}[${i}].${key}`, value[i][key]);
+                    }
+                  }
+                }
+                return;
+              }
+
+              if (location === null) {
+                return;
+              }
+
+              let type = self._uniformTypes.get(name);
+              if (!type) {
+                type = /int|ivec|sampler2D|samplerCube/.test(self._glslUniformTypes.get(name)) ? "iv" : "fv";
+                self._uniformTypes.set(name, type);
+              }
+
+              if (value.length <= 4) {
+                gl[`uniform${value.length || 1}${type}`](location, value);
+              } else if (value.length === 9) {
+                gl.uniformMatrix3fv(location, false, value);
+              } else if (value.length === 16) {
+                gl.uniformMatrix4fv(location, false, value);
+              }
+
+              super.set(name, value);
+            }
+          }
+
+          this.vertexShader = this.vertexShader;
+          this.fragmentShader = this.fragmentShader;
+
+          this.use();
+
+          this.attributes = new Attributes();
+          this.uniforms = new Uniforms([...this.uniforms]);
+        }
+
+        set vertexShader(value) {
+          super.vertexShader = value;
+          if (this.gl) {
+            this._updateShader(this.gl.VERTEX_SHADER, this.vertexShader);
+          }
+        }
+
+        get vertexShader() {
+          return super.vertexShader;
+        }
+
+        set fragmentShader(value) {
+          super.fragmentShader = value;
+          if (this.gl) {
+            this._updateShader(this.gl.FRAGMENT_SHADER, this.fragmentShader);
+          }
+        }
+
+        get fragmentShader() {
+          return super.fragmentShader;
+        }
+
+        use() {
+          this.gl.useProgram(this._program);
+        }
+
+        _updateShader(type, source) {
+          if (!source) {
+            return;
+          }
+
+          if (this.gl instanceof WebGLRenderingContext) {
+            source = source.replace(/#version.*?\n/g, "");
+            source = source.replace(/\btexture\b/g, "texture2D");
+            if (type === this.gl.VERTEX_SHADER) {
+              source = source.replace(/\bin\b/g, "attribute");
+              source = source.replace(/\bout\b/g, "varying");
+            } else {
+              source = source.replace(/\bin\b/g, "varying");
+              const results = /out vec4 (.*?);/.exec(source);
+              if (results) {
+                const fragColorName = results[1];
+                source = source.replace(/out.*?;/, "");
+                source = source.replace(new RegExp(`\\b${fragColorName}\\b`, "g"), "gl_FragColor");
+              }
+            }
+          }
+
+          const shader = this.gl.createShader(type);
+          this.gl.shaderSource(shader, source);
+          this.gl.compileShader(shader);
+
+          const shaderInfoLog = this.gl.getShaderInfoLog(shader);
+          if (!this.gl.getShaderParameter(shader, this.gl.COMPILE_STATUS)) {
+            const lineNumberResults = /ERROR: 0:(\d+):/.exec(shaderInfoLog);
+            if (lineNumberResults) {
+              const lineNumber = parseFloat(lineNumberResults[1]);
+              const shaderLines = source.split("\n");
+              console.error(`${shaderInfoLog}\nat: ${shaderLines[lineNumber - 1].replace(/^\s*/, "")}`);
+            } else {
+              console.error(shaderInfoLog);
+            }
+            this.gl.deleteShader(shader);
+            return;
+          } else if (shaderInfoLog) {
+            console.warn(shaderInfoLog);
+          }
+
+          const attachedShader = this._attachedShaders.get(type);
+          if (attachedShader) {
+            this.gl.detachShader(this._program, attachedShader);
+            this.gl.deleteShader(attachedShader);
+          }
+
+          this.gl.attachShader(this._program, shader);
+          this.gl.deleteShader(shader);
+          this._attachedShaders.set(type, shader);
+
+          if (this._attachedShaders.size === 2) {
+            this.gl.linkProgram(this._program);
+            const programInfoLog = this.gl.getProgramInfoLog(this._program);
+            if (!this.gl.getProgramParameter(this._program, this.gl.LINK_STATUS)) {
+              console.error(programInfoLog);
+            } else if (programInfoLog) {
+              console.warn(programInfoLog);
+            }
+            for (let [type, attachedShader] of this._attachedShaders) {
+              // this.gl.detachShader(this._program, attachedShader);
+              // this._attachedShaders.delete(type);
+            }
+            this._uniformLocations = new Map();
+            this._uniformTypes = new Map();
+          }
+        }
+
+        _parseUniforms(string) {
+          super._parseUniforms(string, {
+            Vector2,
+            Vector3,
+            Vector4,
+            Matrix3,
+            Matrix4,
+            GLTexture
+          });
+        }
+      }
+
+      class GLBuffer {
+        constructor({ gl, size = 0, data = new ArrayBuffer(size), target = gl.ARRAY_BUFFER, usage = gl.STATIC_DRAW } = {}) {
+          this.gl = gl;
+          this._target = target;
+          this._usage = usage;
+
+          this._buffer = this.gl.createBuffer();
+
+          this.data = data;
+        }
+
+        set data(value) {
+          this._data = value;
+
+          this.bind();
+          this.gl.bufferData(this._target, this._data, this._usage);
+        }
+
+        get data() {
+          return this._data;
+        }
+
+        bind() {
+          this.gl.bindBuffer(this._target, this._buffer);
+        }
+
+        unbind() {
+          this.gl.bindBuffer(this._target, null);
+        }
+      }
+
+      class GLMesh {
+        constructor({ gl, attributes, indiceData } = {}) {
+          this.gl = gl;
+
+          this.gl.getExtension("OES_element_index_uint");
+
+          this._drawElementsInstanced = function () {};
+          this._drawArraysInstanced = function () {};
+          const instancedArraysExtension = this.gl.getExtension("ANGLE_instanced_arrays");
+          if (instancedArraysExtension) {
+            this._drawElementsInstanced = instancedArraysExtension.drawElementsInstancedANGLE.bind(instancedArraysExtension);
+            this._drawArraysInstanced = instancedArraysExtension.drawArraysInstancedANGLE.bind(instancedArraysExtension);
+          } else if (this.gl.drawElementsInstanced) {
+            this._drawElementsInstanced = this.gl.drawElementsInstanced.bind(this.gl);
+            this._drawArraysInstanced = this.gl.drawArraysInstanced.bind(this.gl);
+          }
+
+          this.attributes = new Map(attributes);
+
+          for (let [name, attribute] of this.attributes) {
+            attribute.buffer = new GLBuffer({
+              gl: this.gl,
+              data: attribute.data
+            });
+            attribute.count = attribute.count || attribute.data.length / attribute.size;
+          }
+
+          if (indiceData) {
+            this.indices = {
+              buffer: new GLBuffer({
+                gl: this.gl,
+                data: indiceData,
+                target: this.gl.ELEMENT_ARRAY_BUFFER
+              }),
+              type: indiceData instanceof Uint8Array ? this.gl.UNSIGNED_BYTE : indiceData instanceof Uint16Array ? this.gl.UNSIGNED_SHORT : this.gl.UNSIGNED_INT,
+              offset: 0,
+              count: indiceData ? indiceData.length : 0
+            };
+          }
+        }
+
+        bind() {
+          for (let attribute of this.attributes.values()) {
+            attribute.buffer.bind();
+          }
+
+          if (this.indices) {
+            this.indices.buffer.bind();
+          }
+        }
+
+        unbind() {
+          for (let attribute of this.attributes.values()) {
+            attribute.buffer.unbind();
+          }
+
+          if (this.indices) {
+            this.indices.buffer.unbind();
+          }
+        }
+
+        draw({
+          mode = this.gl.TRIANGLES,
+          elements = !!this.indices,
+          count = elements ? this.indices.count : this.attributes.get("position").count,
+          offset = this.indices ? this.indices.offset : 0,
+          type = this.indices ? this.indices.type : null,
+          first = 0,
+          instanceCount = undefined
+        } = {}) {
+          if (elements) {
+            if (instanceCount !== undefined) {
+              this._drawElementsInstanced(mode, count, type, offset, instanceCount);
+            } else {
+              this.gl.drawElements(mode, count, type, offset);
+            }
+          } else {
+            if (instanceCount !== undefined) {
+              this._drawArraysInstanced(mode, first, count, instanceCount);
+            } else {
+              this.gl.drawArrays(mode, first, count);
+            }
+          }
+        }
+      }
+
+      class Camera {
+        constructor({ near = 0.01, far = 1000, aspectRatio = 1, fov = Math.PI / 3 } = {}) {
+          this._near = near;
+          this._far = far;
+          this._aspectRatio = aspectRatio;
+          this._fov = fov;
+
+          this.transform = new Matrix4();
+          this._inverseTransform = new Matrix4();
+          this._projection = new Matrix4();
+          this._projectionView = new Matrix4();
+
+          this._updateProjection();
+        }
+
+        set near(value) {
+          this._near = value;
+          this._updateProjection();
+        }
+
+        get near() {
+          return this._near;
+        }
+
+        set far(value) {
+          this._far = value;
+          this._updateProjection();
+        }
+
+        get far() {
+          return this._far;
+        }
+
+        set fov(value) {
+          this._fov = value;
+          this._updateProjection();
+        }
+
+        get fov() {
+          return this._fov;
+        }
+
+        set aspectRatio(value) {
+          this._aspectRatio = value;
+          this._updateProjection();
+        }
+
+        get aspectRatio() {
+          return this._aspectRatio;
+        }
+
+        get inverseTransform() {
+          return this._inverseTransform.invert(this.transform);
+        }
+
+        get projection() {
+          return this._projection;
+        }
+
+        get projectionView() {
+          return this._projectionView.copy(this.projection).multiply(this.inverseTransform);
+        }
+
+        _updateProjection() {
+          this._projection.fromPerspective(this);
+        }
+      }
+
+      Object.defineProperty(Camera.prototype, "near", { enumerable: true });
+      Object.defineProperty(Camera.prototype, "far", { enumerable: true });
+      Object.defineProperty(Camera.prototype, "fov", { enumerable: true });
+      Object.defineProperty(Camera.prototype, "aspectRatio", { enumerable: true });
+      Object.defineProperty(Camera.prototype, "inverseTransform", { enumerable: true });
+      Object.defineProperty(Camera.prototype, "projection", { enumerable: true });
+      Object.defineProperty(Camera.prototype, "projectionView", { enumerable: true });
+
+      let pointers = new Map();
+
+      class Pointer extends Vector2 {
+        static get TOUCH_TYPE() {
+          return "touchtype";
+        }
+
+        static get MOUSE_TYPE() {
+          return "mousetype";
+        }
+
+        static get(domElement = window) {
+          let pointer = pointers.get(domElement);
+          if (!pointer) {
+            pointer = new Pointer(domElement);
+          }
+          return pointer;
+        }
+
+        get downed() {
+          return this._downed;
+        }
+
+        constructor(domElement = document.body) {
+          super();
+
+          this.domElement = domElement;
+
+          this.type = Pointer.TOUCH_TYPE;
+
+          this._position = new Vector2();
+
+          this.velocity = new Vector2();
+          this.dragOffset = new Vector2();
+
+          this.centered = new Vector2();
+          this.centeredFlippedY = new Vector2();
+          this.normalized = new Vector2();
+          this.normalizedFlippedY = new Vector2();
+          this.normalizedCentered = new Vector2();
+          this.normalizedCenteredFlippedY = new Vector2();
+
+          this._downed = false;
+
+          pointers.set(this.domElement, this);
+
+          this.onDown = new Signal();
+          this.onMove = new Signal();
+          this.onUp = new Signal();
+          this.onClick = new Signal();
+          this.onTypeChange = new Signal();
+
+          this._preventMouseTypeChange = false;
+
+          this._onPointerMoveBinded = this._onPointerMove.bind(this);
+          this._onPointerDownBinded = this._onPointerDown.bind(this);
+          this._onPointerUpBinded = this._onPointerUp.bind(this);
+
+          this._updateBinded = this._update.bind(this);
+          this._resizeBinded = this.resize.bind(this);
+
+          this.resize();
+          this.enable();
+        }
+
+        resize() {
+          this._domElementBoundingRect = this.domElement !== window ? this.domElement.getBoundingClientRect() : {
+            top: 0,
+            left: 0,
+            width: window.innerWidth,
+            height: window.innerHeight
+          };
+        }
+
+        _onPointerDown(e) {
+          if (e.type === "touchstart") {
+            this._preventMouseTypeChange = true;
+            this._changeType(Pointer.TOUCH_TYPE);
+          }
+          this._downed = true;
+          this.dragOffset.set(0, 0);
+          this.copy(this._position);
+          this._onPointerEvent(e);
+          this._updatePositions();
+          this.onDown.dispatch(e);
+        }
+
+        _onPointerMove(e) {
+          if (e.type === "mousemove") {
+            if (this._preventMouseTypeChange) {
+              return;
+            } else {
+              this._changeType(Pointer.MOUSE_TYPE);
+            }
+          }
+          this._onPointerEvent(e);
+          this.onMove.dispatch(e);
+        }
+
+        _onPointerUp(e) {
+          this._downed = false;
+          this._onPointerEvent(e);
+          this._updatePositions();
+          this.onUp.dispatch(e);
+          if (this.dragOffset.length < 4) {
+            this.onClick.dispatch(e);
+          }
+          clearTimeout(this._timeout);
+          this._timeout = setTimeout(() => {
+            this._preventMouseTypeChange = false;
+          }, 2000);
+        }
+
+        _onPointerEvent(e) {
+          if (!!window.TouchEvent && e instanceof window.TouchEvent) {
+            if (e.type === "touchend") {
+              e = e.changedTouches[0];
+            } else {
+              e = e.touches[0];
+            }
+          }
+          this._position.x = e.clientX - this._domElementBoundingRect.left;
+          this._position.y = e.clientY - this._domElementBoundingRect.top;
+        }
+
+        _changeType(type) {
+          if (this.type === type) {
+            return;
+          }
+          this.type = type;
+          this.disable();
+          this.enable();
+          this.onTypeChange.dispatch(this.type);
+        }
+
+        _update() {
+          if (this.x || this.y) {
+            this.velocity.x = this._position.x - this.x;
+            this.velocity.y = this._position.y - this.y;
+            if (this.downed) {
+              this.dragOffset.add(this.velocity);
+            }
+          }
+
+          this._updatePositions();
+        }
+
+        _updatePositions() {
+          this.x = this._position.x;
+          this.y = this._position.y;
+
+          this.centered.x = this.centeredFlippedY.x = this.x - this._domElementBoundingRect.width * .5;
+          this.centered.y = this.centeredFlippedY.y = this.y - this._domElementBoundingRect.height * .5;
+          this.centeredFlippedY.y *= -1;
+
+          this.normalized.x = this.normalizedFlippedY.x = this.x / this._domElementBoundingRect.width;
+          this.normalized.y = this.normalizedFlippedY.y = this.y / this._domElementBoundingRect.height;
+          this.normalizedFlippedY.y = 1 - this.normalizedFlippedY.y;
+
+          this.normalizedCentered.x = this.normalizedCenteredFlippedY.x = this.normalized.x * 2 - 1;
+          this.normalizedCentered.y = this.normalizedCenteredFlippedY.y = this.normalized.y * 2 - 1;
+          this.normalizedCenteredFlippedY.y *= -1;
+        }
+
+        enable() {
+          this.disable();
+          this.resize();
+          if (this.type === Pointer.TOUCH_TYPE) {
+            this.domElement.addEventListener("touchmove", this._onPointerMoveBinded);
+            window.addEventListener("touchend", this._onPointerUpBinded);
+          } else {
+            this.domElement.addEventListener("mousedown", this._onPointerDownBinded);
+            window.addEventListener("mouseup", this._onPointerUpBinded);
+          }
+          this.domElement.addEventListener("touchstart", this._onPointerDownBinded);
+          this.domElement.addEventListener("mousemove", this._onPointerMoveBinded);
+          window.addEventListener("resize", this._resizeBinded);
+          Ticker$1.add(this._updateBinded = this._updateBinded || this._update.bind(this));
+        }
+
+        disable() {
+          Ticker$1.delete(this._updateBinded);
+          this.domElement.removeEventListener("touchstart", this._onPointerDownBinded);
+          this.domElement.removeEventListener("mousedown", this._onPointerDownBinded);
+          this.domElement.removeEventListener("touchmove", this._onPointerMoveBinded);
+          this.domElement.removeEventListener("mousemove", this._onPointerMoveBinded);
+          window.removeEventListener("touchend", this._onPointerUpBinded);
+          window.removeEventListener("mouseup", this._onPointerUpBinded);
+          window.removeEventListener("resize", this._resizeBinded);
+        }
+      }
+
+      /* Copyright (c) 2015, Brandon Jones, Colin MacKenzie IV.
+      
+      Permission is hereby granted, free of charge, to any person obtaining a copy
+      of this software and associated documentation files (the "Software"), to deal
+      in the Software without restriction, including without limitation the rights
+      to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+      copies of the Software, and to permit persons to whom the Software is
+      furnished to do so, subject to the following conditions:
+      
+      The above copyright notice and this permission notice shall be included in
+      all copies or substantial portions of the Software.
+      
+      THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+      IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+      FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+      AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+      LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+      OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+      THE SOFTWARE. */
+
+      /**
+       * Quaternion
+       * @module quat
+       */
+
+      /**
+       * Creates a new identity quat
+       *
+       * @returns {quat} a new quaternion
+       */
+      function create$5() {
+        let out = new ARRAY_TYPE(4);
+        out[0] = 0;
+        out[1] = 0;
+        out[2] = 0;
+        out[3] = 1;
+        return out;
+      }
+
+      /**
+       * Set a quat to the identity quaternion
+       *
+       * @param {quat} out the receiving quaternion
+       * @returns {quat} out
+       */
+      function identity$2(out) {
+        out[0] = 0;
+        out[1] = 0;
+        out[2] = 0;
+        out[3] = 1;
+        return out;
+      }
+
+      /**
+       * Sets a quat from the given angle and rotation axis,
+       * then returns it.
+       *
+       * @param {quat} out the receiving quaternion
+       * @param {vec3} axis the axis around which to rotate
+       * @param {Number} rad the angle in radians
+       * @returns {quat} out
+       **/
+      function setAxisAngle(out, axis, rad) {
+        rad = rad * 0.5;
+        let s = Math.sin(rad);
+        out[0] = s * axis[0];
+        out[1] = s * axis[1];
+        out[2] = s * axis[2];
+        out[3] = Math.cos(rad);
+        return out;
+      }
+
+      /**
+       * Gets the rotation axis and angle for a given
+       *  quaternion. If a quaternion is created with
+       *  setAxisAngle, this method will return the same
+       *  values as providied in the original parameter list
+       *  OR functionally equivalent values.
+       * Example: The quaternion formed by axis [0, 0, 1] and
+       *  angle -90 is the same as the quaternion formed by
+       *  [0, 0, 1] and 270. This method favors the latter.
+       * @param  {vec3} out_axis  Vector receiving the axis of rotation
+       * @param  {quat} q     Quaternion to be decomposed
+       * @return {Number}     Angle, in radians, of the rotation
+       */
+
+      /**
+       * Multiplies two quat's
+       *
+       * @param {quat} out the receiving quaternion
+       * @param {quat} a the first operand
+       * @param {quat} b the second operand
+       * @returns {quat} out
+       */
+      function multiply$5(out, a, b) {
+        let ax = a[0],
+            ay = a[1],
+            az = a[2],
+            aw = a[3];
+        let bx = b[0],
+            by = b[1],
+            bz = b[2],
+            bw = b[3];
+
+        out[0] = ax * bw + aw * bx + ay * bz - az * by;
+        out[1] = ay * bw + aw * by + az * bx - ax * bz;
+        out[2] = az * bw + aw * bz + ax * by - ay * bx;
+        out[3] = aw * bw - ax * bx - ay * by - az * bz;
+        return out;
+      }
+
+      /**
+       * Rotates a quaternion by the given angle about the X axis
+       *
+       * @param {quat} out quat receiving operation result
+       * @param {quat} a quat to rotate
+       * @param {number} rad angle (in radians) to rotate
+       * @returns {quat} out
+       */
+      function rotateX$2(out, a, rad) {
+        rad *= 0.5;
+
+        let ax = a[0],
+            ay = a[1],
+            az = a[2],
+            aw = a[3];
+        let bx = Math.sin(rad),
+            bw = Math.cos(rad);
+
+        out[0] = ax * bw + aw * bx;
+        out[1] = ay * bw + az * bx;
+        out[2] = az * bw - ay * bx;
+        out[3] = aw * bw - ax * bx;
+        return out;
+      }
+
+      /**
+       * Rotates a quaternion by the given angle about the Y axis
+       *
+       * @param {quat} out quat receiving operation result
+       * @param {quat} a quat to rotate
+       * @param {number} rad angle (in radians) to rotate
+       * @returns {quat} out
+       */
+      function rotateY$2(out, a, rad) {
+        rad *= 0.5;
+
+        let ax = a[0],
+            ay = a[1],
+            az = a[2],
+            aw = a[3];
+        let by = Math.sin(rad),
+            bw = Math.cos(rad);
+
+        out[0] = ax * bw - az * by;
+        out[1] = ay * bw + aw * by;
+        out[2] = az * bw + ax * by;
+        out[3] = aw * bw - ay * by;
+        return out;
+      }
+
+      /**
+       * Rotates a quaternion by the given angle about the Z axis
+       *
+       * @param {quat} out quat receiving operation result
+       * @param {quat} a quat to rotate
+       * @param {number} rad angle (in radians) to rotate
+       * @returns {quat} out
+       */
+      function rotateZ$2(out, a, rad) {
+        rad *= 0.5;
+
+        let ax = a[0],
+            ay = a[1],
+            az = a[2],
+            aw = a[3];
+        let bz = Math.sin(rad),
+            bw = Math.cos(rad);
+
+        out[0] = ax * bw + ay * bz;
+        out[1] = ay * bw - ax * bz;
+        out[2] = az * bw + aw * bz;
+        out[3] = aw * bw - az * bz;
+        return out;
+      }
+
+      /**
+       * Calculates the W component of a quat from the X, Y, and Z components.
+       * Assumes that quaternion is 1 unit in length.
+       * Any existing W component will be ignored.
+       *
+       * @param {quat} out the receiving quaternion
+       * @param {quat} a quat to calculate W component of
+       * @returns {quat} out
+       */
+
+      /**
+       * Performs a spherical linear interpolation between two quat
+       *
+       * @param {quat} out the receiving quaternion
+       * @param {quat} a the first operand
+       * @param {quat} b the second operand
+       * @param {Number} t interpolation amount between the two inputs
+       * @returns {quat} out
+       */
+      function slerp(out, a, b, t) {
+        // benchmarks:
+        //    http://jsperf.com/quaternion-slerp-implementations
+        let ax = a[0],
+            ay = a[1],
+            az = a[2],
+            aw = a[3];
+        let bx = b[0],
+            by = b[1],
+            bz = b[2],
+            bw = b[3];
+
+        let omega, cosom, sinom, scale0, scale1;
+
+        // calc cosine
+        cosom = ax * bx + ay * by + az * bz + aw * bw;
+        // adjust signs (if necessary)
+        if (cosom < 0.0) {
+          cosom = -cosom;
+          bx = -bx;
+          by = -by;
+          bz = -bz;
+          bw = -bw;
+        }
+        // calculate coefficients
+        if (1.0 - cosom > 0.000001) {
+          // standard case (slerp)
+          omega = Math.acos(cosom);
+          sinom = Math.sin(omega);
+          scale0 = Math.sin((1.0 - t) * omega) / sinom;
+          scale1 = Math.sin(t * omega) / sinom;
+        } else {
+          // "from" and "to" quaternions are very close
+          //  ... so we can do a linear interpolation
+          scale0 = 1.0 - t;
+          scale1 = t;
+        }
+        // calculate final values
+        out[0] = scale0 * ax + scale1 * bx;
+        out[1] = scale0 * ay + scale1 * by;
+        out[2] = scale0 * az + scale1 * bz;
+        out[3] = scale0 * aw + scale1 * bw;
+
+        return out;
+      }
+
+      /**
+       * Calculates the inverse of a quat
+       *
+       * @param {quat} out the receiving quaternion
+       * @param {quat} a quat to calculate inverse of
+       * @returns {quat} out
+       */
+      function invert$2(out, a) {
+        let a0 = a[0],
+            a1 = a[1],
+            a2 = a[2],
+            a3 = a[3];
+        let dot$$1 = a0 * a0 + a1 * a1 + a2 * a2 + a3 * a3;
+        let invDot = dot$$1 ? 1.0 / dot$$1 : 0;
+
+        // TODO: Would be faster to return [0,0,0,0] immediately if dot == 0
+
+        out[0] = -a0 * invDot;
+        out[1] = -a1 * invDot;
+        out[2] = -a2 * invDot;
+        out[3] = a3 * invDot;
+        return out;
+      }
+
+      /**
+       * Calculates the conjugate of a quat
+       * If the quaternion is normalized, this function is faster than quat.inverse and produces the same result.
+       *
+       * @param {quat} out the receiving quaternion
+       * @param {quat} a quat to calculate conjugate of
+       * @returns {quat} out
+       */
+
+      /**
+       * Creates a quaternion from the given 3x3 rotation matrix.
+       *
+       * NOTE: The resultant quaternion is not normalized, so you should be sure
+       * to renormalize the quaternion yourself where necessary.
+       *
+       * @param {quat} out the receiving quaternion
+       * @param {mat3} m rotation matrix
+       * @returns {quat} out
+       * @function
+       */
+      function fromMat3(out, m) {
+        // Algorithm in Ken Shoemake's article in 1987 SIGGRAPH course notes
+        // article "Quaternion Calculus and Fast Animation".
+        let fTrace = m[0] + m[4] + m[8];
+        let fRoot;
+
+        if (fTrace > 0.0) {
+          // |w| > 1/2, may as well choose w > 1/2
+          fRoot = Math.sqrt(fTrace + 1.0); // 2w
+          out[3] = 0.5 * fRoot;
+          fRoot = 0.5 / fRoot; // 1/(4w)
+          out[0] = (m[5] - m[7]) * fRoot;
+          out[1] = (m[6] - m[2]) * fRoot;
+          out[2] = (m[1] - m[3]) * fRoot;
+        } else {
+          // |w| <= 1/2
+          let i = 0;
+          if (m[4] > m[0]) i = 1;
+          if (m[8] > m[i * 3 + i]) i = 2;
+          let j = (i + 1) % 3;
+          let k = (i + 2) % 3;
+
+          fRoot = Math.sqrt(m[i * 3 + i] - m[j * 3 + j] - m[k * 3 + k] + 1.0);
+          out[i] = 0.5 * fRoot;
+          fRoot = 0.5 / fRoot;
+          out[3] = (m[j * 3 + k] - m[k * 3 + j]) * fRoot;
+          out[j] = (m[j * 3 + i] + m[i * 3 + j]) * fRoot;
+          out[k] = (m[k * 3 + i] + m[i * 3 + k]) * fRoot;
+        }
+
+        return out;
+      }
+
+      /**
+       * Creates a quaternion from the given euler angle x, y, z.
+       *
+       * @param {quat} out the receiving quaternion
+       * @param {x} Angle to rotate around X axis in degrees.
+       * @param {y} Angle to rotate around Y axis in degrees.
+       * @param {z} Angle to rotate around Z axis in degrees.
+       * @returns {quat} out
+       * @function
+       */
+
+      /**
+       * Returns a string representation of a quatenion
+       *
+       * @param {quat} a vector to represent as a string
+       * @returns {String} string representation of the vector
+       */
+
+      /**
+       * Creates a new quat initialized with values from an existing quaternion
+       *
+       * @param {quat} a quaternion to clone
+       * @returns {quat} a new quaternion
+       * @function
+       */
+
+      /**
+       * Creates a new quat initialized with the given values
+       *
+       * @param {Number} x X component
+       * @param {Number} y Y component
+       * @param {Number} z Z component
+       * @param {Number} w W component
+       * @returns {quat} a new quaternion
+       * @function
+       */
+
+      /**
+       * Copy the values from one quat to another
+       *
+       * @param {quat} out the receiving quaternion
+       * @param {quat} a the source quaternion
+       * @returns {quat} out
+       * @function
+       */
+      const copy$5 = copy$3;
+
+      /**
+       * Set the components of a quat to the given values
+       *
+       * @param {quat} out the receiving quaternion
+       * @param {Number} x X component
+       * @param {Number} y Y component
+       * @param {Number} z Z component
+       * @param {Number} w W component
+       * @returns {quat} out
+       * @function
+       */
+      const set$5 = set$3;
+
+      /**
+       * Adds two quat's
+       *
+       * @param {quat} out the receiving quaternion
+       * @param {quat} a the first operand
+       * @param {quat} b the second operand
+       * @returns {quat} out
+       * @function
+       */
+
+      /**
+       * Alias for {@link quat.multiply}
+       * @function
+       */
+
+      /**
+       * Scales a quat by a scalar number
+       *
+       * @param {quat} out the receiving vector
+       * @param {quat} a the vector to scale
+       * @param {Number} b amount to scale the vector by
+       * @returns {quat} out
+       * @function
+       */
+
+      /**
+       * Calculates the dot product of two quat's
+       *
+       * @param {quat} a the first operand
+       * @param {quat} b the second operand
+       * @returns {Number} dot product of a and b
+       * @function
+       */
+
+      /**
+       * Performs a linear interpolation between two quat's
+       *
+       * @param {quat} out the receiving quaternion
+       * @param {quat} a the first operand
+       * @param {quat} b the second operand
+       * @param {Number} t interpolation amount between the two inputs
+       * @returns {quat} out
+       * @function
+       */
+
+      /**
+       * Calculates the length of a quat
+       *
+       * @param {quat} a vector to calculate length of
+       * @returns {Number} length of a
+       */
+
+      /**
+       * Alias for {@link quat.length}
+       * @function
+       */
+
+      /**
+       * Calculates the squared length of a quat
+       *
+       * @param {quat} a vector to calculate squared length of
+       * @returns {Number} squared length of a
+       * @function
+       */
+
+      /**
+       * Alias for {@link quat.squaredLength}
+       * @function
+       */
+
+      /**
+       * Normalize a quat
+       *
+       * @param {quat} out the receiving quaternion
+       * @param {quat} a quaternion to normalize
+       * @returns {quat} out
+       * @function
+       */
+      const normalize$3 = normalize$2;
+
+      /**
+       * Returns whether or not the quaternions have exactly the same elements in the same position (when compared with ===)
+       *
+       * @param {quat} a The first quaternion.
+       * @param {quat} b The second quaternion.
+       * @returns {Boolean} True if the vectors are equal, false otherwise.
+       */
+
+      /**
+       * Returns whether or not the quaternions have approximately the same elements in the same position.
+       *
+       * @param {quat} a The first vector.
+       * @param {quat} b The second vector.
+       * @returns {Boolean} True if the vectors are equal, false otherwise.
+       */
+
+      /**
+       * Sets a quaternion to represent the shortest rotation from one
+       * vector to another.
+       *
+       * Both vectors are assumed to be unit length.
+       *
+       * @param {quat} out the receiving quaternion.
+       * @param {vec3} a the initial vector
+       * @param {vec3} b the destination vector
+       * @returns {quat} out
+       */
+      const rotationTo = function () {
+        let tmpvec3 = create$2();
+        let xUnitVec3 = fromValues$2(1, 0, 0);
+        let yUnitVec3 = fromValues$2(0, 1, 0);
+
+        return function (out, a, b) {
+          let dot$$1 = dot$1(a, b);
+          if (dot$$1 < -0.999999) {
+            cross$1(tmpvec3, xUnitVec3, a);
+            if (len$1(tmpvec3) < 0.000001) cross$1(tmpvec3, yUnitVec3, a);
+            normalize$1(tmpvec3, tmpvec3);
+            setAxisAngle(out, tmpvec3, Math.PI);
+            return out;
+          } else if (dot$$1 > 0.999999) {
+            out[0] = 0;
+            out[1] = 0;
+            out[2] = 0;
+            out[3] = 1;
+            return out;
+          } else {
+            cross$1(tmpvec3, a, b);
+            out[0] = tmpvec3[0];
+            out[1] = tmpvec3[1];
+            out[2] = tmpvec3[2];
+            out[3] = 1 + dot$$1;
+            return normalize$3(out, out);
+          }
+        };
+      }();
+
+      /**
+       * Performs a spherical linear interpolation with two control points
+       *
+       * @param {quat} out the receiving quaternion
+       * @param {quat} a the first operand
+       * @param {quat} b the second operand
+       * @param {quat} c the third operand
+       * @param {quat} d the fourth operand
+       * @param {Number} t interpolation amount
+       * @returns {quat} out
+       */
+      const sqlerp = function () {
+        let temp1 = create$5();
+        let temp2 = create$5();
+
+        return function (out, a, b, c, d, t) {
+          slerp(temp1, a, d, t);
+          slerp(temp2, b, c, t);
+          slerp(out, temp1, temp2, 2 * t * (1 - t));
+
+          return out;
+        };
+      }();
+
+      /**
+       * Sets the specified quaternion with values corresponding to the given
+       * axes. Each axis is a vec3 and is expected to be unit length and
+       * perpendicular to all other specified axes.
+       *
+       * @param {vec3} view  the vector representing the viewing direction
+       * @param {vec3} right the vector representing the local "right" direction
+       * @param {vec3} up    the vector representing the local "up" direction
+       * @returns {quat} out
+       */
+      const setAxes = function () {
+        let matr = create$4();
+
+        return function (out, view, right, up) {
+          matr[0] = right[0];
+          matr[3] = right[1];
+          matr[6] = right[2];
+
+          matr[1] = up[0];
+          matr[4] = up[1];
+          matr[7] = up[2];
+
+          matr[2] = -view[0];
+          matr[5] = -view[1];
+          matr[8] = -view[2];
+
+          return normalize$3(out, fromMat3(out, matr));
+        };
+      }();
+
+      class Quaternion extends Float32Array {
+        constructor(x = 0, y = 0, z = 0, w = 1) {
+          super(4);
+          this.set(x, y, z, w);
+          return this;
+        }
+
+        get x() {
+          return this[0];
+        }
+
+        set x(value) {
+          this[0] = value;
+        }
+
+        get y() {
+          return this[1];
+        }
+
+        set y(value) {
+          this[1] = value;
+        }
+
+        get z() {
+          return this[2];
+        }
+
+        set z(value) {
+          this[2] = value;
+        }
+
+        get w() {
+          return this[3];
+        }
+
+        set w(value) {
+          this[3] = value;
+        }
+
+        identity() {
+          identity$2(this);
+          return this;
+        }
+
+        set(x, y, z, w) {
+          set$5(this, x, y, z, w);
+          return this;
+        }
+
+        rotateX(angle) {
+          rotateX$2(this, this, angle);
+          return this;
+        }
+
+        rotateY(angle) {
+          rotateY$2(this, this, angle);
+          return this;
+        }
+
+        rotateZ(angle) {
+          rotateZ$2(this, this, angle);
+          return this;
+        }
+
+        invert(quaternion = this) {
+          invert$2(this, quaternion);
+          return this;
+        }
+
+        copy(quaternion) {
+          copy$5(this, quaternion);
+          return this;
+        }
+
+        normalize(quaternion = this) {
+          normalize$3(this, this);
+          return this;
+        }
+
+        multiply(quaternionA, quaternionB) {
+          if (quaternionB) {
+            multiply$5(this, quaternionA, quaternionB);
+          } else {
+            multiply$5(this, this, quaternionA);
+          }
+          return this;
+        }
+
+        fromMatrix3(matrix3) {
+          fromMat3(this, matrix3);
+          return this;
+        }
+      }
+
+      class TrackballController {
+        constructor({
+          matrix = new Matrix4(),
+          domElement = document.body,
+          distance = 0,
+          invertRotation = true,
+          rotationEaseRatio = .04,
+          zoomSpeed = .1,
+          zoomEaseRatio = .1,
+          minDistance = 0,
+          maxDistance = Infinity,
+          enabled = true
+        } = {}) {
+          this.matrix = matrix;
+
+          this._distance = distance;
+          this.invertRotation = invertRotation;
+          this.rotationEaseRatio = rotationEaseRatio;
+          this.maxDistance = maxDistance;
+          this.minDistance = minDistance;
+          this.zoomSpeed = zoomSpeed;
+          this.zoomEaseRatio = zoomEaseRatio;
+
+          this._pointer = Pointer.get(domElement);
+          this._nextDistance = this._distance;
+
+          this._cachedQuaternion = new Quaternion();
+          this._cachedMatrix = new Matrix4();
+          this._cachedVector3 = new Vector3();
+
+          this._velocity = new Vector2();
+          this._velocityOrigin = new Vector2();
+
+          this._position = new Vector3([this.matrix.x, this.matrix.y, this.matrix.z]);
+          this._positionPrevious = this._position.clone();
+          this._positionOffset = new Vector3();
+
+          domElement.addEventListener("wheel", this.onWheel.bind(this));
+
+          this.enabled = true;
+          this.update();
+          this.enabled = enabled;
+        }
+
+        set distance(value) {
+          this._distance = this._nextDistance = value;
+        }
+
+        get distance() {
+          return this._distance;
+        }
+
+        onWheel(e) {
+          if (!this.enabled) {
+            return;
+          }
+          this._nextDistance += e.deltaY * this.zoomSpeed;
+          this._nextDistance = Math.max(Math.min(this._nextDistance, this.maxDistance), this.minDistance);
+        }
+
+        update() {
+          if (!this.enabled) {
+            return;
+          }
+
+          this._cachedMatrix.identity();
+          this._cachedQuaternion.identity();
+
+          this._distance += (this._nextDistance - this._distance) * this.zoomEaseRatio;
+
+          this._position.set(this.matrix.x, this.matrix.y, this.matrix.z).subtract(this._positionOffset);
+
+          this.matrix.x = 0;
+          this.matrix.y = 0;
+          this.matrix.z = 0;
+
+          if (this._pointer.downed) {
+            this._velocity.copy(this._pointer.velocity).scale(.003);
+          }
+
+          this._velocity.lerp(this._velocityOrigin, this.rotationEaseRatio);
+
+          this._cachedQuaternion.rotateY(this.invertRotation ? -this._velocity.x : this._velocity.x);
+          this._cachedQuaternion.rotateX(this.invertRotation ? -this._velocity.y : this._velocity.y);
+
+          this._cachedMatrix.fromQuaternion(this._cachedQuaternion);
+
+          this.matrix.multiply(this._cachedMatrix);
+
+          this._positionOffset.set(0, 0, 1);
+          this._positionOffset.applyMatrix4(this.matrix);
+          this._positionOffset.scale(this._distance);
+
+          this._cachedVector3.copy(this._position).add(this._positionOffset);
+
+          this.matrix.x = this._cachedVector3.x;
+          this.matrix.y = this._cachedVector3.y;
+          this.matrix.z = this._cachedVector3.z;
+        }
+      }
+
+      class View {
+        constructor({ canvas } = {}) {
+          this.canvas = canvas;
+          this.gl = this.canvas.getContext(window.WebGL2RenderingContext ? "webgl2" : "webgl", {
+            depth: true,
+            alpha: false,
+            antialias: true
+          });
+
+          this.camera = new Camera();
+
+          this.cameraController = new TrackballController({
+            matrix: this.camera.transform,
+            distance: 5
+          });
+
+          this.gl.clearColor(0, 0, 0, 1);
+          this.gl.enable(this.gl.CULL_FACE);
+          this.gl.enable(this.gl.DEPTH_TEST);
+
+          this.program = new GLProgram({
+            gl: this.gl,
+            uniforms: [["transform", new Matrix4()]],
+            vertexShaderChunks: [["start", `
           uniform mat4 projectionView;
           uniform mat4 transform;
 
-          attribute vec3 normal;
-          attribute vec3 position;
+          in vec3 normal;
+          in vec3 position;
 
-          varying vec3 vNormal;
-        `],["end",`
+          out vec3 vNormal;
+        `], ["end", `
           gl_Position = projectionView * transform * vec4(position, 1.);
           vNormal = normal;
-        `]],fragmentShaderChunks:[["start",`
+        `]],
+            fragmentShaderChunks: [["start", `
           precision highp float;
-          varying vec3 vNormal;
-        `],["end",`
-          gl_FragColor = vec4(vNormal * .5 + .5, 1.);
-        `]]}),this.mesh=new We({gl:this.gl,attributes:[["position",{data:new Float32Array([-0.5,0.5,0.5,0.5,0.5,0.5,-0.5,-0.5,0.5,0.5,-0.5,0.5,0.5,0.5,-0.5,-0.5,0.5,-0.5,0.5,-0.5,-0.5,-0.5,-0.5,-0.5,-0.5,0.5,-0.5,-0.5,0.5,0.5,-0.5,-0.5,-0.5,-0.5,-0.5,0.5,0.5,0.5,0.5,0.5,0.5,-0.5,0.5,-0.5,0.5,0.5,-0.5,-0.5,-0.5,0.5,-0.5,0.5,0.5,-0.5,-0.5,0.5,0.5,0.5,0.5,0.5,-0.5,-0.5,0.5,0.5,-0.5,0.5,-0.5,-0.5,-0.5,0.5,-0.5,-0.5]),size:3}],["normal",{data:new Float32Array([0,0,1,0,0,1,0,0,1,0,0,1,0,0,-1,0,0,-1,0,0,-1,0,0,-1,-1,0,0,-1,0,0,-1,0,0,-1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,0,1,0,0,1,0,0,1,0,0,1,0,0,-1,0,0,-1,0,0,-1,0,0,-1,0]),size:3}]],indiceData:new Uint8Array([0,2,3,0,3,1,4,6,7,4,7,5,8,10,11,8,11,9,12,14,15,12,15,13,16,18,19,16,19,17,20,22,23,20,23,21])})}resize(e,t){this.camera.aspectRatio=e/t,this.update()}update(){this.gl.viewport(0,0,this.gl.drawingBufferWidth,this.gl.drawingBufferHeight),this.gl.clear(this.gl.COLOR_BUFFER_BIT|this.gl.DEPTH_BUFFER_BIT),this.cameraController.update(),this.program.use(),this.program.uniforms.set("projectionView",this.camera.projectionViewMatrix),this.program.attributes.set(this.mesh.attributes),this.mesh.bind(),this.mesh.draw()}}let it=document.createElement("template");Le.load("src/main/template.html").then((e)=>{it.innerHTML=e}),Le.onLoad.then(()=>{window.customElements.define("dnit-main",class extends ke{connectedCallback(){super.connectedCallback();let e=document.importNode(it.content,!0);this.appendChild(e),this.canvas=this.querySelector("canvas"),this.view=new ot({canvas:this.canvas}),window.addEventListener("resize",this._resizeBinded=this.resize.bind(this)),this.resize()}disconnectedCallback(){window.removeEventListener("resize",this._resizeBinded)}resize(){let e=this.canvas.offsetWidth,t=this.canvas.offsetHeight;this.canvas.width=e*window.devicePixelRatio,this.canvas.height=t*window.devicePixelRatio,this.view.resize(e,t)}update(){this.view.update()}})})}}})})(function(e){"function"==typeof define&&define.amd?define([],e):"object"==typeof module&&module.exports&&"function"==typeof require?module.exports=e():e()});
+
+          in vec3 vNormal;
+        `], ["end", `
+          fragColor = vec4(vNormal * .5 + .5, 1.);
+        `]]
+          });
+
+          this.mesh = new GLMesh({
+            gl: this.gl,
+            attributes: [["position", {
+              data: new Float32Array([-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5]),
+              size: 3
+            }], ["normal", {
+              data: new Float32Array([0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, -1, -1, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0]),
+              size: 3
+            }]],
+            indiceData: new Uint8Array([0, 2, 3, 0, 3, 1, 4, 6, 7, 4, 7, 5, 8, 10, 11, 8, 11, 9, 12, 14, 15, 12, 15, 13, 16, 18, 19, 16, 19, 17, 20, 22, 23, 20, 23, 21])
+          });
+        }
+
+        resize(width, height) {
+          this.camera.aspectRatio = width / height;
+          this.update();
+        }
+
+        update() {
+          this.gl.viewport(0, 0, this.gl.drawingBufferWidth, this.gl.drawingBufferHeight);
+          this.gl.clear(this.gl.COLOR_BUFFER_BIT | this.gl.DEPTH_BUFFER_BIT);
+
+          this.cameraController.update();
+
+          this.program.use();
+          this.program.uniforms.set("projectionView", this.camera.projectionView);
+          this.program.attributes.set(this.mesh.attributes);
+
+          this.mesh.bind();
+          this.mesh.draw();
+        }
+      }
+
+      let template = document.createElement("template");
+      Loader.load("src/main/template.html").then(value => {
+        template.innerHTML = value;
+      });
+
+      Loader.onLoad.then(() => {
+        window.customElements.define("dnit-main", class extends LoopElement {
+          connectedCallback() {
+            super.connectedCallback();
+
+            let templateClone = document.importNode(template.content, true);
+            this.appendChild(templateClone);
+
+            this.canvas = this.querySelector("canvas");
+
+            this.view = new View({ canvas: this.canvas });
+
+            window.addEventListener("resize", this._resizeBinded = this.resize.bind(this));
+
+            this.resize();
+          }
+
+          disconnectedCallback() {
+            window.removeEventListener("resize", this._resizeBinded);
+          }
+
+          resize() {
+            let width = this.canvas.offsetWidth;
+            let height = this.canvas.offsetHeight;
+
+            this.canvas.width = width * window.devicePixelRatio;
+            this.canvas.height = height * window.devicePixelRatio;
+
+            this.view.resize(width, height);
+          }
+
+          update() {
+            this.view.update();
+          }
+        });
+      });
+    }
+  };
+});
+})
+(function(factory) {
+  if (typeof define == 'function' && define.amd)
+    define([], factory);
+  else if (typeof module == 'object' && module.exports && typeof require == 'function')
+    module.exports = factory();
+  else
+    factory();
+});
