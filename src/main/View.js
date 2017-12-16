@@ -7,11 +7,19 @@ import TrackballController from "dlib/3d/controllers/TrackballController.js";
 export default class View {
   constructor({canvas} = {}) {
     this.canvas = canvas;
-    this.gl = this.canvas.getContext(window.WebGL2RenderingContext ? "webgl2" : "webgl", {
+
+    const webGLOptions = {
       depth: true,
       alpha: false,
       antialias: true
-    });
+    };
+
+    if(!/\bforcewebgl1\b/.test(window.location.search)) {
+      this.gl = this.canvas.getContext("webgl2", webGLOptions);
+    }
+    if(!this.gl) {
+      this.gl = this.canvas.getContext("webgl", webGLOptions);
+    }
 
     this.camera = new Camera();
 
@@ -87,7 +95,7 @@ export default class View {
     this.program.uniforms.set("projectionView", this.camera.projectionView);
     this.program.attributes.set(this.mesh.attributes);
 
-    this.mesh.bind();
+    this.mesh.indices.buffer.bind();
     this.mesh.draw();
   }
 }
