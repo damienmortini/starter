@@ -32,13 +32,13 @@
   <dnit-main></dnit-main>
 
   <script type="text/javascript">
-    (function() {
-      let script = document.createElement("script");
+    {
+      const script = document.createElement("script");
       document.currentScript.parentNode.insertBefore(script, document.currentScript.nextSibling);
       if(/\bdev\b/.test(window.location.search)) {
         script.src = "node_modules/systemjs/dist/system.js";
         script.onload = function() {
-          let config = document.createElement("script");
+          const config = document.createElement("script");
           script.parentNode.insertBefore(config, script.nextSibling);
           config.src = "systemjs.config.js";
           config.onload = function() {
@@ -48,7 +48,7 @@
       } else {
         script.src = "./build/index.js";
       }
-    })();
+    }
   </script>
 </body>
 </html>
