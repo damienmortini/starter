@@ -5,44 +5,36 @@ import Loader from "dlib/utils/Loader.js";
 
 import View from "./View.js";
 
-let template = document.createElement("template");
-Loader.load("src/main/template.html").then((value) => {
-  template.innerHTML = value;
-});
+window.customElements.define("dnit-main", class extends LoopElement {
+  connectedCallback() {
+    super.connectedCallback();
 
-Loader.onLoad.then(() => {
-  window.customElements.define("dnit-main", class extends LoopElement {
-    connectedCallback() {
-      super.connectedCallback();
-      
-      let templateClone = document.importNode(template.content, true);
-      this.appendChild(templateClone);
+    this.canvas = document.createElement("canvas");
+    this.appendChild(this.canvas);
 
-      this.canvas = this.querySelector("canvas");
+    this.view = new View({canvas: this.canvas});
+    
+    window.addEventListener("resize", this._resizeBinded = this.resize.bind(this));
+    this.resize();
+  }
 
-      this.view = new View({canvas: this.canvas});
+  disconnectedCallback() {
+    super.disconnectedCallback();
 
-      window.addEventListener("resize", this._resizeBinded = this.resize.bind(this));
+    window.removeEventListener("resize", this._resizeBinded);
+  }
 
-      this.resize();
-    }
+  resize() {
+    let width = this.canvas.offsetWidth;
+    let height = this.canvas.offsetHeight;
 
-    disconnectedCallback() {
-      window.removeEventListener("resize", this._resizeBinded);
-    }
+    this.canvas.width = width * window.devicePixelRatio;
+    this.canvas.height = height * window.devicePixelRatio;
 
-    resize() {
-      let width = this.canvas.offsetWidth;
-      let height = this.canvas.offsetHeight;
+    this.view.resize(width, height);
+  }
 
-      this.canvas.width = width * window.devicePixelRatio;
-      this.canvas.height = height * window.devicePixelRatio;
-
-      this.view.resize(width, height);
-    }
-
-    update() {
-      this.view.update();
-    }
-  });
+  update() {
+    this.view.update();
+  }
 });

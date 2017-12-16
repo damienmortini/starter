@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <html>
+
 <head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-xxxxxxxx-x"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'UA-xxxxxxxx-x');
+  </script>
+
   <meta charset="UTF-8">
   <title>dnit</title>
   <meta name="description" content="dnit">
@@ -8,7 +17,8 @@
   <style>
     @import "src/index.css";
 
-    html, body {
+    html,
+    body {
       position: fixed;
       height: 100%;
       width: 100%;
@@ -20,27 +30,29 @@
     }
   </style>
 </head>
+
 <body>
   <dnit-main></dnit-main>
 
   <script type="text/javascript">
-    (function() {
-      let script = document.createElement("script");
+    {
+      const script = document.createElement("script");
       document.currentScript.parentNode.insertBefore(script, document.currentScript.nextSibling);
-      if(/\bdev\b/.test(window.location.search)) {
+      if (/\bdev\b/.test(window.location.search)) {
         script.src = "node_modules/systemjs/dist/system.js";
-        script.onload = function() {
-          let config = document.createElement("script");
+        script.onload = function () {
+          const config = document.createElement("script");
           script.parentNode.insertBefore(config, script.nextSibling);
           config.src = "systemjs.config.js";
-          config.onload = function() {
+          config.onload = function () {
             System.import("src/index.js");
           }
         }
       } else {
         script.src = "./build/index.js";
       }
-    })();
+    }
   </script>
 </body>
+
 </html>
