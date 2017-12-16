@@ -2,16 +2,18 @@ import "@webcomponents/custom-elements";
 
 import Loader from "dlib/utils/Loader.js";
 
-let template = document.createElement("template");
-Loader.load("src/main/template.html").then((value) => {
-  template.innerHTML = value;
-});
+async function load() {
+  const html = await Loader.load("src/main/template.html");
+  const template = document.createElement("template");
+  template.innerHTML = html;
+  return { template };
+}
 
-Loader.onLoad.then(() => {
-  window.customElements.define("dnit-main", class extends HTMLElement {
-    connectedCallback() {
+window.customElements.define("dnit-main", class extends HTMLElement {
+  connectedCallback() {
+    load().then(({ template }) => {
       let templateClone = document.importNode(template.content, true);
       this.appendChild(templateClone);
-    }
-  });
+    });
+  }
 });
