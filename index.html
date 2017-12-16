@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-xxxxxxxx-x"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
+    function gtag() { dataLayer.push(arguments); }
     gtag('js', new Date());
     gtag('config', 'UA-xxxxxxxx-x');
   </script>
@@ -16,7 +17,8 @@
   <style>
     @import "src/index.css";
 
-    html, body {
+    html,
+    body {
       height: 100%;
       margin: 0;
       overflow: hidden;
@@ -28,6 +30,7 @@
     }
   </style>
 </head>
+
 <body>
   <dnit-main></dnit-main>
 
@@ -35,13 +38,13 @@
     {
       const script = document.createElement("script");
       document.currentScript.parentNode.insertBefore(script, document.currentScript.nextSibling);
-      if(/\bdev\b/.test(window.location.search)) {
+      if (/\bdev\b/.test(window.location.search)) {
         script.src = "node_modules/systemjs/dist/system.js";
-        script.onload = function() {
+        script.onload = function () {
           const config = document.createElement("script");
           script.parentNode.insertBefore(config, script.nextSibling);
           config.src = "systemjs.config.js";
-          config.onload = function() {
+          config.onload = function () {
             System.import("src/index.js");
           }
         }
@@ -51,4 +54,5 @@
     }
   </script>
 </body>
+
 </html>
