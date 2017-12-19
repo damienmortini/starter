@@ -18,7 +18,7 @@ export default class View {
       this.gl = this.canvas.getContext("webgl2", webGLOptions);
     }
     if(!this.gl) {
-      this.gl = this.canvas.getContext("webgl", webGLOptions);
+      this.gl = this.canvas.getContext("webgl", webGLOptions) || this.canvas.getContext("experimental-webgl", webGLOptions);
     }
 
     this.camera = new Camera();
