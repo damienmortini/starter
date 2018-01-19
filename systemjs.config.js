@@ -9,6 +9,9 @@ SystemJS.config({
     "@webcomponents/*/package.json"
   ],
   transpiler: "systemjs-plugin-babel",
+  map: {
+    "vertx": "@empty"
+  },
   meta: {
     "*.js": {
       "babelOptions": {
