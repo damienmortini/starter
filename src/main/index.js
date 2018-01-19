@@ -1,11 +1,9 @@
-import "@webcomponents/custom-elements";
-
 import Loader from "dlib/utils/Loader.js";
 
 const loadPromise = async function() {
-  const html = await Loader.load("src/main/template.html");
   const template = document.createElement("template");
-  template.innerHTML = html;
+  template.innerHTML += `<style>@import "src/main/index.css"</style>`;
+  template.innerHTML += await Loader.load("src/main/template.html");
   return { template };
 }();
 

@@ -1,12 +1,11 @@
 dnit-main {
-  display: block;
+  display: flex;
   position: relative;
+  justify-content: center;
+  align-items: center;
 }
 
 dnit-main h1 {
-  position: absolute;
-  top: 50%;
-  left: 50%;
+  all: initial;
   font-size: 32px;
-  transform: translate(-50%, -50%);
 }

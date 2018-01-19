@@ -12,14 +12,14 @@
   "author": "Damien Mortini",
   "license": "MIT",
   "dependencies": {
-    "@webcomponents/custom-elements": "^1.0.6",
-    "dlib": "0.0.68",
+    "@webcomponents/webcomponentsjs": "^1.0.22",
+    "dlib": "0.0.69",
     "systemjs": "^0.20.19",
     "systemjs-plugin-babel": "0.0.25"
   },
   "devDependencies": {
     "babel-minify": "^0.2.0",
-    "browser-sync": "^2.18.13",
+    "browser-sync": "^2.23.5",
     "systemjs-builder": "^0.16.12"
   }
 }
