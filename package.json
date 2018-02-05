@@ -4,7 +4,7 @@
   "description": "",
   "main": "src/index.js",
   "scripts": {
-    "start": "browser-sync start --files \"src\" --server --https --no-notify --no-ghost-mode --startPath \"?dev\"",
+    "start": "node server.js",
     "build": "node build.js",
     "release": "npm run build && minify build/index.js -o build/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -12,14 +12,15 @@
   "author": "Damien Mortini",
   "license": "MIT",
   "dependencies": {
-    "@webcomponents/webcomponentsjs": "^1.0.22",
-    "dlib": "0.0.73",
+    "@webcomponents/webcomponentsjs": "^1.1.0",
+    "dlib": "0.0.75",
     "systemjs": "^0.20.19",
     "systemjs-plugin-babel": "0.0.25"
   },
   "devDependencies": {
-    "babel-minify": "^0.2.0",
-    "browser-sync": "^2.23.5",
+    "babel-minify": "^0.3.0",
+    "browser-sync": "^2.23.6",
+    "http2": "^3.3.7",
     "systemjs-builder": "^0.16.12"
   }
 }
