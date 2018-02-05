@@ -30,6 +30,8 @@
 </head>
 
 <body>
+  <script src="node_modules/@webcomponents/webcomponentsjs/webcomponents-lite.js"></script>
+
   <dnit-main></dnit-main>
 
   <script type="text/javascript">
@@ -37,15 +39,8 @@
       const script = document.createElement("script");
       document.currentScript.parentNode.insertBefore(script, document.currentScript.nextSibling);
       if (/\bdev\b/.test(window.location.search)) {
-        script.src = "node_modules/systemjs/dist/system.js";
-        script.onload = function () {
-          const config = document.createElement("script");
-          script.parentNode.insertBefore(config, script.nextSibling);
-          config.src = "systemjs.config.js";
-          config.onload = function () {
-            System.import("src/index.js");
-          }
-        }
+        script.type = "module";
+        script.src = "./src/index.js";
       } else {
         script.src = "./build/index.js";
       }

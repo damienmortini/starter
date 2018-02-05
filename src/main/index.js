@@ -1,4 +1,4 @@
-import Loader from "dlib/utils/Loader.js";
+import Loader from "../../node_modules/dlib/utils/Loader.js";
 
 const LOAD_PROMISE = Promise.all([
   Loader.load({ value: "src/main/template.html", type: "template" }),
