@@ -36,6 +36,14 @@
 
   <script type="text/javascript">
     {
+      if (navigator.serviceWorker) {
+        navigator.serviceWorker.register("./serviceworker.js").then((registration) => {
+          if(!registration.active) {
+            window.location.reload();
+          }
+        });
+      }
+
       const script = document.createElement("script");
       document.currentScript.parentNode.insertBefore(script, document.currentScript.nextSibling);
       if (/\bdev\b/.test(window.location.search)) {

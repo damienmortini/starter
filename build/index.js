@@ -1,1 +1,173 @@
-(function(){"use strict";let a="";const b=new Map,c=new Map,d=new Map([["text",new Set(["txt","html","js","svg"])],["json",new Set(["json"])],["binary",new Set(["bin"])],["image",new Set(["png","jpg","gif"])],["video",new Set(["mp4","webm"])],["audio",new Set(["mp3","ogg"])],["style",new Set(["css"])],["font",new Set(["woff","woff2","ttf"])]]);class e{static get onLoad(){return Promise.all(b.values())}static get promises(){return b}static get typeMap(){return d}static get(a){return c.get(a)}static get baseURI(){return a}static set baseURI(b){a=b}static load(f){const g=f instanceof Array;g||(f=[f]);let h=[];for(let g of f){if(!g)continue;let f;"object"==typeof g&&(f=g.type,g=g.value);const i=`${a}${"string"==typeof g?g:g.href||g.src}`,j=/[\\/](.*)\.(.*)$/.exec(i)[2];if(!f)for(const[a,b]of d)if(b.has(j)){f=a;break}let k=new Promise(function(d){return b.get(g)?void b.get(g).then(d):e.get(g)?void d(e.get(g)):void fetch(`${a}${i}`).catch(()=>new Promise(function(b){const c=new XMLHttpRequest;c.onload=function(){b(new Response(c.responseText,{status:c.status}))},c.open("GET",`${a}${i}`),c.send(null)})).then((a)=>"text"===f?a.text():"json"===f?a.json():"binary"===f?a.arrayBuffer():"image"===f?new Promise((a)=>{const b=document.createElement("img");b.onload=()=>{a(b)},b.src=i}):"video"===f||"audio"===f?new Promise((a)=>{const b=document.createElement(f);b.oncanplaythrough=()=>{a(b)},b.src=i}):"style"===f?new Promise((a)=>{const b=document.createElement("link");b.rel="stylesheet",b.type="text/css",b.onload=()=>{a(b)},document.head.appendChild(b),b.href=i}):"font"===f?new Promise(()=>{let a=new FontFace(/([^\/]*)\.(woff|woff2|ttf)$/.exec(g)[1],`url("${g}")`);return document.fonts.add(a),a.load()}):"template"===f?a.text().then((a)=>{const b=document.createElement("template");return b.innerHTML=a,b}):a.blob()).then((a)=>{b.delete(g),c.set(g,a),d(a)})});h.push(k),b.set(g,k)}return g?Promise.all(h):h[0]}}const f=Promise.all([e.load({value:"src/main/template.html",type:"template"}),e.load("src/main/index.css")]);window.customElements.define("dnit-main",class extends HTMLElement{connectedCallback(){f.then(([a])=>{let b=document.importNode(a.content,!0);this.appendChild(b)})}})})();
+(function () {
+'use strict';
+
+let baseURI = "";
+
+const PROMISES = new Map();
+const OBJECTS = new Map();
+
+const TYPE_MAP = new Map([
+  ["text", new Set(["txt", "html", "js", "svg"])],
+  ["json", new Set(["json"])],
+  ["binary", new Set(["bin"])],
+  ["image", new Set(["png", "jpg", "gif"])],
+  ["video", new Set(["mp4", "webm"])],
+  ["audio", new Set(["mp3", "ogg"])],
+  ["style", new Set(["css"])],
+  ["font", new Set(["woff", "woff2", "ttf"])],
+]);
+
+class Loader {
+  static get onLoad() {
+    return Promise.all(PROMISES.values());
+  }
+
+  static get promises() {
+    return PROMISES;
+  }
+
+  static get typeMap() {
+    return TYPE_MAP;
+  }
+
+  static get(value) {
+    return OBJECTS.get(value);
+  }
+
+  static get baseURI() {
+    return baseURI;
+  }
+
+  static set baseURI(value) {
+    baseURI = value;
+  }
+
+  static load(values) {
+    const returnArray = values instanceof Array;
+    
+    if(!returnArray) {
+      values = [values];
+    }
+
+    let promises = [];
+
+    for (let value of values) {
+      if(!value) {
+        continue;
+      }
+
+      let type;
+      if(typeof value === "object") {
+        type = value.type;
+        value = value.value;
+      }
+
+      const src = `${baseURI}${typeof value === "string" ? value : (value.href || value.src)}`;
+      const extension = /[\\/](.*)\.(.*)$/.exec(src)[2];
+
+      if(!type) {
+        for (const [key, value] of TYPE_MAP) {
+          if(value.has(extension)) {
+            type = key;
+            break;
+          }
+        }
+      }
+
+      let promise = new Promise(function(resolve, reject) {
+        if(PROMISES.get(value)) {
+          PROMISES.get(value).then(resolve);
+          return;
+        }
+        
+        if(Loader.get(value)) {
+          resolve(Loader.get(value));
+          return;
+        }
+
+        fetch(`${baseURI}${src}`)
+        .catch(() => {
+          return new Promise(function(resolve, reject) {
+            const xhr = new XMLHttpRequest;
+            xhr.onload = function() {
+              resolve(new Response(xhr.responseText, {status: xhr.status}));
+            };
+            xhr.open("GET", `${baseURI}${src}`);
+            xhr.send(null);
+          })
+        })
+        .then((response) => {
+          if(type === "text") {
+            return response.text();
+          } else if(type === "json") {
+            return response.json();
+          } else if(type === "binary") {
+            return response.arrayBuffer();
+          } else if(type === "image") {
+            return new Promise((resolve) => {
+              const image = document.createElement("img");
+              image.onload = () => { resolve(image); };
+              image.src = src;
+            });
+          } else if(type === "video" || type === "audio") {
+            return new Promise((resolve) => {
+              const media = document.createElement(type);
+              media.oncanplaythrough = () => { resolve(media); };
+              media.src = src;
+            });
+          } else if(type === "style") {
+            return new Promise((resolve) => {
+              const link = document.createElement("link");
+              link.rel = "stylesheet";
+              link.type = "text/css";
+              link.onload = () => { resolve(link); };
+              document.head.appendChild(link);
+              link.href = src;
+            });
+          } else if(type === "font") {
+            return new Promise((resolve) => {
+              let fontFace = new FontFace(/([^\/]*)\.(woff|woff2|ttf)$/.exec(value)[1], `url("${value}")`);
+              document.fonts.add(fontFace);
+              return fontFace.load();
+            });
+          } else if(type === "template") {
+            return response.text().then((html) => {
+              const template = document.createElement("template");
+              template.innerHTML = html;
+              return template;
+            });
+          } else {
+            return response.blob();
+          }
+        })
+        .then((response) => {
+          PROMISES.delete(value);
+          OBJECTS.set(value, response);
+          resolve(response);
+        });
+      });
+
+      promises.push(promise);
+      PROMISES.set(value, promise);
+    }
+
+    return returnArray ? Promise.all(promises) : promises[0];
+  }
+}
+
+const LOAD_PROMISE = Promise.all([
+  Loader.load({ value: "src/main/template.html", type: "template" }),
+  Loader.load("src/main/index.css")
+]);
+
+window.customElements.define("dnit-main", class extends HTMLElement {
+  connectedCallback() {
+    LOAD_PROMISE.then(([template]) => {
+      let templateClone = document.importNode(template.content, true);
+      this.appendChild(templateClone);
+    });
+  }
+});
+
+}());
+//# sourceMappingURL=index.js.map
