@@ -1,5 +1,5 @@
-import LoopElement from "dlib/customelements/LoopElement.js";
-import Loader from "dlib/utils/Loader.js";
+import LoopElement from "../../node_modules/dlib/customelements/LoopElement.js";
+import Loader from "../../node_modules/dlib/utils/Loader.js";
 
 import View from "./View.js";
 

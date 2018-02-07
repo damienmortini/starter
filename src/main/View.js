@@ -1,8 +1,8 @@
-import Matrix4 from "dlib/math/Matrix4.js";
-import GLProgram from "dlib/gl/GLProgram.js";
-import GLMesh from "dlib/gl/GLMesh.js";
-import Camera from "dlib/3d/Camera.js";
-import TrackballController from "dlib/3d/controllers/TrackballController.js";
+import Matrix4 from "../../node_modules/dlib/math/Matrix4.js";
+import GLProgram from "../../node_modules/dlib/gl/GLProgram.js";
+import GLMesh from "../../node_modules/dlib/gl/GLMesh.js";
+import Camera from "../../node_modules/dlib/3d/Camera.js";
+import TrackballController from "../../node_modules/dlib/3d/controllers/TrackballController.js";
 
 export default class View {
   constructor({canvas} = {}) {

@@ -5,7 +5,7 @@
   "main": "src/index.js",
   "scripts": {
     "start": "node server.js",
-    "build": "node build.js",
+    "build": "rollup src/index.js --o build/index.js --f iife -m",
     "release": "npm run build && minify build/index.js -o build/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -13,14 +13,12 @@
   "license": "MIT",
   "dependencies": {
     "@webcomponents/webcomponentsjs": "^1.1.0",
-    "dlib": "0.0.75",
-    "systemjs": "^0.20.19",
-    "systemjs-plugin-babel": "0.0.25"
+    "dlib": "0.0.76"
   },
   "devDependencies": {
     "babel-minify": "^0.3.0",
     "browser-sync": "^2.23.6",
     "http2": "^3.3.7",
-    "systemjs-builder": "^0.16.12"
+    "rollup": "^0.55.3"
   }
 }
