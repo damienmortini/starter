@@ -5,7 +5,7 @@
   "main": "src/index.js",
   "scripts": {
     "start": "node server.js",
-    "build": "rollup src/index.js --o build/index.js --f iife -m",
+    "build": "rollup -c",
     "release": "npm run build && minify build/index.js -o build/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -13,7 +13,7 @@
   "license": "MIT",
   "dependencies": {
     "@webcomponents/webcomponentsjs": "^1.1.0",
-    "dlib": "0.0.75"
+    "dlib": "0.0.78"
   },
   "devDependencies": {
     "babel-minify": "^0.3.0",
