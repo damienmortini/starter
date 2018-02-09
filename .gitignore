@@ -5,4 +5,5 @@ node_modules/@webcomponents/*
 !node_modules/@webcomponents/webcomponentsjs
 
 node_modules/@webcomponents/webcomponentsjs/*
-!node_modules/@webcomponents/webcomponentsjs/webcomponents-lite.js
+!node_modules/@webcomponents/webcomponentsjs/webcomponents*.js
+!node_modules/@webcomponents/webcomponentsjs/custom-elements-es5-adapter.js
