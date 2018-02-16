@@ -1,7 +1,6 @@
 import Matrix4 from "../../node_modules/dlib/math/Matrix4.js";
 import GLProgram from "../../node_modules/dlib/gl/GLProgram.js";
 import GLMesh from "../../node_modules/dlib/gl/GLMesh.js";
-import GLVertexAttribute from "../../node_modules/dlib/gl/GLVertexAttribute.js";
 import GLVertexArray from "../../node_modules/dlib/gl/GLVertexArray.js";
 import Camera from "../../node_modules/dlib/3d/Camera.js";
 import TrackballController from "../../node_modules/dlib/3d/controllers/TrackballController.js";
@@ -71,25 +70,23 @@ export default class View {
     this.mesh = new GLMesh({
       gl: this.gl,
       attributes: [
-        ["position", new GLVertexAttribute({
-          gl: this.gl,
+        ["position", {
           data: new Float32Array([-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5]),
           size: 3
-        })],
-        ["normal", new GLVertexAttribute({
-          gl: this.gl,
+        }],
+        ["normal", {
           data: new Float32Array([0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, -1, -1, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0]),
           size: 3
-        })]
+        }]
       ],
-      indiceData: new Uint8Array([0, 2, 3, 0, 3, 1, 4, 6, 7, 4, 7, 5, 8, 10, 11, 8, 11, 9, 12, 14, 15, 12, 15, 13, 16, 18, 19, 16, 19, 17, 20, 22, 23, 20, 23, 21])
+      indices: new Uint8Array([0, 2, 3, 0, 3, 1, 4, 6, 7, 4, 7, 5, 8, 10, 11, 8, 11, 9, 12, 14, 15, 12, 15, 13, 16, 18, 19, 16, 19, 17, 20, 22, 23, 20, 23, 21])
     });
 
     this.vertexArray = new GLVertexArray({
       gl: this.gl,
       mesh: this.mesh,
       program: this.program
-    })
+    });
   }
 
   resize(width, height) {
