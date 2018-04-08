@@ -7,7 +7,7 @@ browserSyncServer.init({
   https: true,
   ghostMode: false,
   tunnel: false,
-  open: "local",
+  open: false,
   notify: false,
   files: "src",
   startPath: "?dev"
