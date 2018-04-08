@@ -1,15 +1,13 @@
-import Loader from "../../node_modules/dlib/utils/Loader.js";
-
-const LOAD_PROMISE = Promise.all([
-  Loader.load({ value: "src/main/template.html", type: "template" }),
-  Loader.load("src/main/index.css")
-]);
-
 window.customElements.define("dnit-main", class extends HTMLElement {
   connectedCallback() {
-    LOAD_PROMISE.then(([template]) => {
-      let templateClone = document.importNode(template.content, true);
-      this.appendChild(templateClone);
+    this.innerHTML = `
+      <style>
+        @import "src/main/index.css";
+      </style>
+      <h1>dnit-main</h1>
+    `;
+    this.querySelector("style").addEventListener("load", () => {
+      this.dispatchEvent(new Event("load"));
     });
   }
 });

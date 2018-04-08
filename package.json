@@ -12,13 +12,11 @@
   "author": "Damien Mortini",
   "license": "MIT",
   "dependencies": {
-    "@webcomponents/webcomponentsjs": "^1.1.0",
-    "dlib": "0.0.78"
+    "@webcomponents/webcomponentsjs": "^1.2.0"
   },
   "devDependencies": {
-    "babel-minify": "^0.3.0",
+    "babel-minify": "^0.4.0",
     "browser-sync": "^2.23.6",
-    "http2": "^3.3.7",
-    "rollup": "^0.55.3"
+    "rollup": "^0.57.1"
   }
 }

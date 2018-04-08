@@ -1,8 +1,9 @@
 const browserSyncServer = require("browser-sync").create();
 
 browserSyncServer.init({
-  server: true,
-  httpModule: "http2",
+  server: {
+    baseDir: "."
+  },
   https: true,
   ghostMode: false,
   tunnel: false,
