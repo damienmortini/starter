@@ -3,29 +3,27 @@ import Loader from "../../node_modules/dlib/utils/Loader.js";
 
 import View from "./View.js";
 
-const LOAD_PROMISE = Promise.all([
-  Loader.load({ value: "src/main/template.html", type: "template" }),
-  Loader.load("src/main/index.css")
-]);
-
 window.customElements.define("dnit-main", class extends LoopElement {
   connectedCallback() {
-    super.connectedCallback();
-
-    LOAD_PROMISE.then(([template]) => {
-      let templateClone = document.importNode(template.content, true);
-      this.appendChild(templateClone);
-
-      this.canvas = this.querySelector("canvas");
-  
-      this.view = new View({canvas: this.canvas});
-      
-      window.addEventListener("resize", this._resizeBinded = this.resize.bind(this));
+    this.innerHTML = `
+      <style>
+        @import "src/main/index.css";
+      </style>
+      <canvas></canvas>
+    `;
+    
+    this.canvas = this.querySelector("canvas");
+    
+    this.view = new View({canvas: this.canvas});
+    
+    this.querySelector("style").addEventListener("load", () => {
+      this.dispatchEvent(new Event("load"));
       this.resize();
-
-      this.play();
     });
+    
+    window.addEventListener("resize", this._resizeBinded = this.resize.bind(this));
 
+    this.play();
   }
 
   disconnectedCallback() {

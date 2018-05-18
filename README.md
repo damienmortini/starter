@@ -2,8 +2,9 @@
 
 # dnit
 
-## Initialization
+## Installation
 
+* Download or clone
 * Install dependencies with `npm install`
 
 ## Launch
