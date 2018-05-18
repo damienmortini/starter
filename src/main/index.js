@@ -1,5 +1,3 @@
-import "three";
-
 import LoopElement from "../../node_modules/dlib/customelements/LoopElement.js";
 import Loader from "../../node_modules/dlib/utils/Loader.js";
 
@@ -14,7 +12,7 @@ window.customElements.define("dnit-main", class extends LoopElement {
       <style>
         @import "src/main/index.css";
       </style>
-      <h1>dnit-main</h1>
+      <canvas></canvas>
     `;
 
     this.canvas = this.querySelector("canvas");
@@ -26,6 +24,7 @@ window.customElements.define("dnit-main", class extends LoopElement {
     this.querySelector("style").addEventListener("load", () => {
       this.dispatchEvent(new Event("load"));
       this.resize();
+      this.play();
     });
 
     window.addEventListener("resize", this._resizeBinded = this.resize.bind(this));

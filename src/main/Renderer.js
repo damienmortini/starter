@@ -1,6 +1,6 @@
-import THREERenderer from "dlib/three/THREERenderer.js";
-import THREEShaderMaterial from "dlib/three/THREEShaderMaterial.js";
-import AntialiasGLSL from "dlib/shaders/AntialiasGLSL.js";
+import THREERenderer from "../../node_modules/dlib/three/THREERenderer.js";
+import THREEShaderMaterial from "../../node_modules/dlib/three/THREEShaderMaterial.js";
+import AntialiasGLSL from "../../node_modules/dlib/shaders/AntialiasGLSL.js";
 
 export default class Renderer extends THREERenderer {
   constructor(options) {
