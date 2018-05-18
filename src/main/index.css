@@ -6,6 +6,5 @@ dnit-main {
 }
 
 dnit-main h1 {
-  all: initial;
   font-size: 32px;
 }
