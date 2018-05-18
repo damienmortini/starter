@@ -1,1 +1,10 @@
-node_modules
+node_modules/*
+!node_modules/@webcomponents
+
+node_modules/@webcomponents/*
+!node_modules/@webcomponents/webcomponentsjs
+
+node_modules/@webcomponents/webcomponentsjs/*
+!node_modules/@webcomponents/webcomponentsjs/custom-elements-es5-adapter.js
+!node_modules/@webcomponents/webcomponentsjs/bundles
+node_modules/@webcomponents/webcomponentsjs/bundles/*.map
