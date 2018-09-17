@@ -6,7 +6,7 @@ export default class Renderer extends THREERenderer {
   constructor(options) {
     super(options);
 
-    if(options.antialias !== false && !this.context.getContextAttributes().antialias) {
+    if (options.antialias !== false && !this.context.getContextAttributes().antialias) {
       this.filters.push(this.fxaaFilter = new THREEShaderMaterial({
         vertexShader: `
           uniform vec2 resolution;
@@ -26,7 +26,7 @@ export default class Renderer extends THREERenderer {
           void main() {
             gl_FragColor = fxaa(renderTargetTexture, vUv, resolution);
           }
-        `
+        `,
       }));
     }
   }
@@ -35,7 +35,7 @@ export default class Renderer extends THREERenderer {
     width *= window.devicePixelRatio;
     height *= window.devicePixelRatio;
     super.resize(width, height);
-    if(this.fxaaFilter) {
+    if (this.fxaaFilter) {
       this.fxaaFilter.resolution.set(width, height);
     }
   }

@@ -19,6 +19,6 @@
   "devDependencies": {
     "babel-minify": "^0.4.3",
     "browser-sync": "^2.24.4",
-    "rollup": "^0.59.1"
+    "rollup": "^0.61.2"
   }
 }

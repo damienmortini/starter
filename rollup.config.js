@@ -3,6 +3,6 @@ export default {
   output: {
     file: "build/index.js",
     format: "iife",
-    sourcemap: true
-  }
+    sourcemap: true,
+  },
 };

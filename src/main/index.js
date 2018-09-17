@@ -1,5 +1,4 @@
 import LoopElement from "../../node_modules/dlib/customelements/LoopElement.js";
-import Loader from "../../node_modules/dlib/utils/Loader.js";
 
 import Scene from "./Scene.js";
 import Renderer from "./Renderer.js";
