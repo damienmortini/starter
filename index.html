@@ -34,15 +34,13 @@
 
   <dnit-main></dnit-main>
 
+  <script type="module"></script>
   <script type="text/javascript">
     {
-      const script = document.createElement("script");
-      document.currentScript.parentNode.insertBefore(script, document.currentScript.nextSibling);
       if (/\bdev\b/.test(window.location.search)) {
-        script.type = "module";
-        script.src = "./src/index.js";
+        document.querySelector(`script[type="module"]`).src = "./src/index.js";
       } else {
-        script.src = "./build/index.js";
+        document.querySelector(`script[type="module"]`).src = "./build/index.js";
       }
     }
   </script>

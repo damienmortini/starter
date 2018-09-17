@@ -6,8 +6,5 @@ window.customElements.define("dnit-main", class extends HTMLElement {
       </style>
       <h1>dnit-main</h1>
     `;
-    this.querySelector("style").addEventListener("load", () => {
-      this.dispatchEvent(new Event("load"));
-    });
   }
 });
