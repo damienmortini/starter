@@ -7,20 +7,20 @@ import TrackballController from "../../node_modules/dlib/3d/controllers/Trackbal
 
 export default class View {
   constructor({
-    canvas = undefined
+    canvas = undefined,
   } = {}) {
     this.canvas = canvas;
 
     const webGLOptions = {
       depth: true,
       alpha: false,
-      antialias: true
+      antialias: true,
     };
 
-    if(!/\bforcewebgl1\b/.test(window.location.search)) {
+    if (!/\bforcewebgl1\b/.test(window.location.search)) {
       this.gl = this.canvas.getContext("webgl2", webGLOptions);
     }
-    if(!this.gl) {
+    if (!this.gl) {
       this.gl = this.canvas.getContext("webgl", webGLOptions) || this.canvas.getContext("experimental-webgl", webGLOptions);
     }
 
@@ -28,7 +28,7 @@ export default class View {
 
     this.cameraController = new TrackballController({
       matrix: this.camera.transform,
-      distance: 5
+      distance: 5,
     });
 
     this.gl.clearColor(0, 0, 0, 1);
@@ -38,7 +38,7 @@ export default class View {
     this.program = new GLProgram({
       gl: this.gl,
       uniforms: [
-        ["transform", new Matrix4()]
+        ["transform", new Matrix4()],
       ],
       vertexShaderChunks: [
         ["start", `
@@ -53,7 +53,7 @@ export default class View {
         ["end", `
           gl_Position = projectionView * transform * vec4(position, 1.);
           vNormal = normal;
-        `]
+        `],
       ],
       fragmentShaderChunks: [
         ["start", `
@@ -63,8 +63,8 @@ export default class View {
         `],
         ["end", `
           fragColor = vec4(vNormal * .5 + .5, 1.);
-        `]
-      ]
+        `],
+      ],
     });
 
     this.mesh = new GLMesh({
@@ -72,20 +72,20 @@ export default class View {
       attributes: [
         ["position", {
           data: new Float32Array([-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5]),
-          size: 3
+          size: 3,
         }],
         ["normal", {
           data: new Float32Array([0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, -1, -1, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0]),
-          size: 3
-        }]
+          size: 3,
+        }],
       ],
-      indices: new Uint8Array([0, 2, 3, 0, 3, 1, 4, 6, 7, 4, 7, 5, 8, 10, 11, 8, 11, 9, 12, 14, 15, 12, 15, 13, 16, 18, 19, 16, 19, 17, 20, 22, 23, 20, 23, 21])
+      indices: new Uint8Array([0, 2, 3, 0, 3, 1, 4, 6, 7, 4, 7, 5, 8, 10, 11, 8, 11, 9, 12, 14, 15, 12, 15, 13, 16, 18, 19, 16, 19, 17, 20, 22, 23, 20, 23, 21]),
     });
 
     this.vertexArray = new GLVertexArray({
       gl: this.gl,
       mesh: this.mesh,
-      program: this.program
+      program: this.program,
     });
   }
 
@@ -93,13 +93,13 @@ export default class View {
     this.camera.aspectRatio = width / height;
     this.update();
   }
- 
+
   update() {
     this.gl.viewport(0, 0, this.gl.drawingBufferWidth, this.gl.drawingBufferHeight);
     this.gl.clear(this.gl.COLOR_BUFFER_BIT | this.gl.DEPTH_BUFFER_BIT);
 
     this.cameraController.update();
-    
+
     this.program.use();
     this.program.uniforms.set("projectionView", this.camera.projectionView);
 

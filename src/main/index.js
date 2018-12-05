@@ -11,16 +11,16 @@ window.customElements.define("dnit-main", class extends LoopElement {
       </style>
       <canvas></canvas>
     `;
-    
+
     this.canvas = this.querySelector("canvas");
-    
-    this.view = new View({canvas: this.canvas});
-    
+
+    this.view = new View({ canvas: this.canvas });
+
     this.querySelector("style").addEventListener("load", () => {
       this.dispatchEvent(new Event("load"));
       this.resize();
     });
-    
+
     window.addEventListener("resize", this._resizeBinded = this.resize.bind(this));
 
     this.play();
