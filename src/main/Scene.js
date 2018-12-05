@@ -1,10 +1,8 @@
-import {
-  Scene as THREEScene,
-  PerspectiveCamera,
-  Mesh,
-  BoxGeometry,
-  MeshNormalMaterial,
-} from "../../node_modules/three/build/three.module.js";
+import { Scene as THREEScene } from "../../node_modules/three/src/scenes/Scene.js";
+import { PerspectiveCamera } from "../../node_modules/three/src/cameras/PerspectiveCamera.js";
+import { Mesh } from "../../node_modules/three/src/objects/Mesh.js";
+import { BoxGeometry } from "../../node_modules/three/src/geometries/BoxGeometry.js";
+import { MeshNormalMaterial } from "../../node_modules/three/src/materials/MeshNormalMaterial.js";
 
 import THREETrackballController from "../../node_modules/dlib/three/THREETrackballController.js";
 
