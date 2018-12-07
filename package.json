@@ -13,6 +13,7 @@
   "license": "MIT",
   "dependencies": {
     "@webcomponents/webcomponentsjs": "^2.2.1",
+    "dlib": "0.0.86",
     "dlib-three": "0.0.1"
   },
   "devDependencies": {
