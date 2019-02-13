@@ -1,42 +1,35 @@
-import THREERenderer from "../../node_modules/dlib-three/THREERenderer.js";
-import THREEShaderMaterial from "../../node_modules/dlib-three/THREEShaderMaterial.js";
-import AntialiasGLSL from "../../node_modules/dlib/shaders/AntialiasGLSL.js";
+import { WebGLRenderer } from "../../node_modules/three/src/renderers/WebGLRenderer.js";
 
-export default class Renderer extends THREERenderer {
+export default class Renderer extends WebGLRenderer {
   constructor(options) {
-    super(options);
+    super(Object.assign({ antialias: true }, options));
 
-    if (options.antialias !== false && !this.context.getContextAttributes().antialias) {
-      this.filters.push(this.fxaaFilter = new THREEShaderMaterial({
-        vertexShader: `
-          uniform vec2 resolution;
-          varying vec2 vUv;
-          ${AntialiasGLSL.vertex()}
-          void main() {
-            computeFXAATextureCoordinates(uv, resolution);
-            vUv = uv;
-            gl_Position = vec4(position, 1.);
-          }
-        `,
-        fragmentShader: `
-          uniform vec2 resolution;
-          uniform sampler2D renderTargetTexture;
-          varying vec2 vUv;
-          ${AntialiasGLSL.fragment()}
-          void main() {
-            gl_FragColor = fxaa(renderTargetTexture, vUv, resolution);
-          }
-        `,
-      }));
-    }
+    this._quality = 1;
+
+    // Fix to make WebGLRenderer.render extendable
+    this._render = this.render;
+    delete this.render;
   }
 
-  resize(width, height) {
-    width *= window.devicePixelRatio;
-    height *= window.devicePixelRatio;
-    super.resize(width, height);
-    if (this.fxaaFilter) {
-      this.fxaaFilter.resolution.set(width, height);
+  get quality() {
+    return this._quality;
+  }
+
+  set quality(value) {
+    if (this._quality === value) {
+      return;
     }
+    this._quality = value;
+    this.resize();
+  }
+
+  resize(width = this._width, height = this._height) {
+    this._width = width;
+    this._height = height;
+    this.setSize(this._width * window.devicePixelRatio * this.quality, this._height * window.devicePixelRatio * this.quality, false);
+  }
+
+  render({ scene }) {
+    this._render(scene, scene.camera);
   }
 }
