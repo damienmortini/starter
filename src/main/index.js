@@ -1,9 +1,9 @@
-import LoopElement from "../../node_modules/dlib/customelements/LoopElement.js";
+import TickerElement from "../../node_modules/dlmn/util/TickerElement.js";
 
 import Scene from "./Scene.js";
 import Renderer from "./Renderer.js";
 
-window.customElements.define("dnit-main", class extends LoopElement {
+window.customElements.define("dnit-main", class extends TickerElement {
   connectedCallback() {
     super.connectedCallback();
 

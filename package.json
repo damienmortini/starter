@@ -13,8 +13,9 @@
   "license": "MIT",
   "dependencies": {
     "@webcomponents/webcomponentsjs": "^2.2.1",
-    "dlib": "0.0.86",
-    "dlib-three": "0.0.1"
+    "dlib": "0.0.91",
+    "dlib-three": "0.0.1",
+    "dlmn": "0.0.5"
   },
   "devDependencies": {
     "babel-minify": "^0.5.0",
