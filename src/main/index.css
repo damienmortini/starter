@@ -1,9 +1,0 @@
-dnit-main {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-dnit-main h1 {
-  font-size: 32px;
-}

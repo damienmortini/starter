@@ -12,7 +12,7 @@
   "author": "Damien Mortini",
   "license": "MIT",
   "dependencies": {
-    "@webcomponents/webcomponentsjs": "^2.2.4"
+    "@webcomponents/webcomponentsjs": "^2.2.7"
   },
   "devDependencies": {
     "babel-minify": "^0.5.0",
