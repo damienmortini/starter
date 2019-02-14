@@ -2,7 +2,7 @@ const browserSyncServer = require("browser-sync").create();
 
 browserSyncServer.init({
   server: {
-    baseDir: "."
+    baseDir: ".",
   },
   https: true,
   ghostMode: false,
@@ -10,5 +10,5 @@ browserSyncServer.init({
   open: false,
   notify: false,
   files: "src",
-  startPath: "?dev"
+  startPath: "?dev",
 });
