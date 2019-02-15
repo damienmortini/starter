@@ -5,7 +5,7 @@ import Renderer from "./Renderer.js";
 
 window.customElements.define("dnit-main", class extends TickerElement {
   constructor() {
-    super();
+    super({ autoplay: true });
 
     this.attachShadow({ mode: "open" }).innerHTML = `
       <style>
@@ -30,13 +30,11 @@ window.customElements.define("dnit-main", class extends TickerElement {
     super.connectedCallback();
     window.addEventListener("resize", this._resizeBinded = this.resize.bind(this));
     this.resize();
-    this.play();
   }
 
   disconnectedCallback() {
     super.disconnectedCallback();
     window.removeEventListener("resize", this._resizeBinded);
-    this.pause();
   }
 
   resize() {
