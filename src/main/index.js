@@ -1,29 +1,36 @@
-import LoopElement from "../../node_modules/dlib/customelements/LoopElement.js";
-import Loader from "../../node_modules/dlib/utils/Loader.js";
+import TickerElement from "../../node_modules/dlmn/util/TickerElement.js";
 
 import View from "./View.js";
 
-window.customElements.define("dnit-main", class extends LoopElement {
-  connectedCallback() {
-    this.innerHTML = `
+window.customElements.define("dnit-main", class extends TickerElement {
+  constructor() {
+    super({ autoplay: true });
+
+    this._resizeBinded = this.resize.bind(this);
+
+    this.attachShadow({ mode: "open" }).innerHTML = `
       <style>
-        @import "src/main/index.css";
+        :host {
+          display: block;
+        }
+        
+        canvas {
+          width: 100%;
+          height: 100%;
+        }
       </style>
       <canvas></canvas>
     `;
 
-    this.canvas = this.querySelector("canvas");
+    this.canvas = this.shadowRoot.querySelector("canvas");
 
     this.view = new View({ canvas: this.canvas });
+  }
 
-    this.querySelector("style").addEventListener("load", () => {
-      this.dispatchEvent(new Event("load"));
-      this.resize();
-    });
-
-    window.addEventListener("resize", this._resizeBinded = this.resize.bind(this));
-
-    this.play();
+  connectedCallback() {
+    super.connectedCallback();
+    window.addEventListener("resize", this._resizeBinded);
+    this.resize();
   }
 
   disconnectedCallback() {
@@ -32,8 +39,8 @@ window.customElements.define("dnit-main", class extends LoopElement {
   }
 
   resize() {
-    let width = this.canvas.offsetWidth;
-    let height = this.canvas.offsetHeight;
+    const width = this.canvas.offsetWidth;
+    const height = this.canvas.offsetHeight;
 
     this.canvas.width = width * window.devicePixelRatio;
     this.canvas.height = height * window.devicePixelRatio;
