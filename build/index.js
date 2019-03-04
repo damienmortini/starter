@@ -1,8 +1,2669 @@
-class Signal extends Set{constructor(){super(),this._onceCallbacks=new Set}add(e,{once:t=!1}={}){t&&this._onceCallbacks.add(e),super.add(e)}dispatch(e){for(let t of this)t(e),this._onceCallbacks.has(t)&&(this._onceCallbacks.delete(t),this.delete(t))}}class Ticker extends Signal{constructor(){super(),this._updateBinded=this._update.bind(this),this.time=.001*window.performance.now(),this._previousTime=this.time,this.deltaTime=0,this.timeScale=1,this._update()}_update(){requestAnimationFrame(this._updateBinded),this.time=.001*window.performance.now(),this.deltaTime=this.time-this._previousTime,this.timeScale=this.deltaTime/.0166666667,this._previousTime=this.time,this.dispatch()}}var Ticker$1=new Ticker;class LoopElement extends HTMLElement{constructor({autoplay:e=!1,background:t=!1}={}){super(),this._autoplay=e||this.hasAttribute("autoplay"),this._background=t||this.hasAttribute("background"),this.paused=!0,this._pausedByBlur=!1,this._updateBinded=this.update.bind(this)}connectedCallback(){this._background||(window.top.addEventListener("blur",this._onBlur=()=>{this._pausedByBlur=!this.paused,this.pause()}),window.top.addEventListener("focus",this._onFocus=()=>{this._pausedByBlur&&this.play()})),(window.top.document.hasFocus()||this._background)&&this._autoplay?this.play():this._autoplay&&(this._pausedByBlur=!0,requestAnimationFrame(this._updateBinded))}disconnectedCallback(){this.pause(),window.top.removeEventListener("blur",this._onBlur),window.top.removeEventListener("focus",this._onFocus)}play(){this.paused=!1,this._pausedByBlur=!1,Ticker$1.add(this._updateBinded),this.dispatchEvent(new Event("playing"))}pause(){this.paused=!0,Ticker$1.delete(this._updateBinded),this.dispatchEvent(new Event("pause"))}update(){}}window.customElements.define("dlib-loop",LoopElement);const EPSILON=1e-6;let ARRAY_TYPE="undefined"==typeof Float32Array?Array:Float32Array;const degree=Math.PI/180;function copy(e,t){return e[0]=t[0],e[1]=t[1],e[2]=t[2],e[3]=t[3],e[4]=t[4],e[5]=t[5],e[6]=t[6],e[7]=t[7],e[8]=t[8],e[9]=t[9],e[10]=t[10],e[11]=t[11],e[12]=t[12],e[13]=t[13],e[14]=t[14],e[15]=t[15],e}function set(e,t,n,a,r,i,d,o,s,l,_,u,c,m,g,p,f){return e[0]=t,e[1]=n,e[2]=a,e[3]=r,e[4]=i,e[5]=d,e[6]=o,e[7]=s,e[8]=l,e[9]=_,e[10]=u,e[11]=c,e[12]=m,e[13]=g,e[14]=p,e[15]=f,e}function identity(e){return e[0]=1,e[1]=0,e[2]=0,e[3]=0,e[4]=0,e[5]=1,e[6]=0,e[7]=0,e[8]=0,e[9]=0,e[10]=1,e[11]=0,e[12]=0,e[13]=0,e[14]=0,e[15]=1,e}function invert(e,t){let n=t[0],a=t[1],r=t[2],i=t[3],d=t[4],o=t[5],s=t[6],l=t[7],_=t[8],u=t[9],c=t[10],m=t[11],g=t[12],p=t[13],f=t[14],h=t[15],v=n*o-a*d,y=n*s-r*d,x=n*l-i*d,E=a*s-r*o,b=a*l-i*o,T=r*l-i*s,S=_*p-u*g,B=_*f-c*g,P=_*h-m*g,w=u*f-c*p,C=u*h-m*p,R=c*h-m*f,A=v*R-y*C+x*w+E*P-b*B+T*S;return A?(A=1/A,e[0]=(o*R-s*C+l*w)*A,e[1]=(r*C-a*R-i*w)*A,e[2]=(p*T-f*b+h*E)*A,e[3]=(c*b-u*T-m*E)*A,e[4]=(s*P-d*R-l*B)*A,e[5]=(n*R-r*P+i*B)*A,e[6]=(f*x-g*T-h*y)*A,e[7]=(_*T-c*x+m*y)*A,e[8]=(d*C-o*P+l*S)*A,e[9]=(a*P-n*C-i*S)*A,e[10]=(g*b-p*x+h*v)*A,e[11]=(u*x-_*b-m*v)*A,e[12]=(o*B-d*w-s*S)*A,e[13]=(n*w-a*B+r*S)*A,e[14]=(p*y-g*E-f*v)*A,e[15]=(_*E-u*y+c*v)*A,e):null}function multiply(e,t,n){let a=t[0],r=t[1],i=t[2],d=t[3],o=t[4],s=t[5],l=t[6],_=t[7],u=t[8],c=t[9],m=t[10],g=t[11],p=t[12],f=t[13],h=t[14],v=t[15],y=n[0],x=n[1],E=n[2],b=n[3];return e[0]=y*a+x*o+E*u+b*p,e[1]=y*r+x*s+E*c+b*f,e[2]=y*i+x*l+E*m+b*h,e[3]=y*d+x*_+E*g+b*v,y=n[4],x=n[5],E=n[6],b=n[7],e[4]=y*a+x*o+E*u+b*p,e[5]=y*r+x*s+E*c+b*f,e[6]=y*i+x*l+E*m+b*h,e[7]=y*d+x*_+E*g+b*v,y=n[8],x=n[9],E=n[10],b=n[11],e[8]=y*a+x*o+E*u+b*p,e[9]=y*r+x*s+E*c+b*f,e[10]=y*i+x*l+E*m+b*h,e[11]=y*d+x*_+E*g+b*v,y=n[12],x=n[13],E=n[14],b=n[15],e[12]=y*a+x*o+E*u+b*p,e[13]=y*r+x*s+E*c+b*f,e[14]=y*i+x*l+E*m+b*h,e[15]=y*d+x*_+E*g+b*v,e}function translate(e,t,n){let a,r,i,d,o,s,l,_,u,c,m,g,p=n[0],f=n[1],h=n[2];return t===e?(e[12]=t[0]*p+t[4]*f+t[8]*h+t[12],e[13]=t[1]*p+t[5]*f+t[9]*h+t[13],e[14]=t[2]*p+t[6]*f+t[10]*h+t[14],e[15]=t[3]*p+t[7]*f+t[11]*h+t[15]):(a=t[0],r=t[1],i=t[2],d=t[3],o=t[4],s=t[5],l=t[6],_=t[7],u=t[8],c=t[9],m=t[10],g=t[11],e[0]=a,e[1]=r,e[2]=i,e[3]=d,e[4]=o,e[5]=s,e[6]=l,e[7]=_,e[8]=u,e[9]=c,e[10]=m,e[11]=g,e[12]=a*p+o*f+u*h+t[12],e[13]=r*p+s*f+c*h+t[13],e[14]=i*p+l*f+m*h+t[14],e[15]=d*p+_*f+g*h+t[15]),e}function scale(e,t,n){let a=n[0],r=n[1],i=n[2];return e[0]=t[0]*a,e[1]=t[1]*a,e[2]=t[2]*a,e[3]=t[3]*a,e[4]=t[4]*r,e[5]=t[5]*r,e[6]=t[6]*r,e[7]=t[7]*r,e[8]=t[8]*i,e[9]=t[9]*i,e[10]=t[10]*i,e[11]=t[11]*i,e[12]=t[12],e[13]=t[13],e[14]=t[14],e[15]=t[15],e}function rotateX(e,t,n){var a=Math.cos,r=Math.sin;let i=r(n),d=a(n),o=t[4],s=t[5],l=t[6],_=t[7],u=t[8],c=t[9],m=t[10],g=t[11];return t!==e&&(e[0]=t[0],e[1]=t[1],e[2]=t[2],e[3]=t[3],e[12]=t[12],e[13]=t[13],e[14]=t[14],e[15]=t[15]),e[4]=o*d+u*i,e[5]=s*d+c*i,e[6]=l*d+m*i,e[7]=_*d+g*i,e[8]=u*d-o*i,e[9]=c*d-s*i,e[10]=m*d-l*i,e[11]=g*d-_*i,e}function rotateY(e,t,n){var a=Math.cos,r=Math.sin;let i=r(n),d=a(n),o=t[0],s=t[1],l=t[2],_=t[3],u=t[8],c=t[9],m=t[10],g=t[11];return t!==e&&(e[4]=t[4],e[5]=t[5],e[6]=t[6],e[7]=t[7],e[12]=t[12],e[13]=t[13],e[14]=t[14],e[15]=t[15]),e[0]=o*d-u*i,e[1]=s*d-c*i,e[2]=l*d-m*i,e[3]=_*d-g*i,e[8]=o*i+u*d,e[9]=s*i+c*d,e[10]=l*i+m*d,e[11]=_*i+g*d,e}function rotateZ(e,t,n){var a=Math.cos,r=Math.sin;let i=r(n),d=a(n),o=t[0],s=t[1],l=t[2],_=t[3],u=t[4],c=t[5],m=t[6],g=t[7];return t!==e&&(e[8]=t[8],e[9]=t[9],e[10]=t[10],e[11]=t[11],e[12]=t[12],e[13]=t[13],e[14]=t[14],e[15]=t[15]),e[0]=o*d+u*i,e[1]=s*d+c*i,e[2]=l*d+m*i,e[3]=_*d+g*i,e[4]=u*d-o*i,e[5]=c*d-s*i,e[6]=m*d-l*i,e[7]=g*d-_*i,e}function fromQuat(e,t){let n=t[0],a=t[1],r=t[2],i=t[3],d=n+n,o=a+a,s=r+r,l=n*d,_=a*d,u=a*o,c=r*d,m=r*o,g=r*s,p=i*d,f=i*o,h=i*s;return e[0]=1-u-g,e[1]=_+h,e[2]=c-f,e[3]=0,e[4]=_-h,e[5]=1-l-g,e[6]=m+p,e[7]=0,e[8]=c+f,e[9]=m-p,e[10]=1-l-u,e[11]=0,e[12]=0,e[13]=0,e[14]=0,e[15]=1,e}function perspective(e,t,n,a,r){var i=Math.tan;let d,o=1/i(t/2);return e[0]=o/n,e[1]=0,e[2]=0,e[3]=0,e[4]=0,e[5]=o,e[6]=0,e[7]=0,e[8]=0,e[9]=0,e[11]=-1,e[12]=0,e[13]=0,e[15]=0,null!=r&&r!==1/0?(d=1/(a-r),e[10]=(r+a)*d,e[14]=2*r*a*d):(e[10]=-1,e[14]=-2*a),e}class Matrix4 extends Float32Array{constructor(e=[1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1]){return super(e),this}set x(e){this[12]=e}get x(){return this[12]}set y(e){this[13]=e}get y(){return this[13]}set z(e){this[14]=e}get z(){return this[14]}set w(e){this[15]=e}get w(){return this[15]}set(e,t,n,a,r,i,d,o,s,l,_,u,c,m,g,p){return e.length?this.copy(e):(set(this,e,t,n,a,r,i,d,o,s,l,_,u,c,m,g,p),this)}translate(e,t=this){return translate(this,t,e),this}rotateX(e,t=this){return rotateX(this,t,e),this}rotateY(e,t=this){return rotateY(this,t,e),this}rotateZ(e,t=this){return rotateZ(this,t,e),this}scale(e,t=this){return scale(this,t,"number"==typeof e?[e,e,e]:e),this}multiply(e,t){return t?multiply(this,e,t):multiply(this,this,e),this}identity(){return identity(this),this}copy(e){return copy(this,e),this}fromPerspective({fov:e,aspectRatio:t,near:n,far:a}={}){return perspective(this,e,t,n,a),this}fromQuaternion(e){return fromQuat(this,e),this}setPosition(e){return this.x=e[0],this.y=e[1],this.z=e[2],this}invert(e=this){return invert(this,e),this}}function create$1(){let e=new ARRAY_TYPE(2);return ARRAY_TYPE!=Float32Array&&(e[0]=0,e[1]=0),e}function copy$1(e,t){return e[0]=t[0],e[1]=t[1],e}function set$1(e,t,n){return e[0]=t,e[1]=n,e}function add$1(e,t,n){return e[0]=t[0]+n[0],e[1]=t[1]+n[1],e}function subtract$1(e,t,n){return e[0]=t[0]-n[0],e[1]=t[1]-n[1],e}function scale$1(e,t,n){return e[0]=t[0]*n,e[1]=t[1]*n,e}function length(e){var t=e[0],n=e[1];return Math.sqrt(t*t+n*n)}function squaredLength(e){var t=e[0],n=e[1];return t*t+n*n}function negate(e,t){return e[0]=-t[0],e[1]=-t[1],e}function normalize(e,t){var n=Math.sqrt,a=t[0],r=t[1],i=a*a+r*r;return 0<i&&(i=1/n(i),e[0]=t[0]*i,e[1]=t[1]*i),e}function dot(e,t){return e[0]*t[0]+e[1]*t[1]}function cross(e,t,n){var a=t[0]*n[1]-t[1]*n[0];return e[0]=e[1]=0,e[2]=a,e}function lerp(e,n,a,r){var t=n[0],i=n[1];return e[0]=t+r*(a[0]-t),e[1]=i+r*(a[1]-i),e}function transformMat3(e,t,n){var a=t[0],r=t[1];return e[0]=n[0]*a+n[3]*r+n[6],e[1]=n[1]*a+n[4]*r+n[7],e}function transformMat4(e,t,n){let a=t[0],r=t[1];return e[0]=n[0]*a+n[4]*r+n[12],e[1]=n[1]*a+n[5]*r+n[13],e}function exactEquals$1(e,t){return e[0]===t[0]&&e[1]===t[1]}const forEach=function(){var e=Math.min;let t=create$1();return function(n,a,r,d,o,s){let _,u;for(a||(a=2),r||(r=0),u=d?e(d*a+r,n.length):n.length,_=r;_<u;_+=a)t[0]=n[_],t[1]=n[_+1],o(t,t,s),n[_]=t[0],n[_+1]=t[1];return n}}();class Vector2 extends Float32Array{constructor(e=[0,0]){return super(e),this}get x(){return this[0]}set x(e){this[0]=e}get y(){return this[1]}set y(e){this[1]=e}set(e,t){return set$1(this,e,t),this}copy(e){return copy$1(this,e),this}add(e){return add$1(this,this,e),this}get size(){return length(this)}get squaredSize(){return squaredLength(this)}subtract(e){return subtract$1(this,this,e),this}negate(e=this){return negate(this,e),this}cross(e,t){return cross(this,e,t),this}scale(e){return scale$1(this,this,e),this}normalize(){normalize(this,this)}dot(e){return dot(this,e)}equals(e){return exactEquals$1(this,e)}applyMatrix3(e){return transformMat3(this,this,e),this}applyMatrix4(e){return transformMat4(this,this,e),this}lerp(e,t){lerp(this,this,e,t)}clone(){return new Vector2(this)}}function create$2(){let e=new ARRAY_TYPE(3);return ARRAY_TYPE!=Float32Array&&(e[0]=0,e[1]=0,e[2]=0),e}function length$1(e){let t=e[0],n=e[1],a=e[2];return Math.sqrt(t*t+n*n+a*a)}function fromValues$2(e,t,n){let a=new ARRAY_TYPE(3);return a[0]=e,a[1]=t,a[2]=n,a}function copy$2(e,t){return e[0]=t[0],e[1]=t[1],e[2]=t[2],e}function set$2(e,t,n,a){return e[0]=t,e[1]=n,e[2]=a,e}function add$2(e,t,n){return e[0]=t[0]+n[0],e[1]=t[1]+n[1],e[2]=t[2]+n[2],e}function subtract$2(e,t,n){return e[0]=t[0]-n[0],e[1]=t[1]-n[1],e[2]=t[2]-n[2],e}function scale$2(e,t,n){return e[0]=t[0]*n,e[1]=t[1]*n,e[2]=t[2]*n,e}function distance$1(e,t){let n=t[0]-e[0],a=t[1]-e[1],r=t[2]-e[2];return Math.sqrt(n*n+a*a+r*r)}function squaredLength$1(e){let t=e[0],n=e[1],a=e[2];return t*t+n*n+a*a}function negate$1(e,t){return e[0]=-t[0],e[1]=-t[1],e[2]=-t[2],e}function normalize$1(e,t){var n=Math.sqrt;let a=t[0],r=t[1],i=t[2],d=a*a+r*r+i*i;return 0<d&&(d=1/n(d),e[0]=t[0]*d,e[1]=t[1]*d,e[2]=t[2]*d),e}function dot$1(e,t){return e[0]*t[0]+e[1]*t[1]+e[2]*t[2]}function cross$1(e,t,n){let a=t[0],r=t[1],i=t[2],d=n[0],o=n[1],s=n[2];return e[0]=r*s-i*o,e[1]=i*d-a*s,e[2]=a*o-r*d,e}function transformMat4$1(e,t,n){let a=t[0],r=t[1],i=t[2],d=n[3]*a+n[7]*r+n[11]*i+n[15];return d=d||1,e[0]=(n[0]*a+n[4]*r+n[8]*i+n[12])/d,e[1]=(n[1]*a+n[5]*r+n[9]*i+n[13])/d,e[2]=(n[2]*a+n[6]*r+n[10]*i+n[14])/d,e}function angle$1(e,t){var n=Math.acos,a=Math.PI;let r=fromValues$2(e[0],e[1],e[2]),i=fromValues$2(t[0],t[1],t[2]);normalize$1(r,r),normalize$1(i,i);let d=dot$1(r,i);return 1<d?0:-1>d?a:n(d)}function exactEquals$2(e,t){return e[0]===t[0]&&e[1]===t[1]&&e[2]===t[2]}const len$1=length$1,forEach$1=function(){var e=Math.min;let t=create$2();return function(n,a,r,d,o,s){let _,u;for(a||(a=3),r||(r=0),u=d?e(d*a+r,n.length):n.length,_=r;_<u;_+=a)t[0]=n[_],t[1]=n[_+1],t[2]=n[_+2],o(t,t,s),n[_]=t[0],n[_+1]=t[1],n[_+2]=t[2];return n}}();class Vector3 extends Float32Array{constructor(e=[0,0,0]){return super(e),this}get x(){return this[0]}set x(e){this[0]=e}get y(){return this[1]}set y(e){this[1]=e}get z(){return this[2]}set z(e){this[2]=e}set(e,t,n){return set$2(this,e,t,n),this}copy(e){return copy$2(this,e),this}add(e){return add$2(this,this,e),this}get size(){return length$1(this)}get squaredSize(){return squaredLength$1(this)}distance(e){return distance$1(this,e)}subtract(e){return subtract$2(this,this,e),this}negate(e=this){return negate$1(this,e),this}cross(e,t){return cross$1(this,e,t),this}scale(e){return scale$2(this,this,e),this}normalize(){return normalize$1(this,this),this}dot(e){return dot$1(this,e)}equals(e){return exactEquals$2(this,e)}applyMatrix4(e){return transformMat4$1(this,this,e),this}angle(e){return angle$1(this,e)}clone(){return new Vector3(this)}}function create$3(){let e=new ARRAY_TYPE(4);return ARRAY_TYPE!=Float32Array&&(e[0]=0,e[1]=0,e[2]=0,e[3]=0),e}function copy$3(e,t){return e[0]=t[0],e[1]=t[1],e[2]=t[2],e[3]=t[3],e}function set$3(e,t,n,a,r){return e[0]=t,e[1]=n,e[2]=a,e[3]=r,e}function normalize$2(e,t){var n=Math.sqrt;let a=t[0],r=t[1],i=t[2],d=t[3],o=a*a+r*r+i*i+d*d;return 0<o&&(o=1/n(o),e[0]=a*o,e[1]=r*o,e[2]=i*o,e[3]=d*o),e}const forEach$2=function(){var e=Math.min;let t=create$3();return function(n,a,r,d,o,s){let _,u;for(a||(a=4),r||(r=0),u=d?e(d*a+r,n.length):n.length,_=r;_<u;_+=a)t[0]=n[_],t[1]=n[_+1],t[2]=n[_+2],t[3]=n[_+3],o(t,t,s),n[_]=t[0],n[_+1]=t[1],n[_+2]=t[2],n[_+3]=t[3];return n}}();class Vector4 extends Float32Array{constructor(e=[0,0,0,0]){return super(e),this}get x(){return this[0]}set x(e){this[0]=e}get y(){return this[1]}set y(e){this[1]=e}get z(){return this[2]}set z(e){this[2]=e}get w(){return this[3]}set w(e){this[3]=e}set(e,t,n,a){return set$3(this,e,t,n,a),this}}function create$4(){let e=new ARRAY_TYPE(9);return ARRAY_TYPE!=Float32Array&&(e[1]=0,e[2]=0,e[3]=0,e[5]=0,e[6]=0,e[7]=0),e[0]=1,e[4]=1,e[8]=1,e}function fromMat4(e,t){return e[0]=t[0],e[1]=t[1],e[2]=t[2],e[3]=t[4],e[4]=t[5],e[5]=t[6],e[6]=t[8],e[7]=t[9],e[8]=t[10],e}function copy$4(e,t){return e[0]=t[0],e[1]=t[1],e[2]=t[2],e[3]=t[3],e[4]=t[4],e[5]=t[5],e[6]=t[6],e[7]=t[7],e[8]=t[8],e}function set$4(e,t,n,a,r,i,d,o,s,l){return e[0]=t,e[1]=n,e[2]=a,e[3]=r,e[4]=i,e[5]=d,e[6]=o,e[7]=s,e[8]=l,e}function identity$1(e){return e[0]=1,e[1]=0,e[2]=0,e[3]=0,e[4]=1,e[5]=0,e[6]=0,e[7]=0,e[8]=1,e}function invert$1(e,t){let n=t[0],a=t[1],r=t[2],i=t[3],d=t[4],o=t[5],s=t[6],l=t[7],_=t[8],u=_*d-o*l,c=-_*i+o*s,m=l*i-d*s,g=n*u+a*c+r*m;return g?(g=1/g,e[0]=u*g,e[1]=(-_*a+r*l)*g,e[2]=(o*a-r*d)*g,e[3]=c*g,e[4]=(_*n-r*s)*g,e[5]=(-o*n+r*i)*g,e[6]=m*g,e[7]=(-l*n+a*s)*g,e[8]=(d*n-a*i)*g,e):null}function multiply$4(e,t,n){let a=t[0],r=t[1],i=t[2],d=t[3],o=t[4],s=t[5],l=t[6],_=t[7],u=t[8],c=n[0],m=n[1],g=n[2],p=n[3],f=n[4],h=n[5],v=n[6],y=n[7],x=n[8];return e[0]=c*a+m*d+g*l,e[1]=c*r+m*o+g*_,e[2]=c*i+m*s+g*u,e[3]=p*a+f*d+h*l,e[4]=p*r+f*o+h*_,e[5]=p*i+f*s+h*u,e[6]=v*a+y*d+x*l,e[7]=v*r+y*o+x*_,e[8]=v*i+y*s+x*u,e}function translate$1(e,t,n){let a=t[0],r=t[1],i=t[2],d=t[3],o=t[4],s=t[5],l=t[6],_=t[7],u=t[8],c=n[0],m=n[1];return e[0]=a,e[1]=r,e[2]=i,e[3]=d,e[4]=o,e[5]=s,e[6]=c*a+m*d+l,e[7]=c*r+m*o+_,e[8]=c*i+m*s+u,e}function rotate$2(e,t,n){var a=Math.cos,r=Math.sin;let i=t[0],d=t[1],o=t[2],l=t[3],_=t[4],u=t[5],m=t[6],g=t[7],p=t[8],f=r(n),s=a(n);return e[0]=s*i+f*l,e[1]=s*d+f*_,e[2]=s*o+f*u,e[3]=s*l-f*i,e[4]=s*_-f*d,e[5]=s*u-f*o,e[6]=m,e[7]=g,e[8]=p,e}function scale$4(e,t,n){let a=n[0],r=n[1];return e[0]=a*t[0],e[1]=a*t[1],e[2]=a*t[2],e[3]=r*t[3],e[4]=r*t[4],e[5]=r*t[5],e[6]=t[6],e[7]=t[7],e[8]=t[8],e}function fromQuat$1(e,t){let n=t[0],a=t[1],r=t[2],i=t[3],d=n+n,o=a+a,s=r+r,l=n*d,_=a*d,u=a*o,c=r*d,m=r*o,g=r*s,p=i*d,f=i*o,h=i*s;return e[0]=1-u-g,e[3]=_-h,e[6]=c+f,e[1]=_+h,e[4]=1-l-g,e[7]=m-p,e[2]=c-f,e[5]=m+p,e[8]=1-l-u,e}class Matrix3 extends Float32Array{constructor(e=[1,0,0,0,1,0,0,0,1]){return super(e),this}set(e,t,n,a,r,i,d,o,s){return set$4(this,e,t,n,a,r,i,d,o,s),this}translate(e,t=this){return translate$1(this,t,e),this}rotate(e,t=this){return rotate$2(this,t,e),this}scale(e,t=this){return scale$4(this,t,e),this}multiply(e,t){return t?multiply$4(this,e,t):multiply$4(this,this,e),this}identity(){return identity$1(this),this}copy(e){return copy$4(this,e),this}fromMatrix4(e){return fromMat4(this,e),this}fromQuaternion(e){return fromQuat$1(this,e),this}fromBasis(e,t,n){return this.set(e[0],e[1],e[2],t[0],t[1],t[2],n[0],n[1],n[2]),this}invert(e=this){return invert$1(this,e),this}}class Shader{static add(e="void main() {}",t){for(let[n,a]of t)e="start"===n?e.replace(/(#version .*?\n(\s*precision highp float;\s)?)([\s\S]*)/,`$1\n${a}\n$3`):"end"===n?e.replace(/(}\s*$)/,`\n${a}\n$1`):"main"===n?e.replace(/(\bvoid\b +\bmain\b[\s\S]*?{\s*)/,`$1\n${a}\n`):e.replace(n,a);return e}constructor({vertexShader:e=`#version 300 es
+class Signal extends Set {
+  constructor() {
+    super();
+
+    this._onceCallbacksMap = new Map();
+  }
+
+  add(value, { once = false } = {}) {
+    if (once) {
+      const onceCallbackWrapper = (...args) => {
+        value(...args);
+        this.delete(value);
+      };
+      this._onceCallbacksMap.set(value, onceCallbackWrapper);
+      return super.add(onceCallbackWrapper);
+    } else {
+      return super.add(value);
+    }
+  }
+
+  delete(value) {
+    this._onceCallbacksMap.delete(value);
+    return super.delete(this._onceCallbacksMap.get(value) || value);
+  }
+
+  dispatch(value) {
+    for (const callback of this) {
+      callback(value);
+    }
+  }
+}
+
+const DELTA_TIME_BASE = 1 / 60;
+
+class Ticker extends Signal {
+  constructor() {
+    super();
+
+    this._updateBinded = this._update.bind(this);
+
+    this.time = window.performance.now() * .001;
+    this.reset();
+
+    document.addEventListener("visibilitychange", () => {
+      this.reset();
+    });
+
+    this._update();
+  }
+
+  reset() {
+    this._previousTime = window.performance.now() * .001;
+    this.deltaTime = DELTA_TIME_BASE;
+    this.smoothDeltatime = this.deltaTime;
+    this.timeScale = 1;
+    this.smoothTimeScale = this.timeScale;
+  }
+
+  _update() {
+    requestAnimationFrame(this._updateBinded);
+
+    this.time = window.performance.now() * 0.001;
+    this.deltaTime = this.time - this._previousTime;
+    this.smoothDeltatime += (this.deltaTime - this.smoothDeltatime) * .05;
+    this.timeScale = this.deltaTime / DELTA_TIME_BASE;
+    this.smoothTimeScale = this.smoothDeltatime / DELTA_TIME_BASE;
+    this._previousTime = this.time;
+
+    this.dispatch();
+  }
+}
+
+var Ticker$1 = new Ticker();
+
+class TickerElement extends HTMLElement {
+  constructor({ autoplay = false, background = false } = {}) {
+    super();
+
+    this._autoplay = autoplay || this.hasAttribute("autoplay");
+    this._background = background || this.hasAttribute("background");
+
+    this._paused = true;
+    this._pausedByUser = true;
+    this._pausedByBlur = false;
+
+    this._updateBinded = this.update.bind(this);
+    this._onFocusChangeBinded = this._onFocusChange.bind(this);
+  }
+
+  connectedCallback() {
+    if (!this._background) {
+      window.top.addEventListener("blur", this._onFocusChangeBinded);
+      window.top.addEventListener("focus", this._onFocusChangeBinded);
+      document.addEventListener("visibilitychange", this._onFocusChangeBinded);
+    }
+    if (this._autoplay) {
+      if (!window.top.document.hasFocus() && !this._background) {
+        this._pausedByBlur = true;
+        requestAnimationFrame(this._updateBinded);
+      }
+      this.play();
+    }
+  }
+
+  disconnectedCallback() {
+    this._pausedByBlur = true;
+    window.top.removeEventListener("blur", this._onFocusChangeBinded);
+    window.top.removeEventListener("focus", this._onFocusChangeBinded);
+    document.removeEventListener("visibilitychange", this._onFocusChangeBinded);
+  }
+
+  get paused() {
+    return this._paused;
+  }
+
+  get _pausedByUser() {
+    return this.__pausedByUser;
+  }
+
+  set _pausedByUser(value) {
+    this.__pausedByUser = value;
+    this._updatePlaybackState();
+  }
+
+  get _pausedByBlur() {
+    return this.__pausedByBlur;
+  }
+
+  set _pausedByBlur(value) {
+    this.__pausedByBlur = value;
+    this._updatePlaybackState();
+  }
+
+  _onFocusChange(event) {
+    switch (event.type) {
+      case "visibilitychange":
+        if (document.visibilityState !== "visible") {
+          this._pausedByBlur = true;
+        }
+        break;
+      case "blur":
+        this._pausedByBlur = true;
+        break;
+      case "focus":
+        this._pausedByBlur = false;
+        break;
+    }
+  }
+
+  _updatePlaybackState() {
+    const paused = this._pausedByUser || this._pausedByBlur;
+
+    if (paused === this._paused) {
+      return;
+    }
+
+    this._paused = paused;
+
+    if (this._paused) {
+      Ticker$1.delete(this._updateBinded);
+      this.dispatchEvent(new Event("pause"));
+    } else {
+      Ticker$1.add(this._updateBinded);
+      this.dispatchEvent(new Event("play"));
+    }
+  }
+
+  play() {
+    this._pausedByUser = false;
+  }
+
+  pause() {
+    this._pausedByUser = true;
+  }
+
+  update() { }
+}
+
+/**
+ * Common utilities
+ * @module glMatrix
+ */
+// Configuration Constants
+var EPSILON = 0.000001;
+var ARRAY_TYPE = typeof Float32Array !== 'undefined' ? Float32Array : Array;
+var degree = Math.PI / 180;
+
+/**
+ * Copy the values from one mat4 to another
+ *
+ * @param {mat4} out the receiving matrix
+ * @param {mat4} a the source matrix
+ * @returns {mat4} out
+ */
+
+function copy(out, a) {
+  out[0] = a[0];
+  out[1] = a[1];
+  out[2] = a[2];
+  out[3] = a[3];
+  out[4] = a[4];
+  out[5] = a[5];
+  out[6] = a[6];
+  out[7] = a[7];
+  out[8] = a[8];
+  out[9] = a[9];
+  out[10] = a[10];
+  out[11] = a[11];
+  out[12] = a[12];
+  out[13] = a[13];
+  out[14] = a[14];
+  out[15] = a[15];
+  return out;
+}
+/**
+ * Set the components of a mat4 to the given values
+ *
+ * @param {mat4} out the receiving matrix
+ * @param {Number} m00 Component in column 0, row 0 position (index 0)
+ * @param {Number} m01 Component in column 0, row 1 position (index 1)
+ * @param {Number} m02 Component in column 0, row 2 position (index 2)
+ * @param {Number} m03 Component in column 0, row 3 position (index 3)
+ * @param {Number} m10 Component in column 1, row 0 position (index 4)
+ * @param {Number} m11 Component in column 1, row 1 position (index 5)
+ * @param {Number} m12 Component in column 1, row 2 position (index 6)
+ * @param {Number} m13 Component in column 1, row 3 position (index 7)
+ * @param {Number} m20 Component in column 2, row 0 position (index 8)
+ * @param {Number} m21 Component in column 2, row 1 position (index 9)
+ * @param {Number} m22 Component in column 2, row 2 position (index 10)
+ * @param {Number} m23 Component in column 2, row 3 position (index 11)
+ * @param {Number} m30 Component in column 3, row 0 position (index 12)
+ * @param {Number} m31 Component in column 3, row 1 position (index 13)
+ * @param {Number} m32 Component in column 3, row 2 position (index 14)
+ * @param {Number} m33 Component in column 3, row 3 position (index 15)
+ * @returns {mat4} out
+ */
+
+function set(out, m00, m01, m02, m03, m10, m11, m12, m13, m20, m21, m22, m23, m30, m31, m32, m33) {
+  out[0] = m00;
+  out[1] = m01;
+  out[2] = m02;
+  out[3] = m03;
+  out[4] = m10;
+  out[5] = m11;
+  out[6] = m12;
+  out[7] = m13;
+  out[8] = m20;
+  out[9] = m21;
+  out[10] = m22;
+  out[11] = m23;
+  out[12] = m30;
+  out[13] = m31;
+  out[14] = m32;
+  out[15] = m33;
+  return out;
+}
+/**
+ * Set a mat4 to the identity matrix
+ *
+ * @param {mat4} out the receiving matrix
+ * @returns {mat4} out
+ */
+
+function identity(out) {
+  out[0] = 1;
+  out[1] = 0;
+  out[2] = 0;
+  out[3] = 0;
+  out[4] = 0;
+  out[5] = 1;
+  out[6] = 0;
+  out[7] = 0;
+  out[8] = 0;
+  out[9] = 0;
+  out[10] = 1;
+  out[11] = 0;
+  out[12] = 0;
+  out[13] = 0;
+  out[14] = 0;
+  out[15] = 1;
+  return out;
+}
+/**
+ * Inverts a mat4
+ *
+ * @param {mat4} out the receiving matrix
+ * @param {mat4} a the source matrix
+ * @returns {mat4} out
+ */
+
+function invert(out, a) {
+  var a00 = a[0],
+      a01 = a[1],
+      a02 = a[2],
+      a03 = a[3];
+  var a10 = a[4],
+      a11 = a[5],
+      a12 = a[6],
+      a13 = a[7];
+  var a20 = a[8],
+      a21 = a[9],
+      a22 = a[10],
+      a23 = a[11];
+  var a30 = a[12],
+      a31 = a[13],
+      a32 = a[14],
+      a33 = a[15];
+  var b00 = a00 * a11 - a01 * a10;
+  var b01 = a00 * a12 - a02 * a10;
+  var b02 = a00 * a13 - a03 * a10;
+  var b03 = a01 * a12 - a02 * a11;
+  var b04 = a01 * a13 - a03 * a11;
+  var b05 = a02 * a13 - a03 * a12;
+  var b06 = a20 * a31 - a21 * a30;
+  var b07 = a20 * a32 - a22 * a30;
+  var b08 = a20 * a33 - a23 * a30;
+  var b09 = a21 * a32 - a22 * a31;
+  var b10 = a21 * a33 - a23 * a31;
+  var b11 = a22 * a33 - a23 * a32; // Calculate the determinant
+
+  var det = b00 * b11 - b01 * b10 + b02 * b09 + b03 * b08 - b04 * b07 + b05 * b06;
+
+  if (!det) {
+    return null;
+  }
+
+  det = 1.0 / det;
+  out[0] = (a11 * b11 - a12 * b10 + a13 * b09) * det;
+  out[1] = (a02 * b10 - a01 * b11 - a03 * b09) * det;
+  out[2] = (a31 * b05 - a32 * b04 + a33 * b03) * det;
+  out[3] = (a22 * b04 - a21 * b05 - a23 * b03) * det;
+  out[4] = (a12 * b08 - a10 * b11 - a13 * b07) * det;
+  out[5] = (a00 * b11 - a02 * b08 + a03 * b07) * det;
+  out[6] = (a32 * b02 - a30 * b05 - a33 * b01) * det;
+  out[7] = (a20 * b05 - a22 * b02 + a23 * b01) * det;
+  out[8] = (a10 * b10 - a11 * b08 + a13 * b06) * det;
+  out[9] = (a01 * b08 - a00 * b10 - a03 * b06) * det;
+  out[10] = (a30 * b04 - a31 * b02 + a33 * b00) * det;
+  out[11] = (a21 * b02 - a20 * b04 - a23 * b00) * det;
+  out[12] = (a11 * b07 - a10 * b09 - a12 * b06) * det;
+  out[13] = (a00 * b09 - a01 * b07 + a02 * b06) * det;
+  out[14] = (a31 * b01 - a30 * b03 - a32 * b00) * det;
+  out[15] = (a20 * b03 - a21 * b01 + a22 * b00) * det;
+  return out;
+}
+/**
+ * Multiplies two mat4s
+ *
+ * @param {mat4} out the receiving matrix
+ * @param {mat4} a the first operand
+ * @param {mat4} b the second operand
+ * @returns {mat4} out
+ */
+
+function multiply(out, a, b) {
+  var a00 = a[0],
+      a01 = a[1],
+      a02 = a[2],
+      a03 = a[3];
+  var a10 = a[4],
+      a11 = a[5],
+      a12 = a[6],
+      a13 = a[7];
+  var a20 = a[8],
+      a21 = a[9],
+      a22 = a[10],
+      a23 = a[11];
+  var a30 = a[12],
+      a31 = a[13],
+      a32 = a[14],
+      a33 = a[15]; // Cache only the current line of the second matrix
+
+  var b0 = b[0],
+      b1 = b[1],
+      b2 = b[2],
+      b3 = b[3];
+  out[0] = b0 * a00 + b1 * a10 + b2 * a20 + b3 * a30;
+  out[1] = b0 * a01 + b1 * a11 + b2 * a21 + b3 * a31;
+  out[2] = b0 * a02 + b1 * a12 + b2 * a22 + b3 * a32;
+  out[3] = b0 * a03 + b1 * a13 + b2 * a23 + b3 * a33;
+  b0 = b[4];
+  b1 = b[5];
+  b2 = b[6];
+  b3 = b[7];
+  out[4] = b0 * a00 + b1 * a10 + b2 * a20 + b3 * a30;
+  out[5] = b0 * a01 + b1 * a11 + b2 * a21 + b3 * a31;
+  out[6] = b0 * a02 + b1 * a12 + b2 * a22 + b3 * a32;
+  out[7] = b0 * a03 + b1 * a13 + b2 * a23 + b3 * a33;
+  b0 = b[8];
+  b1 = b[9];
+  b2 = b[10];
+  b3 = b[11];
+  out[8] = b0 * a00 + b1 * a10 + b2 * a20 + b3 * a30;
+  out[9] = b0 * a01 + b1 * a11 + b2 * a21 + b3 * a31;
+  out[10] = b0 * a02 + b1 * a12 + b2 * a22 + b3 * a32;
+  out[11] = b0 * a03 + b1 * a13 + b2 * a23 + b3 * a33;
+  b0 = b[12];
+  b1 = b[13];
+  b2 = b[14];
+  b3 = b[15];
+  out[12] = b0 * a00 + b1 * a10 + b2 * a20 + b3 * a30;
+  out[13] = b0 * a01 + b1 * a11 + b2 * a21 + b3 * a31;
+  out[14] = b0 * a02 + b1 * a12 + b2 * a22 + b3 * a32;
+  out[15] = b0 * a03 + b1 * a13 + b2 * a23 + b3 * a33;
+  return out;
+}
+/**
+ * Translate a mat4 by the given vector
+ *
+ * @param {mat4} out the receiving matrix
+ * @param {mat4} a the matrix to translate
+ * @param {vec3} v vector to translate by
+ * @returns {mat4} out
+ */
+
+function translate(out, a, v) {
+  var x = v[0],
+      y = v[1],
+      z = v[2];
+  var a00, a01, a02, a03;
+  var a10, a11, a12, a13;
+  var a20, a21, a22, a23;
+
+  if (a === out) {
+    out[12] = a[0] * x + a[4] * y + a[8] * z + a[12];
+    out[13] = a[1] * x + a[5] * y + a[9] * z + a[13];
+    out[14] = a[2] * x + a[6] * y + a[10] * z + a[14];
+    out[15] = a[3] * x + a[7] * y + a[11] * z + a[15];
+  } else {
+    a00 = a[0];
+    a01 = a[1];
+    a02 = a[2];
+    a03 = a[3];
+    a10 = a[4];
+    a11 = a[5];
+    a12 = a[6];
+    a13 = a[7];
+    a20 = a[8];
+    a21 = a[9];
+    a22 = a[10];
+    a23 = a[11];
+    out[0] = a00;
+    out[1] = a01;
+    out[2] = a02;
+    out[3] = a03;
+    out[4] = a10;
+    out[5] = a11;
+    out[6] = a12;
+    out[7] = a13;
+    out[8] = a20;
+    out[9] = a21;
+    out[10] = a22;
+    out[11] = a23;
+    out[12] = a00 * x + a10 * y + a20 * z + a[12];
+    out[13] = a01 * x + a11 * y + a21 * z + a[13];
+    out[14] = a02 * x + a12 * y + a22 * z + a[14];
+    out[15] = a03 * x + a13 * y + a23 * z + a[15];
+  }
+
+  return out;
+}
+/**
+ * Scales the mat4 by the dimensions in the given vec3 not using vectorization
+ *
+ * @param {mat4} out the receiving matrix
+ * @param {mat4} a the matrix to scale
+ * @param {vec3} v the vec3 to scale the matrix by
+ * @returns {mat4} out
+ **/
+
+function scale(out, a, v) {
+  var x = v[0],
+      y = v[1],
+      z = v[2];
+  out[0] = a[0] * x;
+  out[1] = a[1] * x;
+  out[2] = a[2] * x;
+  out[3] = a[3] * x;
+  out[4] = a[4] * y;
+  out[5] = a[5] * y;
+  out[6] = a[6] * y;
+  out[7] = a[7] * y;
+  out[8] = a[8] * z;
+  out[9] = a[9] * z;
+  out[10] = a[10] * z;
+  out[11] = a[11] * z;
+  out[12] = a[12];
+  out[13] = a[13];
+  out[14] = a[14];
+  out[15] = a[15];
+  return out;
+}
+/**
+ * Rotates a matrix by the given angle around the X axis
+ *
+ * @param {mat4} out the receiving matrix
+ * @param {mat4} a the matrix to rotate
+ * @param {Number} rad the angle to rotate the matrix by
+ * @returns {mat4} out
+ */
+
+function rotateX(out, a, rad) {
+  var s = Math.sin(rad);
+  var c = Math.cos(rad);
+  var a10 = a[4];
+  var a11 = a[5];
+  var a12 = a[6];
+  var a13 = a[7];
+  var a20 = a[8];
+  var a21 = a[9];
+  var a22 = a[10];
+  var a23 = a[11];
+
+  if (a !== out) {
+    // If the source and destination differ, copy the unchanged rows
+    out[0] = a[0];
+    out[1] = a[1];
+    out[2] = a[2];
+    out[3] = a[3];
+    out[12] = a[12];
+    out[13] = a[13];
+    out[14] = a[14];
+    out[15] = a[15];
+  } // Perform axis-specific matrix multiplication
+
+
+  out[4] = a10 * c + a20 * s;
+  out[5] = a11 * c + a21 * s;
+  out[6] = a12 * c + a22 * s;
+  out[7] = a13 * c + a23 * s;
+  out[8] = a20 * c - a10 * s;
+  out[9] = a21 * c - a11 * s;
+  out[10] = a22 * c - a12 * s;
+  out[11] = a23 * c - a13 * s;
+  return out;
+}
+/**
+ * Rotates a matrix by the given angle around the Y axis
+ *
+ * @param {mat4} out the receiving matrix
+ * @param {mat4} a the matrix to rotate
+ * @param {Number} rad the angle to rotate the matrix by
+ * @returns {mat4} out
+ */
+
+function rotateY(out, a, rad) {
+  var s = Math.sin(rad);
+  var c = Math.cos(rad);
+  var a00 = a[0];
+  var a01 = a[1];
+  var a02 = a[2];
+  var a03 = a[3];
+  var a20 = a[8];
+  var a21 = a[9];
+  var a22 = a[10];
+  var a23 = a[11];
+
+  if (a !== out) {
+    // If the source and destination differ, copy the unchanged rows
+    out[4] = a[4];
+    out[5] = a[5];
+    out[6] = a[6];
+    out[7] = a[7];
+    out[12] = a[12];
+    out[13] = a[13];
+    out[14] = a[14];
+    out[15] = a[15];
+  } // Perform axis-specific matrix multiplication
+
+
+  out[0] = a00 * c - a20 * s;
+  out[1] = a01 * c - a21 * s;
+  out[2] = a02 * c - a22 * s;
+  out[3] = a03 * c - a23 * s;
+  out[8] = a00 * s + a20 * c;
+  out[9] = a01 * s + a21 * c;
+  out[10] = a02 * s + a22 * c;
+  out[11] = a03 * s + a23 * c;
+  return out;
+}
+/**
+ * Rotates a matrix by the given angle around the Z axis
+ *
+ * @param {mat4} out the receiving matrix
+ * @param {mat4} a the matrix to rotate
+ * @param {Number} rad the angle to rotate the matrix by
+ * @returns {mat4} out
+ */
+
+function rotateZ(out, a, rad) {
+  var s = Math.sin(rad);
+  var c = Math.cos(rad);
+  var a00 = a[0];
+  var a01 = a[1];
+  var a02 = a[2];
+  var a03 = a[3];
+  var a10 = a[4];
+  var a11 = a[5];
+  var a12 = a[6];
+  var a13 = a[7];
+
+  if (a !== out) {
+    // If the source and destination differ, copy the unchanged last row
+    out[8] = a[8];
+    out[9] = a[9];
+    out[10] = a[10];
+    out[11] = a[11];
+    out[12] = a[12];
+    out[13] = a[13];
+    out[14] = a[14];
+    out[15] = a[15];
+  } // Perform axis-specific matrix multiplication
+
+
+  out[0] = a00 * c + a10 * s;
+  out[1] = a01 * c + a11 * s;
+  out[2] = a02 * c + a12 * s;
+  out[3] = a03 * c + a13 * s;
+  out[4] = a10 * c - a00 * s;
+  out[5] = a11 * c - a01 * s;
+  out[6] = a12 * c - a02 * s;
+  out[7] = a13 * c - a03 * s;
+  return out;
+}
+/**
+ * Calculates a 4x4 matrix from the given quaternion
+ *
+ * @param {mat4} out mat4 receiving operation result
+ * @param {quat} q Quaternion to create matrix from
+ *
+ * @returns {mat4} out
+ */
+
+function fromQuat(out, q) {
+  var x = q[0],
+      y = q[1],
+      z = q[2],
+      w = q[3];
+  var x2 = x + x;
+  var y2 = y + y;
+  var z2 = z + z;
+  var xx = x * x2;
+  var yx = y * x2;
+  var yy = y * y2;
+  var zx = z * x2;
+  var zy = z * y2;
+  var zz = z * z2;
+  var wx = w * x2;
+  var wy = w * y2;
+  var wz = w * z2;
+  out[0] = 1 - yy - zz;
+  out[1] = yx + wz;
+  out[2] = zx - wy;
+  out[3] = 0;
+  out[4] = yx - wz;
+  out[5] = 1 - xx - zz;
+  out[6] = zy + wx;
+  out[7] = 0;
+  out[8] = zx + wy;
+  out[9] = zy - wx;
+  out[10] = 1 - xx - yy;
+  out[11] = 0;
+  out[12] = 0;
+  out[13] = 0;
+  out[14] = 0;
+  out[15] = 1;
+  return out;
+}
+/**
+ * Generates a perspective projection matrix with the given bounds.
+ * Passing null/undefined/no value for far will generate infinite projection matrix.
+ *
+ * @param {mat4} out mat4 frustum matrix will be written into
+ * @param {number} fovy Vertical field of view in radians
+ * @param {number} aspect Aspect ratio. typically viewport width/height
+ * @param {number} near Near bound of the frustum
+ * @param {number} far Far bound of the frustum, can be null or Infinity
+ * @returns {mat4} out
+ */
+
+function perspective(out, fovy, aspect, near, far) {
+  var f = 1.0 / Math.tan(fovy / 2),
+      nf;
+  out[0] = f / aspect;
+  out[1] = 0;
+  out[2] = 0;
+  out[3] = 0;
+  out[4] = 0;
+  out[5] = f;
+  out[6] = 0;
+  out[7] = 0;
+  out[8] = 0;
+  out[9] = 0;
+  out[11] = -1;
+  out[12] = 0;
+  out[13] = 0;
+  out[15] = 0;
+
+  if (far != null && far !== Infinity) {
+    nf = 1 / (near - far);
+    out[10] = (far + near) * nf;
+    out[14] = 2 * far * near * nf;
+  } else {
+    out[10] = -1;
+    out[14] = -2 * near;
+  }
+
+  return out;
+}
+
+class Matrix4 extends Float32Array {
+  constructor(array = [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1]) {
+    super(array);
+    return this;
+  }
+
+  set x(value) {
+    this[12] = value;
+  }
+
+  get x() {
+    return this[12];
+  }
+
+  set y(value) {
+    this[13] = value;
+  }
+
+  get y() {
+    return this[13];
+  }
+
+  set z(value) {
+    this[14] = value;
+  }
+
+  get z() {
+    return this[14];
+  }
+
+  set w(value) {
+    this[15] = value;
+  }
+
+  get w() {
+    return this[15];
+  }
+
+  set(m00, m01, m02, m03, m10, m11, m12, m13, m20, m21, m22, m23, m30, m31, m32, m33) {
+    if (m00.length) {
+      return this.copy(m00);
+    }
+    set(this, m00, m01, m02, m03, m10, m11, m12, m13, m20, m21, m22, m23, m30, m31, m32, m33);
+    return this;
+  }
+
+  translate(vector3, matrix4 = this) {
+    translate(this, matrix4, vector3);
+    return this;
+  }
+
+  rotateX(value, matrix4 = this) {
+    rotateX(this, matrix4, value);
+    return this;
+  }
+
+  rotateY(value, matrix4 = this) {
+    rotateY(this, matrix4, value);
+    return this;
+  }
+
+  rotateZ(value, matrix4 = this) {
+    rotateZ(this, matrix4, value);
+    return this;
+  }
+
+  scale(value, matrix4 = this) {
+    scale(this, matrix4, typeof value === "number" ? [value, value, value] : value);
+    return this;
+  }
+
+  multiply(matrix4a, matrix4b) {
+    if (matrix4b) {
+      multiply(this, matrix4a, matrix4b);
+    } else {
+      multiply(this, this, matrix4a);
+    }
+    return this;
+  }
+
+  identity() {
+    identity(this);
+    return this;
+  }
+
+  copy(matrix4) {
+    copy(this, matrix4);
+    return this;
+  }
+
+  fromPerspective({ fov, aspectRatio, near, far } = {}) {
+    perspective(this, fov, aspectRatio, near, far);
+    return this;
+  }
+
+  fromQuaternion(quaternion) {
+    fromQuat(this, quaternion);
+    return this;
+  }
+
+  setPosition(vector3) {
+    this.x = vector3[0];
+    this.y = vector3[1];
+    this.z = vector3[2];
+    return this;
+  }
+
+  invert(matrix4 = this) {
+    invert(this, matrix4);
+    return this;
+  }
+}
+
+class Camera {
+  constructor({ near = 0.01, far = 1000, aspectRatio = 1, fov = Math.PI / 3 } = {}) {
+    this._near = near;
+    this._far = far;
+    this._aspectRatio = aspectRatio;
+    this._fov = fov;
+
+    this.transform = new Matrix4();
+    this._inverseTransform = new Matrix4();
+    this._projection = new Matrix4();
+    this._projectionView = new Matrix4();
+
+    this._updateProjection();
+  }
+
+  set near(value) {
+    this._near = value;
+    this._updateProjection();
+  }
+
+  get near() {
+    return this._near;
+  }
+
+  set far(value) {
+    this._far = value;
+    this._updateProjection();
+  }
+
+  get far() {
+    return this._far;
+  }
+
+  set fov(value) {
+    this._fov = value;
+    this._updateProjection();
+  }
+
+  get fov() {
+    return this._fov;
+  }
+
+  set aspectRatio(value) {
+    this._aspectRatio = value;
+    this._updateProjection();
+  }
+
+  get aspectRatio() {
+    return this._aspectRatio;
+  }
+
+  get inverseTransform() {
+    return this._inverseTransform.invert(this.transform);
+  }
+
+  get projection() {
+    return this._projection;
+  }
+
+  get projectionView() {
+    return this._projectionView.copy(this.projection).multiply(this.inverseTransform);
+  }
+
+  _updateProjection() {
+    this._projection.fromPerspective(this);
+  }
+}
+
+// Object.defineProperty(Camera.prototype, "near", { enumerable: true });
+// Object.defineProperty(Camera.prototype, "far", { enumerable: true });
+// Object.defineProperty(Camera.prototype, "fov", { enumerable: true });
+// Object.defineProperty(Camera.prototype, "aspectRatio", { enumerable: true });
+// Object.defineProperty(Camera.prototype, "inverseTransform", { enumerable: true });
+// Object.defineProperty(Camera.prototype, "projection", { enumerable: true });
+// Object.defineProperty(Camera.prototype, "projectionView", { enumerable: true });
+
+// From https://github.com/mrdoob/three.js/blob/master/src/geometries/BoxGeometry.js
+
+class BoxMesh {
+  constructor({
+    width = 1,
+    height = 1,
+    depth = 1,
+    widthSegments = 1,
+    heightSegments = 1,
+    depthSegments = 1,
+    positions = true,
+    normals = true,
+    uvs = true,
+    indices = true,
+  }) {
+    const indicesArray = [];
+    const verticesArray = [];
+    const normalsArray = [];
+    const uvsArray = [];
+
+    let numberOfVertices = 0;
+
+    buildPlane("z", "y", "x", - 1, - 1, depth, height, width, depthSegments, heightSegments);
+    buildPlane("z", "y", "x", 1, - 1, depth, height, - width, depthSegments, heightSegments);
+    buildPlane("x", "z", "y", 1, 1, width, depth, height, widthSegments, depthSegments);
+    buildPlane("x", "z", "y", 1, - 1, width, depth, - height, widthSegments, depthSegments);
+    buildPlane("x", "y", "z", 1, - 1, width, height, depth, widthSegments, heightSegments);
+    buildPlane("x", "y", "z", - 1, - 1, width, height, - depth, widthSegments, heightSegments);
+
+    if (positions) {
+      this.positions = new Float32Array(verticesArray);
+    }
+
+    if (normals) {
+      this.normals = new Float32Array(normalsArray);
+    }
+
+    if (uvs) {
+      this.uvs = new Float32Array(uvsArray);
+    }
+
+    if (indices) {
+      this.indices = new Uint16Array(indicesArray);
+    }
+
+    function buildPlane(u, v, w, udir, vdir, width, height, depth, gridX, gridY, materialIndex) {
+      const segmentWidth = width / gridX;
+      const segmentHeight = height / gridY;
+
+      const widthHalf = width / 2;
+      const heightHalf = height / 2;
+      const depthHalf = depth / 2;
+
+      const gridX1 = gridX + 1;
+      const gridY1 = gridY + 1;
+
+      let vertexCounter = 0;
+
+      let ix; let iy;
+
+      const vector = {
+        x: 0,
+        y: 0,
+        z: 0,
+      };
+
+      for (iy = 0; iy < gridY1; iy++) {
+        const y = iy * segmentHeight - heightHalf;
+
+        for (ix = 0; ix < gridX1; ix++) {
+          const x = ix * segmentWidth - widthHalf;
+
+          vector[u] = x * udir;
+          vector[v] = y * vdir;
+          vector[w] = depthHalf;
+
+          if (positions) {
+            verticesArray.push(vector.x, vector.y, vector.z);
+          }
+
+          vector[u] = 0;
+          vector[v] = 0;
+          vector[w] = depth > 0 ? 1 : - 1;
+
+          if (normals) {
+            normalsArray.push(vector.x, vector.y, vector.z);
+          }
+
+          if (uvs) {
+            uvsArray.push(ix / gridX);
+            uvsArray.push(1 - (iy / gridY));
+          }
+
+          vertexCounter += 1;
+        }
+      }
+
+      if (indices) {
+        for (iy = 0; iy < gridY; iy++) {
+          for (ix = 0; ix < gridX; ix++) {
+            const a = numberOfVertices + ix + gridX1 * iy;
+            const b = numberOfVertices + ix + gridX1 * (iy + 1);
+            const c = numberOfVertices + (ix + 1) + gridX1 * (iy + 1);
+            const d = numberOfVertices + (ix + 1) + gridX1 * iy;
+
+            indicesArray.push(a, b, d);
+            indicesArray.push(b, c, d);
+          }
+        }
+      }
+
+      numberOfVertices += vertexCounter;
+    }
+  }
+}
+
+class GLBuffer {
+  constructor({
+    gl,
+    data = null,
+    target = gl.ARRAY_BUFFER,
+    usage = gl.STATIC_DRAW
+  } = { gl }) {
+    this.gl = gl;
+    this.target = target;
+    this.usage = usage;
+
+    this._buffer = this.gl.createBuffer();
+
+    if (data) {
+      this.data = data;
+    }
+  }
+
+  set data(value) {
+    this._data = value;
+
+    this.bind();
+    this.gl.bufferData(this.target, this._data, this.usage);
+    this.unbind();
+  }
+
+  get data() {
+    return this._data;
+  }
+
+  bind({
+    target = this.target,
+    index = undefined,
+    offset = 0,
+    size = undefined
+  } = {}) {
+    if (index === undefined) {
+      this.gl.bindBuffer(target, this._buffer);
+    } else if (size === undefined) {
+      this.gl.bindBufferBase(target, index, this._buffer);
+    } else {
+      this.gl.bindBufferRange(target, index, this._buffer, offset, size);
+    }
+  }
+
+  unbind({
+    target = this.target,
+    index = undefined,
+    offset = 0,
+    size = undefined
+  } = {}) {
+    if (index === undefined) {
+      this.gl.bindBuffer(target, null);
+    } else if (size === undefined) {
+      this.gl.bindBufferBase(target, index, null);
+    } else {
+      this.gl.bindBufferRange(target, index, null, offset, size);
+    }
+  }
+}
+
+class GLVertexAttribute {
+  constructor({
+    gl,
+    data = undefined,
+    buffer = new GLBuffer({
+      gl
+    }),
+    size = 1,
+    type = undefined,
+    offset = 0,
+    normalized = false,
+    stride = 0,
+    count = undefined,
+    divisor = 0
+  } = { gl }) {
+    this.gl = gl;
+    this.buffer = buffer;
+    this.size = size;
+    this.type = type;
+    this.offset = offset;
+    this.normalized = normalized;
+    this.stride = stride;
+    this.count = count;
+    this.divisor = divisor;
+
+    if (data) {
+      this.data = data;
+    }
+  }
+
+  set count(value) {
+    this._count = value;
+  }
+
+  get count() {
+    return this._count === undefined ? this.data.length / this.size : this._count;
+  }
+
+  set type(value) {
+    this._type = value;
+  }
+
+  get type() {
+    let type = this._type;
+    if (!type) {
+      if (this.data instanceof Float32Array || this.data instanceof Float64Array) {
+        type = this.gl.FLOAT;
+      } else if (this.data instanceof Uint8Array) {
+        type = this.gl.UNSIGNED_BYTE;
+      } else if (this.data instanceof Uint16Array) {
+        type = this.gl.UNSIGNED_SHORT;
+      } else if (this.data instanceof Uint32Array) {
+        type = this.gl.UNSIGNED_INT;
+      }
+    }
+    return type;
+  }
+
+  set data(value) {
+    this.buffer.data = value;
+  }
+
+  get data() {
+    return this.buffer.data;
+  }
+}
+
+class GLMesh {
+  constructor({
+    gl,
+    positions = undefined,
+    normals = undefined,
+    uvs = undefined,
+    attributes = undefined,
+    indices = undefined,
+  } = { gl }) {
+    this.gl = gl;
+
+    this.gl.getExtension("OES_element_index_uint");
+
+    this._drawElementsInstanced = () => { };
+    this._drawArraysInstanced = () => { };
+    const instancedArraysExtension = this.gl.getExtension("ANGLE_instanced_arrays");
+    if (instancedArraysExtension) {
+      this._drawElementsInstanced = instancedArraysExtension.drawElementsInstancedANGLE.bind(instancedArraysExtension);
+      this._drawArraysInstanced = instancedArraysExtension.drawArraysInstancedANGLE.bind(instancedArraysExtension);
+    } else if (this.gl.drawElementsInstanced) {
+      this._drawElementsInstanced = this.gl.drawElementsInstanced.bind(this.gl);
+      this._drawArraysInstanced = this.gl.drawArraysInstanced.bind(this.gl);
+    }
+
+    this.attributes = new Map(attributes);
+
+    if (positions) {
+      this.attributes.set("position", new GLVertexAttribute({
+        gl,
+        data: positions,
+        size: 3,
+      }));
+    }
+
+    if (normals) {
+      this.attributes.set("normal", new GLVertexAttribute({
+        gl,
+        data: normals,
+        size: 3,
+      }));
+    }
+
+    if (uvs) {
+      this.attributes.set("uv", new GLVertexAttribute({
+        gl,
+        data: uvs,
+        size: 2,
+      }));
+    }
+
+    for (const [key, value] of this.attributes) {
+      if (!(value instanceof GLVertexAttribute)) {
+        this.attributes.set(key, new GLVertexAttribute(Object.assign({
+          gl,
+        }, value)));
+      }
+    }
+
+    if (indices && !(this.indices instanceof GLVertexAttribute)) {
+      this.indices = new GLVertexAttribute(Object.assign({
+        gl: this.gl,
+        buffer: new GLBuffer({
+          gl: this.gl,
+          target: this.gl.ELEMENT_ARRAY_BUFFER,
+        }),
+      }, indices.length !== undefined ? { data: indices } : indices));
+    }
+  }
+
+  draw({
+    mode = this.gl.TRIANGLES,
+    elements = !!this.indices,
+    count = elements ? this.indices.count : this.attributes.get("position").count,
+    offset = this.indices ? this.indices.offset : 0,
+    type = elements ? this.indices.type : null,
+    first = 0,
+    instanceCount = undefined,
+  } = {}) {
+    if (elements) {
+      if (instanceCount !== undefined) {
+        this._drawElementsInstanced(mode, count, type, offset, instanceCount);
+      } else {
+        this.gl.drawElements(mode, count, type, offset);
+      }
+    } else {
+      if (instanceCount !== undefined) {
+        this._drawArraysInstanced(mode, first, count, instanceCount);
+      } else {
+        this.gl.drawArrays(mode, first, count);
+      }
+    }
+  }
+}
+
+/**
+ * 2 Dimensional Vector
+ * @module vec2
+ */
+
+/**
+ * Creates a new, empty vec2
+ *
+ * @returns {vec2} a new 2D vector
+ */
+
+function create() {
+  var out = new ARRAY_TYPE(2);
+
+  if (ARRAY_TYPE != Float32Array) {
+    out[0] = 0;
+    out[1] = 0;
+  }
+
+  return out;
+}
+/**
+ * Copy the values from one vec2 to another
+ *
+ * @param {vec2} out the receiving vector
+ * @param {vec2} a the source vector
+ * @returns {vec2} out
+ */
+
+function copy$1(out, a) {
+  out[0] = a[0];
+  out[1] = a[1];
+  return out;
+}
+/**
+ * Set the components of a vec2 to the given values
+ *
+ * @param {vec2} out the receiving vector
+ * @param {Number} x X component
+ * @param {Number} y Y component
+ * @returns {vec2} out
+ */
+
+function set$1(out, x, y) {
+  out[0] = x;
+  out[1] = y;
+  return out;
+}
+/**
+ * Adds two vec2's
+ *
+ * @param {vec2} out the receiving vector
+ * @param {vec2} a the first operand
+ * @param {vec2} b the second operand
+ * @returns {vec2} out
+ */
+
+function add(out, a, b) {
+  out[0] = a[0] + b[0];
+  out[1] = a[1] + b[1];
+  return out;
+}
+/**
+ * Subtracts vector b from vector a
+ *
+ * @param {vec2} out the receiving vector
+ * @param {vec2} a the first operand
+ * @param {vec2} b the second operand
+ * @returns {vec2} out
+ */
+
+function subtract(out, a, b) {
+  out[0] = a[0] - b[0];
+  out[1] = a[1] - b[1];
+  return out;
+}
+/**
+ * Scales a vec2 by a scalar number
+ *
+ * @param {vec2} out the receiving vector
+ * @param {vec2} a the vector to scale
+ * @param {Number} b amount to scale the vector by
+ * @returns {vec2} out
+ */
+
+function scale$1(out, a, b) {
+  out[0] = a[0] * b;
+  out[1] = a[1] * b;
+  return out;
+}
+/**
+ * Calculates the euclidian distance between two vec2's
+ *
+ * @param {vec2} a the first operand
+ * @param {vec2} b the second operand
+ * @returns {Number} distance between a and b
+ */
+
+function distance(a, b) {
+  var x = b[0] - a[0],
+      y = b[1] - a[1];
+  return Math.sqrt(x * x + y * y);
+}
+/**
+ * Calculates the length of a vec2
+ *
+ * @param {vec2} a vector to calculate length of
+ * @returns {Number} length of a
+ */
+
+function length(a) {
+  var x = a[0],
+      y = a[1];
+  return Math.sqrt(x * x + y * y);
+}
+/**
+ * Calculates the squared length of a vec2
+ *
+ * @param {vec2} a vector to calculate squared length of
+ * @returns {Number} squared length of a
+ */
+
+function squaredLength(a) {
+  var x = a[0],
+      y = a[1];
+  return x * x + y * y;
+}
+/**
+ * Negates the components of a vec2
+ *
+ * @param {vec2} out the receiving vector
+ * @param {vec2} a vector to negate
+ * @returns {vec2} out
+ */
+
+function negate(out, a) {
+  out[0] = -a[0];
+  out[1] = -a[1];
+  return out;
+}
+/**
+ * Normalize a vec2
+ *
+ * @param {vec2} out the receiving vector
+ * @param {vec2} a vector to normalize
+ * @returns {vec2} out
+ */
+
+function normalize(out, a) {
+  var x = a[0],
+      y = a[1];
+  var len = x * x + y * y;
+
+  if (len > 0) {
+    //TODO: evaluate use of glm_invsqrt here?
+    len = 1 / Math.sqrt(len);
+  }
+
+  out[0] = a[0] * len;
+  out[1] = a[1] * len;
+  return out;
+}
+/**
+ * Calculates the dot product of two vec2's
+ *
+ * @param {vec2} a the first operand
+ * @param {vec2} b the second operand
+ * @returns {Number} dot product of a and b
+ */
+
+function dot(a, b) {
+  return a[0] * b[0] + a[1] * b[1];
+}
+/**
+ * Computes the cross product of two vec2's
+ * Note that the cross product must by definition produce a 3D vector
+ *
+ * @param {vec3} out the receiving vector
+ * @param {vec2} a the first operand
+ * @param {vec2} b the second operand
+ * @returns {vec3} out
+ */
+
+function cross(out, a, b) {
+  var z = a[0] * b[1] - a[1] * b[0];
+  out[0] = out[1] = 0;
+  out[2] = z;
+  return out;
+}
+/**
+ * Performs a linear interpolation between two vec2's
+ *
+ * @param {vec2} out the receiving vector
+ * @param {vec2} a the first operand
+ * @param {vec2} b the second operand
+ * @param {Number} t interpolation amount, in the range [0-1], between the two inputs
+ * @returns {vec2} out
+ */
+
+function lerp(out, a, b, t) {
+  var ax = a[0],
+      ay = a[1];
+  out[0] = ax + t * (b[0] - ax);
+  out[1] = ay + t * (b[1] - ay);
+  return out;
+}
+/**
+ * Transforms the vec2 with a mat3
+ * 3rd vector component is implicitly '1'
+ *
+ * @param {vec2} out the receiving vector
+ * @param {vec2} a the vector to transform
+ * @param {mat3} m matrix to transform with
+ * @returns {vec2} out
+ */
+
+function transformMat3(out, a, m) {
+  var x = a[0],
+      y = a[1];
+  out[0] = m[0] * x + m[3] * y + m[6];
+  out[1] = m[1] * x + m[4] * y + m[7];
+  return out;
+}
+/**
+ * Transforms the vec2 with a mat4
+ * 3rd vector component is implicitly '0'
+ * 4th vector component is implicitly '1'
+ *
+ * @param {vec2} out the receiving vector
+ * @param {vec2} a the vector to transform
+ * @param {mat4} m matrix to transform with
+ * @returns {vec2} out
+ */
+
+function transformMat4(out, a, m) {
+  var x = a[0];
+  var y = a[1];
+  out[0] = m[0] * x + m[4] * y + m[12];
+  out[1] = m[1] * x + m[5] * y + m[13];
+  return out;
+}
+/**
+ * Returns whether or not the vectors exactly have the same elements in the same position (when compared with ===)
+ *
+ * @param {vec2} a The first vector.
+ * @param {vec2} b The second vector.
+ * @returns {Boolean} True if the vectors are equal, false otherwise.
+ */
+
+function exactEquals(a, b) {
+  return a[0] === b[0] && a[1] === b[1];
+}
+/**
+ * Perform some operation over an array of vec2s.
+ *
+ * @param {Array} a the array of vectors to iterate over
+ * @param {Number} stride Number of elements between the start of each vec2. If 0 assumes tightly packed
+ * @param {Number} offset Number of elements to skip at the beginning of the array
+ * @param {Number} count Number of vec2s to iterate over. If 0 iterates over entire array
+ * @param {Function} fn Function to call for each vector in the array
+ * @param {Object} [arg] additional argument to pass to fn
+ * @returns {Array} a
+ * @function
+ */
+
+var forEach = function () {
+  var vec = create();
+  return function (a, stride, offset, count, fn, arg) {
+    var i, l;
+
+    if (!stride) {
+      stride = 2;
+    }
+
+    if (!offset) {
+      offset = 0;
+    }
+
+    if (count) {
+      l = Math.min(count * stride + offset, a.length);
+    } else {
+      l = a.length;
+    }
+
+    for (i = offset; i < l; i += stride) {
+      vec[0] = a[i];
+      vec[1] = a[i + 1];
+      fn(vec, vec, arg);
+      a[i] = vec[0];
+      a[i + 1] = vec[1];
+    }
+
+    return a;
+  };
+}();
+
+class Vector2 extends Float32Array {
+  static distance(vector2a, vector2b) {
+    return distance(vector2a, vector2b);
+  }
+
+  constructor(array = [0, 0]) {
+    super(array);
+    return this;
+  }
+
+  get x() {
+    return this[0];
+  }
+
+  set x(value) {
+    this[0] = value;
+  }
+
+  get y() {
+    return this[1];
+  }
+
+  set y(value) {
+    this[1] = value;
+  }
+
+  set(x, y) {
+    set$1(this, x, y);
+    return this;
+  }
+
+  copy(vector2) {
+    copy$1(this, vector2);
+    return this;
+  }
+
+  add(vector2) {
+    add(this, this, vector2);
+    return this;
+  }
+
+  get size() {
+    return length(this);
+  }
+
+  get squaredSize() {
+    return squaredLength(this);
+  }
+
+  subtract(vector2) {
+    subtract(this, this, vector2);
+    return this;
+  }
+
+  negate(vector2 = this) {
+    negate(this, vector2);
+    return this;
+  }
+
+  cross(vector2a, vector2b) {
+    cross(this, vector2a, vector2b);
+    return this;
+  }
+
+  scale(value) {
+    scale$1(this, this, value);
+    return this;
+  }
+
+  normalize() {
+    normalize(this, this);
+  }
+
+  dot(vector2) {
+    return dot(this, vector2);
+  }
+
+  distance(vector2) {
+    return Vector2.distance(this, vector2);
+  }
+
+  equals(vector2) {
+    return exactEquals(this, vector2);
+  }
+
+  applyMatrix3(matrix3) {
+    transformMat3(this, this, matrix3);
+    return this;
+  }
+
+  applyMatrix4(matrix4) {
+    transformMat4(this, this, matrix4);
+    return this;
+  }
+
+  lerp(vector2, value) {
+    lerp(this, this, vector2, value);
+  }
+
+  clone() {
+    return new Vector2(this);
+  }
+}
+
+/**
+ * 3 Dimensional Vector
+ * @module vec3
+ */
+
+/**
+ * Creates a new, empty vec3
+ *
+ * @returns {vec3} a new 3D vector
+ */
+
+function create$1() {
+  var out = new ARRAY_TYPE(3);
+
+  if (ARRAY_TYPE != Float32Array) {
+    out[0] = 0;
+    out[1] = 0;
+    out[2] = 0;
+  }
+
+  return out;
+}
+/**
+ * Calculates the length of a vec3
+ *
+ * @param {vec3} a vector to calculate length of
+ * @returns {Number} length of a
+ */
+
+function length$1(a) {
+  var x = a[0];
+  var y = a[1];
+  var z = a[2];
+  return Math.sqrt(x * x + y * y + z * z);
+}
+/**
+ * Creates a new vec3 initialized with the given values
+ *
+ * @param {Number} x X component
+ * @param {Number} y Y component
+ * @param {Number} z Z component
+ * @returns {vec3} a new 3D vector
+ */
+
+function fromValues(x, y, z) {
+  var out = new ARRAY_TYPE(3);
+  out[0] = x;
+  out[1] = y;
+  out[2] = z;
+  return out;
+}
+/**
+ * Copy the values from one vec3 to another
+ *
+ * @param {vec3} out the receiving vector
+ * @param {vec3} a the source vector
+ * @returns {vec3} out
+ */
+
+function copy$2(out, a) {
+  out[0] = a[0];
+  out[1] = a[1];
+  out[2] = a[2];
+  return out;
+}
+/**
+ * Set the components of a vec3 to the given values
+ *
+ * @param {vec3} out the receiving vector
+ * @param {Number} x X component
+ * @param {Number} y Y component
+ * @param {Number} z Z component
+ * @returns {vec3} out
+ */
+
+function set$2(out, x, y, z) {
+  out[0] = x;
+  out[1] = y;
+  out[2] = z;
+  return out;
+}
+/**
+ * Adds two vec3's
+ *
+ * @param {vec3} out the receiving vector
+ * @param {vec3} a the first operand
+ * @param {vec3} b the second operand
+ * @returns {vec3} out
+ */
+
+function add$1(out, a, b) {
+  out[0] = a[0] + b[0];
+  out[1] = a[1] + b[1];
+  out[2] = a[2] + b[2];
+  return out;
+}
+/**
+ * Subtracts vector b from vector a
+ *
+ * @param {vec3} out the receiving vector
+ * @param {vec3} a the first operand
+ * @param {vec3} b the second operand
+ * @returns {vec3} out
+ */
+
+function subtract$1(out, a, b) {
+  out[0] = a[0] - b[0];
+  out[1] = a[1] - b[1];
+  out[2] = a[2] - b[2];
+  return out;
+}
+/**
+ * Scales a vec3 by a scalar number
+ *
+ * @param {vec3} out the receiving vector
+ * @param {vec3} a the vector to scale
+ * @param {Number} b amount to scale the vector by
+ * @returns {vec3} out
+ */
+
+function scale$2(out, a, b) {
+  out[0] = a[0] * b;
+  out[1] = a[1] * b;
+  out[2] = a[2] * b;
+  return out;
+}
+/**
+ * Calculates the euclidian distance between two vec3's
+ *
+ * @param {vec3} a the first operand
+ * @param {vec3} b the second operand
+ * @returns {Number} distance between a and b
+ */
+
+function distance$1(a, b) {
+  var x = b[0] - a[0];
+  var y = b[1] - a[1];
+  var z = b[2] - a[2];
+  return Math.sqrt(x * x + y * y + z * z);
+}
+/**
+ * Calculates the squared length of a vec3
+ *
+ * @param {vec3} a vector to calculate squared length of
+ * @returns {Number} squared length of a
+ */
+
+function squaredLength$1(a) {
+  var x = a[0];
+  var y = a[1];
+  var z = a[2];
+  return x * x + y * y + z * z;
+}
+/**
+ * Negates the components of a vec3
+ *
+ * @param {vec3} out the receiving vector
+ * @param {vec3} a vector to negate
+ * @returns {vec3} out
+ */
+
+function negate$1(out, a) {
+  out[0] = -a[0];
+  out[1] = -a[1];
+  out[2] = -a[2];
+  return out;
+}
+/**
+ * Normalize a vec3
+ *
+ * @param {vec3} out the receiving vector
+ * @param {vec3} a vector to normalize
+ * @returns {vec3} out
+ */
+
+function normalize$1(out, a) {
+  var x = a[0];
+  var y = a[1];
+  var z = a[2];
+  var len = x * x + y * y + z * z;
+
+  if (len > 0) {
+    //TODO: evaluate use of glm_invsqrt here?
+    len = 1 / Math.sqrt(len);
+  }
+
+  out[0] = a[0] * len;
+  out[1] = a[1] * len;
+  out[2] = a[2] * len;
+  return out;
+}
+/**
+ * Calculates the dot product of two vec3's
+ *
+ * @param {vec3} a the first operand
+ * @param {vec3} b the second operand
+ * @returns {Number} dot product of a and b
+ */
+
+function dot$1(a, b) {
+  return a[0] * b[0] + a[1] * b[1] + a[2] * b[2];
+}
+/**
+ * Computes the cross product of two vec3's
+ *
+ * @param {vec3} out the receiving vector
+ * @param {vec3} a the first operand
+ * @param {vec3} b the second operand
+ * @returns {vec3} out
+ */
+
+function cross$1(out, a, b) {
+  var ax = a[0],
+      ay = a[1],
+      az = a[2];
+  var bx = b[0],
+      by = b[1],
+      bz = b[2];
+  out[0] = ay * bz - az * by;
+  out[1] = az * bx - ax * bz;
+  out[2] = ax * by - ay * bx;
+  return out;
+}
+/**
+ * Transforms the vec3 with a mat4.
+ * 4th vector component is implicitly '1'
+ *
+ * @param {vec3} out the receiving vector
+ * @param {vec3} a the vector to transform
+ * @param {mat4} m matrix to transform with
+ * @returns {vec3} out
+ */
+
+function transformMat4$1(out, a, m) {
+  var x = a[0],
+      y = a[1],
+      z = a[2];
+  var w = m[3] * x + m[7] * y + m[11] * z + m[15];
+  w = w || 1.0;
+  out[0] = (m[0] * x + m[4] * y + m[8] * z + m[12]) / w;
+  out[1] = (m[1] * x + m[5] * y + m[9] * z + m[13]) / w;
+  out[2] = (m[2] * x + m[6] * y + m[10] * z + m[14]) / w;
+  return out;
+}
+/**
+ * Get the angle between two 3D vectors
+ * @param {vec3} a The first operand
+ * @param {vec3} b The second operand
+ * @returns {Number} The angle in radians
+ */
+
+function angle(a, b) {
+  var tempA = fromValues(a[0], a[1], a[2]);
+  var tempB = fromValues(b[0], b[1], b[2]);
+  normalize$1(tempA, tempA);
+  normalize$1(tempB, tempB);
+  var cosine = dot$1(tempA, tempB);
+
+  if (cosine > 1.0) {
+    return 0;
+  } else if (cosine < -1.0) {
+    return Math.PI;
+  } else {
+    return Math.acos(cosine);
+  }
+}
+/**
+ * Returns whether or not the vectors have exactly the same elements in the same position (when compared with ===)
+ *
+ * @param {vec3} a The first vector.
+ * @param {vec3} b The second vector.
+ * @returns {Boolean} True if the vectors are equal, false otherwise.
+ */
+
+function exactEquals$1(a, b) {
+  return a[0] === b[0] && a[1] === b[1] && a[2] === b[2];
+}
+/**
+ * Alias for {@link vec3.length}
+ * @function
+ */
+
+var len = length$1;
+/**
+ * Perform some operation over an array of vec3s.
+ *
+ * @param {Array} a the array of vectors to iterate over
+ * @param {Number} stride Number of elements between the start of each vec3. If 0 assumes tightly packed
+ * @param {Number} offset Number of elements to skip at the beginning of the array
+ * @param {Number} count Number of vec3s to iterate over. If 0 iterates over entire array
+ * @param {Function} fn Function to call for each vector in the array
+ * @param {Object} [arg] additional argument to pass to fn
+ * @returns {Array} a
+ * @function
+ */
+
+var forEach$1 = function () {
+  var vec = create$1();
+  return function (a, stride, offset, count, fn, arg) {
+    var i, l;
+
+    if (!stride) {
+      stride = 3;
+    }
+
+    if (!offset) {
+      offset = 0;
+    }
+
+    if (count) {
+      l = Math.min(count * stride + offset, a.length);
+    } else {
+      l = a.length;
+    }
+
+    for (i = offset; i < l; i += stride) {
+      vec[0] = a[i];
+      vec[1] = a[i + 1];
+      vec[2] = a[i + 2];
+      fn(vec, vec, arg);
+      a[i] = vec[0];
+      a[i + 1] = vec[1];
+      a[i + 2] = vec[2];
+    }
+
+    return a;
+  };
+}();
+
+class Vector3 extends Float32Array {
+  constructor(array = [0, 0, 0]) {
+    super(array);
+    return this;
+  }
+
+  get x() {
+    return this[0];
+  }
+
+  set x(value) {
+    this[0] = value;
+  }
+
+  get y() {
+    return this[1];
+  }
+
+  set y(value) {
+    this[1] = value;
+  }
+
+  get z() {
+    return this[2];
+  }
+
+  set z(value) {
+    this[2] = value;
+  }
+
+  set(x, y, z) {
+    set$2(this, x, y, z);
+    return this;
+  }
+
+  copy(vector3) {
+    copy$2(this, vector3);
+    return this;
+  }
+
+  add(vector3) {
+    add$1(this, this, vector3);
+    return this;
+  }
+
+  get size() {
+    return length$1(this);
+  }
+
+  get squaredSize() {
+    return squaredLength$1(this);
+  }
+
+  distance(vector3) {
+    return distance$1(this, vector3);
+  }
+
+  subtract(vector3) {
+    subtract$1(this, this, vector3);
+    return this;
+  }
+
+  negate(vector3 = this) {
+    negate$1(this, vector3);
+    return this;
+  }
+
+  cross(vector3a, vector3b) {
+    cross$1(this, vector3a, vector3b);
+    return this;
+  }
+
+  scale(value) {
+    scale$2(this, this, value);
+    return this;
+  }
+
+  normalize() {
+    normalize$1(this, this);
+    return this;
+  }
+
+  dot(vector3) {
+    return dot$1(this, vector3);
+  }
+
+  equals(vector3) {
+    return exactEquals$1(this, vector3);
+  }
+
+  applyMatrix4(matrix4) {
+    transformMat4$1(this, this, matrix4);
+    return this;
+  }
+
+  angle(vector3) {
+    return angle(this, vector3);
+  }
+
+  clone() {
+    return new Vector3(this);
+  }
+}
+
+/**
+ * 4 Dimensional Vector
+ * @module vec4
+ */
+
+/**
+ * Creates a new, empty vec4
+ *
+ * @returns {vec4} a new 4D vector
+ */
+
+function create$2() {
+  var out = new ARRAY_TYPE(4);
+
+  if (ARRAY_TYPE != Float32Array) {
+    out[0] = 0;
+    out[1] = 0;
+    out[2] = 0;
+    out[3] = 0;
+  }
+
+  return out;
+}
+/**
+ * Copy the values from one vec4 to another
+ *
+ * @param {vec4} out the receiving vector
+ * @param {vec4} a the source vector
+ * @returns {vec4} out
+ */
+
+function copy$3(out, a) {
+  out[0] = a[0];
+  out[1] = a[1];
+  out[2] = a[2];
+  out[3] = a[3];
+  return out;
+}
+/**
+ * Set the components of a vec4 to the given values
+ *
+ * @param {vec4} out the receiving vector
+ * @param {Number} x X component
+ * @param {Number} y Y component
+ * @param {Number} z Z component
+ * @param {Number} w W component
+ * @returns {vec4} out
+ */
+
+function set$3(out, x, y, z, w) {
+  out[0] = x;
+  out[1] = y;
+  out[2] = z;
+  out[3] = w;
+  return out;
+}
+/**
+ * Normalize a vec4
+ *
+ * @param {vec4} out the receiving vector
+ * @param {vec4} a vector to normalize
+ * @returns {vec4} out
+ */
+
+function normalize$2(out, a) {
+  var x = a[0];
+  var y = a[1];
+  var z = a[2];
+  var w = a[3];
+  var len = x * x + y * y + z * z + w * w;
+
+  if (len > 0) {
+    len = 1 / Math.sqrt(len);
+  }
+
+  out[0] = x * len;
+  out[1] = y * len;
+  out[2] = z * len;
+  out[3] = w * len;
+  return out;
+}
+/**
+ * Perform some operation over an array of vec4s.
+ *
+ * @param {Array} a the array of vectors to iterate over
+ * @param {Number} stride Number of elements between the start of each vec4. If 0 assumes tightly packed
+ * @param {Number} offset Number of elements to skip at the beginning of the array
+ * @param {Number} count Number of vec4s to iterate over. If 0 iterates over entire array
+ * @param {Function} fn Function to call for each vector in the array
+ * @param {Object} [arg] additional argument to pass to fn
+ * @returns {Array} a
+ * @function
+ */
+
+var forEach$2 = function () {
+  var vec = create$2();
+  return function (a, stride, offset, count, fn, arg) {
+    var i, l;
+
+    if (!stride) {
+      stride = 4;
+    }
+
+    if (!offset) {
+      offset = 0;
+    }
+
+    if (count) {
+      l = Math.min(count * stride + offset, a.length);
+    } else {
+      l = a.length;
+    }
+
+    for (i = offset; i < l; i += stride) {
+      vec[0] = a[i];
+      vec[1] = a[i + 1];
+      vec[2] = a[i + 2];
+      vec[3] = a[i + 3];
+      fn(vec, vec, arg);
+      a[i] = vec[0];
+      a[i + 1] = vec[1];
+      a[i + 2] = vec[2];
+      a[i + 3] = vec[3];
+    }
+
+    return a;
+  };
+}();
+
+class Vector4 extends Float32Array {
+  constructor(array = [0, 0, 0, 0]) {
+    super(array);
+    return this;
+  }
+
+  get x() {
+    return this[0];
+  }
+
+  set x(value) {
+    this[0] = value;
+  }
+
+  get y() {
+    return this[1];
+  }
+
+  set y(value) {
+    this[1] = value;
+  }
+
+  get z() {
+    return this[2];
+  }
+
+  set z(value) {
+    this[2] = value;
+  }
+
+  get w() {
+    return this[3];
+  }
+
+  set w(value) {
+    this[3] = value;
+  }
+
+  set(x, y, z, w) {
+    set$3(this, x, y, z, w);
+    return this;
+  }
+}
+
+/**
+ * 3x3 Matrix
+ * @module mat3
+ */
+
+/**
+ * Creates a new identity mat3
+ *
+ * @returns {mat3} a new 3x3 matrix
+ */
+
+function create$3() {
+  var out = new ARRAY_TYPE(9);
+
+  if (ARRAY_TYPE != Float32Array) {
+    out[1] = 0;
+    out[2] = 0;
+    out[3] = 0;
+    out[5] = 0;
+    out[6] = 0;
+    out[7] = 0;
+  }
+
+  out[0] = 1;
+  out[4] = 1;
+  out[8] = 1;
+  return out;
+}
+/**
+ * Copies the upper-left 3x3 values into the given mat3.
+ *
+ * @param {mat3} out the receiving 3x3 matrix
+ * @param {mat4} a   the source 4x4 matrix
+ * @returns {mat3} out
+ */
+
+function fromMat4(out, a) {
+  out[0] = a[0];
+  out[1] = a[1];
+  out[2] = a[2];
+  out[3] = a[4];
+  out[4] = a[5];
+  out[5] = a[6];
+  out[6] = a[8];
+  out[7] = a[9];
+  out[8] = a[10];
+  return out;
+}
+/**
+ * Copy the values from one mat3 to another
+ *
+ * @param {mat3} out the receiving matrix
+ * @param {mat3} a the source matrix
+ * @returns {mat3} out
+ */
+
+function copy$4(out, a) {
+  out[0] = a[0];
+  out[1] = a[1];
+  out[2] = a[2];
+  out[3] = a[3];
+  out[4] = a[4];
+  out[5] = a[5];
+  out[6] = a[6];
+  out[7] = a[7];
+  out[8] = a[8];
+  return out;
+}
+/**
+ * Set the components of a mat3 to the given values
+ *
+ * @param {mat3} out the receiving matrix
+ * @param {Number} m00 Component in column 0, row 0 position (index 0)
+ * @param {Number} m01 Component in column 0, row 1 position (index 1)
+ * @param {Number} m02 Component in column 0, row 2 position (index 2)
+ * @param {Number} m10 Component in column 1, row 0 position (index 3)
+ * @param {Number} m11 Component in column 1, row 1 position (index 4)
+ * @param {Number} m12 Component in column 1, row 2 position (index 5)
+ * @param {Number} m20 Component in column 2, row 0 position (index 6)
+ * @param {Number} m21 Component in column 2, row 1 position (index 7)
+ * @param {Number} m22 Component in column 2, row 2 position (index 8)
+ * @returns {mat3} out
+ */
+
+function set$4(out, m00, m01, m02, m10, m11, m12, m20, m21, m22) {
+  out[0] = m00;
+  out[1] = m01;
+  out[2] = m02;
+  out[3] = m10;
+  out[4] = m11;
+  out[5] = m12;
+  out[6] = m20;
+  out[7] = m21;
+  out[8] = m22;
+  return out;
+}
+/**
+ * Set a mat3 to the identity matrix
+ *
+ * @param {mat3} out the receiving matrix
+ * @returns {mat3} out
+ */
+
+function identity$1(out) {
+  out[0] = 1;
+  out[1] = 0;
+  out[2] = 0;
+  out[3] = 0;
+  out[4] = 1;
+  out[5] = 0;
+  out[6] = 0;
+  out[7] = 0;
+  out[8] = 1;
+  return out;
+}
+/**
+ * Inverts a mat3
+ *
+ * @param {mat3} out the receiving matrix
+ * @param {mat3} a the source matrix
+ * @returns {mat3} out
+ */
+
+function invert$1(out, a) {
+  var a00 = a[0],
+      a01 = a[1],
+      a02 = a[2];
+  var a10 = a[3],
+      a11 = a[4],
+      a12 = a[5];
+  var a20 = a[6],
+      a21 = a[7],
+      a22 = a[8];
+  var b01 = a22 * a11 - a12 * a21;
+  var b11 = -a22 * a10 + a12 * a20;
+  var b21 = a21 * a10 - a11 * a20; // Calculate the determinant
+
+  var det = a00 * b01 + a01 * b11 + a02 * b21;
+
+  if (!det) {
+    return null;
+  }
+
+  det = 1.0 / det;
+  out[0] = b01 * det;
+  out[1] = (-a22 * a01 + a02 * a21) * det;
+  out[2] = (a12 * a01 - a02 * a11) * det;
+  out[3] = b11 * det;
+  out[4] = (a22 * a00 - a02 * a20) * det;
+  out[5] = (-a12 * a00 + a02 * a10) * det;
+  out[6] = b21 * det;
+  out[7] = (-a21 * a00 + a01 * a20) * det;
+  out[8] = (a11 * a00 - a01 * a10) * det;
+  return out;
+}
+/**
+ * Multiplies two mat3's
+ *
+ * @param {mat3} out the receiving matrix
+ * @param {mat3} a the first operand
+ * @param {mat3} b the second operand
+ * @returns {mat3} out
+ */
+
+function multiply$1(out, a, b) {
+  var a00 = a[0],
+      a01 = a[1],
+      a02 = a[2];
+  var a10 = a[3],
+      a11 = a[4],
+      a12 = a[5];
+  var a20 = a[6],
+      a21 = a[7],
+      a22 = a[8];
+  var b00 = b[0],
+      b01 = b[1],
+      b02 = b[2];
+  var b10 = b[3],
+      b11 = b[4],
+      b12 = b[5];
+  var b20 = b[6],
+      b21 = b[7],
+      b22 = b[8];
+  out[0] = b00 * a00 + b01 * a10 + b02 * a20;
+  out[1] = b00 * a01 + b01 * a11 + b02 * a21;
+  out[2] = b00 * a02 + b01 * a12 + b02 * a22;
+  out[3] = b10 * a00 + b11 * a10 + b12 * a20;
+  out[4] = b10 * a01 + b11 * a11 + b12 * a21;
+  out[5] = b10 * a02 + b11 * a12 + b12 * a22;
+  out[6] = b20 * a00 + b21 * a10 + b22 * a20;
+  out[7] = b20 * a01 + b21 * a11 + b22 * a21;
+  out[8] = b20 * a02 + b21 * a12 + b22 * a22;
+  return out;
+}
+/**
+ * Translate a mat3 by the given vector
+ *
+ * @param {mat3} out the receiving matrix
+ * @param {mat3} a the matrix to translate
+ * @param {vec2} v vector to translate by
+ * @returns {mat3} out
+ */
+
+function translate$1(out, a, v) {
+  var a00 = a[0],
+      a01 = a[1],
+      a02 = a[2],
+      a10 = a[3],
+      a11 = a[4],
+      a12 = a[5],
+      a20 = a[6],
+      a21 = a[7],
+      a22 = a[8],
+      x = v[0],
+      y = v[1];
+  out[0] = a00;
+  out[1] = a01;
+  out[2] = a02;
+  out[3] = a10;
+  out[4] = a11;
+  out[5] = a12;
+  out[6] = x * a00 + y * a10 + a20;
+  out[7] = x * a01 + y * a11 + a21;
+  out[8] = x * a02 + y * a12 + a22;
+  return out;
+}
+/**
+ * Rotates a mat3 by the given angle
+ *
+ * @param {mat3} out the receiving matrix
+ * @param {mat3} a the matrix to rotate
+ * @param {Number} rad the angle to rotate the matrix by
+ * @returns {mat3} out
+ */
+
+function rotate(out, a, rad) {
+  var a00 = a[0],
+      a01 = a[1],
+      a02 = a[2],
+      a10 = a[3],
+      a11 = a[4],
+      a12 = a[5],
+      a20 = a[6],
+      a21 = a[7],
+      a22 = a[8],
+      s = Math.sin(rad),
+      c = Math.cos(rad);
+  out[0] = c * a00 + s * a10;
+  out[1] = c * a01 + s * a11;
+  out[2] = c * a02 + s * a12;
+  out[3] = c * a10 - s * a00;
+  out[4] = c * a11 - s * a01;
+  out[5] = c * a12 - s * a02;
+  out[6] = a20;
+  out[7] = a21;
+  out[8] = a22;
+  return out;
+}
+/**
+ * Scales the mat3 by the dimensions in the given vec2
+ *
+ * @param {mat3} out the receiving matrix
+ * @param {mat3} a the matrix to rotate
+ * @param {vec2} v the vec2 to scale the matrix by
+ * @returns {mat3} out
+ **/
+
+function scale$3(out, a, v) {
+  var x = v[0],
+      y = v[1];
+  out[0] = x * a[0];
+  out[1] = x * a[1];
+  out[2] = x * a[2];
+  out[3] = y * a[3];
+  out[4] = y * a[4];
+  out[5] = y * a[5];
+  out[6] = a[6];
+  out[7] = a[7];
+  out[8] = a[8];
+  return out;
+}
+/**
+* Calculates a 3x3 matrix from the given quaternion
+*
+* @param {mat3} out mat3 receiving operation result
+* @param {quat} q Quaternion to create matrix from
+*
+* @returns {mat3} out
+*/
+
+function fromQuat$1(out, q) {
+  var x = q[0],
+      y = q[1],
+      z = q[2],
+      w = q[3];
+  var x2 = x + x;
+  var y2 = y + y;
+  var z2 = z + z;
+  var xx = x * x2;
+  var yx = y * x2;
+  var yy = y * y2;
+  var zx = z * x2;
+  var zy = z * y2;
+  var zz = z * z2;
+  var wx = w * x2;
+  var wy = w * y2;
+  var wz = w * z2;
+  out[0] = 1 - yy - zz;
+  out[3] = yx - wz;
+  out[6] = zx + wy;
+  out[1] = yx + wz;
+  out[4] = 1 - xx - zz;
+  out[7] = zy - wx;
+  out[2] = zx - wy;
+  out[5] = zy + wx;
+  out[8] = 1 - xx - yy;
+  return out;
+}
+
+class Matrix3 extends Float32Array {
+  constructor(array = [1, 0, 0, 0, 1, 0, 0, 0, 1]) {
+    super(array);
+    return this;
+  }
+
+  set(m00, m01, m02, m10, m11, m12, m20, m21, m22) {
+    set$4(this, m00, m01, m02, m10, m11, m12, m20, m21, m22);
+    return this;
+  }
+
+  translate(vector2, matrix3 = this) {
+    translate$1(this, matrix3, vector2);
+    return this;
+  }
+
+  rotate(value, matrix3 = this) {
+    rotate(this, matrix3, value);
+    return this;
+  }
+
+  scale(vector2, matrix3 = this) {
+    scale$3(this, matrix3, vector2);
+    return this;
+  }
+
+  multiply(matrix3a, matrix3b) {
+    if (matrix3b) {
+      multiply$1(this, matrix3a, matrix3b);
+    } else {
+      multiply$1(this, this, matrix3a);
+    }
+    return this;
+  }
+
+  identity() {
+    identity$1(this);
+    return this;
+  }
+
+  copy(matrix3) {
+    copy$4(this, matrix3);
+    return this;
+  }
+
+  fromMatrix4(matrix4) {
+    fromMat4(this, matrix4);
+    return this;
+  }
+
+  fromQuaternion(quaternion) {
+    fromQuat$1(this, quaternion);
+    return this;
+  }
+
+  fromBasis(vector3a, vector3b, vector3c) {
+    this.set(
+      vector3a[0],
+      vector3a[1],
+      vector3a[2],
+      vector3b[0],
+      vector3b[1],
+      vector3b[2],
+      vector3c[0],
+      vector3c[1],
+      vector3c[2]
+    );
+    return this;
+  }
+
+  invert(matrix3 = this) {
+    invert$1(this, matrix3);
+    return this;
+  }
+}
+
+class Shader {
+  static add(string = "void main() {}", chunks) {
+
+    
+    for (let [key, chunk] of chunks) {
+      switch (key) {
+        case "start":
+          string = string.replace(/^(#version .*?\n(\s*precision highp float;\s)?)?([\s\S]*)/, `$1\n${chunk}\n$3`);
+          break;
+        case "end":
+          string = string.replace(/(}\s*$)/, `\n${chunk}\n$1`);
+          break;
+        case "main":
+          string = string.replace(/(\bvoid\b +\bmain\b[\s\S]*?{\s*)/, `$1\n${chunk}\n`);
+          break;
+        default:
+          string = string.replace(key, chunk);
+      }
+    }
+
+    return string;
+  }
+
+  constructor({ vertexShader = `#version 300 es
       void main() {
         gl_Position = vec4(0., 0., 0., 1.);
       }
-    `,fragmentShader:t=`#version 300 es
+    `, fragmentShader = `#version 300 es
       precision highp float;
 
       out vec4 fragColor;
@@ -10,26 +2671,1710 @@ class Signal extends Set{constructor(){super(),this._onceCallbacks=new Set}add(e
       void main() {
         fragColor = vec4(1.);
       }
-    `,dataTypeConctructors:n={Vector2:class extends Float32Array{constructor(){super(2)}},Vector3:class extends Float32Array{constructor(){super(3)}},Vector4:class extends Float32Array{constructor(){super(4)}},Matrix3:class extends Float32Array{constructor(){super([1,0,0,0,1,0,0,0,1])}},Matrix4:class extends Float32Array{constructor(){super([1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1])}},Texture:class{},TextureCube:class{}},uniforms:a=[],vertexShaderChunks:r=[],fragmentShaderChunks:i=[],shaders:d=[]}={}){this.uniforms=new Map,this.uniformTypes=new Map,this.vertexShader=e,this.fragmentShader=t,this._vertexShaderChunks=[],this._fragmentShaderChunks=[],this._dataTypeConctructors=n,this.add({vertexShaderChunks:r,fragmentShaderChunks:i,uniforms:a});for(let o of d)this.add(o)}add({vertexShaderChunks:e=[],fragmentShaderChunks:t=[],uniforms:n=[]}={}){this.vertexShader=Shader.add(this.vertexShader,e),this._vertexShaderChunks.push(...e),this.fragmentShader=Shader.add(this.fragmentShader,t),this._fragmentShaderChunks.push(...t);for(let[a,r]of n)this.uniforms.set(a,r)}set vertexShader(e){this._vertexShader=e,this._parseUniforms(this._vertexShader)}get vertexShader(){return this._vertexShader}set fragmentShader(e){this._fragmentShader=e,this._parseUniforms(this._fragmentShader)}get fragmentShader(){return this._fragmentShader}get vertexShaderChunks(){return this._vertexShaderChunks}get fragmentShaderChunks(){return this._fragmentShaderChunks}_addUniform(e,t,n){if(this.uniforms.has(e))return;let a,r;if(this.uniformTypes.set(e,t),/float|double/.test(t))a=isNaN(n)?0:Array(n).fill(0);else if(/int|uint/.test(t))a=isNaN(n)?0:Array(n).fill(0);else if(/sampler2D/.test(t))a=isNaN(n)?new this._dataTypeConctructors.Texture:Array(n).fill().map(()=>new this._dataTypeConctructors.Texture);else if(/samplerCube/.test(t))a=isNaN(n)?new this._dataTypeConctructors.TextureCube:Array(n).fill().map(()=>new this._dataTypeConctructors.TextureCube);else if(r=/(.?)vec(\d)/.exec(t)){let e=r[2];a=isNaN(n)?new this._dataTypeConctructors[`Vector${e}`]:Array(n).fill().map(()=>new this._dataTypeConctructors[`Vector${e}`])}else if(r=/mat(\d)/.exec(t)){let e=r[1];a=isNaN(n)?new this._dataTypeConctructors[`Matrix${e}`]:Array(n).fill().map(()=>new this._dataTypeConctructors[`Matrix${e}`])}else a=void 0;this.uniforms.set(e,a)}_parseUniforms(e){const t=new Map,n=/struct\s*(.*)\s*{\s*([\s\S]*?)}/g,a=/^\s*(.[^ ]+) (.[^ ;\[\]]+)\[? *(\d+)? *\]?/gm;for(let r;r=n.exec(e);){const e=r[1],n=r[2],i={};for(let e;e=a.exec(n);){const[,t,n,a]=e,r=parseInt(a);i[n]={type:t,arrayLength:r}}t.set(e,i)}const r=/^\s*uniform (.[^ ]+) (.[^ ;\[\]]+)\[? *(\d+)? *\]?/gm;for(let n;n=r.exec(e);){const[,e,a,r]=n,i=parseInt(r),d=t.get(e);if(d)for(const e in d)this._addUniform(`${a}.${e}`,d[e].type,d[e].arrayLength);else this._addUniform(a,e,i)}}}class GLTexture{constructor({gl:e,data:t=void 0,width:n=void 0,height:a=void 0,target:r=t&&t.length?e.TEXTURE_CUBE_MAP:e.TEXTURE_2D,level:i=0,internalFormat:d=e.RGBA8||e.RGBA,format:o=e.RGBA,type:s=e.UNSIGNED_BYTE,minFilter:l=e.NEAREST_MIPMAP_LINEAR,magFilter:_=e.LINEAR,wrapS:u=e.REPEAT,wrapT:c=e.REPEAT}={gl:e}){this.gl=e,this._texture=this.gl.createTexture(),this._width=n,this._height=a,this._dataWidth=void 0,this._dataHeight=void 0,this._target=r,this.level=i,this.internalFormat=d,this.format=o,this.type=s,this.minFilter=l,this.magFilter=_,this.wrapS=u,this.wrapT=c,this.data=t}generateMipmap(){this.bind(),this.gl.generateMipmap(this._target),this.unbind()}set data(e){if(this._data=e,!this._data&&!(this._width&&this._height))return;const t=this._data&&this._data.length?this._data:[this._data];t[0]&&(this._dataWidth=t[0].width||t[0].videoWidth,this._dataHeight=t[0].height||t[0].videoHeight);const n=this._target===this.gl.TEXTURE_CUBE_MAP?6:1,a=this._target===this.gl.TEXTURE_CUBE_MAP?this.gl.TEXTURE_CUBE_MAP_POSITIVE_X:this._target;this.bind();for(let n=0;n<t.length;n++)this.gl.getParameter(this.gl.VERSION).startsWith("WebGL 1.0")&&this._dataWidth?this.gl.texImage2D(a+n,this.level,this.internalFormat,this.format,this.type,t[n]):this.gl.texImage2D(a+n,this.level,this.internalFormat,this.width,this.height,0,this.format,this.type,t[n]);this.unbind()}get data(){return this._data}set width(e){this._width=e,this.data=this.data}get width(){return this._width||this._dataWidth}set height(e){this._height=e,this.data=this.data}get height(){return this._height||this._dataHeight}set minFilter(e){this._minFilter===e||(this._minFilter=e,this.bind(),this.gl.texParameteri(this._target,this.gl.TEXTURE_MIN_FILTER,this._minFilter),this.unbind())}get minFilter(){return this._minFilter}set magFilter(e){this._magFilter===e||(this._magFilter=e,this.bind(),this.gl.texParameteri(this._target,this.gl.TEXTURE_MAG_FILTER,this._magFilter),this.unbind())}get magFilter(){return this._magFilter}set wrapS(e){this._wrapS===e||(this._wrapS=e,this.bind(),this.gl.texParameteri(this._target,this.gl.TEXTURE_WRAP_S,this._wrapS),this.unbind())}get wrapS(){return this._wrapS}set wrapT(e){this._wrapT===e||(this._wrapT=e,this.bind(),this.gl.texParameteri(this._target,this.gl.TEXTURE_WRAP_T,this._wrapT),this.unbind())}get wrapT(){return this._wrapT}bind({unit:e=0}={}){this.gl.activeTexture(this.gl.TEXTURE0+e),this.gl.bindTexture(this._target,this._texture)}unbind(){this.gl.bindTexture(this._target,null)}clone(){return new GLTexture(this)}}class GLProgram extends Shader{constructor({gl:e,vertexShader:t=void 0,fragmentShader:n=void 0,uniforms:a=void 0,attributes:r=void 0,transformFeedbackVaryings:i=void 0,vertexShaderChunks:d=void 0,fragmentShaderChunks:o=void 0,shaders:s=void 0}={gl:e}){super({vertexShader:t,fragmentShader:n,uniforms:a,vertexShaderChunks:d,fragmentShaderChunks:o,shaders:s,dataTypeConctructors:{Vector2,Vector3,Vector4,Matrix3,Matrix4,Texture:class{},TextureCube:class{}}}),this.gl=e,this._program=e.createProgram(),this._attachedShaders=new Map;const l=this;this._vertexAttribDivisor=function(){};const _=this.gl.getExtension("ANGLE_instanced_arrays");_?this._vertexAttribDivisor=_.vertexAttribDivisorANGLE.bind(_):this.gl.vertexAttribDivisor&&(this._vertexAttribDivisor=this.gl.vertexAttribDivisor.bind(this.gl));class u extends Map{set(t,{buffer:n,location:r=l._attributesLocations.get(t),size:a,type:i=e.FLOAT,normalized:d=!1,stride:o=0,offset:s=0,divisor:_=0}={}){if(t instanceof Map){for(let[e,n]of t)this.set(e,n);return}n.bind(),r===void 0&&(r=e.getAttribLocation(l._program,t),-1===r&&console.warn(`Attribute "${t}" is missing or never used`),l._attributesLocations.set(t,r)),e.enableVertexAttribArray(r),e.vertexAttribPointer(r,a,i,d,o,s),n.unbind(),l._vertexAttribDivisor(r,_),super.set(t,{buffer:n,size:a,type:i,normalized:d,stride:o,offset:s})}}class c extends Map{set(t,...n){let a=n[0];if(void 0===a)return;let r=l._uniformLocations.get(t);r===void 0&&(r=e.getUniformLocation(l._program,t),l._uniformLocations.set(t,r));let i;if(a.length===void 0){if(a instanceof GLTexture){let e=0;for(const[r,d]of l.uniformTypes)if(d.startsWith("sampler")){if(r===t){i=a,n=[e];break}e++}}else if(a instanceof Object){for(let e in a)l.uniforms.set(`${t}.${e}`,a[e]);return}1<n.length?(a=l.uniforms.get(t),a.set(...n)):a=n}else if(a[0]instanceof Object){for(let e=0;e<a.length;e++)if(a[0].length)l.uniforms.set(`${t}[${e}]`,a[e]);else for(let n in a[e])l.uniforms.set(`${t}[${e}].${n}`,a[e][n]);return}if(null!==r){const n=l.uniformTypes.get(t);"float"===n||"bool"===n?e.uniform1fv(r,a):"vec2"===n?e.uniform2fv(r,a):"vec3"===n?e.uniform3fv(r,a):"vec4"===n?e.uniform4fv(r,a):"int"===n||n.startsWith("sampler")?e.uniform1iv(r,a):"ivec2"===n?e.uniform2iv(r,a):"ivec3"===n?e.uniform3iv(r,a):"ivec4"===n?e.uniform4iv(r,a):"mat3"===n?e.uniformMatrix3fv(r,!1,a):"mat4"===n&&e.uniformMatrix4fv(r,!1,a),super.set(t,i||a)}}}i&&this.gl.transformFeedbackVaryings(this._program,i,e.INTERLEAVED_ATTRIBS),this.vertexShader=this.vertexShader,this.fragmentShader=this.fragmentShader,this.use(),this.attributes=new u;const m=this.uniforms;this.uniforms=new c;for(const[l,_]of m)this.uniforms.set(l,_)}set vertexShader(e){super.vertexShader=e,this.gl&&this._updateShader(this.gl.VERTEX_SHADER,this.vertexShader)}get vertexShader(){return super.vertexShader}set fragmentShader(e){super.fragmentShader=e,this.gl&&this._updateShader(this.gl.FRAGMENT_SHADER,this.fragmentShader)}get fragmentShader(){return super.fragmentShader}use(){this.gl.useProgram(this._program)}_updateShader(e,t){if(t){if(this.gl.getParameter(this.gl.VERSION).startsWith("WebGL 1.0"))if(t=t.replace(/#version.*?\n/g,""),t=t.replace(/\btexture\b/g,"texture2D"),e===this.gl.VERTEX_SHADER)t=t.replace(/\bin\b/g,"attribute"),t=t.replace(/\bout\b/g,"varying");else{t=t.replace(/\bin\b/g,"varying");const e=/out vec4 (.*?);/.exec(t);if(e){const n=e[1];t=t.replace(/out.*?;/,""),t=t.replace(new RegExp(`\\b${n}\\b`,"g"),"gl_FragColor")}}const n=this.gl.createShader(e);this.gl.shaderSource(n,t),this.gl.compileShader(n);const a=this.gl.getShaderInfoLog(n);if(!this.gl.getShaderParameter(n,this.gl.COMPILE_STATUS)){const e=/ERROR: 0:(\d+):/.exec(a);if(e){const n=parseFloat(e[1]),r=t.split("\n");throw new Error(`${a}\nat: ${r[n-1].replace(/^\s*/,"")}`)}else throw new Error(a);return void this.gl.deleteShader(n)}a&&console.warn(a);const r=this._attachedShaders.get(e);if(r&&(this.gl.detachShader(this._program,r),this.gl.deleteShader(r)),this.gl.attachShader(this._program,n),this.gl.deleteShader(n),this._attachedShaders.set(e,n),2===this._attachedShaders.size){this.gl.linkProgram(this._program);const e=this.gl.getProgramInfoLog(this._program);if(!this.gl.getProgramParameter(this._program,this.gl.LINK_STATUS))throw new Error(e);else e&&console.warn(e);this._attributesLocations=new Map,this._uniformLocations=new Map}}}}class GLBuffer{constructor({gl:e,data:t=null,target:n=e.ARRAY_BUFFER,usage:a=e.STATIC_DRAW}={gl:e}){this.gl=e,this.target=n,this.usage=a,this._buffer=this.gl.createBuffer(),t&&(this.data=t)}set data(e){this._data=e,this.bind(),this.gl.bufferData(this.target,this._data,this.usage),this.unbind()}get data(){return this._data}bind({target:e=this.target,index:t=void 0,offset:n=0,size:a=void 0}={}){t===void 0?this.gl.bindBuffer(e,this._buffer):a===void 0?this.gl.bindBufferBase(e,t,this._buffer):this.gl.bindBufferRange(e,t,this._buffer,n,a)}unbind({target:e=this.target,index:t=void 0,offset:n=0,size:a=void 0}={}){t===void 0?this.gl.bindBuffer(e,null):a===void 0?this.gl.bindBufferBase(e,t,null):this.gl.bindBufferRange(e,t,null,n,a)}}class GLVertexAttribute{constructor({gl:e,data:t=void 0,buffer:n=new GLBuffer({gl:e}),size:a=1,type:r=void 0,offset:i=0,normalized:d=!1,stride:o=0,count:s=void 0,divisor:l=0}={gl:e}){this.gl=e,this.buffer=n,this.size=a,this.type=r,this.offset=i,this.normalized=d,this.stride=o,this.count=s,this.divisor=l,t&&(this.data=t)}set count(e){this._count=e}get count(){return this._count===void 0?this.data.length/this.size:this._count}set type(e){this._type=e}get type(){let e=this._type;return e||(this.data instanceof Float32Array||this.data instanceof Float64Array?e=this.gl.FLOAT:this.data instanceof Uint8Array?e=this.gl.UNSIGNED_BYTE:this.data instanceof Uint16Array?e=this.gl.UNSIGNED_SHORT:this.data instanceof Uint32Array&&(e=this.gl.UNSIGNED_INT)),e}set data(e){this.buffer.data=e}get data(){return this.buffer.data}}class GLMesh{constructor({gl:e,attributes:t=void 0,indices:n=void 0}={gl:e}){this.gl=e,this.gl.getExtension("OES_element_index_uint"),this._drawElementsInstanced=function(){},this._drawArraysInstanced=function(){};const a=this.gl.getExtension("ANGLE_instanced_arrays");a?(this._drawElementsInstanced=a.drawElementsInstancedANGLE.bind(a),this._drawArraysInstanced=a.drawArraysInstancedANGLE.bind(a)):this.gl.drawElementsInstanced&&(this._drawElementsInstanced=this.gl.drawElementsInstanced.bind(this.gl),this._drawArraysInstanced=this.gl.drawArraysInstanced.bind(this.gl)),this.attributes=new Map(t);for(const[a,r]of this.attributes)r instanceof GLVertexAttribute||this.attributes.set(a,new GLVertexAttribute(Object.assign({gl:e},r)));n&&!(this.indices instanceof GLVertexAttribute)&&(this.indices=new GLVertexAttribute(Object.assign({gl:this.gl,buffer:new GLBuffer({gl:this.gl,target:this.gl.ELEMENT_ARRAY_BUFFER})},n.length===void 0?n:{data:n})))}draw({mode:e=this.gl.TRIANGLES,elements:t=!!this.indices,count:n=t?this.indices.count:this.attributes.get("position").count,offset:a=this.indices?this.indices.offset:0,type:r=t?this.indices.type:null,first:i=0,instanceCount:d=void 0}={}){t?d===void 0?this.gl.drawElements(e,n,r,a):this._drawElementsInstanced(e,n,r,a,d):d===void 0?this.gl.drawArrays(e,i,n):this._drawArraysInstanced(e,i,n,d)}}class GLVertexArray{constructor({gl:e,mesh:t=void 0,program:n=void 0}={gl:e}){this.gl=e;const a=e.getExtension("OES_vertex_array_object");a&&(this.gl.createVertexArray=a.createVertexArrayOES.bind(a),this.gl.bindVertexArray=a.bindVertexArrayOES.bind(a)),this._vertexArray=this.gl.createVertexArray(),(t||n)&&this.add({mesh:t,program:n})}add({mesh:e=void 0,program:t=void 0}={}){this.bind(),t.attributes.set(e.attributes),e.indices&&e.indices.buffer.bind(),this.unbind()}bind(){this.gl.bindVertexArray(this._vertexArray)}unbind(){this.gl.bindVertexArray(null)}}class Camera{constructor({near:e=.01,far:t=1e3,aspectRatio:n=1,fov:a=Math.PI/3}={}){this._near=e,this._far=t,this._aspectRatio=n,this._fov=a,this.transform=new Matrix4,this._inverseTransform=new Matrix4,this._projection=new Matrix4,this._projectionView=new Matrix4,this._updateProjection()}set near(e){this._near=e,this._updateProjection()}get near(){return this._near}set far(e){this._far=e,this._updateProjection()}get far(){return this._far}set fov(e){this._fov=e,this._updateProjection()}get fov(){return this._fov}set aspectRatio(e){this._aspectRatio=e,this._updateProjection()}get aspectRatio(){return this._aspectRatio}get inverseTransform(){return this._inverseTransform.invert(this.transform)}get projection(){return this._projection}get projectionView(){return this._projectionView.copy(this.projection).multiply(this.inverseTransform)}_updateProjection(){this._projection.fromPerspective(this)}}Object.defineProperty(Camera.prototype,"near",{enumerable:!0}),Object.defineProperty(Camera.prototype,"far",{enumerable:!0}),Object.defineProperty(Camera.prototype,"fov",{enumerable:!0}),Object.defineProperty(Camera.prototype,"aspectRatio",{enumerable:!0}),Object.defineProperty(Camera.prototype,"inverseTransform",{enumerable:!0}),Object.defineProperty(Camera.prototype,"projection",{enumerable:!0}),Object.defineProperty(Camera.prototype,"projectionView",{enumerable:!0});let pointers=new Map;class Pointer extends Vector2{static get TOUCH_TYPE(){return"touchtype"}static get MOUSE_TYPE(){return"mousetype"}static get(e=document.body){let t=pointers.get(e);return t||(t=new Pointer(e)),t}get downed(){return this._downed}constructor(e=document.body){super(),this.domElement=e,this.type=Pointer.TOUCH_TYPE,this.velocity=new Vector2,this.dragOffset=new Vector2,this.centered=new Vector2,this.centeredFlippedY=new Vector2,this.normalized=new Vector2,this.normalizedFlippedY=new Vector2,this.normalizedCentered=new Vector2,this.normalizedCenteredFlippedY=new Vector2,this._downed=!1,pointers.set(this.domElement,this),this.onDown=new Signal,this.onMove=new Signal,this.onUp=new Signal,this.onClick=new Signal,this.onTypeChange=new Signal,this._preventMouseTypeChange=!1,this._onPointerMoveBinded=this._onPointerMove.bind(this),this._onPointerDownBinded=this._onPointerDown.bind(this),this._onPointerUpBinded=this._onPointerUp.bind(this),this._updateBinded=this._update.bind(this),this._resizeBinded=this.resize.bind(this),this.resize(),this._position=new Vector2,this.enable()}resize(){this._domElementBoundingRect=this.domElement.getBoundingClientRect()}_onPointerDown(t){"touchstart"===t.type&&(this._preventMouseTypeChange=!0,this._changeType(Pointer.TOUCH_TYPE)),this._downed=!0,this.dragOffset.set(0,0),this.copy(this._position),this._onPointerEvent(t),this._updatePositions(),this.onDown.dispatch(t)}_onPointerMove(t){if("mousemove"===t.type){if(this._preventMouseTypeChange)return;this._changeType(Pointer.MOUSE_TYPE)}this._onPointerEvent(t),this.onMove.dispatch(t)}_onPointerUp(t){this._downed&&(this._downed=!1,this._onPointerEvent(t),this._updatePositions(),this.onUp.dispatch(t),4>this.dragOffset.length&&this.onClick.dispatch(t),clearTimeout(this._timeout),this._timeout=setTimeout(()=>{this._preventMouseTypeChange=!1},2e3))}_onPointerEvent(t){!!window.TouchEvent&&t instanceof window.TouchEvent&&("touchend"===t.type?t=t.changedTouches[0]:t=t.touches[0]),this._position.x=t.clientX-this._domElementBoundingRect.left,this._position.y=t.clientY-this._domElementBoundingRect.top}_changeType(e){this.type===e||(this.type=e,this.disable(),this.enable(),this.onTypeChange.dispatch(this.type))}_update(){(this.x||this.y)&&(this.velocity.x=this._position.x-this.x,this.velocity.y=this._position.y-this.y,this.downed&&this.dragOffset.add(this.velocity)),this._updatePositions()}_updatePositions(){this.x=this._position.x,this.y=this._position.y;(this.x||this.y)&&(this.centered.x=this.centeredFlippedY.x=this.x-.5*this._domElementBoundingRect.width,this.centered.y=this.centeredFlippedY.y=this.y-.5*this._domElementBoundingRect.height,this.centeredFlippedY.y*=-1,this.normalized.x=this.normalizedFlippedY.x=this.x/this._domElementBoundingRect.width,this.normalized.y=this.normalizedFlippedY.y=this.y/this._domElementBoundingRect.height,this.normalizedFlippedY.y=1-this.normalizedFlippedY.y,this.normalizedCentered.x=this.normalizedCenteredFlippedY.x=2*this.normalized.x-1,this.normalizedCentered.y=this.normalizedCenteredFlippedY.y=2*this.normalized.y-1,this.normalizedCenteredFlippedY.y*=-1)}enable(){this.disable(),this.resize(),this.type===Pointer.TOUCH_TYPE?(this.domElement.addEventListener("touchmove",this._onPointerMoveBinded),window.addEventListener("touchend",this._onPointerUpBinded)):(this.domElement.addEventListener("mousedown",this._onPointerDownBinded),window.addEventListener("mouseup",this._onPointerUpBinded)),this.domElement.addEventListener("touchstart",this._onPointerDownBinded),this.domElement.addEventListener("mousemove",this._onPointerMoveBinded),window.addEventListener("resize",this._resizeBinded),Ticker$1.add(this._updateBinded=this._updateBinded||this._update.bind(this))}disable(){Ticker$1.delete(this._updateBinded),this.domElement.removeEventListener("touchstart",this._onPointerDownBinded),this.domElement.removeEventListener("mousedown",this._onPointerDownBinded),this.domElement.removeEventListener("touchmove",this._onPointerMoveBinded),this.domElement.removeEventListener("mousemove",this._onPointerMoveBinded),window.removeEventListener("touchend",this._onPointerUpBinded),window.removeEventListener("mouseup",this._onPointerUpBinded),window.removeEventListener("resize",this._resizeBinded)}}function create$5(){let e=new ARRAY_TYPE(4);return ARRAY_TYPE!=Float32Array&&(e[0]=0,e[1]=0,e[2]=0),e[3]=1,e}function identity$2(e){return e[0]=0,e[1]=0,e[2]=0,e[3]=1,e}function setAxisAngle(e,t,n){var a=Math.cos,r=Math.sin;n*=.5;let i=r(n);return e[0]=i*t[0],e[1]=i*t[1],e[2]=i*t[2],e[3]=a(n),e}function multiply$5(e,t,n){let a=t[0],r=t[1],i=t[2],d=t[3],o=n[0],s=n[1],l=n[2],_=n[3];return e[0]=a*_+d*o+r*l-i*s,e[1]=r*_+d*s+i*o-a*l,e[2]=i*_+d*l+a*s-r*o,e[3]=d*_-a*o-r*s-i*l,e}function rotateX$2(e,t,n){var a=Math.cos,r=Math.sin;n*=.5;let i=t[0],d=t[1],o=t[2],s=t[3],l=r(n),_=a(n);return e[0]=i*_+s*l,e[1]=d*_+o*l,e[2]=o*_-d*l,e[3]=s*_-i*l,e}function rotateY$2(e,t,n){var a=Math.cos,r=Math.sin;n*=.5;let i=t[0],d=t[1],o=t[2],s=t[3],l=r(n),_=a(n);return e[0]=i*_-o*l,e[1]=d*_+s*l,e[2]=o*_+i*l,e[3]=s*_-d*l,e}function rotateZ$2(e,t,n){var a=Math.cos,r=Math.sin;n*=.5;let i=t[0],d=t[1],o=t[2],s=t[3],l=r(n),_=a(n);return e[0]=i*_+d*l,e[1]=d*_-i*l,e[2]=o*_+s*l,e[3]=s*_-o*l,e}function slerp(e,n,a,r){var t=Math.acos,i=Math.sin;let d,o,s,l,_,u=n[0],c=n[1],m=n[2],g=n[3],p=a[0],f=a[1],h=a[2],v=a[3];return o=u*p+c*f+m*h+g*v,0>o&&(o=-o,p=-p,f=-f,h=-h,v=-v),1-o>EPSILON?(d=t(o),s=i(d),l=i((1-r)*d)/s,_=i(r*d)/s):(l=1-r,_=r),e[0]=l*u+_*p,e[1]=l*c+_*f,e[2]=l*m+_*h,e[3]=l*g+_*v,e}function invert$2(e,t){let n=t[0],a=t[1],r=t[2],i=t[3],d=n*n+a*a+r*r+i*i,o=d?1/d:0;return e[0]=-n*o,e[1]=-a*o,e[2]=-r*o,e[3]=i*o,e}function fromMat3(e,t){var n=Math.sqrt;let a,r=t[0]+t[4]+t[8];if(0<r)a=n(r+1),e[3]=.5*a,a=.5/a,e[0]=(t[5]-t[7])*a,e[1]=(t[6]-t[2])*a,e[2]=(t[1]-t[3])*a;else{let r=0;t[4]>t[0]&&(r=1),t[8]>t[3*r+r]&&(r=2);let i=(r+1)%3,d=(r+2)%3;a=n(t[3*r+r]-t[3*i+i]-t[3*d+d]+1),e[r]=.5*a,a=.5/a,e[3]=(t[3*i+d]-t[3*d+i])*a,e[i]=(t[3*i+r]+t[3*r+i])*a,e[d]=(t[3*d+r]+t[3*r+d])*a}return e}const copy$5=copy$3,set$5=set$3,normalize$3=normalize$2,rotationTo=function(){let e=create$2(),t=fromValues$2(1,0,0),n=fromValues$2(0,1,0);return function(r,i,a){let d=dot$1(i,a);return-.999999>d?(cross$1(e,t,i),1e-6>len$1(e)&&cross$1(e,n,i),normalize$1(e,e),setAxisAngle(r,e,Math.PI),r):.999999<d?(r[0]=0,r[1]=0,r[2]=0,r[3]=1,r):(cross$1(e,i,a),r[0]=e[0],r[1]=e[1],r[2]=e[2],r[3]=1+d,normalize$3(r,r))}}(),sqlerp=function(){let e=create$5(),n=create$5();return function(r,i,a,o,s,d){return slerp(e,i,s,d),slerp(n,a,o,d),slerp(r,e,n,2*d*(1-d)),r}}(),setAxes=function(){let e=create$4();return function(t,n,a,r){return e[0]=a[0],e[3]=a[1],e[6]=a[2],e[1]=r[0],e[4]=r[1],e[7]=r[2],e[2]=-n[0],e[5]=-n[1],e[8]=-n[2],normalize$3(t,fromMat3(t,e))}}();class Quaternion extends Float32Array{constructor(e=0,t=0,n=0,a=1){return super(4),this.set(e,t,n,a),this}get x(){return this[0]}set x(e){this[0]=e}get y(){return this[1]}set y(e){this[1]=e}get z(){return this[2]}set z(e){this[2]=e}get w(){return this[3]}set w(e){this[3]=e}identity(){return identity$2(this),this}set(e,t,n,a){return set$5(this,e,t,n,a),this}rotateX(e){return rotateX$2(this,this,e),this}rotateY(e){return rotateY$2(this,this,e),this}rotateZ(e){return rotateZ$2(this,this,e),this}invert(e=this){return invert$2(this,e),this}copy(e){return copy$5(this,e),this}normalize(e=this){return normalize$3(this,this),this}multiply(e,t){return t?multiply$5(this,e,t):multiply$5(this,this,e),this}fromMatrix3(e){return fromMat3(this,e),this}}class TrackballController{constructor({matrix:e=new Matrix4,domElement:t=document.body,distance:n=0,invertRotation:a=!0,rotationEaseRatio:r=.04,zoomSpeed:i=.1,zoomEaseRatio:d=.1,minDistance:o=0,maxDistance:s=1/0,enabled:l=!0}={}){this.matrix=e,this._distance=n,this.invertRotation=a,this.rotationEaseRatio=r,this.maxDistance=s,this.minDistance=o,this.zoomSpeed=i,this.zoomEaseRatio=d,this._pointer=Pointer.get(t),this._nextDistance=this._distance,this._cachedQuaternion=new Quaternion,this._cachedMatrix=new Matrix4,this._cachedVector3=new Vector3,this._velocity=new Vector2,this._velocityOrigin=new Vector2,this._position=new Vector3([this.matrix.x,this.matrix.y,this.matrix.z]),this._positionPrevious=this._position.clone(),this._positionOffset=new Vector3,t.addEventListener("wheel",this.onWheel.bind(this)),this.enabled=!0,this.update(),this.enabled=l}set distance(e){this._distance=this._nextDistance=e}get distance(){return this._distance}onWheel(t){var e=Math.max,n=Math.abs,a=Math.min;if(this.enabled){const r=1+n(.01*(t.deltaY*this.zoomSpeed));this._nextDistance=this._nextDistance||1,this._nextDistance=0<t.deltaY?this._nextDistance*r:this._nextDistance/r,this._nextDistance=e(a(this._nextDistance,this.maxDistance),this.minDistance)}}update(){this.enabled&&(this._cachedMatrix.identity(),this._cachedQuaternion.identity(),this._distance+=(this._nextDistance-this._distance)*this.zoomEaseRatio,this._position.set(this.matrix.x,this.matrix.y,this.matrix.z).subtract(this._positionOffset),this.matrix.x=0,this.matrix.y=0,this.matrix.z=0,this._pointer.downed&&this._velocity.copy(this._pointer.velocity).scale(.003),this._velocity.lerp(this._velocityOrigin,this.rotationEaseRatio),this._cachedQuaternion.rotateY(this.invertRotation?-this._velocity.x:this._velocity.x),this._cachedQuaternion.rotateX(this.invertRotation?-this._velocity.y:this._velocity.y),this._cachedMatrix.fromQuaternion(this._cachedQuaternion),this.matrix.multiply(this._cachedMatrix),this._positionOffset.set(0,0,1),this._positionOffset.applyMatrix4(this.matrix),this._positionOffset.scale(this._distance),this._cachedVector3.copy(this._position).add(this._positionOffset),this.matrix.x=this._cachedVector3.x,this.matrix.y=this._cachedVector3.y,this.matrix.z=this._cachedVector3.z)}}class View{constructor({canvas:e=void 0}={}){this.canvas=e;const t={depth:!0,alpha:!1,antialias:!0};/\bforcewebgl1\b/.test(window.location.search)||(this.gl=this.canvas.getContext("webgl2",t)),this.gl||(this.gl=this.canvas.getContext("webgl",t)||this.canvas.getContext("experimental-webgl",t)),this.camera=new Camera,this.cameraController=new TrackballController({matrix:this.camera.transform,distance:5}),this.gl.clearColor(0,0,0,1),this.gl.enable(this.gl.CULL_FACE),this.gl.enable(this.gl.DEPTH_TEST),this.program=new GLProgram({gl:this.gl,uniforms:[["transform",new Matrix4]],vertexShaderChunks:[["start",`
-          uniform mat4 projectionView;
-          uniform mat4 transform;
+    `,
+    dataTypeConctructors = {
+      Vector2: class Vector2 extends Float32Array { constructor() { super(2); } },
+      Vector3: class Vector3 extends Float32Array { constructor() { super(3); } },
+      Vector4: class Vector4 extends Float32Array { constructor() { super(4); } },
+      Matrix3: class Matrix3 extends Float32Array { constructor() { super([1, 0, 0, 0, 1, 0, 0, 0, 1]); } },
+      Matrix4: class Matrix4 extends Float32Array { constructor() { super([1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1]); } },
+      Texture: class Texture { },
+      TextureCube: class TextureCube { }
+    },
+    uniforms = [],
+    vertexShaderChunks = [],
+    fragmentShaderChunks = [],
+    shaders = []
+  } = {}) {
+    this.uniforms = new Map();
+    this.uniformTypes = new Map();
 
-          in vec3 normal;
-          in vec3 position;
+    this._dataTypeConctructors = dataTypeConctructors;
 
-          out vec3 vNormal;
-        `],["end",`
-          gl_Position = projectionView * transform * vec4(position, 1.);
-          vNormal = normal;
-        `]],fragmentShaderChunks:[["start",`
-          precision highp float;
+    this.vertexShader = vertexShader;
+    this.fragmentShader = fragmentShader;
+    this._vertexShaderChunks = [];
+    this._fragmentShaderChunks = [];
 
-          in vec3 vNormal;
-        `],["end",`
-          fragColor = vec4(vNormal * .5 + .5, 1.);
-        `]]}),this.mesh=new GLMesh({gl:this.gl,attributes:[["position",{data:new Float32Array([-.5,.5,.5,.5,.5,.5,-.5,-.5,.5,.5,-.5,.5,.5,.5,-.5,-.5,.5,-.5,.5,-.5,-.5,-.5,-.5,-.5,-.5,.5,-.5,-.5,.5,.5,-.5,-.5,-.5,-.5,-.5,.5,.5,.5,.5,.5,.5,-.5,.5,-.5,.5,.5,-.5,-.5,-.5,.5,-.5,.5,.5,-.5,-.5,.5,.5,.5,.5,.5,-.5,-.5,.5,.5,-.5,.5,-.5,-.5,-.5,.5,-.5,-.5]),size:3}],["normal",{data:new Float32Array([0,0,1,0,0,1,0,0,1,0,0,1,0,0,-1,0,0,-1,0,0,-1,0,0,-1,-1,0,0,-1,0,0,-1,0,0,-1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,0,1,0,0,1,0,0,1,0,0,1,0,0,-1,0,0,-1,0,0,-1,0,0,-1,0]),size:3}]],indices:new Uint8Array([0,2,3,0,3,1,4,6,7,4,7,5,8,10,11,8,11,9,12,14,15,12,15,13,16,18,19,16,19,17,20,22,23,20,23,21])}),this.vertexArray=new GLVertexArray({gl:this.gl,mesh:this.mesh,program:this.program})}resize(e,t){this.camera.aspectRatio=e/t,this.update()}update(){this.gl.viewport(0,0,this.gl.drawingBufferWidth,this.gl.drawingBufferHeight),this.gl.clear(this.gl.COLOR_BUFFER_BIT|this.gl.DEPTH_BUFFER_BIT),this.cameraController.update(),this.program.use(),this.program.uniforms.set("projectionView",this.camera.projectionView),this.vertexArray.bind(),this.mesh.draw()}}window.customElements.define("dnit-main",class extends LoopElement{connectedCallback(){this.innerHTML=`
+    this.add({ vertexShaderChunks, fragmentShaderChunks, uniforms });
+
+    for (let shader of shaders) {
+      this.add(shader);
+    }
+  }
+
+  add({ vertexShaderChunks = [], fragmentShaderChunks = [], uniforms = [] } = {}) {
+    this.vertexShader = Shader.add(this.vertexShader, vertexShaderChunks);
+    this._vertexShaderChunks.push(...vertexShaderChunks);
+    this.fragmentShader = Shader.add(this.fragmentShader, fragmentShaderChunks);
+    this._fragmentShaderChunks.push(...fragmentShaderChunks);
+    for (let [key, value] of uniforms) {
+      this.uniforms.set(key, value);
+    }
+  }
+
+  set vertexShader(value) {
+    this._vertexShader = value;
+    this._parseUniforms(this._vertexShader);
+  }
+
+  get vertexShader() {
+    return this._vertexShader;
+  }
+
+  set fragmentShader(value) {
+    this._fragmentShader = value;
+    this._parseUniforms(this._fragmentShader);
+  }
+
+  get fragmentShader() {
+    return this._fragmentShader;
+  }
+
+  get vertexShaderChunks() {
+    return this._vertexShaderChunks;
+  }
+
+  get fragmentShaderChunks() {
+    return this._fragmentShaderChunks;
+  }
+
+  _addUniform(name, type, arrayLength) {
+
+    if (this.uniforms.has(name)) {
+      return;
+    }
+
+    let value;
+    let typeMatch;
+
+    this.uniformTypes.set(name, type);
+
+    if (/float|double/.test(type)) {
+      if (isNaN(arrayLength)) {
+        value = 0;
+      } else {
+        value = new Array(arrayLength).fill(0);
+      }
+    } else if (/int|uint/.test(type)) {
+      if (isNaN(arrayLength)) {
+        value = 0;
+      } else {
+        value = new Array(arrayLength).fill(0);
+      }
+    } else if (/sampler2D/.test(type)) {
+      if (isNaN(arrayLength)) {
+        value = new this._dataTypeConctructors["Texture"]();
+      } else {
+        value = new Array(arrayLength).fill().map(value => new this._dataTypeConctructors["Texture"]());
+      }
+    } else if (/samplerCube/.test(type)) {
+      if (isNaN(arrayLength)) {
+        value = new this._dataTypeConctructors["TextureCube"]();
+      } else {
+        value = new Array(arrayLength).fill().map(value => new this._dataTypeConctructors["TextureCube"]());
+      }
+    } else if ((typeMatch = /(.?)vec(\d)/.exec(type))) {
+      let vectorLength = typeMatch[2];
+      if (isNaN(arrayLength)) {
+        value = new this._dataTypeConctructors[`Vector${vectorLength}`]();
+      } else {
+        value = new Array(arrayLength).fill().map(value => new this._dataTypeConctructors[`Vector${vectorLength}`]());
+      }
+    } else if ((typeMatch = /mat(\d)/.exec(type))) {
+      let matrixLength = typeMatch[1];
+      if (isNaN(arrayLength)) {
+        value = new this._dataTypeConctructors[`Matrix${matrixLength}`]();
+      } else {
+        value = new Array(arrayLength).fill().map(value => new this._dataTypeConctructors[`Matrix${matrixLength}`]());
+      }
+    } else {
+      value = undefined;
+    }
+
+    this.uniforms.set(name, value);
+  }
+
+  /**
+   * Parse shader strings to extract uniforms
+   */
+  _parseUniforms(string) {
+    const structures = new Map();
+
+    const structRegExp = /struct\s*(.*)\s*{\s*([\s\S]*?)}/g;
+    const structMemberRegExp = /^\s*(.[^ ]+) (.[^ ;\[\]]+)\[? *(\d+)? *\]?/gm;
+    let structMatch;
+    while ((structMatch = structRegExp.exec(string))) {
+      const structName = structMatch[1];
+      const structString = structMatch[2];
+
+      const structure = {};
+      let structMemberMatch;
+      while ((structMemberMatch = structMemberRegExp.exec(structString))) {
+        const [, type, name, arrayLengthStr] = structMemberMatch;
+        const arrayLength = parseInt(arrayLengthStr);
+        structure[name] = {
+          type,
+          arrayLength
+        };
+      }
+
+      structures.set(structName, structure);
+    }
+
+    const uniformsRegExp = /^\s*uniform (.[^ ]+) (.[^ ;\[\]]+)\[? *(\d+)? *\]?/gm;
+    let uniformMatch;
+    while ((uniformMatch = uniformsRegExp.exec(string))) {
+      const [, type, name, arrayLengthStr] = uniformMatch;
+      const arrayLength = parseInt(arrayLengthStr);
+
+      const structure = structures.get(type);
+      if (structure) {
+        for (const key in structure) {
+          this._addUniform(`${name}.${key}`, structure[key].type, structure[key].arrayLength);
+        }
+      } else {
+        this._addUniform(name, type, arrayLength);
+      }
+    }
+  }
+}
+
+class GLTexture {
+  constructor({
+    gl, 
+    data = undefined, 
+    width = undefined,
+    height = undefined,
+    target = (data && data.length) ? gl.TEXTURE_CUBE_MAP : gl.TEXTURE_2D,
+    level = 0,
+    internalFormat = gl.RGBA8 || gl.RGBA,
+    format = gl.RGBA,
+    type = gl.UNSIGNED_BYTE,
+    minFilter = gl.NEAREST_MIPMAP_LINEAR, 
+    magFilter = gl.LINEAR, 
+    wrapS = gl.REPEAT, 
+    wrapT = gl.REPEAT
+  } = {gl}) {
+    this.gl = gl;
+    this._texture = this.gl.createTexture();
+    this._width = width;
+    this._height = height;
+    this._dataWidth = undefined;
+    this._dataHeight = undefined;
+    this._target = target;
+    this._unit = 0;
+    
+    this.level = level;
+    this.internalFormat = internalFormat;
+    this.format = format;
+    this.type = type;
+    this.minFilter = minFilter;
+    this.magFilter = magFilter;
+    this.wrapS = wrapS;
+    this.wrapT = wrapT;
+    this.data = data;
+  }
+
+  generateMipmap() {
+    this.bind();
+    this.gl.generateMipmap(this._target);
+    this.unbind();
+  }
+
+  set data(value) {
+    this._data = value;
+
+    if(!this._data && !(this._width && this._height)) {
+      return;
+    }
+
+    const data = (this._data && this._data.length) ? this._data : [this._data];
+
+    if(data[0]) {
+      this._dataWidth = data[0].width || data[0].videoWidth;
+      this._dataHeight = data[0].height || data[0].videoHeight;
+    }
+
+    const count = this._target === this.gl.TEXTURE_CUBE_MAP ? 6 : 1;
+    const target = this._target === this.gl.TEXTURE_CUBE_MAP ? this.gl.TEXTURE_CUBE_MAP_POSITIVE_X : this._target;
+
+    this.bind();
+    for (let i = 0; i < data.length; i++) {
+      if(this.gl.getParameter(this.gl.VERSION).startsWith("WebGL 1.0") && this._dataWidth) {
+        this.gl.texImage2D(target + i, this.level, this.internalFormat, this.format, this.type, data[i]);
+      } else {
+        this.gl.texImage2D(target + i, this.level, this.internalFormat, this.width, this.height, 0, this.format, this.type, data[i]);
+      }
+    }
+    this.unbind();
+  }
+
+  get data() {
+    return this._data;
+  }
+
+  set width(value) {
+    this._width = value;
+    this.data = this.data;
+  }
+
+  get width() {
+    return this._width || this._dataWidth;
+  }
+
+  set height(value) {
+    this._height = value;
+    this.data = this.data;
+  }
+
+  get height() {
+    return this._height || this._dataHeight;
+  }
+
+  set minFilter(value) {
+    if(this._minFilter === value) {
+      return;
+    }
+    this._minFilter = value;
+    this.bind();
+    this.gl.texParameteri(this._target, this.gl.TEXTURE_MIN_FILTER, this._minFilter);
+    this.unbind();
+  }
+
+  get minFilter() {
+    return this._minFilter;
+  }
+
+  set magFilter(value) {
+    if(this._magFilter === value) {
+      return;
+    }
+    this._magFilter = value;
+    this.bind();
+    this.gl.texParameteri(this._target, this.gl.TEXTURE_MAG_FILTER, this._magFilter);
+    this.unbind();
+  }
+
+  get magFilter() {
+    return this._magFilter;
+  }
+
+  set wrapS(value) {
+    if(this._wrapS === value) {
+      return;
+    }
+    this._wrapS = value;
+    this.bind();
+    this.gl.texParameteri(this._target, this.gl.TEXTURE_WRAP_S, this._wrapS);
+    this.unbind();
+  }
+
+  get wrapS() {
+    return this._wrapS;
+  }
+
+  set wrapT(value) {
+    if(this._wrapT === value) {
+      return;
+    }
+    this._wrapT = value;
+    this.bind();
+    this.gl.texParameteri(this._target, this.gl.TEXTURE_WRAP_T, this._wrapT);
+    this.unbind();
+  }
+
+  get wrapT() {
+    return this._wrapT;
+  }
+
+  bind({unit = 0} = {}) {
+    this._unit = unit;
+    this.gl.activeTexture(this.gl.TEXTURE0 + unit);
+    this.gl.bindTexture(this._target, this._texture);
+  }
+
+  unbind({unit = this._unit} = {}) {
+    this.gl.activeTexture(this.gl.TEXTURE0 + unit);
+    this.gl.bindTexture(this._target, null);
+  }
+
+  clone() {
+    return new GLTexture(this);
+  }
+}
+
+class GLProgram extends Shader {
+  constructor({
+    gl,
+    vertexShader = undefined,
+    fragmentShader = undefined,
+    uniforms = undefined,
+    attributes = undefined,
+    transformFeedbackVaryings = undefined,
+    vertexShaderChunks = undefined,
+    fragmentShaderChunks = undefined,
+    shaders = undefined
+  } = { gl }) {
+    super({
+      vertexShader,
+      fragmentShader,
+      uniforms,
+      vertexShaderChunks,
+      fragmentShaderChunks,
+      shaders,
+      dataTypeConctructors: {
+        Vector2,
+        Vector3,
+        Vector4,
+        Matrix3,
+        Matrix4,
+        Texture: class extends GLTexture {
+          constructor() {
+            super({ gl });
+          }
+        },
+        TextureCube: class TextureCube { }
+      }
+    });
+
+    this.gl = gl;
+    this._program = gl.createProgram();
+    this._attachedShaders = new Map();
+
+    const self = this;
+
+    this._vertexAttribDivisor = function () { };
+    const instancedArraysExtension = this.gl.getExtension("ANGLE_instanced_arrays");
+    if (instancedArraysExtension) {
+      this._vertexAttribDivisor = instancedArraysExtension.vertexAttribDivisorANGLE.bind(instancedArraysExtension);
+    } else if (this.gl.vertexAttribDivisor) {
+      this._vertexAttribDivisor = this.gl.vertexAttribDivisor.bind(this.gl);
+    }
+
+    class Attributes extends Map {
+      set(name, { buffer, location = self._attributesLocations.get(name), size, type = gl.FLOAT, normalized = false, stride = 0, offset = 0, divisor = 0 } = {}) {
+        if (name instanceof Map) {
+          for (let [key, value] of name) {
+            this.set(key, value);
+          }
+          return;
+        }
+        buffer.bind();
+        if (location === undefined) {
+          location = gl.getAttribLocation(self._program, name);
+          if (location === -1) {
+            console.warn(`Attribute "${name}" is missing or never used`);
+          }
+          self._attributesLocations.set(name, location);
+        }
+        gl.enableVertexAttribArray(location);
+        gl.vertexAttribPointer(location, size, type, normalized, stride, offset);
+        buffer.unbind();
+        self._vertexAttribDivisor(location, divisor);
+        super.set(name, { buffer, size, type, normalized, stride, offset });
+      }
+    }
+
+    class Uniforms extends Map {
+      set(name, ...values) {
+        let value = values[0];
+        if (value === undefined) {
+          return;
+        }
+
+        let location = self._uniformLocations.get(name);
+        if (location === undefined) {
+          location = gl.getUniformLocation(self._program, name);
+          self._uniformLocations.set(name, location);
+        }
+
+        let texture;
+
+        if (value.length === undefined) {
+          if (value instanceof GLTexture) {
+            let unit = 0;
+            for (const [uniformName, type] of self.uniformTypes) {
+              if (type.startsWith("sampler")) {
+                if (uniformName === name) {
+                  texture = value;
+                  values = [unit];
+                  break;
+                }
+                unit++;
+              }
+            }
+          } else if (value instanceof Object) {
+            for (let key in value) {
+              self.uniforms.set(`${name}.${key}`, value[key]);
+            }
+            return;
+          }
+          if (values.length > 1) {
+            value = self.uniforms.get(name);
+            value.set(...values);
+          } else {
+            value = values;
+          }
+        } else if (value[0] instanceof Object) {
+          for (let i = 0; i < value.length; i++) {
+            if (value[0].length) {
+              self.uniforms.set(`${name}[${i}]`, value[i]);
+            } else {
+              for (let key in value[i]) {
+                self.uniforms.set(`${name}[${i}].${key}`, value[i][key]);
+              }
+            }
+          }
+          return;
+        }
+
+        if (location === null) {
+          return;
+        }
+
+        const type = self.uniformTypes.get(name);
+
+        if (type === "float" || type === "bool") {
+          gl.uniform1fv(location, value);
+        } else if (type === "vec2") {
+          gl.uniform2fv(location, value);
+        } else if (type === "vec3") {
+          gl.uniform3fv(location, value);
+        } else if (type === "vec4") {
+          gl.uniform4fv(location, value);
+        } else if (type === "int" || type.startsWith("sampler")) {
+          gl.uniform1iv(location, value);
+        } else if (type === "ivec2") {
+          gl.uniform2iv(location, value);
+        } else if (type === "ivec3") {
+          gl.uniform3iv(location, value);
+        } else if (type === "ivec4") {
+          gl.uniform4iv(location, value);
+        } else if (type === "mat3") {
+          gl.uniformMatrix3fv(location, false, value);
+        } else if (type === "mat4") {
+          gl.uniformMatrix4fv(location, false, value);
+        }
+
+        super.set(name, texture || value);
+      }
+    }
+
+    if (transformFeedbackVaryings) {
+      this.gl.transformFeedbackVaryings(this._program, transformFeedbackVaryings, gl.INTERLEAVED_ATTRIBS);
+    }
+
+    this.vertexShader = this.vertexShader;
+    this.fragmentShader = this.fragmentShader;
+
+    this.use();
+
+    this.attributes = new Attributes();
+
+    const rawUniforms = this.uniforms;
+    this.uniforms = new Uniforms();
+    for (const [key, value] of rawUniforms) {
+      this.uniforms.set(key, value);
+    }
+  }
+
+  set vertexShader(value) {
+    super.vertexShader = value;
+    if (this.gl) {
+      this._updateShader(this.gl.VERTEX_SHADER, this.vertexShader);
+    }
+  }
+
+  get vertexShader() {
+    return super.vertexShader;
+  }
+
+  set fragmentShader(value) {
+    super.fragmentShader = value;
+    if (this.gl) {
+      this._updateShader(this.gl.FRAGMENT_SHADER, this.fragmentShader);
+    }
+  }
+
+  get fragmentShader() {
+    return super.fragmentShader;
+  }
+
+  use() {
+    this.gl.useProgram(this._program);
+  }
+
+  _updateShader(type, source) {
+    if (!source) {
+      return;
+    }
+
+    if (this.gl.getParameter(this.gl.VERSION).startsWith("WebGL 1.0")) {
+      source = source.replace(/#version.*?\n/g, "");
+      source = source.replace(/\btexture\b/g, "texture2D");
+      if (type === this.gl.VERTEX_SHADER) {
+        source = source.replace(/\bin\b/g, "attribute");
+        source = source.replace(/\bout\b/g, "varying");
+      } else {
+        source = source.replace(/\bin\b/g, "varying");
+        const results = /out vec4 (.*?);/.exec(source);
+        if (results) {
+          const fragColorName = results[1];
+          source = source.replace(/out.*?;/, "");
+          source = source.replace(new RegExp(`\\b${fragColorName}\\b`, "g"), "gl_FragColor");
+        }
+      }
+    }
+
+    const shader = this.gl.createShader(type);
+    this.gl.shaderSource(shader, source);
+    this.gl.compileShader(shader);
+
+    const shaderInfoLog = this.gl.getShaderInfoLog(shader);
+    if (!this.gl.getShaderParameter(shader, this.gl.COMPILE_STATUS)) {
+      const lineNumberResults = /ERROR: 0:(\d+):/.exec(shaderInfoLog);
+      if (lineNumberResults) {
+        const lineNumber = parseFloat(lineNumberResults[1]);
+        const shaderLines = source.split("\n");
+        throw new Error(`${shaderInfoLog}\nat: ${shaderLines[lineNumber - 1].replace(/^\s*/, "")}`);
+      } else {
+        throw new Error(shaderInfoLog);
+      }
+      this.gl.deleteShader(shader);
+      return;
+    } else if (shaderInfoLog) {
+      console.warn(shaderInfoLog);
+    }
+
+    const attachedShader = this._attachedShaders.get(type);
+    if (attachedShader) {
+      this.gl.detachShader(this._program, attachedShader);
+      this.gl.deleteShader(attachedShader);
+    }
+
+    this.gl.attachShader(this._program, shader);
+    this.gl.deleteShader(shader);
+    this._attachedShaders.set(type, shader);
+
+    if (this._attachedShaders.size === 2) {
+      this.gl.linkProgram(this._program);
+      const programInfoLog = this.gl.getProgramInfoLog(this._program);
+      if (!this.gl.getProgramParameter(this._program, this.gl.LINK_STATUS)) {
+        throw new Error(programInfoLog);
+      } else if (programInfoLog) {
+        console.warn(programInfoLog);
+      }
+
+      // TODO: Check when issue is resolved on Safari and comment out
+
+      // for (let [type, attachedShader] of this._attachedShaders) {
+      //   this.gl.detachShader(this._program, attachedShader);
+      //   this.gl.deleteShader(attachedShader);
+      //   this._attachedShaders.delete(type);
+      // }
+
+      this._attributesLocations = new Map();
+      this._uniformLocations = new Map();
+    }
+  }
+}
+
+class GLVertexArray {
+  constructor({
+    gl,
+    mesh = undefined,
+    program = undefined
+  } = { gl }) {
+    this.gl = gl;
+
+    const extension = gl.getExtension("OES_vertex_array_object");
+    if (extension) {
+      this.gl.createVertexArray = extension.createVertexArrayOES.bind(extension);
+      this.gl.bindVertexArray = extension.bindVertexArrayOES.bind(extension);
+    }
+
+    this._vertexArray = this.gl.createVertexArray();
+
+    if (mesh || program) {
+      this.add({
+        mesh,
+        program
+      });
+    }
+  }
+
+  add({
+    mesh = undefined,
+    program = undefined
+  } = {}) {
+    this.bind();
+    program.attributes.set(mesh.attributes);
+    if (mesh.indices) {
+      mesh.indices.buffer.bind();
+    }
+    this.unbind();
+  }
+
+  bind() {
+    this.gl.bindVertexArray(this._vertexArray);
+  }
+
+  unbind() {
+    this.gl.bindVertexArray(null);
+  }
+}
+
+class GLObject {
+  constructor({
+    gl,
+    mesh = new GLMesh(),
+    program = new GLProgram(),
+    vertexArray = new GLVertexArray({
+      gl,
+      mesh,
+      program,
+    }),
+  } = { gl }) {
+    this.gl = gl;
+    this.mesh = mesh;
+    this.program = program;
+    this.vertexArray = vertexArray;
+
+    this._boundTextures = new Set();
+  }
+
+  bind() {
+    this.program.use();
+    this.vertexArray.bind();
+    let unit = 0;
+    for (const [name, type] of this.program.uniformTypes) {
+      if (type.startsWith("sampler")) {
+        const value = this.program.uniforms.get(name);
+        if (value instanceof GLTexture) {
+          value.bind({
+            unit,
+          });
+          this._boundTextures.add(value);
+        }
+        unit++;
+      }
+    }
+  }
+
+  draw({ bind = true, uniforms = {}, ...options } = {}) {
+    if (bind) {
+      this.bind();
+    }
+    for (const uniform in uniforms) {
+      this.program.uniforms.set(uniform, uniforms[uniform]);
+    }
+    this.mesh.draw(options);
+  }
+
+  unbind() {
+    this.vertexArray.unbind();
+    for (const texture of this._boundTextures) {
+      texture.unbind();
+    }
+  }
+}
+
+class BasicShader {
+  constructor({
+    positions = true,
+    normals = true,
+    uvs = true,
+  } = {}) {
+    this._positions = !!positions;
+    this._normals = !!normals;
+    this._uvs = !!uvs;
+  }
+
+  get vertexShaderChunks() {
+    return [
+      ["start", `
+        uniform mat4 projectionView;
+        uniform mat4 transform;
+
+        ${this._positions ? "in vec3 position;" : ""}
+        ${this._normals ? "in vec3 normal;" : ""}
+        ${this._uvs ? "in vec2 uv;" : ""}
+
+        ${this._positions ? "out vec3 vPosition;" : ""}
+        ${this._normals ? "out vec3 vNormal;" : ""}
+        ${this._uvs ? "out vec2 vUv;" : ""}
+      `,
+      ],
+      ["main", `
+        ${this._positions ? "vPosition = position;" : ""}
+        ${this._normals ? "vNormal = normal;" : ""}
+        ${this._uvs ? "vUv = uv;" : ""}
+      `,
+      ],
+      ["end", `
+        gl_Position = projectionView * transform * vec4(position, 1.);
+      `,
+      ],
+    ];
+  }
+
+  get fragmentShaderChunks() {
+    return [
+      ["start", `
+        ${this._positions ? "in vec3 vPosition;" : ""}
+        ${this._normals ? "in vec3 vNormal;" : ""}
+        ${this._uvs ? "in vec2 vUv;" : ""}
+      `,
+      ],
+    ];
+  }
+}
+
+class GLBoxObject extends GLObject {
+  constructor({
+    gl,
+    width = undefined,
+    height = undefined,
+    depth = undefined,
+    widthSegments = undefined,
+    heightSegments = undefined,
+    depthSegments = undefined,
+    normals = true,
+    uvs = true,
+    shaders = [],
+  } = { gl }) {
+    super({
+      gl,
+      mesh: new GLMesh({
+        gl,
+        ...new BoxMesh({
+          width,
+          height,
+          depth,
+          widthSegments,
+          heightSegments,
+          depthSegments,
+          normals,
+          uvs,
+        })
+      }),
+      program: new GLProgram({
+        gl,
+        shaders: [
+          new BasicShader({
+            normals: normals,
+            uvs: uvs,
+          }),
+          ...shaders,
+        ],
+      }),
+    });
+
+    this.transform = this.program.uniforms.get("transform");
+  }
+}
+
+let pointers = new Map();
+
+class Pointer extends Vector2 {
+  static get TOUCH_TYPE() {
+    return "touchtype";
+  }
+
+  static get MOUSE_TYPE() {
+    return "mousetype";
+  }
+
+  static get(domElement = window) {
+    let pointer = pointers.get(domElement);
+    if (!pointer) {
+      pointer = new Pointer(domElement);
+    }
+    return pointer;
+  }
+
+  get downed() {
+    return this._downed;
+  }
+
+  constructor(domElement) {
+    super();
+
+    this._domElement = domElement || window;
+
+    this.type = Pointer.TOUCH_TYPE;
+
+    this.velocity = new Vector2();
+    this.dragOffset = new Vector2();
+
+    this.centered = new Vector2();
+    this.centeredFlippedY = new Vector2();
+    this.normalized = new Vector2();
+    this.normalizedFlippedY = new Vector2();
+    this.normalizedCentered = new Vector2();
+    this.normalizedCenteredFlippedY = new Vector2();
+
+    this._downed = false;
+
+    pointers.set(this._domElement, this);
+
+    this.onDown = new Signal();
+    this.onMove = new Signal();
+    this.onUp = new Signal();
+    this.onClick = new Signal();
+    this.onTypeChange = new Signal();
+
+    this._preventMouseTypeChange = false;
+
+    this._onPointerMoveBinded = this._onPointerMove.bind(this);
+    this._onPointerDownBinded = this._onPointerDown.bind(this);
+    this._onPointerUpBinded = this._onPointerUp.bind(this);
+
+    this._updateBinded = this._update.bind(this);
+    this._resizeBinded = this.resize.bind(this);
+
+    this._position = new Vector2();
+
+    this.enable();
+  }
+
+  resize() {
+    this._domElementBoundingRect = this._domElement === window ? {
+      left: 0,
+      top: 0,
+      width: window.innerWidth,
+      height: window.innerHeight,
+    } : this._domElement.getBoundingClientRect();
+  }
+
+  _onPointerDown(e) {
+    this.resize();
+    if (e.type === "touchstart") {
+      this._preventMouseTypeChange = true;
+      this._changeType(Pointer.TOUCH_TYPE);
+    }
+    this._downed = true;
+    this.dragOffset.set(0, 0);
+    this.copy(this._position);
+    this._onPointerEvent(e);
+    this._updatePositions();
+    this.onDown.dispatch(e);
+  }
+
+  _onPointerMove(e) {
+    if (e.type === "mousemove") {
+      if (this._preventMouseTypeChange) {
+        return;
+      } else {
+        this._changeType(Pointer.MOUSE_TYPE);
+      }
+    }
+    this._onPointerEvent(e);
+    this.onMove.dispatch(e);
+  }
+
+  _onPointerUp(e) {
+    if (!this._downed) {
+      return;
+    }
+    this._downed = false;
+    this._onPointerEvent(e);
+    this._updatePositions();
+    this.onUp.dispatch(e);
+    if (this.dragOffset.length < 4) {
+      this.onClick.dispatch(e);
+    }
+    clearTimeout(this._timeout);
+    this._timeout = setTimeout(() => {
+      this._preventMouseTypeChange = false;
+    }, 2000);
+  }
+
+  _onPointerEvent(e) {
+    if (!!window.TouchEvent && e instanceof window.TouchEvent) {
+      if (e.type === "touchend") {
+        e = e.changedTouches[0];
+      } else {
+        e = e.touches[0];
+      }
+    }
+    this._position.x = e.clientX - this._domElementBoundingRect.left;
+    this._position.y = e.clientY - this._domElementBoundingRect.top;
+  }
+
+  _changeType(type) {
+    if (this.type === type) {
+      return;
+    }
+    this.type = type;
+    this.disable();
+    this.enable();
+    this.onTypeChange.dispatch(this.type);
+  }
+
+  _update() {
+    if (this.x || this.y) {
+      this.velocity.x = this._position.x - this.x;
+      this.velocity.y = this._position.y - this.y;
+      if (this.downed) {
+        this.dragOffset.add(this.velocity);
+      }
+    }
+
+    this._updatePositions();
+  }
+
+  _updatePositions() {
+    this.x = this._position.x;
+    this.y = this._position.y;
+
+    if (!this.x && !this.y) {
+      return;
+    }
+
+    this.centered.x = this.centeredFlippedY.x = this.x - this._domElementBoundingRect.width * .5;
+    this.centered.y = this.centeredFlippedY.y = this.y - this._domElementBoundingRect.height * .5;
+    this.centeredFlippedY.y *= -1;
+
+    this.normalized.x = this.normalizedFlippedY.x = this.x / this._domElementBoundingRect.width;
+    this.normalized.y = this.normalizedFlippedY.y = this.y / this._domElementBoundingRect.height;
+    this.normalizedFlippedY.y = 1 - this.normalizedFlippedY.y;
+
+    this.normalizedCentered.x = this.normalizedCenteredFlippedY.x = this.normalized.x * 2 - 1;
+    this.normalizedCentered.y = this.normalizedCenteredFlippedY.y = this.normalized.y * 2 - 1;
+    this.normalizedCenteredFlippedY.y *= -1;
+  }
+
+  enable() {
+    this.disable();
+    this.resize();
+    if (this.type === Pointer.TOUCH_TYPE) {
+      this._domElement.addEventListener("touchmove", this._onPointerMoveBinded);
+      window.addEventListener("touchend", this._onPointerUpBinded);
+    } else {
+      this._domElement.addEventListener("mousedown", this._onPointerDownBinded);
+      window.addEventListener("mouseup", this._onPointerUpBinded);
+    }
+    this._domElement.addEventListener("touchstart", this._onPointerDownBinded);
+    this._domElement.addEventListener("mousemove", this._onPointerMoveBinded);
+    window.addEventListener("resize", this._resizeBinded);
+    Ticker$1.add(this._updateBinded = this._updateBinded || this._update.bind(this));
+  }
+
+  disable() {
+    Ticker$1.delete(this._updateBinded);
+    this._domElement.removeEventListener("touchstart", this._onPointerDownBinded);
+    this._domElement.removeEventListener("mousedown", this._onPointerDownBinded);
+    this._domElement.removeEventListener("touchmove", this._onPointerMoveBinded);
+    this._domElement.removeEventListener("mousemove", this._onPointerMoveBinded);
+    window.removeEventListener("touchend", this._onPointerUpBinded);
+    window.removeEventListener("mouseup", this._onPointerUpBinded);
+    window.removeEventListener("resize", this._resizeBinded);
+  }
+}
+
+/**
+ * Quaternion
+ * @module quat
+ */
+
+/**
+ * Creates a new identity quat
+ *
+ * @returns {quat} a new quaternion
+ */
+
+function create$4() {
+  var out = new ARRAY_TYPE(4);
+
+  if (ARRAY_TYPE != Float32Array) {
+    out[0] = 0;
+    out[1] = 0;
+    out[2] = 0;
+  }
+
+  out[3] = 1;
+  return out;
+}
+/**
+ * Set a quat to the identity quaternion
+ *
+ * @param {quat} out the receiving quaternion
+ * @returns {quat} out
+ */
+
+function identity$2(out) {
+  out[0] = 0;
+  out[1] = 0;
+  out[2] = 0;
+  out[3] = 1;
+  return out;
+}
+/**
+ * Sets a quat from the given angle and rotation axis,
+ * then returns it.
+ *
+ * @param {quat} out the receiving quaternion
+ * @param {vec3} axis the axis around which to rotate
+ * @param {Number} rad the angle in radians
+ * @returns {quat} out
+ **/
+
+function setAxisAngle(out, axis, rad) {
+  rad = rad * 0.5;
+  var s = Math.sin(rad);
+  out[0] = s * axis[0];
+  out[1] = s * axis[1];
+  out[2] = s * axis[2];
+  out[3] = Math.cos(rad);
+  return out;
+}
+/**
+ * Multiplies two quat's
+ *
+ * @param {quat} out the receiving quaternion
+ * @param {quat} a the first operand
+ * @param {quat} b the second operand
+ * @returns {quat} out
+ */
+
+function multiply$2(out, a, b) {
+  var ax = a[0],
+      ay = a[1],
+      az = a[2],
+      aw = a[3];
+  var bx = b[0],
+      by = b[1],
+      bz = b[2],
+      bw = b[3];
+  out[0] = ax * bw + aw * bx + ay * bz - az * by;
+  out[1] = ay * bw + aw * by + az * bx - ax * bz;
+  out[2] = az * bw + aw * bz + ax * by - ay * bx;
+  out[3] = aw * bw - ax * bx - ay * by - az * bz;
+  return out;
+}
+/**
+ * Rotates a quaternion by the given angle about the X axis
+ *
+ * @param {quat} out quat receiving operation result
+ * @param {quat} a quat to rotate
+ * @param {number} rad angle (in radians) to rotate
+ * @returns {quat} out
+ */
+
+function rotateX$1(out, a, rad) {
+  rad *= 0.5;
+  var ax = a[0],
+      ay = a[1],
+      az = a[2],
+      aw = a[3];
+  var bx = Math.sin(rad),
+      bw = Math.cos(rad);
+  out[0] = ax * bw + aw * bx;
+  out[1] = ay * bw + az * bx;
+  out[2] = az * bw - ay * bx;
+  out[3] = aw * bw - ax * bx;
+  return out;
+}
+/**
+ * Rotates a quaternion by the given angle about the Y axis
+ *
+ * @param {quat} out quat receiving operation result
+ * @param {quat} a quat to rotate
+ * @param {number} rad angle (in radians) to rotate
+ * @returns {quat} out
+ */
+
+function rotateY$1(out, a, rad) {
+  rad *= 0.5;
+  var ax = a[0],
+      ay = a[1],
+      az = a[2],
+      aw = a[3];
+  var by = Math.sin(rad),
+      bw = Math.cos(rad);
+  out[0] = ax * bw - az * by;
+  out[1] = ay * bw + aw * by;
+  out[2] = az * bw + ax * by;
+  out[3] = aw * bw - ay * by;
+  return out;
+}
+/**
+ * Rotates a quaternion by the given angle about the Z axis
+ *
+ * @param {quat} out quat receiving operation result
+ * @param {quat} a quat to rotate
+ * @param {number} rad angle (in radians) to rotate
+ * @returns {quat} out
+ */
+
+function rotateZ$1(out, a, rad) {
+  rad *= 0.5;
+  var ax = a[0],
+      ay = a[1],
+      az = a[2],
+      aw = a[3];
+  var bz = Math.sin(rad),
+      bw = Math.cos(rad);
+  out[0] = ax * bw + ay * bz;
+  out[1] = ay * bw - ax * bz;
+  out[2] = az * bw + aw * bz;
+  out[3] = aw * bw - az * bz;
+  return out;
+}
+/**
+ * Performs a spherical linear interpolation between two quat
+ *
+ * @param {quat} out the receiving quaternion
+ * @param {quat} a the first operand
+ * @param {quat} b the second operand
+ * @param {Number} t interpolation amount, in the range [0-1], between the two inputs
+ * @returns {quat} out
+ */
+
+function slerp(out, a, b, t) {
+  // benchmarks:
+  //    http://jsperf.com/quaternion-slerp-implementations
+  var ax = a[0],
+      ay = a[1],
+      az = a[2],
+      aw = a[3];
+  var bx = b[0],
+      by = b[1],
+      bz = b[2],
+      bw = b[3];
+  var omega, cosom, sinom, scale0, scale1; // calc cosine
+
+  cosom = ax * bx + ay * by + az * bz + aw * bw; // adjust signs (if necessary)
+
+  if (cosom < 0.0) {
+    cosom = -cosom;
+    bx = -bx;
+    by = -by;
+    bz = -bz;
+    bw = -bw;
+  } // calculate coefficients
+
+
+  if (1.0 - cosom > EPSILON) {
+    // standard case (slerp)
+    omega = Math.acos(cosom);
+    sinom = Math.sin(omega);
+    scale0 = Math.sin((1.0 - t) * omega) / sinom;
+    scale1 = Math.sin(t * omega) / sinom;
+  } else {
+    // "from" and "to" quaternions are very close
+    //  ... so we can do a linear interpolation
+    scale0 = 1.0 - t;
+    scale1 = t;
+  } // calculate final values
+
+
+  out[0] = scale0 * ax + scale1 * bx;
+  out[1] = scale0 * ay + scale1 * by;
+  out[2] = scale0 * az + scale1 * bz;
+  out[3] = scale0 * aw + scale1 * bw;
+  return out;
+}
+/**
+ * Calculates the inverse of a quat
+ *
+ * @param {quat} out the receiving quaternion
+ * @param {quat} a quat to calculate inverse of
+ * @returns {quat} out
+ */
+
+function invert$2(out, a) {
+  var a0 = a[0],
+      a1 = a[1],
+      a2 = a[2],
+      a3 = a[3];
+  var dot = a0 * a0 + a1 * a1 + a2 * a2 + a3 * a3;
+  var invDot = dot ? 1.0 / dot : 0; // TODO: Would be faster to return [0,0,0,0] immediately if dot == 0
+
+  out[0] = -a0 * invDot;
+  out[1] = -a1 * invDot;
+  out[2] = -a2 * invDot;
+  out[3] = a3 * invDot;
+  return out;
+}
+/**
+ * Creates a quaternion from the given 3x3 rotation matrix.
+ *
+ * NOTE: The resultant quaternion is not normalized, so you should be sure
+ * to renormalize the quaternion yourself where necessary.
+ *
+ * @param {quat} out the receiving quaternion
+ * @param {mat3} m rotation matrix
+ * @returns {quat} out
+ * @function
+ */
+
+function fromMat3(out, m) {
+  // Algorithm in Ken Shoemake's article in 1987 SIGGRAPH course notes
+  // article "Quaternion Calculus and Fast Animation".
+  var fTrace = m[0] + m[4] + m[8];
+  var fRoot;
+
+  if (fTrace > 0.0) {
+    // |w| > 1/2, may as well choose w > 1/2
+    fRoot = Math.sqrt(fTrace + 1.0); // 2w
+
+    out[3] = 0.5 * fRoot;
+    fRoot = 0.5 / fRoot; // 1/(4w)
+
+    out[0] = (m[5] - m[7]) * fRoot;
+    out[1] = (m[6] - m[2]) * fRoot;
+    out[2] = (m[1] - m[3]) * fRoot;
+  } else {
+    // |w| <= 1/2
+    var i = 0;
+    if (m[4] > m[0]) i = 1;
+    if (m[8] > m[i * 3 + i]) i = 2;
+    var j = (i + 1) % 3;
+    var k = (i + 2) % 3;
+    fRoot = Math.sqrt(m[i * 3 + i] - m[j * 3 + j] - m[k * 3 + k] + 1.0);
+    out[i] = 0.5 * fRoot;
+    fRoot = 0.5 / fRoot;
+    out[3] = (m[j * 3 + k] - m[k * 3 + j]) * fRoot;
+    out[j] = (m[j * 3 + i] + m[i * 3 + j]) * fRoot;
+    out[k] = (m[k * 3 + i] + m[i * 3 + k]) * fRoot;
+  }
+
+  return out;
+}
+/**
+ * Copy the values from one quat to another
+ *
+ * @param {quat} out the receiving quaternion
+ * @param {quat} a the source quaternion
+ * @returns {quat} out
+ * @function
+ */
+
+var copy$5 = copy$3;
+/**
+ * Set the components of a quat to the given values
+ *
+ * @param {quat} out the receiving quaternion
+ * @param {Number} x X component
+ * @param {Number} y Y component
+ * @param {Number} z Z component
+ * @param {Number} w W component
+ * @returns {quat} out
+ * @function
+ */
+
+var set$5 = set$3;
+/**
+ * Normalize a quat
+ *
+ * @param {quat} out the receiving quaternion
+ * @param {quat} a quaternion to normalize
+ * @returns {quat} out
+ * @function
+ */
+
+var normalize$3 = normalize$2;
+/**
+ * Sets a quaternion to represent the shortest rotation from one
+ * vector to another.
+ *
+ * Both vectors are assumed to be unit length.
+ *
+ * @param {quat} out the receiving quaternion.
+ * @param {vec3} a the initial vector
+ * @param {vec3} b the destination vector
+ * @returns {quat} out
+ */
+
+var rotationTo = function () {
+  var tmpvec3 = create$1();
+  var xUnitVec3 = fromValues(1, 0, 0);
+  var yUnitVec3 = fromValues(0, 1, 0);
+  return function (out, a, b) {
+    var dot = dot$1(a, b);
+
+    if (dot < -0.999999) {
+      cross$1(tmpvec3, xUnitVec3, a);
+      if (len(tmpvec3) < 0.000001) cross$1(tmpvec3, yUnitVec3, a);
+      normalize$1(tmpvec3, tmpvec3);
+      setAxisAngle(out, tmpvec3, Math.PI);
+      return out;
+    } else if (dot > 0.999999) {
+      out[0] = 0;
+      out[1] = 0;
+      out[2] = 0;
+      out[3] = 1;
+      return out;
+    } else {
+      cross$1(tmpvec3, a, b);
+      out[0] = tmpvec3[0];
+      out[1] = tmpvec3[1];
+      out[2] = tmpvec3[2];
+      out[3] = 1 + dot;
+      return normalize$3(out, out);
+    }
+  };
+}();
+/**
+ * Performs a spherical linear interpolation with two control points
+ *
+ * @param {quat} out the receiving quaternion
+ * @param {quat} a the first operand
+ * @param {quat} b the second operand
+ * @param {quat} c the third operand
+ * @param {quat} d the fourth operand
+ * @param {Number} t interpolation amount, in the range [0-1], between the two inputs
+ * @returns {quat} out
+ */
+
+var sqlerp = function () {
+  var temp1 = create$4();
+  var temp2 = create$4();
+  return function (out, a, b, c, d, t) {
+    slerp(temp1, a, d, t);
+    slerp(temp2, b, c, t);
+    slerp(out, temp1, temp2, 2 * t * (1 - t));
+    return out;
+  };
+}();
+/**
+ * Sets the specified quaternion with values corresponding to the given
+ * axes. Each axis is a vec3 and is expected to be unit length and
+ * perpendicular to all other specified axes.
+ *
+ * @param {vec3} view  the vector representing the viewing direction
+ * @param {vec3} right the vector representing the local "right" direction
+ * @param {vec3} up    the vector representing the local "up" direction
+ * @returns {quat} out
+ */
+
+var setAxes = function () {
+  var matr = create$3();
+  return function (out, view, right, up) {
+    matr[0] = right[0];
+    matr[3] = right[1];
+    matr[6] = right[2];
+    matr[1] = up[0];
+    matr[4] = up[1];
+    matr[7] = up[2];
+    matr[2] = -view[0];
+    matr[5] = -view[1];
+    matr[8] = -view[2];
+    return normalize$3(out, fromMat3(out, matr));
+  };
+}();
+
+class Quaternion extends Float32Array {
+  constructor(x = 0, y = 0, z = 0, w = 1) {
+    super(4);
+    this.set(x, y, z, w);
+    return this;
+  }
+
+  get x() {
+    return this[0];
+  }
+
+  set x(value) {
+    this[0] = value;
+  }
+
+  get y() {
+    return this[1];
+  }
+
+  set y(value) {
+    this[1] = value;
+  }
+
+  get z() {
+    return this[2];
+  }
+
+  set z(value) {
+    this[2] = value;
+  }
+
+  get w() {
+    return this[3];
+  }
+
+  set w(value) {
+    this[3] = value;
+  }
+
+  identity() {
+    identity$2(this);
+    return this;
+  }
+
+  set(x, y, z, w) {
+    set$5(this, x, y, z, w);
+    return this;
+  }
+
+  rotateX(angle) {
+    rotateX$1(this, this, angle);
+    return this;
+  }
+
+  rotateY(angle) {
+    rotateY$1(this, this, angle);
+    return this;
+  }
+
+  rotateZ(angle) {
+    rotateZ$1(this, this, angle);
+    return this;
+  }
+
+  invert(quaternion = this) {
+    invert$2(this, quaternion);
+    return this;
+  }
+
+  copy(quaternion) {
+    copy$5(this, quaternion);
+    return this;
+  }
+
+  normalize(quaternion = this) {
+    normalize$3(this, this);
+    return this;
+  }
+
+  multiply(quaternionA, quaternionB) {
+    if (quaternionB) {
+      multiply$2(this, quaternionA, quaternionB);
+    } else {
+      multiply$2(this, this, quaternionA);
+    }
+    return this;
+  }
+
+  fromMatrix3(matrix3) {
+    fromMat3(this, matrix3);
+    return this;
+  }
+}
+
+class TrackballController {
+  constructor({
+    matrix = new Matrix4(), 
+    domElement = document.body,
+    distance = 0,
+    invertRotation = true,
+    rotationEaseRatio = .04,
+    zoomSpeed = .1,
+    zoomEaseRatio = .1,
+    minDistance = 0,
+    maxDistance = Infinity,
+    enabled = true
+  } = {}) {
+    this.matrix = matrix;
+
+    this._distance = distance;
+    this.invertRotation = invertRotation;
+    this.rotationEaseRatio = rotationEaseRatio;
+    this.maxDistance = maxDistance;
+    this.minDistance = minDistance;
+    this.zoomSpeed = zoomSpeed;
+    this.zoomEaseRatio = zoomEaseRatio;
+    
+    this._pointer = Pointer.get(domElement);
+    this._nextDistance = this._distance;
+    
+    this._cachedQuaternion = new Quaternion();
+    this._cachedMatrix = new Matrix4();
+    this._cachedVector3 = new Vector3();
+    
+    this._velocity = new Vector2();
+    this._velocityOrigin = new Vector2();
+    
+    this._position = new Vector3([this.matrix.x, this.matrix.y, this.matrix.z]);
+    this._positionPrevious = this._position.clone();
+    this._positionOffset = new Vector3();
+    
+    domElement.addEventListener("wheel", this.onWheel.bind(this));
+    
+    this.enabled = true;
+    this.update();
+    this.enabled = enabled;
+  }
+
+  set distance(value) {
+    this._distance = this._nextDistance = value;
+  }
+
+  get distance() {
+    return this._distance;
+  }
+
+  onWheel(e) {
+    if(!this.enabled) {
+      return;
+    }
+    const scrollOffsetRatio = 1 + Math.abs(e.deltaY * this.zoomSpeed * .01);
+    this._nextDistance = this._nextDistance || 1;
+    this._nextDistance = e.deltaY > 0 ? this._nextDistance * scrollOffsetRatio : this._nextDistance / scrollOffsetRatio;
+    this._nextDistance = Math.max(Math.min(this._nextDistance, this.maxDistance), this.minDistance);
+  }
+
+  update() {
+    if(!this.enabled) {
+      return;
+    }
+
+    this._cachedMatrix.identity();
+    this._cachedQuaternion.identity();
+
+    this._distance += (this._nextDistance - this._distance) * this.zoomEaseRatio;
+
+    this._position.set(this.matrix.x, this.matrix.y, this.matrix.z).subtract(this._positionOffset);
+
+    this.matrix.x = 0;
+    this.matrix.y = 0;
+    this.matrix.z = 0;
+
+    if(this._pointer.downed) {
+      this._velocity.copy(this._pointer.velocity).scale(.003);
+    }
+
+    this._velocity.lerp(this._velocityOrigin, this.rotationEaseRatio);
+
+    this._cachedQuaternion.rotateY(this.invertRotation ? -this._velocity.x : this._velocity.x);
+    this._cachedQuaternion.rotateX(this.invertRotation ? -this._velocity.y : this._velocity.y);
+
+    this._cachedMatrix.fromQuaternion(this._cachedQuaternion);
+
+    this.matrix.multiply(this._cachedMatrix);
+
+    this._positionOffset.set(0, 0, 1);
+    this._positionOffset.applyMatrix4(this.matrix);
+    this._positionOffset.scale(this._distance);
+
+    this._cachedVector3.copy(this._position).add(this._positionOffset);
+
+    this.matrix.x = this._cachedVector3.x;
+    this.matrix.y = this._cachedVector3.y;
+    this.matrix.z = this._cachedVector3.z;
+  }
+}
+
+class View {
+  constructor({
+    canvas = undefined,
+  } = {}) {
+    this.canvas = canvas;
+
+    const webGLOptions = {
+      depth: true,
+      alpha: false,
+      antialias: true,
+    };
+
+    if (!/\bforcewebgl1\b/.test(window.location.search)) {
+      this.gl = this.canvas.getContext("webgl2", webGLOptions);
+    }
+    if (!this.gl) {
+      this.gl = this.canvas.getContext("webgl", webGLOptions) || this.canvas.getContext("experimental-webgl", webGLOptions);
+    }
+
+    this.camera = new Camera();
+
+    this.cameraController = new TrackballController({
+      matrix: this.camera.transform,
+      distance: 5,
+    });
+
+    this.gl.clearColor(0, 0, 0, 1);
+    this.gl.enable(this.gl.CULL_FACE);
+    this.gl.enable(this.gl.DEPTH_TEST);
+
+    this.object = new GLBoxObject({
+      gl: this.gl,
+      width: 1,
+      height: 1,
+      shaders: [{
+        fragmentShaderChunks: [
+          ["end", `
+            fragColor = vec4(vNormal * .5 + .5, 1.);
+          `],
+        ],
+      }],
+    });
+  }
+
+  resize(width, height) {
+    this.gl.viewport(0, 0, this.gl.drawingBufferWidth, this.gl.drawingBufferHeight);
+    this.camera.aspectRatio = width / height;
+    this.update();
+  }
+
+  update() {
+    this.gl.clear(this.gl.COLOR_BUFFER_BIT | this.gl.DEPTH_BUFFER_BIT);
+
+    this.cameraController.update();
+
+    this.object.draw({
+      uniforms: {
+        projectionView: this.camera.projectionView,
+      },
+    });
+  }
+}
+
+window.customElements.define("dnit-main", class extends TickerElement {
+  constructor() {
+    super({ autoplay: true });
+
+    this._resizeBinded = this.resize.bind(this);
+
+    this.attachShadow({ mode: "open" }).innerHTML = `
       <style>
-        @import "src/main/index.css";
+        :host {
+          display: block;
+        }
+        
+        canvas {
+          width: 100%;
+          height: 100%;
+        }
       </style>
       <canvas></canvas>
-    `,this.canvas=this.querySelector("canvas"),this.view=new View({canvas:this.canvas}),this.querySelector("style").addEventListener("load",()=>{this.dispatchEvent(new Event("load")),this.resize()}),window.addEventListener("resize",this._resizeBinded=this.resize.bind(this)),this.play()}disconnectedCallback(){super.disconnectedCallback(),window.removeEventListener("resize",this._resizeBinded)}resize(){let e=this.canvas.offsetWidth,t=this.canvas.offsetHeight;this.canvas.width=e*window.devicePixelRatio,this.canvas.height=t*window.devicePixelRatio,this.view.resize(e,t)}update(){this.view.update()}});
+    `;
+
+    this.canvas = this.shadowRoot.querySelector("canvas");
+
+    this.view = new View({ canvas: this.canvas });
+  }
+
+  connectedCallback() {
+    super.connectedCallback();
+    window.addEventListener("resize", this._resizeBinded);
+    this.resize();
+  }
+
+  disconnectedCallback() {
+    super.disconnectedCallback();
+    window.removeEventListener("resize", this._resizeBinded);
+  }
+
+  resize() {
+    const width = this.canvas.offsetWidth;
+    const height = this.canvas.offsetHeight;
+
+    this.canvas.width = width * window.devicePixelRatio;
+    this.canvas.height = height * window.devicePixelRatio;
+
+    this.view.resize(width, height);
+  }
+
+  update() {
+    this.view.update();
+  }
+});
+//# sourceMappingURL=index.js.map
