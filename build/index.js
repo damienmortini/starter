@@ -798,7 +798,7 @@ class Matrix4 extends Float32Array {
     return this;
   }
 
-  fromPerspective({ fov, aspectRatio, near, far } = {}) {
+  fromPerspective({ fov, aspectRatio, near, far }) {
     perspective(this, fov, aspectRatio, near, far);
     return this;
   }
@@ -881,7 +881,7 @@ class Camera {
   }
 
   get projectionView() {
-    return this._projectionView.copy(this.projection).multiply(this.inverseTransform);
+    return this._projectionView.set(this.projection).multiply(this.inverseTransform);
   }
 
   _updateProjection() {
@@ -889,13 +889,13 @@ class Camera {
   }
 }
 
-// Object.defineProperty(Camera.prototype, "near", { enumerable: true });
-// Object.defineProperty(Camera.prototype, "far", { enumerable: true });
-// Object.defineProperty(Camera.prototype, "fov", { enumerable: true });
-// Object.defineProperty(Camera.prototype, "aspectRatio", { enumerable: true });
-// Object.defineProperty(Camera.prototype, "inverseTransform", { enumerable: true });
-// Object.defineProperty(Camera.prototype, "projection", { enumerable: true });
-// Object.defineProperty(Camera.prototype, "projectionView", { enumerable: true });
+Object.defineProperty(Camera.prototype, "near", { enumerable: true });
+Object.defineProperty(Camera.prototype, "far", { enumerable: true });
+Object.defineProperty(Camera.prototype, "fov", { enumerable: true });
+Object.defineProperty(Camera.prototype, "aspectRatio", { enumerable: true });
+Object.defineProperty(Camera.prototype, "inverseTransform", { enumerable: true });
+Object.defineProperty(Camera.prototype, "projection", { enumerable: true });
+Object.defineProperty(Camera.prototype, "projectionView", { enumerable: true });
 
 // From https://github.com/mrdoob/three.js/blob/master/src/geometries/BoxGeometry.js
 
@@ -1018,7 +1018,7 @@ class GLBuffer {
     gl,
     data = null,
     target = gl.ARRAY_BUFFER,
-    usage = gl.STATIC_DRAW
+    usage = gl.STATIC_DRAW,
   } = { gl }) {
     this.gl = gl;
     this.target = target;
@@ -1047,7 +1047,7 @@ class GLBuffer {
     target = this.target,
     index = undefined,
     offset = 0,
-    size = undefined
+    size = undefined,
   } = {}) {
     if (index === undefined) {
       this.gl.bindBuffer(target, this._buffer);
@@ -1062,7 +1062,7 @@ class GLBuffer {
     target = this.target,
     index = undefined,
     offset = 0,
-    size = undefined
+    size = undefined,
   } = {}) {
     if (index === undefined) {
       this.gl.bindBuffer(target, null);
@@ -1079,7 +1079,7 @@ class GLVertexAttribute {
     gl,
     data = undefined,
     buffer = new GLBuffer({
-      gl
+      gl,
     }),
     size = 1,
     type = undefined,
@@ -1087,7 +1087,7 @@ class GLVertexAttribute {
     normalized = false,
     stride = 0,
     count = undefined,
-    divisor = 0
+    divisor = 0,
   } = { gl }) {
     this.gl = gl;
     this.buffer = buffer;
@@ -1193,9 +1193,7 @@ class GLMesh {
 
     for (const [key, value] of this.attributes) {
       if (!(value instanceof GLVertexAttribute)) {
-        this.attributes.set(key, new GLVertexAttribute(Object.assign({
-          gl,
-        }, value)));
+        this.attributes.set(key, new GLVertexAttribute(Object.assign({ gl }, value)));
       }
     }
 
@@ -1776,6 +1774,20 @@ function distance$1(a, b) {
   return Math.sqrt(x * x + y * y + z * z);
 }
 /**
+ * Calculates the squared euclidian distance between two vec3's
+ *
+ * @param {vec3} a the first operand
+ * @param {vec3} b the second operand
+ * @returns {Number} squared distance between a and b
+ */
+
+function squaredDistance(a, b) {
+  var x = b[0] - a[0];
+  var y = b[1] - a[1];
+  var z = b[2] - a[2];
+  return x * x + y * y + z * z;
+}
+/**
  * Calculates the squared length of a vec3
  *
  * @param {vec3} a vector to calculate squared length of
@@ -2019,6 +2031,10 @@ class Vector3 extends Float32Array {
 
   distance(vector3) {
     return distance$1(this, vector3);
+  }
+
+  squaredDistance(vector3) {
+    return squaredDistance(this, vector3);
   }
 
   subtract(vector3) {
@@ -2638,9 +2654,7 @@ class Matrix3 extends Float32Array {
 
 class Shader {
   static add(string = "void main() {}", chunks) {
-
-    
-    for (let [key, chunk] of chunks) {
+    for (const [key, chunk] of chunks) {
       switch (key) {
         case "start":
           string = string.replace(/^(#version .*?\n(\s*precision highp float;\s)?)?([\s\S]*)/, `$1\n${chunk}\n$3`);
@@ -2659,11 +2673,13 @@ class Shader {
     return string;
   }
 
-  constructor({ vertexShader = `#version 300 es
+  constructor({
+    vertexShader = `#version 300 es
       void main() {
         gl_Position = vec4(0., 0., 0., 1.);
       }
-    `, fragmentShader = `#version 300 es
+    `,
+    fragmentShader = `#version 300 es
       precision highp float;
 
       out vec4 fragColor;
@@ -2673,18 +2689,38 @@ class Shader {
       }
     `,
     dataTypeConctructors = {
-      Vector2: class Vector2 extends Float32Array { constructor() { super(2); } },
-      Vector3: class Vector3 extends Float32Array { constructor() { super(3); } },
-      Vector4: class Vector4 extends Float32Array { constructor() { super(4); } },
-      Matrix3: class Matrix3 extends Float32Array { constructor() { super([1, 0, 0, 0, 1, 0, 0, 0, 1]); } },
-      Matrix4: class Matrix4 extends Float32Array { constructor() { super([1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1]); } },
+      Vector2: class Vector2 extends Float32Array {
+        constructor() {
+          super(2);
+        }
+      },
+      Vector3: class Vector3 extends Float32Array {
+        constructor() {
+          super(3);
+        }
+      },
+      Vector4: class Vector4 extends Float32Array {
+        constructor() {
+          super(4);
+        }
+      },
+      Matrix3: class Matrix3 extends Float32Array {
+        constructor() {
+          super([1, 0, 0, 0, 1, 0, 0, 0, 1]);
+        }
+      },
+      Matrix4: class Matrix4 extends Float32Array {
+        constructor() {
+          super([1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1]);
+        }
+      },
       Texture: class Texture { },
-      TextureCube: class TextureCube { }
+      TextureCube: class TextureCube { },
     },
     uniforms = [],
     vertexShaderChunks = [],
     fragmentShaderChunks = [],
-    shaders = []
+    shaders = [],
   } = {}) {
     this.uniforms = new Map();
     this.uniformTypes = new Map();
@@ -2698,7 +2734,7 @@ class Shader {
 
     this.add({ vertexShaderChunks, fragmentShaderChunks, uniforms });
 
-    for (let shader of shaders) {
+    for (const shader of shaders) {
       this.add(shader);
     }
   }
@@ -2708,7 +2744,7 @@ class Shader {
     this._vertexShaderChunks.push(...vertexShaderChunks);
     this.fragmentShader = Shader.add(this.fragmentShader, fragmentShaderChunks);
     this._fragmentShaderChunks.push(...fragmentShaderChunks);
-    for (let [key, value] of uniforms) {
+    for (const [key, value] of uniforms) {
       this.uniforms.set(key, value);
     }
   }
@@ -2740,7 +2776,6 @@ class Shader {
   }
 
   _addUniform(name, type, arrayLength) {
-
     if (this.uniforms.has(name)) {
       return;
     }
@@ -2766,27 +2801,27 @@ class Shader {
       if (isNaN(arrayLength)) {
         value = new this._dataTypeConctructors["Texture"]();
       } else {
-        value = new Array(arrayLength).fill().map(value => new this._dataTypeConctructors["Texture"]());
+        value = new Array(arrayLength).fill(undefined).map((value) => new this._dataTypeConctructors["Texture"]());
       }
     } else if (/samplerCube/.test(type)) {
       if (isNaN(arrayLength)) {
         value = new this._dataTypeConctructors["TextureCube"]();
       } else {
-        value = new Array(arrayLength).fill().map(value => new this._dataTypeConctructors["TextureCube"]());
+        value = new Array(arrayLength).fill(undefined).map((value) => new this._dataTypeConctructors["TextureCube"]());
       }
     } else if ((typeMatch = /(.?)vec(\d)/.exec(type))) {
-      let vectorLength = typeMatch[2];
+      const vectorLength = typeMatch[2];
       if (isNaN(arrayLength)) {
         value = new this._dataTypeConctructors[`Vector${vectorLength}`]();
       } else {
-        value = new Array(arrayLength).fill().map(value => new this._dataTypeConctructors[`Vector${vectorLength}`]());
+        value = new Array(arrayLength).fill(undefined).map((value) => new this._dataTypeConctructors[`Vector${vectorLength}`]());
       }
     } else if ((typeMatch = /mat(\d)/.exec(type))) {
-      let matrixLength = typeMatch[1];
+      const matrixLength = typeMatch[1];
       if (isNaN(arrayLength)) {
         value = new this._dataTypeConctructors[`Matrix${matrixLength}`]();
       } else {
-        value = new Array(arrayLength).fill().map(value => new this._dataTypeConctructors[`Matrix${matrixLength}`]());
+        value = new Array(arrayLength).fill(undefined).map((value) => new this._dataTypeConctructors[`Matrix${matrixLength}`]());
       }
     } else {
       value = undefined;
@@ -2795,14 +2830,13 @@ class Shader {
     this.uniforms.set(name, value);
   }
 
-  /**
-   * Parse shader strings to extract uniforms
-   */
+  // Parse shader strings to extract uniforms
+
   _parseUniforms(string) {
     const structures = new Map();
 
     const structRegExp = /struct\s*(.*)\s*{\s*([\s\S]*?)}/g;
-    const structMemberRegExp = /^\s*(.[^ ]+) (.[^ ;\[\]]+)\[? *(\d+)? *\]?/gm;
+    const structMemberRegExp = /^\s*(.[^ ]+) (.[^ ;[\]]+)\[? *(\d+)? *\]?/gm;
     let structMatch;
     while ((structMatch = structRegExp.exec(string))) {
       const structName = structMatch[1];
@@ -2815,18 +2849,17 @@ class Shader {
         const arrayLength = parseInt(arrayLengthStr);
         structure[name] = {
           type,
-          arrayLength
+          arrayLength,
         };
       }
 
       structures.set(structName, structure);
     }
 
-    const uniformsRegExp = /^\s*uniform (.[^ ]+) (.[^ ;\[\]]+)\[? *(\d+)? *\]?/gm;
+    const uniformsRegExp = /^\s*uniform (.[^ ]+) (.[^ ;[\]]+)\[? *(\d+)? *\]?/gm;
     let uniformMatch;
     while ((uniformMatch = uniformsRegExp.exec(string))) {
       const [, type, name, arrayLengthStr] = uniformMatch;
-      const arrayLength = parseInt(arrayLengthStr);
 
       const structure = structures.get(type);
       if (structure) {
@@ -2834,6 +2867,7 @@ class Shader {
           this._addUniform(`${name}.${key}`, structure[key].type, structure[key].arrayLength);
         }
       } else {
+        const arrayLength = parseInt(arrayLengthStr);
         this._addUniform(name, type, arrayLength);
       }
     }
@@ -3010,11 +3044,10 @@ class GLProgram extends Shader {
     vertexShader = undefined,
     fragmentShader = undefined,
     uniforms = undefined,
-    attributes = undefined,
     transformFeedbackVaryings = undefined,
     vertexShaderChunks = undefined,
     fragmentShaderChunks = undefined,
-    shaders = undefined
+    shaders = undefined,
   } = { gl }) {
     super({
       vertexShader,
@@ -3034,8 +3067,8 @@ class GLProgram extends Shader {
             super({ gl });
           }
         },
-        TextureCube: class TextureCube { }
-      }
+        TextureCube: class TextureCube { },
+      },
     });
 
     this.gl = gl;
@@ -3044,7 +3077,7 @@ class GLProgram extends Shader {
 
     const self = this;
 
-    this._vertexAttribDivisor = function () { };
+    this._vertexAttribDivisor = function() { };
     const instancedArraysExtension = this.gl.getExtension("ANGLE_instanced_arrays");
     if (instancedArraysExtension) {
       this._vertexAttribDivisor = instancedArraysExtension.vertexAttribDivisorANGLE.bind(instancedArraysExtension);
@@ -3053,9 +3086,9 @@ class GLProgram extends Shader {
     }
 
     class Attributes extends Map {
-      set(name, { buffer, location = self._attributesLocations.get(name), size, type = gl.FLOAT, normalized = false, stride = 0, offset = 0, divisor = 0 } = {}) {
+      set(name, { buffer = undefined, location = self._attributesLocations.get(name), size = undefined, type = gl.FLOAT, normalized = false, stride = 0, offset = 0, divisor = 0 } = {}) {
         if (name instanceof Map) {
-          for (let [key, value] of name) {
+          for (const [key, value] of name) {
             this.set(key, value);
           }
           return;
@@ -3105,7 +3138,7 @@ class GLProgram extends Shader {
               }
             }
           } else if (value instanceof Object) {
-            for (let key in value) {
+            for (const key in value) {
               self.uniforms.set(`${name}.${key}`, value[key]);
             }
             return;
@@ -3121,7 +3154,7 @@ class GLProgram extends Shader {
             if (value[0].length) {
               self.uniforms.set(`${name}[${i}]`, value[i]);
             } else {
-              for (let key in value[i]) {
+              for (const key in value[i]) {
                 self.uniforms.set(`${name}[${i}].${key}`, value[i][key]);
               }
             }
@@ -3133,7 +3166,7 @@ class GLProgram extends Shader {
           return;
         }
 
-        const type = self.uniformTypes.get(name);
+        const type = self.uniformTypes.get(name.replace(/\[.*?\]/, ""));
 
         if (type === "float" || type === "bool") {
           gl.uniform1fv(location, value);
@@ -3237,12 +3270,14 @@ class GLProgram extends Shader {
       if (lineNumberResults) {
         const lineNumber = parseFloat(lineNumberResults[1]);
         const shaderLines = source.split("\n");
-        throw new Error(`${shaderInfoLog}\nat: ${shaderLines[lineNumber - 1].replace(/^\s*/, "")}`);
+        const typeName = type === this.gl.VERTEX_SHADER ? "Vertex Shader" : "Fragment Shader";
+        console.groupCollapsed(`${typeName} source`);
+        console.warn(source);
+        console.groupEnd();
+        throw new Error(`${typeName}: ${shaderInfoLog}\nat: ${shaderLines[lineNumber - 1].replace(/^\s*/, "")}`);
       } else {
         throw new Error(shaderInfoLog);
       }
-      this.gl.deleteShader(shader);
-      return;
     } else if (shaderInfoLog) {
       console.warn(shaderInfoLog);
     }
@@ -3284,7 +3319,7 @@ class GLVertexArray {
   constructor({
     gl,
     mesh = undefined,
-    program = undefined
+    program = undefined,
   } = { gl }) {
     this.gl = gl;
 
@@ -3296,17 +3331,17 @@ class GLVertexArray {
 
     this._vertexArray = this.gl.createVertexArray();
 
-    if (mesh || program) {
+    if (mesh && program) {
       this.add({
         mesh,
-        program
+        program,
       });
     }
   }
 
   add({
     mesh = undefined,
-    program = undefined
+    program = undefined,
   } = {}) {
     this.bind();
     program.attributes.set(mesh.attributes);
@@ -3328,14 +3363,14 @@ class GLVertexArray {
 class GLObject {
   constructor({
     gl,
-    mesh = new GLMesh(),
-    program = new GLProgram(),
+    mesh = undefined,
+    program = undefined,
     vertexArray = new GLVertexArray({
       gl,
       mesh,
       program,
     }),
-  } = { gl }) {
+  }) {
     this.gl = gl;
     this.mesh = mesh;
     this.program = program;
@@ -3362,14 +3397,18 @@ class GLObject {
     }
   }
 
-  draw({ bind = true, uniforms = {}, ...options } = {}) {
-    if (bind) {
+  draw(options) {
+    options = Object.assign({ bind: true, uniforms: {} }, options);
+    if (options.bind) {
       this.bind();
     }
-    for (const uniform in uniforms) {
-      this.program.uniforms.set(uniform, uniforms[uniform]);
+    for (const uniform in options.uniforms) {
+      this.program.uniforms.set(uniform, options.uniforms[uniform]);
     }
     this.mesh.draw(options);
+    if (options.bind) {
+      this.unbind();
+    }
   }
 
   unbind() {
@@ -3404,18 +3443,15 @@ class BasicShader {
         ${this._positions ? "out vec3 vPosition;" : ""}
         ${this._normals ? "out vec3 vNormal;" : ""}
         ${this._uvs ? "out vec2 vUv;" : ""}
-      `,
-      ],
+      `],
       ["main", `
         ${this._positions ? "vPosition = position;" : ""}
         ${this._normals ? "vNormal = normal;" : ""}
         ${this._uvs ? "vUv = uv;" : ""}
-      `,
-      ],
+      `],
       ["end", `
         gl_Position = projectionView * transform * vec4(position, 1.);
-      `,
-      ],
+      `],
     ];
   }
 
@@ -3425,8 +3461,7 @@ class BasicShader {
         ${this._positions ? "in vec3 vPosition;" : ""}
         ${this._normals ? "in vec3 vNormal;" : ""}
         ${this._uvs ? "in vec2 vUv;" : ""}
-      `,
-      ],
+      `],
     ];
   }
 }
@@ -3446,19 +3481,18 @@ class GLBoxObject extends GLObject {
   } = { gl }) {
     super({
       gl,
-      mesh: new GLMesh({
+      mesh: new GLMesh(Object.assign({
         gl,
-        ...new BoxMesh({
-          width,
-          height,
-          depth,
-          widthSegments,
-          heightSegments,
-          depthSegments,
-          normals,
-          uvs,
-        })
-      }),
+      }, new BoxMesh({
+        width,
+        height,
+        depth,
+        widthSegments,
+        heightSegments,
+        depthSegments,
+        normals,
+        uvs,
+      }))),
       program: new GLProgram({
         gl,
         shaders: [
@@ -3475,7 +3509,7 @@ class GLBoxObject extends GLObject {
   }
 }
 
-let pointers = new Map();
+const pointers = new Map();
 
 class Pointer extends Vector2 {
   static get TOUCH_TYPE() {
@@ -3582,7 +3616,7 @@ class Pointer extends Vector2 {
     this._onPointerEvent(e);
     this._updatePositions();
     this.onUp.dispatch(e);
-    if (this.dragOffset.length < 4) {
+    if (this.dragOffset.size < 4) {
       this.onClick.dispatch(e);
     }
     clearTimeout(this._timeout);
