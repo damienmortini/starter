@@ -1,5 +1,7 @@
 window.customElements.define("dnit-main", class extends HTMLElement {
-  connectedCallback() {
+  constructor() {
+    super();
+
     this.attachShadow({ mode: "open" }).innerHTML = `
       <style>
         :host {

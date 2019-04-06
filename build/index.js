@@ -1,6 +1,21 @@
-window.customElements.define("dnit-main",class extends HTMLElement{connectedCallback(){this.innerHTML=`
+window.customElements.define("dnit-main", class extends HTMLElement {
+  constructor() {
+    super();
+
+    this.attachShadow({ mode: "open" }).innerHTML = `
       <style>
-        @import "src/main/index.css";
+        :host {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+        
+        h1 {
+          font-size: 32px;
+        }
       </style>
       <h1>dnit-main</h1>
-    `}});
+    `;
+  }
+});
+//# sourceMappingURL=index.js.map
