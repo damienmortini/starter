@@ -4,7 +4,7 @@
   "description": "",
   "main": "src/index.js",
   "scripts": {
-    "start": "dsrv --startPath=?dev",
+    "start": "dsrv --path=?dev",
     "build": "rollup -c",
     "release": "npm run build && terser build/index.js --compress --mangle --module --output build/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -15,7 +15,7 @@
     "@webcomponents/webcomponentsjs": "^2.2.7"
   },
   "devDependencies": {
-    "dsrv": "0.0.2",
+    "dsrv": "0.0.3",
     "rollup": "^1.9.0",
     "terser": "^3.17.0"
   }
