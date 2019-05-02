@@ -4,22 +4,22 @@
   "description": "",
   "main": "src/index.js",
   "scripts": {
-    "start": "node server.js",
+    "start": "dsrv --path=?dev",
     "build": "rollup -c",
-    "release": "npm run build && minify build/index.js -o build/index.js",
+    "release": "npm run build && terser build/index.js --compress --mangle --module --output build/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Damien Mortini",
-  "license": "MIT",
+  "license": "ISC",
   "dependencies": {
-    "@webcomponents/webcomponentsjs": "^2.2.7",
-    "dlib": "0.0.92",
+    "@webcomponents/webcomponentsjs": "^2.2.10",
+    "dlib": "0.0.97",
     "dlib-three": "0.0.6",
     "dlmn": "0.0.7"
   },
   "devDependencies": {
-    "babel-minify": "^0.5.0",
-    "browser-sync": "^2.26.3",
-    "rollup": "^1.1.2"
+    "dsrv": "0.0.3",
+    "rollup": "^1.10.1",
+    "terser": "^3.17.0"
   }
 }
