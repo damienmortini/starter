@@ -12,11 +12,11 @@
   "author": "Damien Mortini",
   "license": "ISC",
   "dependencies": {
-    "@webcomponents/webcomponentsjs": "^2.2.7"
+    "@webcomponents/webcomponentsjs": "^2.2.10"
   },
   "devDependencies": {
     "dsrv": "0.0.3",
-    "rollup": "^1.9.0",
+    "rollup": "^1.11.0",
     "terser": "^3.17.0"
   }
 }
