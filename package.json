@@ -7,6 +7,8 @@
     "start": "dsrv --path=?dev",
     "build": "rollup -c",
     "release": "npm run build && terser build/index.js --compress --mangle --module --output build/index.js",
+    "bump": "npm run docs && npm version patch",
+    "docs": "jsdoc -c jsdoc.config.json",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Damien Mortini",
@@ -16,6 +18,7 @@
   },
   "devDependencies": {
     "dsrv": "0.0.3",
+    "jsdoc": "^3.5.5",
     "rollup": "^1.11.2",
     "terser": "^3.17.0"
   }

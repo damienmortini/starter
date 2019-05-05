@@ -1,4 +1,10 @@
-window.customElements.define("dnit-main", class extends HTMLElement {
+/**
+ * Entry point element
+ * @hideconstructor
+ * @example
+ * <dnit-main></dnit-main>
+ */
+class Main extends HTMLElement {
   constructor() {
     super();
 
@@ -17,4 +23,6 @@ window.customElements.define("dnit-main", class extends HTMLElement {
       <h1>dnit-main</h1>
     `;
   }
-});
+}
+
+window.customElements.define("dnit-main", Main);
