@@ -6,7 +6,7 @@ import View from "./View.js";
  * Entry point element
  * @hideconstructor
  * @example
- * <dnit-main></dnit-main>
+ * <starter-main></starter-main>
  */
 class Main extends TickerElement {
   constructor() {
@@ -59,4 +59,4 @@ class Main extends TickerElement {
   }
 }
 
-window.customElements.define("dnit-main", Main);
+window.customElements.define("starter-main", Main);
