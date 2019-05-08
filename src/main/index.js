@@ -1,4 +1,4 @@
-import TickerElement from "../../node_modules/dlmn/util/TickerElement.js";
+import TickerElement from "../../node_modules/@damienmortini/elements/src/util/TickerElement.js";
 
 import View from "./View.js";
 
