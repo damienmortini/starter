@@ -2,7 +2,13 @@ import TickerElement from "../../node_modules/dlmn/util/TickerElement.js";
 
 import View from "./View.js";
 
-window.customElements.define("dnit-main", class extends TickerElement {
+/**
+ * Entry point element
+ * @hideconstructor
+ * @example
+ * <dnit-main></dnit-main>
+ */
+class Main extends TickerElement {
   constructor() {
     super({ autoplay: true });
 
@@ -51,4 +57,6 @@ window.customElements.define("dnit-main", class extends TickerElement {
   update() {
     this.view.update();
   }
-});
+}
+
+window.customElements.define("dnit-main", Main);
