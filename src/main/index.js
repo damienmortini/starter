@@ -2,7 +2,7 @@
  * Entry point element
  * @hideconstructor
  * @example
- * <dnit-main></dnit-main>
+ * <starter-main></starter-main>
  */
 class Main extends HTMLElement {
   constructor() {
@@ -20,9 +20,9 @@ class Main extends HTMLElement {
           font-size: 32px;
         }
       </style>
-      <h1>dnit-main</h1>
+      <h1>starter-main</h1>
     `;
   }
 }
 
-window.customElements.define("dnit-main", Main);
+window.customElements.define("starter-main", Main);
