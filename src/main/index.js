@@ -1,9 +1,15 @@
-import TickerElement from "../../node_modules/dlmn/util/TickerElement.js";
+import TickerElement from "../../node_modules/@damienmortini/elements/src/util/TickerElement.js";
 
 import Scene from "./Scene.js";
 import Renderer from "./Renderer.js";
 
-window.customElements.define("dnit-main", class extends TickerElement {
+/**
+ * Entry point element
+ * @hideconstructor
+ * @example
+ * <starter-main></starter-main>
+ */
+class Main extends TickerElement {
   constructor() {
     super({ autoplay: true });
 
@@ -49,4 +55,6 @@ window.customElements.define("dnit-main", class extends TickerElement {
     this.scene.update();
     this.renderer.render({ scene: this.scene });
   }
-});
+}
+
+window.customElements.define("starter-main", Main);

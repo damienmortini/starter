@@ -1,25 +1,28 @@
 {
-  "name": "dnit",
+  "name": "@damienmortini/starter",
   "version": "0.0.0",
   "description": "",
   "main": "src/index.js",
   "scripts": {
-    "start": "dsrv --path=?dev",
+    "start": "server --path=?dev",
     "build": "rollup -c",
     "release": "npm run build && terser build/index.js --compress --mangle --module --output build/index.js",
+    "bump": "npm run docs && npm version patch",
+    "docs": "jsdoc -c jsdoc.config.json",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Damien Mortini",
   "license": "ISC",
   "dependencies": {
+    "@damienmortini/elements": "0.0.9",
+    "@damienmortini/lib": "0.0.101",
     "@webcomponents/webcomponentsjs": "^2.2.10",
-    "dlib": "0.0.97",
-    "dlib-three": "0.0.6",
-    "dlmn": "0.0.7"
+    "dlib-three": "0.0.6"
   },
   "devDependencies": {
-    "dsrv": "0.0.3",
-    "rollup": "^1.10.1",
+    "@damienmortini/server": "0.0.6",
+    "jsdoc": "^3.5.5",
+    "rollup": "^1.11.2",
     "terser": "^3.17.0"
   }
 }
