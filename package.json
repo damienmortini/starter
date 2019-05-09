@@ -15,14 +15,14 @@
   "license": "ISC",
   "dependencies": {
     "@damienmortini/elements": "0.0.9",
-    "@damienmortini/lib": "0.0.101",
-    "@webcomponents/webcomponentsjs": "^2.2.10",
-    "dlib-three": "0.0.6"
+    "@damienmortini/lib": "0.0.102",
+    "@damienmortini/three": "0.0.8",
+    "@webcomponents/webcomponentsjs": "^2.2.10"
   },
   "devDependencies": {
     "@damienmortini/server": "0.0.6",
-    "jsdoc": "^3.5.5",
-    "rollup": "^1.11.2",
+    "jsdoc": "^3.6.1",
+    "rollup": "^1.11.3",
     "terser": "^3.17.0"
   }
 }
