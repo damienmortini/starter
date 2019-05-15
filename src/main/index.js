@@ -28,7 +28,27 @@ class Main extends TickerElement {
     `;
 
     this.canvas = this.shadowRoot.querySelector("canvas");
-    this.renderer = new WebGLRenderer({ canvas: this.canvas });
+
+    if (window.WebGL2RenderingContext !== undefined && !/\bforcewebgl1\b/.test(window.location.search)) {
+      this.renderer = new WebGLRenderer({
+        canvas: this.canvas,
+        context: this.canvas.getContext("webgl2", {
+          alpha: false,
+          powerPreference: "high-performance",
+          antialias: true,
+        }),
+      });
+    } else {
+      this.renderer = new WebGLRenderer({
+        canvas: this.canvas,
+        powerPreference: "high-performance",
+        antialias: true,
+      });
+    }
+    if (/\bdev\b/.test(window.location.search)) {
+      this.renderer.debug.checkShaderErrors = true;
+    }
+
     this.scene = new Scene({ canvas: this.canvas });
   }
 
