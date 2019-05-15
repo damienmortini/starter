@@ -7,7 +7,7 @@ import { MeshNormalMaterial } from "../../node_modules/three/src/materials/MeshN
 import THREETrackballController from "../../node_modules/@damienmortini/three/controller/THREETrackballController.js";
 
 export default class Scene extends THREEScene {
-  constructor({ canvas } = {}) {
+  constructor({ canvas }) {
     super();
 
     this.camera = new PerspectiveCamera(65, window.innerWidth / window.innerHeight, 0.1, 10000);
@@ -17,8 +17,7 @@ export default class Scene extends THREEScene {
       domElement: canvas,
     });
 
-    let cube = new Mesh(new BoxGeometry(1, 1, 1), new MeshNormalMaterial());
-
+    const cube = new Mesh(new BoxGeometry(1, 1, 1), new MeshNormalMaterial());
     this.add(cube);
   }
 

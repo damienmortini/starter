@@ -16,13 +16,13 @@
   "dependencies": {
     "@damienmortini/elements": "0.0.9",
     "@damienmortini/lib": "0.0.102",
-    "@damienmortini/three": "0.0.8",
+    "@damienmortini/three": "0.0.9",
     "@webcomponents/webcomponentsjs": "^2.2.10"
   },
   "devDependencies": {
     "@damienmortini/server": "0.0.6",
-    "jsdoc": "^3.6.1",
-    "rollup": "^1.11.3",
+    "jsdoc": "^3.6.2",
+    "rollup": "^1.12.0",
     "terser": "^3.17.0"
   }
 }

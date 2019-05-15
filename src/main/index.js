@@ -1,7 +1,7 @@
 import TickerElement from "../../node_modules/@damienmortini/elements/src/util/TickerElement.js";
 
+import { WebGLRenderer } from "../../node_modules/three/src/renderers/WebGLRenderer.js";
 import Scene from "./Scene.js";
-import Renderer from "./Renderer.js";
 
 /**
  * Entry point element
@@ -28,7 +28,7 @@ class Main extends TickerElement {
     `;
 
     this.canvas = this.shadowRoot.querySelector("canvas");
-    this.renderer = new Renderer({ canvas: this.canvas });
+    this.renderer = new WebGLRenderer({ canvas: this.canvas });
     this.scene = new Scene({ canvas: this.canvas });
   }
 
@@ -47,13 +47,13 @@ class Main extends TickerElement {
     const width = this.canvas.offsetWidth;
     const height = this.canvas.offsetHeight;
     this.scene.resize(width, height);
-    this.renderer.resize(width, height);
-    this.renderer.render({ scene: this.scene });
+    this.renderer.setSize(width * window.devicePixelRatio, height * window.devicePixelRatio, false);
+    this.renderer.render(this.scene, this.scene.camera);
   }
 
   update() {
     this.scene.update();
-    this.renderer.render({ scene: this.scene });
+    this.renderer.render(this.scene, this.scene.camera);
   }
 }
 
