@@ -48,6 +48,7 @@ class Main extends TickerElement {
     if (/\bdev\b/.test(window.location.search)) {
       this.renderer.debug.checkShaderErrors = true;
     }
+    this.renderer.setPixelRatio(window.devicePixelRatio);
 
     this.scene = new Scene({ canvas: this.canvas });
   }
@@ -67,7 +68,7 @@ class Main extends TickerElement {
     const width = this.canvas.offsetWidth;
     const height = this.canvas.offsetHeight;
     this.scene.resize(width, height);
-    this.renderer.setSize(width * window.devicePixelRatio, height * window.devicePixelRatio, false);
+    this.renderer.setSize(width, height, false);
     this.renderer.render(this.scene, this.scene.camera);
   }
 
