@@ -14,15 +14,15 @@
   "author": "Damien Mortini",
   "license": "ISC",
   "dependencies": {
-    "@damienmortini/elements": "0.0.9",
-    "@damienmortini/lib": "0.0.102",
-    "@damienmortini/three": "0.0.9",
+    "@damienmortini/elements": "^0.2.3",
+    "@damienmortini/lib": "^0.2.3",
+    "@damienmortini/three": "^0.1.12",
     "@webcomponents/webcomponentsjs": "^2.2.10"
   },
   "devDependencies": {
-    "@damienmortini/server": "0.0.6",
-    "jsdoc": "^3.6.2",
-    "rollup": "^1.12.0",
-    "terser": "^3.17.0"
+    "@damienmortini/server": "^1.0.2",
+    "jsdoc": "^3.6.3",
+    "rollup": "^1.19.4",
+    "terser": "^4.1.4"
   }
 }
