@@ -1,4 +1,4 @@
-import TickerElement from "../../node_modules/@damienmortini/elements/src/util/TickerElement.js";
+import AnimationTickerElement from "../../node_modules/@damienmortini/elements/src/animation-ticker/index.js";
 
 import View from "./View.js";
 
@@ -8,7 +8,7 @@ import View from "./View.js";
  * @example
  * <starter-main></starter-main>
  */
-class Main extends TickerElement {
+class Main extends AnimationTickerElement {
   constructor() {
     super({ autoplay: true });
 
