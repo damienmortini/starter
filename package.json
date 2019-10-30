@@ -4,12 +4,14 @@
   "description": "",
   "main": "src/index.js",
   "scripts": {
-    "start": "server --path=?dev",
     "build": "rollup -c",
-    "release": "npm run build && terser build/index.js --compress --mangle --module --output build/index.js",
-    "bump": "npm run docs && npm version patch",
+    "bump-patch": "npm version patch && npm publish --access=public",
+    "bump-minor": "npm version minor && npm publish --access=public",
+    "bump-major": "npm version major && npm publish --access=public",
     "docs": "jsdoc -c jsdoc.config.json",
     "fix": "eslint src --fix",
+    "release": "npm run build && terser build/index.js --compress --mangle --module --output build/index.js",
+    "start": "server --path=?dev",
     "test": "eslint src"
   },
   "author": "Damien Mortini",
