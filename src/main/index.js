@@ -14,7 +14,7 @@ class Main extends AnimationTickerElement {
 
     this._resizeBinded = this.resize.bind(this);
 
-    this.attachShadow({ mode: "open" }).innerHTML = `
+    this.attachShadow({ mode: 'open' }).innerHTML = `
       <style>
         :host {
           display: block;
@@ -59,4 +59,4 @@ class Main extends AnimationTickerElement {
   }
 }
 
-window.customElements.define("starter-main", Main);
+window.customElements.define('starter-main', Main);
