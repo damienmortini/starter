@@ -1,6 +1,6 @@
-import AnimationTickerElement from "../../node_modules/@damienmortini/elements/src/animation-ticker/index.js";
+import AnimationTickerElement from '../../node_modules/@damienmortini/elements/src/animation-ticker/index.js';
 
-import View from "./View.js";
+import View from './View.js';
 
 /**
  * Entry point element
@@ -28,20 +28,20 @@ class Main extends AnimationTickerElement {
       <canvas></canvas>
     `;
 
-    this.canvas = this.shadowRoot.querySelector("canvas");
+    this.canvas = this.shadowRoot.querySelector('canvas');
 
     this.view = new View({ canvas: this.canvas });
   }
 
   connectedCallback() {
     super.connectedCallback();
-    window.addEventListener("resize", this._resizeBinded);
+    window.addEventListener('resize', this._resizeBinded);
     this.resize();
   }
 
   disconnectedCallback() {
     super.disconnectedCallback();
-    window.removeEventListener("resize", this._resizeBinded);
+    window.removeEventListener('resize', this._resizeBinded);
   }
 
   resize() {
