@@ -9,20 +9,23 @@
     "release": "npm run build && terser build/index.js --compress --mangle --module --output build/index.js",
     "bump": "npm run docs && npm version patch",
     "docs": "jsdoc -c jsdoc.config.json",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "fix": "eslint src --fix",
+    "test": "eslint src"
   },
   "author": "Damien Mortini",
   "license": "ISC",
   "dependencies": {
-    "@damienmortini/elements": "^0.2.3",
-    "@damienmortini/lib": "^0.2.3",
-    "@damienmortini/three": "^0.1.12",
-    "@webcomponents/webcomponentsjs": "^2.2.10"
+    "@damienmortini/elements": "^0.2.6",
+    "@damienmortini/lib": "^0.2.7",
+    "@damienmortini/three": "^0.1.14",
+    "@webcomponents/webcomponentsjs": "^2.3.0"
   },
   "devDependencies": {
-    "@damienmortini/server": "^1.0.2",
+    "@damienmortini/server": "^1.0.3",
+    "eslint": "^6.6.0",
+    "eslint-config-google": "^0.14.0",
     "jsdoc": "^3.6.3",
-    "rollup": "^1.19.4",
-    "terser": "^4.1.4"
+    "rollup": "^1.26.0",
+    "terser": "^4.3.9"
   }
 }

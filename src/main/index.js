@@ -13,7 +13,7 @@ class Main extends AnimationTickerElement {
   constructor() {
     super({ autoplay: true });
 
-    this.attachShadow({ mode: "open" }).innerHTML = `
+    this.attachShadow({ mode: 'open' }).innerHTML = `
       <style>
         :host {
           display: block;
@@ -78,4 +78,4 @@ class Main extends AnimationTickerElement {
   }
 }
 
-window.customElements.define("starter-main", Main);
+window.customElements.define('starter-main', Main);
