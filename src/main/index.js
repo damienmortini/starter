@@ -1,7 +1,7 @@
-import AnimationTickerElement from "../../node_modules/@damienmortini/elements/src/animation-ticker/index.js";
+import AnimationTickerElement from '../../node_modules/@damienmortini/elements/src/animation-ticker/index.js';
 
-import { WebGLRenderer } from "../../node_modules/three/src/renderers/WebGLRenderer.js";
-import Scene from "./Scene.js";
+import { WebGLRenderer } from '../../node_modules/three/src/renderers/WebGLRenderer.js';
+import Scene from './Scene.js';
 
 /**
  * Entry point element
@@ -27,21 +27,21 @@ class Main extends AnimationTickerElement {
       <canvas></canvas>
     `;
 
-    this.canvas = this.shadowRoot.querySelector("canvas");
+    this.canvas = this.shadowRoot.querySelector('canvas');
 
     if (window.WebGL2RenderingContext !== undefined && !/\bforcewebgl1\b/.test(window.location.search)) {
       this.renderer = new WebGLRenderer({
         canvas: this.canvas,
-        context: this.canvas.getContext("webgl2", {
+        context: this.canvas.getContext('webgl2', {
           alpha: false,
-          powerPreference: "high-performance",
+          powerPreference: 'high-performance',
           antialias: true,
         }),
       });
     } else {
       this.renderer = new WebGLRenderer({
         canvas: this.canvas,
-        powerPreference: "high-performance",
+        powerPreference: 'high-performance',
         antialias: true,
       });
     }
@@ -55,13 +55,13 @@ class Main extends AnimationTickerElement {
 
   connectedCallback() {
     super.connectedCallback();
-    window.addEventListener("resize", this._resizeBinded = this.resize.bind(this));
+    window.addEventListener('resize', this._resizeBinded = this.resize.bind(this));
     this.resize();
   }
 
   disconnectedCallback() {
     super.disconnectedCallback();
-    window.removeEventListener("resize", this._resizeBinded);
+    window.removeEventListener('resize', this._resizeBinded);
   }
 
   resize() {
