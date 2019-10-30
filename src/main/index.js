@@ -8,7 +8,7 @@ class Main extends HTMLElement {
   constructor() {
     super();
 
-    this.attachShadow({ mode: "open" }).innerHTML = `
+    this.attachShadow({ mode: 'open' }).innerHTML = `
       <style>
         :host {
           display: flex;
@@ -25,4 +25,4 @@ class Main extends HTMLElement {
   }
 }
 
-window.customElements.define("starter-main", Main);
+window.customElements.define('starter-main', Main);

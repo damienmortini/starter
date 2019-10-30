@@ -9,7 +9,8 @@
     "release": "npm run build && terser build/index.js --compress --mangle --module --output build/index.js",
     "bump": "npm run docs && npm version patch",
     "docs": "jsdoc -c jsdoc.config.json",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "fix": "eslint src --fix",
+    "test": "eslint src"
   },
   "author": "Damien Mortini",
   "license": "ISC",
@@ -18,6 +19,8 @@
   },
   "devDependencies": {
     "@damienmortini/server": "^1.0.3",
+    "eslint": "^6.6.0",
+    "eslint-config-google": "^0.14.0",
     "jsdoc": "^3.6.3",
     "rollup": "^1.23.1",
     "terser": "^4.3.8"
