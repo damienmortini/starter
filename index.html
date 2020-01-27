@@ -2,27 +2,18 @@
 <html>
 
 <head>
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-xxxxxxxx-x"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
-    gtag('config', 'UA-xxxxxxxx-x');
-  </script>
-
   <meta charset="UTF-8">
-  <title>dnit</title>
-  <meta name="description" content="dnit">
+  <title>starter</title>
+  <meta name="description" content="starter">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
     html,
     body {
       height: 100%;
       margin: 0;
-      overflow: hidden;
     }
 
-    dnit-main {
+    starter-main {
       width: 100%;
       height: 100%;
     }
@@ -30,30 +21,12 @@
 </head>
 
 <body>
-  <script src="node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+  <starter-main></starter-main>
 
-  <dnit-main></dnit-main>
-
-  <script type="text/javascript">
-    {
-      if (navigator.serviceWorker) {
-        navigator.serviceWorker.register("./serviceworker.js").then((registration) => {
-          if(!registration.active) {
-            window.location.reload();
-          }
-        });
-      }
-
-      const script = document.createElement("script");
-      document.currentScript.parentNode.insertBefore(script, document.currentScript.nextSibling);
-      if (/\bdev\b/.test(window.location.search)) {
-        script.type = "module";
-        script.src = "./src/index.js";
-      } else {
-        script.src = "./build/index.js";
-      }
-    }
+  <script>
+    import(/\bdev\b/.test(window.location.search) ? "./src/index.js" : "./build/index.js");
   </script>
+
 </body>
 
 </html>
