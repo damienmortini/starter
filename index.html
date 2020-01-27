@@ -24,7 +24,9 @@
   <starter-main></starter-main>
 
   <script>
-    import(/\bdev\b/.test(window.location.search) ? "./src/index.js" : "./build/index.js");
+    navigator.serviceWorker.register("serviceworker.js").then(() => {
+      import(/\bdev\b/.test(window.location.search) ? "./src/index.js" : "./build/index.js");
+    });
   </script>
 
 </body>
