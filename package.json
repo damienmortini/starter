@@ -16,15 +16,13 @@
   },
   "author": "Damien Mortini",
   "license": "ISC",
-  "dependencies": {
-    "@webcomponents/webcomponentsjs": "^2.3.0"
-  },
+  "dependencies": {},
   "devDependencies": {
-    "@damienmortini/server": "^1.0.4",
+    "@damienmortini/server": "^1.0.12",
     "eslint": "^6.8.0",
     "eslint-config-google": "^0.14.0",
     "jsdoc": "^3.6.3",
-    "rollup": "^1.27.14",
-    "terser": "^4.4.3"
+    "rollup": "^2.0.6",
+    "terser": "^4.6.7"
   }
 }
