@@ -42,6 +42,7 @@ export default class View {
       program: new GLProgram({
         gl: this.gl,
         shader: new BasicShader({
+          normals: true,
           fragmentShaderChunks: [
             ['end', `
               fragColor = vec4(vNormal * .5 + .5, 1.);

@@ -23,20 +23,12 @@
 </head>
 
 <body>
-  <script src="node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
-
   <starter-main></starter-main>
 
-  <script type="module"></script>
-  <script type="text/javascript">
-    {
-      if (/\bdev\b/.test(window.location.search)) {
-        document.querySelector(`script[type="module"]`).src = "./src/index.js";
-      } else {
-        document.querySelector(`script[type="module"]`).src = "./build/index.js";
-      }
-    }
+  <script>
+    import(/\bdev\b/.test(window.location.search) ? "./src/index.js" : "./build/index.js");
   </script>
+
 </body>
 
 </html>

@@ -1,4 +1,4 @@
-import AnimationTickerElement from '../../node_modules/@damienmortini/elements/src/animation-ticker/index.js';
+import AnimationTickerElement from '../../node_modules/@damienmortini/element-animation-ticker/index.js';
 
 import View from './View.js';
 
@@ -10,7 +10,7 @@ import View from './View.js';
  */
 class Main extends AnimationTickerElement {
   constructor() {
-    super({ autoplay: true });
+    super();
 
     this._resizeBinded = this.resize.bind(this);
 
@@ -37,6 +37,7 @@ class Main extends AnimationTickerElement {
     super.connectedCallback();
     window.addEventListener('resize', this._resizeBinded);
     this.resize();
+    this.play();
   }
 
   disconnectedCallback() {
