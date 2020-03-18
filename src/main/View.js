@@ -6,8 +6,8 @@ import BasicShader from '../../node_modules/@damienmortini/lib/src/shader/BasicS
 
 export default class View {
   constructor({
-    canvas = undefined,
-  } = {}) {
+    canvas,
+  }) {
     this.canvas = canvas;
 
     const webGLOptions = {
