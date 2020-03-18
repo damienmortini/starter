@@ -12,6 +12,8 @@ class Main extends AnimationTickerElement {
   constructor() {
     super();
 
+    this.autoplay = true;
+
     this._resizeBinded = this.resize.bind(this);
 
     this.attachShadow({ mode: 'open' }).innerHTML = `
@@ -37,7 +39,6 @@ class Main extends AnimationTickerElement {
     super.connectedCallback();
     window.addEventListener('resize', this._resizeBinded);
     this.resize();
-    this.play();
   }
 
   disconnectedCallback() {
