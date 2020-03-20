@@ -26,6 +26,7 @@ export default class View {
     this.camera = new Camera();
 
     this.cameraController = new TrackballController({
+      domElement: this.canvas,
       matrix: this.camera.transform,
       distance: 5,
     });
