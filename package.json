@@ -16,7 +16,6 @@
   },
   "author": "Damien Mortini",
   "license": "ISC",
-  "dependencies": {},
   "devDependencies": {
     "@damienmortini/server": "^1.0.12",
     "eslint": "^6.8.0",
