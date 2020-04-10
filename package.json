@@ -17,8 +17,8 @@
   "author": "Damien Mortini",
   "license": "ISC",
   "dependencies": {
-    "@damienmortini/element-animation-ticker": "0.0.8",
-    "@damienmortini/lib": "^0.2.13"
+    "@damienmortini/element-animation-ticker": "0.0.15",
+    "@damienmortini/lib": "0.2.23"
   },
   "devDependencies": {
     "@damienmortini/server": "^1.0.12",

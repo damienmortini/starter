@@ -1,8 +1,8 @@
-import Camera from '../../node_modules/@damienmortini/lib/src/3d/Camera.js';
-import GLBoxObject from '../../node_modules/@damienmortini/lib/src/gl/objects/GLBoxObject.js';
-import TrackballController from '../../node_modules/@damienmortini/lib/src/3d/controllers/TrackballController.js';
-import GLProgram from '../../node_modules/@damienmortini/lib/src/gl/GLProgram.js';
-import BasicShader from '../../node_modules/@damienmortini/lib/src/shader/BasicShader.js';
+import Camera from '../../node_modules/@damienmortini/lib/3d/Camera.js';
+import GLBoxObject from '../../node_modules/@damienmortini/lib/gl/objects/GLBoxObject.js';
+import TrackballController from '../../node_modules/@damienmortini/lib/3d/controllers/TrackballController.js';
+import GLProgram from '../../node_modules/@damienmortini/lib/gl/GLProgram.js';
+import BasicShader from '../../node_modules/@damienmortini/lib/shader/BasicShader.js';
 
 export default class View {
   constructor({
@@ -44,7 +44,7 @@ export default class View {
         gl: this.gl,
         shader: new BasicShader({
           normals: true,
-          fragmentShaderChunks: [
+          fragmentChunks: [
             ['end', `
               fragColor = vec4(vNormal * .5 + .5, 1.);
             `],
