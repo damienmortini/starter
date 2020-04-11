@@ -2,7 +2,7 @@
  * Entry point element
  * @hideconstructor
  * @example
- * <starter-main></starter-main>
+ * <starter-element></starter-element>
  */
 class Main extends HTMLElement {
   constructor() {
@@ -20,9 +20,10 @@ class Main extends HTMLElement {
           font-size: 32px;
         }
       </style>
-      <h1>starter-main</h1>
+      <h1>starter-element</h1>
     `;
   }
 }
 
-window.customElements.define('starter-main', Main);
+window.customElements.define('starter-element', Main);
+//# sourceMappingURL=index.js.map

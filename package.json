@@ -1,27 +1,27 @@
 {
   "name": "@damienmortini/starter",
+  "private": true,
   "version": "0.0.0",
   "description": "",
   "main": "src/index.js",
   "scripts": {
-    "build": "rollup -c",
-    "bump-patch": "npm version patch && npm publish --access=public",
-    "bump-minor": "npm version minor && npm publish --access=public",
-    "bump-major": "npm version major && npm publish --access=public",
+    "build": "lerna run build",
     "docs": "jsdoc -c jsdoc.config.json",
     "fix": "eslint src --fix",
-    "release": "npm run build && terser build/index.js --compress --mangle --module --output build/index.js",
     "start": "server --path=?dev",
     "test": "eslint src"
   },
   "author": "Damien Mortini",
   "license": "ISC",
+  "workspaces": [
+    "packages/*"
+  ],
   "devDependencies": {
     "@damienmortini/server": "^1.0.12",
     "eslint": "^6.8.0",
     "eslint-config-google": "^0.14.0",
     "jsdoc": "^3.6.3",
-    "rollup": "^2.0.6",
-    "terser": "^4.6.7"
+    "lerna": "^3.20.2",
+    "yarn": "^1.22.4"
   }
 }

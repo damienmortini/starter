@@ -1,0 +1,20 @@
+{
+  "name": "@damienmortini/starter-three",
+  "private": true,
+  "version": "0.0.0",
+  "description": "starter-three",
+  "main": "src/index.js",
+  "scripts": {
+    "release": "npm run build && terser build/index.js --compress --mangle --module --output build/index.js"
+  },
+  "author": "Damien Mortini",
+  "license": "ISC",
+  "dependencies": {
+    "@damienmortini/element-animation-ticker": "^0.0.15",
+    "@damienmortini/three": "0.1.18"
+  },
+  "devDependencies": {
+    "rollup": "^2.6.0",
+    "terser": "^4.6.11"
+  }
+}
