@@ -1,8 +1,8 @@
 export default {
-  input: "src/index.js",
+  input: 'src/index.js',
   output: {
-    file: "build/index.js",
-    format: "esm",
+    file: 'build/index.js',
+    format: 'esm',
     sourcemap: true,
   },
 };

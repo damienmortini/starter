@@ -17,17 +17,16 @@
   "author": "Damien Mortini",
   "license": "ISC",
   "dependencies": {
-    "@damienmortini/elements": "^0.2.6",
-    "@damienmortini/lib": "^0.2.7",
-    "@damienmortini/three": "^0.1.14",
-    "@webcomponents/webcomponentsjs": "^2.3.0"
+    "@damienmortini/element-animation-ticker": "0.0.15",
+    "@damienmortini/lib": "0.2.18",
+    "@damienmortini/three": "0.1.14"
   },
   "devDependencies": {
-    "@damienmortini/server": "^1.0.3",
-    "eslint": "^6.6.0",
+    "@damienmortini/server": "^1.0.12",
+    "eslint": "^6.8.0",
     "eslint-config-google": "^0.14.0",
     "jsdoc": "^3.6.3",
-    "rollup": "^1.26.0",
-    "terser": "^4.3.9"
+    "rollup": "^2.0.6",
+    "terser": "^4.6.7"
   }
 }
