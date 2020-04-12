@@ -12,7 +12,7 @@
   "license": "ISC",
   "dependencies": {
     "@damienmortini/core": "0.2.24",
-    "@damienmortini/element-animation-ticker": "^0.0.19"
+    "@damienmortini/element-animation-ticker": "0.0.19"
   },
   "devDependencies": {
     "rollup": "^2.6.0",
