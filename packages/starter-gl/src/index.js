@@ -1,4 +1,4 @@
-import AnimationTickerElement from '@damienmortini/element-animation-ticker/index.js';
+import AnimationTickerElement from '/node_modules/@damienmortini/element-animation-ticker/index.js';
 
 import View from './View.js';
 

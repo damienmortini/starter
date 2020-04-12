@@ -1,9 +1,9 @@
-import AnimationTickerElement from '@damienmortini/element-animation-ticker/index.js';
-import Camera from '@damienmortini/lib/3d/Camera.js';
-import GLBoxObject from '@damienmortini/lib/gl/objects/GLBoxObject.js';
-import TrackballController from '@damienmortini/lib/3d/controllers/TrackballController.js';
-import GLProgram from '@damienmortini/lib/gl/GLProgram.js';
-import BasicShader from '@damienmortini/lib/shader/BasicShader.js';
+import AnimationTickerElement from '../../../../../../../../node_modules/@damienmortini/element-animation-ticker/index.js';
+import Camera from '../../../../../../../../node_modules/@damienmortini/lib/3d/Camera.js';
+import GLBoxObject from '../../../../../../../../node_modules/@damienmortini/lib/gl/objects/GLBoxObject.js';
+import TrackballController from '../../../../../../../../node_modules/@damienmortini/lib/3d/controllers/TrackballController.js';
+import GLProgram from '../../../../../../../../node_modules/@damienmortini/lib/gl/GLProgram.js';
+import BasicShader from '../../../../../../../../node_modules/@damienmortini/lib/shader/BasicShader.js';
 
 class View {
   constructor({
