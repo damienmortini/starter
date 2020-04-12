@@ -10,8 +10,8 @@
   "author": "Damien Mortini",
   "license": "ISC",
   "dependencies": {
-    "@damienmortini/element-animation-ticker": "^0.0.15",
-    "@damienmortini/three": "0.1.18"
+    "@damienmortini/element-animation-ticker": "0.0.19",
+    "@damienmortini/three": "0.1.22"
   },
   "devDependencies": {
     "rollup": "^2.6.0",
