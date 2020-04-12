@@ -1,6 +1,6 @@
-import AnimationTickerElement from '../../node_modules/@damienmortini/elements/src/animation-ticker/index.js';
+import AnimationTickerElement from '/node_modules/@damienmortini/element-animation-ticker/index.js';
 
-import { WebGLRenderer } from '../../node_modules/three/src/renderers/WebGLRenderer.js';
+import { WebGLRenderer } from '/node_modules/three/src/renderers/WebGLRenderer.js';
 import Scene from './Scene.js';
 
 /**
@@ -22,6 +22,7 @@ class Main extends AnimationTickerElement {
         canvas {
           width: 100%;
           height: 100%;
+          max-height: 100%;
         }
       </style>
       <canvas></canvas>

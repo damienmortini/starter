@@ -1,10 +1,10 @@
-import { Scene as THREEScene } from '../../node_modules/three/src/scenes/Scene.js';
-import { PerspectiveCamera } from '../../node_modules/three/src/cameras/PerspectiveCamera.js';
-import { Mesh } from '../../node_modules/three/src/objects/Mesh.js';
-import { BoxGeometry } from '../../node_modules/three/src/geometries/BoxGeometry.js';
-import { MeshNormalMaterial } from '../../node_modules/three/src/materials/MeshNormalMaterial.js';
+import { Scene as THREEScene } from '/node_modules/three/src/scenes/Scene.js';
+import { PerspectiveCamera } from '/node_modules/three/src/cameras/PerspectiveCamera.js';
+import { Mesh } from '/node_modules/three/src/objects/Mesh.js';
+import { BoxGeometry } from '/node_modules/three/src/geometries/BoxGeometry.js';
+import { MeshNormalMaterial } from '/node_modules/three/src/materials/MeshNormalMaterial.js';
 
-import THREETrackballController from '../../node_modules/@damienmortini/three/controller/THREETrackballController.js';
+import THREETrackballController from '/node_modules/@damienmortini/three/controller/THREETrackballController.js';
 
 export default class Scene extends THREEScene {
   constructor({ canvas }) {
