@@ -36,17 +36,17 @@
     gl-matrix "^3.1.0"
     mobile-detect "^1.4.4"
 
-"@damienmortini/element-animation-ticker@0.0.19", "@damienmortini/element-animation-ticker@^0.0.19":
+"@damienmortini/element-animation-ticker@0.0.19":
   version "0.0.19"
   resolved "https://npm.pkg.github.com/download/@damienmortini/element-animation-ticker/0.0.19/8a08d5ffbf35d63232a4ee026ba70936744826b5e14c0253a42da3cd80b019d8#99ca413f2ac04e3c4806d6c25dc477c401f7c42d"
   integrity sha512-JZgNo302Tf9z4NuZunC1dsEGNTT1TN/FAVxZSbw2cCN6OEiEsx4LTD4w+eDLxwd+wTVTWQuZfkIXA3M1FZNXAA==
   dependencies:
     "@damienmortini/core" "0.2.24"
 
-"@damienmortini/server@^1.0.12":
-  version "1.0.12"
-  resolved "https://npm.pkg.github.com/download/@damienmortini/server/1.0.12/0e6685048e77e71dc242e09560537e63c1dbc69cf3fa3065b6f6af9c6820e1a3#fe804dc9470d5d3c34d2ad6867b58b34411341a7"
-  integrity sha512-WIb3difh4k+L2b6sPKbKsQpd88unmn+AbUE79rqE7j6UiFL5MW4478C1XRRWF1ej4pPY8RNU6woAl322g7QJ/A==
+"@damienmortini/server@^1.0.13":
+  version "1.0.13"
+  resolved "https://npm.pkg.github.com/download/@damienmortini/server/1.0.13/93ba1a22e79feac30ea7b76239690436f731ff6c60377e6dcc7092de0d212802#5563910c4f9a842b0a3c05b89f64f5f14842d265"
+  integrity sha512-hgolzFI/SF/4Xy1bfh4EpDMqA87cQM9pW9tcJnJDVw6Tw0MHVHYPr2n54HS2keymUyYRoQoIEx7gxa/9XlvSaA==
   dependencies:
     mime-types "^2.1.24"
     ws "^7.0.0"
