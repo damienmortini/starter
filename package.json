@@ -2,20 +2,21 @@
   "name": "@damienmortini/starter",
   "private": true,
   "version": "0.0.0",
-  "description": "",
+  "description": "Web starter",
   "main": "src/index.js",
   "scripts": {
-    "build": "lerna run build",
+    "build": "lerna run build --parallel",
     "docs": "jsdoc -c jsdoc.config.json",
-    "fix": "eslint src --fix",
+    "fix": "eslint packages --fix",
+    "release": "lerna run release --parallel",
     "start": "server --path=?dev",
-    "test": "eslint src"
+    "test": "eslint packages",
+    "upgrade": "yarn upgrade-interactive --latest"
   },
   "author": "Damien Mortini",
   "license": "ISC",
   "workspaces": [
-    "packages/*",
-    "../lib/packages/**/*"
+    "packages/*"
   ],
   "devDependencies": {
     "@damienmortini/server": "^1.0.12",

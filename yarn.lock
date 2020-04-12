@@ -28,6 +28,21 @@
   resolved "https://registry.yarnpkg.com/@babel/parser/-/parser-7.9.4.tgz#68a35e6b0319bbc014465be43828300113f2f2e8"
   integrity sha512-bC49otXX6N0/VYhgOMh4gnP26E9xnDZK3TmbNpxYzzz9BQLBosQwfyOe9/cXUU3txYhTzLCbcqd5c8y/OmCjHA==
 
+"@damienmortini/core@0.2.24":
+  version "0.2.24"
+  resolved "https://npm.pkg.github.com/download/@damienmortini/core/0.2.24/0a3f01c33016a2e107b0751143e2e0bb13ea4d5a727bf59129ab178f28ab2836#c17928921abaef95c642ac640ba86660dd923e96"
+  integrity sha512-XKJuQpuwpqjtxcPXNsfbNIWJoJxeVfYtA/LJSJB2JbclLBhwTXyFVNNIsX+bsbCdaWjgLxT96bVJZHqkx037tg==
+  dependencies:
+    gl-matrix "^3.1.0"
+    mobile-detect "^1.4.4"
+
+"@damienmortini/element-animation-ticker@0.0.19", "@damienmortini/element-animation-ticker@^0.0.19":
+  version "0.0.19"
+  resolved "https://npm.pkg.github.com/download/@damienmortini/element-animation-ticker/0.0.19/8a08d5ffbf35d63232a4ee026ba70936744826b5e14c0253a42da3cd80b019d8#99ca413f2ac04e3c4806d6c25dc477c401f7c42d"
+  integrity sha512-JZgNo302Tf9z4NuZunC1dsEGNTT1TN/FAVxZSbw2cCN6OEiEsx4LTD4w+eDLxwd+wTVTWQuZfkIXA3M1FZNXAA==
+  dependencies:
+    "@damienmortini/core" "0.2.24"
+
 "@damienmortini/server@^1.0.12":
   version "1.0.12"
   resolved "https://npm.pkg.github.com/download/@damienmortini/server/1.0.12/0e6685048e77e71dc242e09560537e63c1dbc69cf3fa3065b6f6af9c6820e1a3#fe804dc9470d5d3c34d2ad6867b58b34411341a7"
@@ -35,6 +50,14 @@
   dependencies:
     mime-types "^2.1.24"
     ws "^7.0.0"
+
+"@damienmortini/three@0.1.23":
+  version "0.1.23"
+  resolved "https://npm.pkg.github.com/download/@damienmortini/three/0.1.23/982d87afd9d9791f17e0f1005ac9750ec8eb3e1a3985ae9e7c652332be2968c2#0b5d739826259d31db5e97d3dd595ef94bb828de"
+  integrity sha512-RUlJYx54QjqOxDUKJZbhS8i68exBDOETxmKTpjA/lWrifwvOk5ED+uirEACXE51xDjPVRDDoDu2azPnkYl1UWQ==
+  dependencies:
+    "@damienmortini/core" "0.2.24"
+    three "0.115.0"
 
 "@evocateur/libnpmaccess@^3.1.2":
   version "3.1.2"
@@ -955,13 +978,6 @@ JSONStream@^1.0.4, JSONStream@^1.3.4:
   dependencies:
     jsonparse "^1.2.0"
     through ">=2.2.7 <3"
-
-a-color-picker@^1.2.1:
-  version "1.2.1"
-  resolved "https://registry.yarnpkg.com/a-color-picker/-/a-color-picker-1.2.1.tgz#690c9b66595cb906b6a3ceec040cf0ad1f815608"
-  integrity sha512-aMCUKd2zTDWK2YWnjz0k3YhFc9XL0jZlPIywF6XkP6i3wdq2iHTEnl1BFPZkOVDV89M12t+zeZ8m23cfzn57/Q==
-  dependencies:
-    is-plain-object "^2.0.4"
 
 abbrev@1:
   version "1.1.1"
@@ -3346,11 +3362,6 @@ lodash@^4.17.12, lodash@^4.17.14, lodash@^4.17.15, lodash@^4.2.1:
   version "4.17.15"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.15.tgz#b447f6670a0455bbfeedd11392eff330ea097548"
   integrity sha512-8xOcRHvCjnocdS5cpwXQXVzmmh5e5+saE2QGoeQmbKmRS6J3VQppPOIt0MnmE+4xlZoumy0GPG0D0MVIQbNA1A==
-
-lottie-web@^5.6.8:
-  version "5.6.8"
-  resolved "https://registry.yarnpkg.com/lottie-web/-/lottie-web-5.6.8.tgz#4e19c4985076368ace3e2140ba599fdc4d927c52"
-  integrity sha512-2b7KDEIzpp3Y+u9BtFMHBkUFWe6TFgVdYvXvpfmbbxAL9XiwHUywAoWH1GhCCMmGqWqkxw8v4IxnOq/3hiOtJg==
 
 loud-rejection@^1.0.0:
   version "1.6.0"
