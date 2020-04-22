@@ -1,6 +1,7 @@
-import AnimationTickerElement from '/node_modules/@damienmortini/element-animation-ticker/index.js';
+import AnimationTickerElement from '../../element-animation-ticker/index.js';
 
-import { WebGLRenderer } from '/node_modules/three/src/renderers/WebGLRenderer.js';
+import { WebGLRenderer } from '../../../three/src/renderers/WebGLRenderer.js';
+
 import Scene from './Scene.js';
 
 /**

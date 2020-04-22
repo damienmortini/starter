@@ -1,1 +1,2 @@
 class e extends HTMLElement{constructor(){super(),this.attachShadow({mode:"open"}).innerHTML="\n      <style>\n        :host {\n          display: flex;\n          justify-content: center;\n          align-items: center;\n        }\n        \n        h1 {\n          font-size: 32px;\n        }\n      </style>\n      <h1>starter-element</h1>\n    "}}window.customElements.define("starter-element",e);
+//# sourceMappingURL=index.js.map

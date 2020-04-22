@@ -11,7 +11,7 @@
   "author": "Damien Mortini",
   "license": "ISC",
   "devDependencies": {
-    "rollup": "^2.6.0",
-    "terser": "^4.6.11"
+    "rollup": "^2.7.1",
+    "rollup-plugin-terser": "^5.3.0"
   }
 }
