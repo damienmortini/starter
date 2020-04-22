@@ -4,7 +4,7 @@ import { Mesh } from '../../../three/src/objects/Mesh.js';
 import { BoxGeometry } from '../../../three/src/geometries/BoxGeometry.js';
 import { MeshNormalMaterial } from '../../../three/src/materials/MeshNormalMaterial.js';
 
-import THREETrackballController from '../../three/controller/THREETrackballController.js';
+import THREETrackballController from '../../../@damienmortini/three/controller/THREETrackballController.js';
 
 export default class Scene extends THREEScene {
   constructor({ canvas }) {

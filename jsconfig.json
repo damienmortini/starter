@@ -2,11 +2,10 @@
   "compilerOptions": {
     "target": "esnext",
     "checkJs": true,
-    "baseUrl": ".",
-    "paths": {
-      "/*": [
-        "*"
-      ]
-    }
-  }
+    "baseUrl": "node_modules/",
+    "rootDirs": [
+      "node_modules",
+      ".",
+    ],
+  },
 }
