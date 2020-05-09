@@ -5,8 +5,7 @@
   "description": "starter-gl",
   "main": "src/index.js",
   "scripts": {
-    "build": "rollup -c",
-    "release": "npm run build && terser build/index.js --compress --mangle --module --output build/index.js"
+    "build": "rollup -c"
   },
   "author": "Damien Mortini",
   "license": "ISC",
