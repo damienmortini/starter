@@ -10,11 +10,11 @@
   "author": "Damien Mortini",
   "license": "ISC",
   "dependencies": {
-    "@damienmortini/core": "0.2.32",
-    "@damienmortini/element-animation-ticker": "0.0.27"
+    "@damienmortini/core": "0.2.33",
+    "@damienmortini/element-animation-ticker": "0.0.29"
   },
   "devDependencies": {
-    "rollup": "^2.7.1",
+    "rollup": "^2.9.1",
     "rollup-plugin-terser": "^5.3.0"
   }
 }
