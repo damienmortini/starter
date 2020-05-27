@@ -18,12 +18,16 @@ class Main extends AnimationTickerElement {
       <style>
         :host {
           display: block;
+          position: relative;
+          touch-action: none;
         }
         
         canvas {
+          position: absolute;
+          top: 0;
+          left: 0;
           width: 100%;
           height: 100%;
-          max-height: 100%;
         }
       </style>
       <canvas></canvas>
@@ -53,25 +57,16 @@ class Main extends AnimationTickerElement {
     this.renderer.setPixelRatio(window.devicePixelRatio);
 
     this.scene = new Scene({ canvas: this.canvas });
-  }
 
-  connectedCallback() {
-    super.connectedCallback();
-    window.addEventListener('resize', this._resizeBinded = this.resize.bind(this));
-    this.resize();
-  }
+    const resizeObserver = new ResizeObserver((entries) => {
+      const width = entries[0].contentRect.width;
+      const height = entries[0].contentRect.height;
 
-  disconnectedCallback() {
-    super.disconnectedCallback();
-    window.removeEventListener('resize', this._resizeBinded);
-  }
-
-  resize() {
-    const width = this.canvas.offsetWidth;
-    const height = this.canvas.offsetHeight;
-    this.scene.resize(width, height);
-    this.renderer.setSize(width, height, false);
-    this.renderer.render(this.scene, this.scene.camera);
+      this.scene.resize(width, height);
+      this.renderer.setSize(width, height, false);
+      this.renderer.render(this.scene, this.scene.camera);
+    });
+    resizeObserver.observe(this);
   }
 
   update() {

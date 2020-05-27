@@ -14,19 +14,20 @@ class Main extends AnimationTickerElement {
 
     this.autoplay = true;
 
-    this._resizeBinded = this.resize.bind(this);
-
     this.attachShadow({ mode: 'open' }).innerHTML = `
       <style>
         :host {
           display: block;
+          position: relative;
           touch-action: none;
         }
         
         canvas {
+          position: absolute;
+          top: 0;
+          left: 0;
           width: 100%;
           height: 100%;
-          max-height: 100%;
         }
       </style>
       <canvas></canvas>
@@ -35,27 +36,17 @@ class Main extends AnimationTickerElement {
     this.canvas = this.shadowRoot.querySelector('canvas');
 
     this.view = new View({ canvas: this.canvas });
-  }
 
-  connectedCallback() {
-    super.connectedCallback();
-    window.addEventListener('resize', this._resizeBinded);
-    this.resize();
-  }
+    const resizeObserver = new ResizeObserver((entries) => {
+      const width = entries[0].contentRect.width;
+      const height = entries[0].contentRect.height;
 
-  disconnectedCallback() {
-    super.disconnectedCallback();
-    window.removeEventListener('resize', this._resizeBinded);
-  }
+      this.canvas.width = width * window.devicePixelRatio;
+      this.canvas.height = height * window.devicePixelRatio;
 
-  resize() {
-    const width = this.canvas.offsetWidth;
-    const height = this.canvas.offsetHeight;
-
-    this.canvas.width = width * window.devicePixelRatio;
-    this.canvas.height = height * window.devicePixelRatio;
-
-    this.view.resize(width, height);
+      this.view.resize(width, height);
+    });
+    resizeObserver.observe(this);
   }
 
   update() {
