@@ -3,11 +3,13 @@
   "private": true,
   "version": "0.0.0",
   "description": "starter-three",
-  "main": "src/index.js",
+  "main": "index.js",
   "author": "Damien Mortini",
   "license": "ISC",
   "dependencies": {
-    "@damienmortini/element-animation-ticker": "0.0.31",
-    "@damienmortini/three": "0.1.38"
+    "@damienmortini/core": "0.2.36",
+    "@damienmortini/element-animation-ticker": "0.0.32",
+    "@damienmortini/three": "0.1.41",
+    "three": "^0.117.0"
   }
 }

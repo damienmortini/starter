@@ -3,11 +3,11 @@
   "private": true,
   "version": "0.0.0",
   "description": "starter-gl",
-  "main": "src/index.js",
+  "main": "index.js",
   "author": "Damien Mortini",
   "license": "ISC",
   "dependencies": {
-    "@damienmortini/core": "0.2.35",
-    "@damienmortini/element-animation-ticker": "0.0.31"
+    "@damienmortini/core": "0.2.36",
+    "@damienmortini/element-animation-ticker": "0.0.32"
   }
 }

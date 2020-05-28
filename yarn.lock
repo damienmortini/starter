@@ -28,20 +28,20 @@
   resolved "https://registry.yarnpkg.com/@babel/parser/-/parser-7.10.0.tgz#8eca3e71a73dd562c5222376b08253436bb4995b"
   integrity sha512-fnDUl1Uy2gThM4IFVW4ISNHqr3cJrCsRkSCasFgx0XDO9JcttDS5ytyBc4Cu4X1+fjoo3IVvFbRD6TeFlHJlEQ==
 
-"@damienmortini/core@0.2.35", "@damienmortini/core@^0.2.35":
-  version "0.2.35"
-  resolved "https://npm.pkg.github.com/download/@damienmortini/core/0.2.35/44b581e704d81bd9c5d2d4c592277e49b053f8f96c51602f0ee1a93f3dabc8c5#4aabf2cd519c457d0e34cfe6baa3377b9ab2f264"
-  integrity sha512-62gAHvYAoizxxDNrlJWEEIyBQm1OP5j/6D6UD2jhHKGO+MqefyKepenUIFIBWqq3G659z/g3CFaR4gryzj60UA==
+"@damienmortini/core@0.2.36", "@damienmortini/core@^0.2.36":
+  version "0.2.36"
+  resolved "https://npm.pkg.github.com/download/@damienmortini/core/0.2.36/f42b151270baf8aed9988dc2807a6f16066d622d75b87a5380d77b240f9a7bfc#95a62fa3670111fe24b8d4ac7c9167228994af5e"
+  integrity sha512-6ur2NRPWIxGStvvUdU4HF7MPPf712QwqqZzIKH44Fe0J4u/0xg6RQTCEjwYm1PM/TMawWVphDyyTbBJOw05LwQ==
   dependencies:
     gl-matrix "^3.3.0"
     mobile-detect "^1.4.4"
 
-"@damienmortini/element-animation-ticker@0.0.31":
-  version "0.0.31"
-  resolved "https://npm.pkg.github.com/download/@damienmortini/element-animation-ticker/0.0.31/21ea069bdd00a76d384ac424e17f498b7c4056a122ef97e1afc60b57495a05be#facbcfd45f9e09d2aa6a200d28ef2af986fdd606"
-  integrity sha512-rAo3prkWciQeY15VHEcH2hiOhKun+x4APuZgvTOi4YgVIU6VUB9sQ9sEa6sEQjO4PB54riIuWSf5CQtlN9/xQw==
+"@damienmortini/element-animation-ticker@0.0.32":
+  version "0.0.32"
+  resolved "https://npm.pkg.github.com/download/@damienmortini/element-animation-ticker/0.0.32/dafc128a877abfbef17e211285a5ec56c85232d5d3838c4f9c02b497961a422e#333dadcb3502193c1a53f81e5f31312f1f30bae3"
+  integrity sha512-8Qa9C/DYQXQQYJDPNokIsE5i0/orHbxC5VQ091UvBW316EGYmdetWFyL6cujOP1I0HhCk9U4uTNPo7Tg/cBj4Q==
   dependencies:
-    "@damienmortini/core" "^0.2.35"
+    "@damienmortini/core" "^0.2.36"
 
 "@damienmortini/server@^1.0.16":
   version "1.0.19"
@@ -51,13 +51,13 @@
     mime-types "^2.1.27"
     ws "^7.3.0"
 
-"@damienmortini/three@0.1.38":
-  version "0.1.38"
-  resolved "https://npm.pkg.github.com/download/@damienmortini/three/0.1.38/4d3010bb775a1e5ef4095fef5d0e67da058f2024e82ae32669dd20999bb94e1a#b483186a6541c5b32111496afe40664b1204083e"
-  integrity sha512-IaQTcqdzJHPvpHULtQX87K0bbxdayJD4HbfpOuswLgp2//gYFw3jkaoQYUtcL9skfgQ4su79Mwa+8uvJqZiK9Q==
+"@damienmortini/three@0.1.41":
+  version "0.1.41"
+  resolved "https://npm.pkg.github.com/download/@damienmortini/three/0.1.41/9ab996621afb9bbfeac8e1464b8dcd50e2cabe79545b5cd3c49f686992706ec5#4a9cef61ba04b5a3326b19cbb13075c00be9bae3"
+  integrity sha512-JLFkAmsOcQ8CuWWPhIa1pHpOSnVwoGhOLdNolaKuaHBPq04Bn2bEegP3w2ke4RwTDftj/bm5GELXWR0htsbKmg==
   dependencies:
-    "@damienmortini/core" "^0.2.35"
-    three "0.116.1"
+    "@damienmortini/core" "^0.2.36"
+    three "0.117.0"
 
 "@evocateur/libnpmaccess@^3.1.2":
   version "3.1.2"
@@ -5275,10 +5275,10 @@ thenify-all@^1.0.0:
   dependencies:
     any-promise "^1.0.0"
 
-three@0.116.1:
-  version "0.116.1"
-  resolved "https://registry.yarnpkg.com/three/-/three-0.116.1.tgz#a393f7a81fdc3e2fbf57ded5ba47dc5bd3678ce0"
-  integrity sha512-l2JCMiA/lVZAuSrLWRYMalvpR+0j8hbIhCpfs4V6JFnw2+JQEQJ5HltNpfFr+9TDpQts1BhtcISehWf/xBGPvQ==
+three@0.117.0, three@^0.117.0:
+  version "0.117.0"
+  resolved "https://registry.yarnpkg.com/three/-/three-0.117.0.tgz#43d834d86fa7e0a500e5d6a8a071953498b9a3e5"
+  integrity sha512-mZdFmxva8b/Tdcjh3zcFdyxhwPMJr8Gub9dIzZvisAwdOouxgCOcpjb0MHCxwZvmJTQFpEDGSHrMscxrkbwR9Q==
 
 through2@^2.0.0, through2@^2.0.2:
   version "2.0.5"

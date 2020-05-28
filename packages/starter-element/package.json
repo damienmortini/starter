@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "description": "starter-element",
-  "main": "src/index.js",
+  "main": "index.js",
   "author": "Damien Mortini",
   "license": "ISC"
 }
