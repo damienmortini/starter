@@ -46,7 +46,7 @@ class Main extends AnimationTickerElement {
 
       this.view.resize(width, height);
     });
-    resizeObserver.observe(this);
+    resizeObserver.observe(this.canvas);
   }
 
   update() {

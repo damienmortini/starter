@@ -66,7 +66,7 @@ class Main extends AnimationTickerElement {
       this.renderer.setSize(width, height, false);
       this.renderer.render(this.scene, this.scene.camera);
     });
-    resizeObserver.observe(this);
+    resizeObserver.observe(this.canvas);
   }
 
   update() {
