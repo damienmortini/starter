@@ -2,6 +2,18 @@
 
 # Javascript starter
 
+## Contains
+
 * Basic custom element
-* GL
-* threejs
+* GL custom element
+* Three.js custom element
+
+## Usage
+Before installing any packages from this repo run  
+```sh
+npm login --registry=https://npm.pkg.github.com
+```
+then add this line to your `.npmrc`
+```
+@damienmortini:registry=https://npm.pkg.github.com
+```
