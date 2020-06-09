@@ -19,7 +19,6 @@ class Main extends AnimationTickerElement {
         :host {
           display: block;
           position: relative;
-          touch-action: none;
         }
         
         canvas {
