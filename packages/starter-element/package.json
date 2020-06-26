@@ -4,6 +4,5 @@
   "version": "0.0.0",
   "description": "starter-element",
   "main": "index.js",
-  "author": "Damien Mortini",
-  "license": "ISC"
+  "author": "Damien Mortini"
 }

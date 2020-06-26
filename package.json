@@ -11,7 +11,6 @@
     "upgrade": "yarn install && yarn upgrade-interactive --latest"
   },
   "author": "Damien Mortini",
-  "license": "ISC",
   "workspaces": [
     "packages/*"
   ],
