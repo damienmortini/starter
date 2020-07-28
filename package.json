@@ -8,6 +8,7 @@
     "publish": "lerna publish",
     "start": "server",
     "test": "eslint packages",
+    "update": "yarn",
     "upgrade": "yarn install && yarn upgrade-interactive --latest"
   },
   "author": "Damien Mortini",
