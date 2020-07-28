@@ -6,7 +6,7 @@
   "main": "index.js",
   "author": "Damien Mortini",
   "dependencies": {
-    "@damienmortini/core": "0.2.49",
-    "@damienmortini/element-animation-ticker": "0.0.45"
+    "@damienmortini/core": "0.2.57",
+    "@damienmortini/element-animation-ticker": "0.0.53"
   }
 }

@@ -28,35 +28,35 @@
   resolved "https://registry.yarnpkg.com/@babel/parser/-/parser-7.10.0.tgz#8eca3e71a73dd562c5222376b08253436bb4995b"
   integrity sha512-fnDUl1Uy2gThM4IFVW4ISNHqr3cJrCsRkSCasFgx0XDO9JcttDS5ytyBc4Cu4X1+fjoo3IVvFbRD6TeFlHJlEQ==
 
-"@damienmortini/core@0.2.49", "@damienmortini/core@^0.2.49":
-  version "0.2.49"
-  resolved "https://npm.pkg.github.com/download/@damienmortini/core/0.2.49/85afaa1365d0e5cf44b79f2990e8acbf3978c173a5d1448a24149c76cbc72984#c9ae991a6053feccb6b2a4f34e6c6ce67a1e4f41"
-  integrity sha512-laBAvvUeZMOZwTXKrGXE3XKyLu82YFNstbT5uxOg1G1jnXfFbFpBk3vtn44HBMnidHJwkV+rFiN8+7wtIry3RQ==
+"@damienmortini/core@0.2.57", "@damienmortini/core@^0.2.57":
+  version "0.2.57"
+  resolved "https://npm.pkg.github.com/download/@damienmortini/core/0.2.57/070389b415953f913c7443d4db00e3c4b72a458bfbc0ccae1a7e466e122c7e59#51e72d7dabc698297c91678f50e007b086788df5"
+  integrity sha512-EwDSjVT+z/rXN1TRICSAoSb5pZhPw6My3wswzThyTz83skm09HYSqvkMZI+/KXKG6F5ELPf5RunGgKej3WK6pw==
   dependencies:
     gl-matrix "^3.3.0"
     mobile-detect "^1.4.4"
 
-"@damienmortini/element-animation-ticker@0.0.45":
-  version "0.0.45"
-  resolved "https://npm.pkg.github.com/download/@damienmortini/element-animation-ticker/0.0.45/4184b4eb4144938fb00461d285d10d4fad217f3aca9798b8c1ea7087d12d50bc#b44fb20eff77c207fbdc49aac32175044cb9cfd2"
-  integrity sha512-Q1ggEWamwFa0kM2kjsX0iwwVGm2gqJaJLj6hYuEfcSVsfAgDwaKKCMLLQLpsrDV7iBrH0QJllbwIWzlKz+noJA==
+"@damienmortini/element-animation-ticker@0.0.53":
+  version "0.0.53"
+  resolved "https://npm.pkg.github.com/download/@damienmortini/element-animation-ticker/0.0.53/3427e9454deea7d78164072dab1d6d2bebd1dcde0e7359797d97c1dae4995f5a#75388777cdfb702a3a14b4a9272dc4bab49e587f"
+  integrity sha512-8Zka6p4w4oKbLyknHJqPCRLDacngwaphAwmX5mHa1qApOlqRz1uqiSdxdgzY1D0JWVP/wtckCGbvwUdCxEMuqQ==
   dependencies:
-    "@damienmortini/core" "^0.2.49"
+    "@damienmortini/core" "^0.2.57"
 
-"@damienmortini/server@^1.0.21":
-  version "1.0.21"
-  resolved "https://npm.pkg.github.com/download/@damienmortini/server/1.0.21/a09e796f9929b7b290b0dd97fc989903cf50f3ecc753dcef067f495412396b45#46235ec0fcc021798e00f905ad52980f8bcefadb"
-  integrity sha512-3sFn35+LEVROzQXr6ePMO7YeDc9oqpombtx3T/98O3ToJi/rJ0YHq32WMMMZtAUyjmU52h7DZFOtozHlEUd7Ug==
+"@damienmortini/server@^1.0.24":
+  version "1.0.24"
+  resolved "https://npm.pkg.github.com/download/@damienmortini/server/1.0.24/53828be433b710642e8ff0ecc165a86c1c293db73a0626bd03aede9ed517a4de#2d0cc0aa4f111617b0797a8322dcc52ae9dc15dd"
+  integrity sha512-gJ6STXCtl0U9QnUOriE9SzD6UoaE9ouDdthi2ilP7dL2nyzsHDB5VY/xlrX/cA5yJLz15EblS48/gKlc0u0x0Q==
   dependencies:
     mime-types "^2.1.27"
-    ws "^7.3.0"
+    ws "^7.3.1"
 
-"@damienmortini/three@0.1.58":
-  version "0.1.58"
-  resolved "https://npm.pkg.github.com/download/@damienmortini/three/0.1.58/7809dd86e8c5fa2693d477fd1261ecdebf68cdfc41dbdeaeed0bd0301b1ab55f#3fe9438b745fc8dc5db3105ded507ef4192c2e9e"
-  integrity sha512-ZQQQPFMTTVkjrfXLpHbKS2ctf4AYz+0Oy3/yRB+FJhJAxO2Od+GxWr0VvJVe9PEg0efeIDMUBgEidQZnDS0BGQ==
+"@damienmortini/three@0.1.66":
+  version "0.1.66"
+  resolved "https://npm.pkg.github.com/download/@damienmortini/three/0.1.66/ac02f19dc6ebc82cee7132f5619d30d9f311f08d339b2a945a115ebd7cdaf2b5#cf9dd9512fdc11645277abb97a6072effdf99681"
+  integrity sha512-kO3STnNmlBO4SlmWvzGHVL/oT0lgdNpB3yyvNgZSQ1+wz+7i93tKsCBuEw+8sMecvL8JP+1xBqLfOeRx4hNBDA==
   dependencies:
-    "@damienmortini/core" "^0.2.49"
+    "@damienmortini/core" "^0.2.57"
     three "0.118.3"
 
 "@evocateur/libnpmaccess@^3.1.2":
@@ -1006,7 +1006,7 @@ acorn-jsx@^5.2.0:
   resolved "https://registry.yarnpkg.com/acorn-jsx/-/acorn-jsx-5.2.0.tgz#4c66069173d6fdd68ed85239fc256226182b2ebe"
   integrity sha512-HiUX/+K2YpkpJ+SzBffkM/AQ2YE03S0U1kjTLVpoJdhZMOWy8qvXVN9JdLqv2QsaQ6MPYQIuNmwD8zOiYUofLQ==
 
-acorn@^7.2.0:
+acorn@^7.3.1:
   version "7.3.1"
   resolved "https://registry.yarnpkg.com/acorn/-/acorn-7.3.1.tgz#85010754db53c3fbaf3b9ea3e083aa5c5d147ffd"
   integrity sha512-tLc0wSnatxAQHVHUapaHdz72pi9KUyHjq5KyHjGg9Y8Ifdc79pTh2XvI6I1/chZbnM7QtNKzh66ooDogPZSleA==
@@ -2074,10 +2074,10 @@ eslint-scope@^5.1.0:
     esrecurse "^4.1.0"
     estraverse "^4.1.1"
 
-eslint-utils@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/eslint-utils/-/eslint-utils-2.0.0.tgz#7be1cc70f27a72a76cd14aa698bcabed6890e1cd"
-  integrity sha512-0HCPuJv+7Wv1bACm8y5/ECVfYdfsAm9xmVb7saeFlxjPYALefjhbYoCkBjPdPzGH8wWyTpAez82Fh3VKYEZ8OA==
+eslint-utils@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/eslint-utils/-/eslint-utils-2.1.0.tgz#d2de5e03424e707dc10c74068ddedae708741b27"
+  integrity sha512-w94dQYoauyvlDc43XnGB8lU3Zt713vNChgt4EWwhXAP2XkBvndfxF0AgIqKOOasjPIPzj9JqgwkwbCYD0/V3Zg==
   dependencies:
     eslint-visitor-keys "^1.1.0"
 
@@ -2086,15 +2086,15 @@ eslint-visitor-keys@^1.1.0:
   resolved "https://registry.yarnpkg.com/eslint-visitor-keys/-/eslint-visitor-keys-1.1.0.tgz#e2a82cea84ff246ad6fb57f9bde5b46621459ec2"
   integrity sha512-8y9YjtM1JBJU/A9Kc+SbaOV4y29sSWckBwMHa+FGtVj5gN/sbnKDf6xJUl+8g7FAij9LVaP8C24DUiH/f/2Z9A==
 
-eslint-visitor-keys@^1.2.0:
+eslint-visitor-keys@^1.3.0:
   version "1.3.0"
   resolved "https://registry.yarnpkg.com/eslint-visitor-keys/-/eslint-visitor-keys-1.3.0.tgz#30ebd1ef7c2fdff01c3a4f151044af25fab0523e"
   integrity sha512-6J72N8UNa462wa/KFODt/PJ3IU60SDpC3QXC1Hjc1BXXpfL2C9R5+AU7jhe0F6GREqVMh4Juu+NY7xn+6dipUQ==
 
-eslint@^7.3.1:
-  version "7.3.1"
-  resolved "https://registry.yarnpkg.com/eslint/-/eslint-7.3.1.tgz#76392bd7e44468d046149ba128d1566c59acbe19"
-  integrity sha512-cQC/xj9bhWUcyi/RuMbRtC3I0eW8MH0jhRELSvpKYkWep3C6YZ2OkvcvJVUeO6gcunABmzptbXBuDoXsjHmfTA==
+eslint@^7.5.0:
+  version "7.5.0"
+  resolved "https://registry.yarnpkg.com/eslint/-/eslint-7.5.0.tgz#9ecbfad62216d223b82ac9ffea7ef3444671d135"
+  integrity sha512-vlUP10xse9sWt9SGRtcr1LAC67BENcQMFeV+w5EvLEoFe3xJ8cF1Skd0msziRx/VMC+72B4DxreCE+OR12OA6Q==
   dependencies:
     "@babel/code-frame" "^7.0.0"
     ajv "^6.10.0"
@@ -2104,9 +2104,9 @@ eslint@^7.3.1:
     doctrine "^3.0.0"
     enquirer "^2.3.5"
     eslint-scope "^5.1.0"
-    eslint-utils "^2.0.0"
-    eslint-visitor-keys "^1.2.0"
-    espree "^7.1.0"
+    eslint-utils "^2.1.0"
+    eslint-visitor-keys "^1.3.0"
+    espree "^7.2.0"
     esquery "^1.2.0"
     esutils "^2.0.2"
     file-entry-cache "^5.0.1"
@@ -2120,7 +2120,7 @@ eslint@^7.3.1:
     js-yaml "^3.13.1"
     json-stable-stringify-without-jsonify "^1.0.1"
     levn "^0.4.1"
-    lodash "^4.17.14"
+    lodash "^4.17.19"
     minimatch "^3.0.4"
     natural-compare "^1.4.0"
     optionator "^0.9.1"
@@ -2133,14 +2133,14 @@ eslint@^7.3.1:
     text-table "^0.2.0"
     v8-compile-cache "^2.0.3"
 
-espree@^7.1.0:
-  version "7.1.0"
-  resolved "https://registry.yarnpkg.com/espree/-/espree-7.1.0.tgz#a9c7f18a752056735bf1ba14cb1b70adc3a5ce1c"
-  integrity sha512-dcorZSyfmm4WTuTnE5Y7MEN1DyoPYy1ZR783QW1FJoenn7RailyWFsq/UL6ZAAA7uXurN9FIpYyUs3OfiIW+Qw==
+espree@^7.2.0:
+  version "7.2.0"
+  resolved "https://registry.yarnpkg.com/espree/-/espree-7.2.0.tgz#1c263d5b513dbad0ac30c4991b93ac354e948d69"
+  integrity sha512-H+cQ3+3JYRMEIOl87e7QdHX70ocly5iW4+dttuR8iYSPr/hXKFb+7dBsZ7+u1adC4VrnPlTkv0+OwuPnDop19g==
   dependencies:
-    acorn "^7.2.0"
+    acorn "^7.3.1"
     acorn-jsx "^5.2.0"
-    eslint-visitor-keys "^1.2.0"
+    eslint-visitor-keys "^1.3.0"
 
 esprima@^4.0.0:
   version "4.0.1"
@@ -3142,10 +3142,10 @@ jsbn@~0.1.0:
   resolved "https://registry.yarnpkg.com/jsbn/-/jsbn-0.1.1.tgz#a5e654c2e5a2deb5f201d96cefbca80c0ef2f513"
   integrity sha1-peZUwuWi3rXyAdls77yoDA7y9RM=
 
-jsdoc@^3.6.3:
-  version "3.6.4"
-  resolved "https://registry.yarnpkg.com/jsdoc/-/jsdoc-3.6.4.tgz#246b2832a0ea8b37a441b61745509cfe29e174b6"
-  integrity sha512-3G9d37VHv7MFdheviDCjUfQoIjdv4TC5zTTf5G9VODLtOnVS6La1eoYBDlbWfsRT3/Xo+j2MIqki2EV12BZfwA==
+jsdoc@^3.6.5:
+  version "3.6.5"
+  resolved "https://registry.yarnpkg.com/jsdoc/-/jsdoc-3.6.5.tgz#e004372ca6f2dcdf19b3d2ebcd7c725528485502"
+  integrity sha512-SbY+i9ONuxSK35cgVHaI8O9senTE4CDYAmGSDJ5l3+sfe62Ff4gy96osy6OW84t4K4A8iGnMrlRrsSItSNp3RQ==
   dependencies:
     "@babel/parser" "^7.9.4"
     bluebird "^3.7.2"
@@ -3393,6 +3393,11 @@ lodash@^4.17.12, lodash@^4.17.14, lodash@^4.17.15, lodash@^4.2.1:
   version "4.17.15"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.15.tgz#b447f6670a0455bbfeedd11392eff330ea097548"
   integrity sha512-8xOcRHvCjnocdS5cpwXQXVzmmh5e5+saE2QGoeQmbKmRS6J3VQppPOIt0MnmE+4xlZoumy0GPG0D0MVIQbNA1A==
+
+lodash@^4.17.19:
+  version "4.17.19"
+  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.19.tgz#e48ddedbe30b3321783c5b4301fbd353bc1e4a4b"
+  integrity sha512-JNvd8XER9GQX0v2qJgsaN/mzFCNA5BRe/j8JN9d+tWyGLSodKQHKFicdwNYzWwI3wjRnaKPsGj1XkBjx/F96DQ==
 
 loud-rejection@^1.0.0:
   version "1.6.0"
@@ -5618,10 +5623,10 @@ write@1.0.3:
   dependencies:
     mkdirp "^0.5.1"
 
-ws@^7.3.0:
-  version "7.3.0"
-  resolved "https://registry.yarnpkg.com/ws/-/ws-7.3.0.tgz#4b2f7f219b3d3737bc1a2fbf145d825b94d38ffd"
-  integrity sha512-iFtXzngZVXPGgpTlP1rBqsUK82p9tKqsWRPg5L56egiljujJT3vGAYnHANvFxBieXrTFavhzhxW52jnaWV+w2w==
+ws@^7.3.1:
+  version "7.3.1"
+  resolved "https://registry.yarnpkg.com/ws/-/ws-7.3.1.tgz#d0547bf67f7ce4f12a72dfe31262c68d7dc551c8"
+  integrity sha512-D3RuNkynyHmEJIpD2qrgVkc9DQ23OrN/moAwZX4L8DfvszsJxpjQuUq3LMx6HoYji9fbIOBY18XWBsAux1ZZUA==
 
 xmlcreate@^2.0.3:
   version "2.0.3"
