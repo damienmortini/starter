@@ -2,16 +2,18 @@
  * Entry point element
  * @hideconstructor
  * @example
- * <starter-element></starter-element>
+ * <starter-main></starter-main>
  */
-class Main extends HTMLElement {
+window.customElements.define('starter-main', class extends HTMLElement {
   constructor() {
     super();
 
     this.attachShadow({ mode: 'open' }).innerHTML = `
       <style>
         :host {
-          display: flex;
+          display: grid;
+          position: relative;
+          contain: content;
           justify-content: center;
           align-items: center;
         }
@@ -20,9 +22,7 @@ class Main extends HTMLElement {
           font-size: 32px;
         }
       </style>
-      <h1>starter-element</h1>
+      <h1>starter-main</h1>
     `;
   }
-}
-
-window.customElements.define('starter-element', Main);
+});

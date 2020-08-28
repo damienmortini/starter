@@ -16,16 +16,12 @@
     "packages/*"
   ],
   "devDependencies": {
-    "@damienmortini/server": "^1.0.24",
-    "eslint": "^7.5.0",
+    "@damienmortini/generator": "^0.0.7",
+    "@damienmortini/server": "^1.0.26",
+    "eslint": "^7.7.0",
     "eslint-config-google": "^0.14.0",
     "jsdoc": "^3.6.5",
     "lerna": "^3.22.1",
-    "yarn": "^1.22.4"
-  },
-  "dependencies": {
-    "@damienmortini/starter-element": "*",
-    "@damienmortini/starter-gl": "*",
-    "@damienmortini/starter-three": "*"
+    "yarn": "^1.22.5"
   }
 }
