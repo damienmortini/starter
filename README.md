@@ -2,14 +2,10 @@
 
 # Javascript starter
 
-## Contains
-
-* Basic custom element
-* GL custom element
-* Three.js custom element
+Starter monorepo
 
 ## Usage
-Before installing any packages from this repo run  
+Before installing any packages from this repo run
 ```sh
 npm login --registry=https://npm.pkg.github.com
 ```
