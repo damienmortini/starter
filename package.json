@@ -16,9 +16,9 @@
     "packages/*"
   ],
   "devDependencies": {
-    "@damienmortini/generator": "^0.0.7",
-    "@damienmortini/server": "^1.0.26",
-    "eslint": "^7.7.0",
+    "@damienmortini/generator": "^0.0.12",
+    "@damienmortini/server": "^1.0.27",
+    "eslint": "^7.9.0",
     "eslint-config-google": "^0.14.0",
     "jsdoc": "^3.6.5",
     "lerna": "^3.22.1",
