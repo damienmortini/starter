@@ -8,20 +8,18 @@
     "publish": "lerna publish",
     "start": "server",
     "test": "eslint packages",
-    "update": "yarn",
-    "upgrade": "yarn install && yarn upgrade-interactive --latest"
+    "update": "npm update"
   },
   "author": "Damien Mortini",
   "workspaces": [
     "packages/*"
   ],
   "devDependencies": {
-    "@damienmortini/generator": "^0.0.12",
-    "@damienmortini/server": "^1.0.27",
-    "eslint": "^7.9.0",
+    "@damienmortini/generator": "^0.0.24",
+    "@damienmortini/server": "^1.0.28",
+    "eslint": "^7.11.0",
     "eslint-config-google": "^0.14.0",
-    "jsdoc": "^3.6.5",
-    "lerna": "^3.22.1",
-    "yarn": "^1.22.5"
+    "jsdoc": "^3.6.6",
+    "lerna": "^3.22.1"
   }
 }
