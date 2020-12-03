@@ -1,4 +1,4 @@
-name: Deploy
+name: Deploy to Github Pages
 on:
   push:
     branches: [master]
@@ -15,7 +15,7 @@ jobs:
           yarn install --production
         env:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
-      - name: Push to gh-pages
+      - name: Push to gh-pages branch
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
