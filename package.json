@@ -13,9 +13,9 @@
     "packages/*"
   ],
   "devDependencies": {
-    "@damienmortini/server": "^1.0.39",
-    "eslint": "^7.26.0",
+    "@damienmortini/server": "^1.0.45",
+    "eslint": "^7.32.0",
     "eslint-config-google": "^0.14.0",
-    "yarn": "^1.22.10"
+    "yarn": "^1.22.11"
   }
 }
