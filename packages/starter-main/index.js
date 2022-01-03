@@ -6,7 +6,7 @@
  */
 window.customElements.define('starter-main', class extends HTMLElement {
   constructor() {
-    super();
+    super()
 
     this.attachShadow({ mode: 'open' }).innerHTML = `
       <style>
@@ -23,6 +23,6 @@ window.customElements.define('starter-main', class extends HTMLElement {
         }
       </style>
       <h1>starter-main</h1>
-    `;
+    `
   }
-});
+})
