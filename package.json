@@ -16,7 +16,6 @@
     "@damienmortini/eslint-config": "^0.0.3",
     "@damienmortini/server": "^1.0.52",
     "eslint": "^8.6.0",
-    "eslint-config-google": "^0.14.0",
     "yarn": "^1.22.17"
   }
 }
