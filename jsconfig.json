@@ -1,11 +1,11 @@
 {
+  "exclude": [
+    "node_modules"
+  ],
   "compilerOptions": {
+    "moduleResolution": "node",
     "target": "esnext",
-    "checkJs": true,
-    "baseUrl": "node_modules/",
-    "rootDirs": [
-      "node_modules",
-      ".",
-    ],
+    "module": "esnext",
+    "checkJs": true
   },
 }
