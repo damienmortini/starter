@@ -5,8 +5,8 @@
   "scripts": {
     "start": "server",
     "test": "eslint packages",
-    "update": "yarn",
-    "upgrade": "yarn install && yarn upgrade-interactive --latest"
+    "update": "npm i",
+    "upgrade": "ncu --deep -u"
   },
   "author": "Damien Mortini",
   "workspaces": [
@@ -16,6 +16,6 @@
     "@damienmortini/eslint-config": "^0.0.3",
     "@damienmortini/server": "^1.0.52",
     "eslint": "^8.6.0",
-    "yarn": "^1.22.17"
+    "npm-check-updates": "^12.1.0"
   }
 }
