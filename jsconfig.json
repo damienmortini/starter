@@ -1,7 +1,4 @@
 {
-  "exclude": [
-    "node_modules"
-  ],
   "compilerOptions": {
     "moduleResolution": "node",
     "target": "esnext",
