@@ -20,5 +20,7 @@ jobs:
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git add node_modules -f
+          touch .nojekyll
+          git add .nojekyll
           git commit -m "Add node_modules"
           git push -uf origin main:gh-pages
