@@ -1,0 +1,6 @@
+:host {
+  display: grid;
+  position: relative;
+  font-family: sans-serif;
+  place-items: center;
+}

@@ -1,28 +1,15 @@
-/**
- * Entry point element
- * @hideconstructor
- * @example
- * <starter-main></starter-main>
- */
-window.customElements.define('starter-main', class extends HTMLElement {
+import css from './index.css' assert { type: 'css' }
+
+export class StarterMainElement extends HTMLElement {
   constructor() {
     super()
 
-    this.attachShadow({ mode: 'open' }).innerHTML = `
-      <style>
-        :host {
-          display: grid;
-          position: relative;
-          contain: content;
-          justify-content: center;
-          align-items: center;
-        }
-        
-        h1 {
-          font-size: 32px;
-        }
-      </style>
-      <h1>starter-main</h1>
+    this.attachShadow({ mode: 'open' })
+    this.shadowRoot.adoptedStyleSheets = [css]
+    this.shadowRoot.innerHTML = `
+      <h1>Ready, set, go!</h1>
     `
   }
-})
+}
+
+customElements.define('starter-main', StarterMainElement)
