@@ -1,4 +1,4 @@
-import css from './index.css' assert { type: 'css' }
+import css from '../index.css' assert { type: 'css' }
 
 export class StarterMainElement extends HTMLElement {
   constructor() {

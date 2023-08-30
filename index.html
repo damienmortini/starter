@@ -1,33 +1,30 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
+  <head>
+    <meta charset="UTF-8" />
+    <title></title>
+    <link rel="icon" href="data:," />
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+      }
 
-<head>
-  <meta charset="UTF-8">
-  <title></title>
-  <link rel="icon" href="data:,">
-  <meta name="description" content="">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <style>
-    html,
-    body {
-      height: 100%;
-      margin: 0;
-    }
+      starter-main {
+        width: 100%;
+        height: 100%;
+      }
+    </style>
+  </head>
 
-    starter-main {
-      width: 100%;
-      height: 100%;
-    }
-  </style>
-</head>
+  <body>
+    <starter-main></starter-main>
 
-<body>
-  <starter-main></starter-main>
-
-  <script type="module">
-    import './node_modules/@damienmortini/starter-main/index.js';
-  </script>
-
-</body>
-
+    <script type="module">
+      import './node_modules/@damienmortini/starter-main/dist/index.js'
+    </script>
+  </body>
 </html>

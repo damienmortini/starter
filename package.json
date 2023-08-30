@@ -4,8 +4,11 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "start": "server",
+    "start": "concurrently --kill-others \"npm run build:watch\" \"npm run serve\"",
+    "serve": "wds --node-resolve --watch",
     "test": "eslint packages",
+    "build": "npx nx run-many --target=build",
+    "build:watch": "npx nx run-many --target=build --watch",
     "update": "npm i",
     "upgrade": "ncu --deep -u"
   },
@@ -14,9 +17,14 @@
     "packages/*"
   ],
   "devDependencies": {
-    "@damienmortini/eslint-config": "^0.0.11",
-    "@damienmortini/server": "^1.0.64",
-    "eslint": "^8.33.0",
-    "npm-check-updates": "^16.6.3"
+    "@damienmortini/eslint-config": "^0.0.15",
+    "@damienmortini/prettier-config": "^0.0.1",
+    "@damienmortini/typescript-config": "^0.0.5",
+    "@web/dev-server": "^0.3.1",
+    "concurrently": "^8.2.1",
+    "eslint": "^8.48.0",
+    "npm-check-updates": "^16.13.2",
+    "nx": "16.7.4",
+    "nx-cloud": "latest"
   }
 }
