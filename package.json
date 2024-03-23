@@ -3,28 +3,48 @@
   "version": "0.0.0",
   "private": true,
   "type": "module",
-  "scripts": {
-    "start": "concurrently --kill-others \"npm run build:watch\" \"npm run serve\"",
-    "serve": "wds --node-resolve --watch",
-    "test": "eslint packages",
-    "build": "npx nx run-many --target=build",
-    "build:watch": "npx nx run-many --target=build --watch",
-    "update": "npm i",
-    "upgrade": "ncu --deep -u"
-  },
   "author": "Damien Mortini",
+  "scripts": {
+    "start": "wireit",
+    "serve": "server --resolve-modules",
+    "link": "node script/link.js",
+    "clean": "rimraf --glob \"packages/**/node_modules\"",
+    "test": "eslint packages",
+    "packages:build": "wireit",
+    "packages:watch": "wireit",
+    "update": "npm i",
+    "upgrade": "ncu --deep -u",
+    "postinstall": "wireit-update"
+  },
+  "wireit": {
+    "start": {
+      "command": "npm run serve",
+      "dependencies": [
+        "packages:watch"
+      ],
+      "service": true
+    },
+    "packages:watch": {
+      "command": "npm run packages:build --watch",
+      "message": "Watching packages",
+      "service": true
+    },
+    "packages:build": {
+      "dependencies": [
+        "./packages/starter-main:build"
+      ]
+    }
+  },
   "workspaces": [
-    "packages/*"
+    "packages/**/*"
   ],
   "devDependencies": {
-    "@damienmortini/eslint-config": "^0.0.15",
-    "@damienmortini/prettier-config": "^0.0.1",
-    "@damienmortini/typescript-config": "^0.0.5",
-    "@web/dev-server": "^0.3.1",
-    "concurrently": "^8.2.1",
-    "eslint": "^8.48.0",
-    "npm-check-updates": "^16.13.2",
-    "nx": "16.7.4",
-    "nx-cloud": "latest"
+    "@damienmortini/eslint-config": "^0.0.16",
+    "@damienmortini/prettier-config": "^0.0.2",
+    "@damienmortini/server": "^1.0.68",
+    "@damienmortini/typescript-config": "^0.0.6",
+    "npm-check-updates": "^16.14.17",
+    "rimraf": "^5.0.5",
+    "wireit": "^0.14.4"
   }
 }

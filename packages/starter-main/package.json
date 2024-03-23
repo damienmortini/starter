@@ -4,10 +4,30 @@
   "version": "0.0.0",
   "type": "module",
   "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
-    "build": "tsc"
+    "build": "wireit"
+  },
+  "wireit": {
+    "build": {
+      "command": "tsc && ncp src dist --filter=\"^[^.]+.((?!ts$).)*$\"",
+      "clean": "if-file-deleted",
+      "files": [
+        "src/**/*",
+        "tsconfig.json"
+      ],
+      "output": [
+        "dist/**"
+      ]
+    }
+  },
+  "dependencies": {
+    "lit-html": "^3.1.2"
   },
   "devDependencies": {
-    "typescript": "^5.2.2"
+    "@damienmortini/typescript-config": "^0.0.6",
+    "ncp": "^2.0.0",
+    "typescript": "^5.4.3",
+    "wireit": "^0.14.4"
   }
 }
