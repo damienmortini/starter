@@ -13,8 +13,7 @@
     "packages:build": "wireit",
     "packages:watch": "wireit",
     "update": "npm i",
-    "upgrade": "ncu --deep -u",
-    "postinstall": "wireit-update"
+    "upgrade": "ncu --deep -u"
   },
   "wireit": {
     "start": {
