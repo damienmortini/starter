@@ -1,1 +1,4 @@
 node_modules
+.wireit
+/dist
+.linked
