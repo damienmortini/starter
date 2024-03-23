@@ -7,7 +7,6 @@
   "scripts": {
     "start": "wireit",
     "serve": "server --resolve-modules",
-    "link": "node script/link.js",
     "clean": "rimraf --glob \"packages/**/node_modules\"",
     "test": "eslint packages",
     "packages:build": "wireit",
