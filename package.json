@@ -37,12 +37,12 @@
     "packages/**/*"
   ],
   "devDependencies": {
-    "@damienmortini/eslint-config": "^0.0.16",
-    "@damienmortini/prettier-config": "^0.0.2",
-    "@damienmortini/server": "^1.0.68",
-    "@damienmortini/typescript-config": "^0.0.6",
-    "npm-check-updates": "^16.14.17",
-    "rimraf": "^5.0.5",
-    "wireit": "^0.14.4"
+    "@damienmortini/eslint-config": "^0.0.25",
+    "@damienmortini/prettier-config": "^0.0.5",
+    "@damienmortini/server": "^1.0.80",
+    "@damienmortini/typescript-config": "^0.0.12",
+    "npm-check-updates": "^17.1.3",
+    "rimraf": "^6.0.1",
+    "wireit": "^0.14.9"
   }
 }
