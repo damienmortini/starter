@@ -38,7 +38,6 @@
   ],
   "devDependencies": {
     "@damienmortini/eslint-config": "^0.0.25",
-    "@damienmortini/prettier-config": "^0.0.5",
     "@damienmortini/server": "^1.0.80",
     "@damienmortini/typescript-config": "^0.0.12",
     "npm-check-updates": "^17.1.3",
