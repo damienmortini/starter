@@ -10,7 +10,7 @@
   },
   "wireit": {
     "build": {
-      "command": "tsc && ncp src dist --filter=\"^[^.]+.((?!ts$).)*$\"",
+      "command": "package-builder",
       "clean": "if-file-deleted",
       "files": [
         "src/**/*",
@@ -25,9 +25,8 @@
     "lit-html": "^3.3.0"
   },
   "devDependencies": {
-    "@damienmortini/typescript-config": "^0.0.12",
-    "ncp": "^2.0.0",
-    "typescript": "^5.8.3",
+    "@damienmortini/package-builder": "^0.0.3",
+    "@damienmortini/typescript-config": "^0.0.13",
     "wireit": "^0.14.12"
   }
 }

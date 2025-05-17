@@ -37,9 +37,9 @@
     "packages/**/*"
   ],
   "devDependencies": {
-    "@damienmortini/eslint-config": "^0.0.26",
-    "@damienmortini/server": "^1.0.80",
-    "@damienmortini/typescript-config": "^0.0.12",
+    "@damienmortini/eslint-config": "^0.0.27",
+    "@damienmortini/server": "^1.0.81",
+    "@damienmortini/typescript-config": "^0.0.13",
     "npm-check-updates": "^18.0.1",
     "rimraf": "^6.0.1",
     "wireit": "^0.14.12"
