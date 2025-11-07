@@ -22,11 +22,11 @@
     }
   },
   "dependencies": {
-    "lit-html": "^3.3.0"
+    "lit-html": "^3.3.1"
   },
   "devDependencies": {
-    "@damienmortini/package-builder": "^0.0.3",
-    "@damienmortini/typescript-config": "^0.0.13",
+    "@damienmortini/package-builder": "^0.0.4",
+    "@damienmortini/typescript-config": "^0.0.14",
     "wireit": "^0.14.12"
   }
 }
