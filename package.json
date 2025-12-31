@@ -12,7 +12,7 @@
     "packages:build": "wireit",
     "packages:watch": "wireit",
     "update": "npm i",
-    "upgrade": "ncu --deep -u"
+    "upgrade": "ncu --workspaces --upgrade --install always"
   },
   "wireit": {
     "start": {
@@ -40,8 +40,8 @@
     "@damienmortini/eslint-config": "^0.0.28",
     "@damienmortini/server": "^1.0.82",
     "@damienmortini/typescript-config": "^0.0.14",
-    "npm-check-updates": "^19.1.2",
-    "rimraf": "^6.1.0",
+    "npm-check-updates": "^19.2.0",
+    "rimraf": "^6.1.2",
     "wireit": "^0.14.12"
   }
 }
