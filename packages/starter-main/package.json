@@ -27,6 +27,6 @@
   "devDependencies": {
     "@damienmortini/package-builder": "^0.0.6",
     "@damienmortini/typescript-config": "^0.0.16",
-    "wireit": "^0.14.12"
+    "wireit": "^0.14.13"
   }
 }
