@@ -38,7 +38,7 @@
   ],
   "devDependencies": {
     "@damienmortini/eslint-config": "^0.0.32",
-    "@damienmortini/server": "^1.0.83",
+    "@damienmortini/server": "^1.0.90",
     "@damienmortini/typescript-config": "^0.0.16",
     "syncpack": "14.2.0",
     "rimraf": "^6.1.3",
