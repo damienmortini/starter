@@ -11,18 +11,20 @@
     "lint:fix": "eslint . --fix",
     "prepare": "git config core.hooksPath hooks",
     "start": "server --resolve-modules",
-    "test": "eslint packages && pnpm run typecheck",
+    "test": "pnpm run lint && pnpm run typecheck",
     "typecheck": "for project in packages/*/tsconfig.json; do tsc --noEmit --incremental false --project \"$project\" || exit 1; done",
     "update": "pnpm i",
     "upgrade": "syncpack update && syncpack fix && pnpm i"
   },
+  "dependencies": {
+    "@damienmortini/starter-main": "workspace:*"
+  },
   "devDependencies": {
     "@damienmortini/eslint-config": "^0.0.32",
     "@damienmortini/server": "^1.0.90",
-    "@damienmortini/starter-main": "workspace:*",
     "@damienmortini/typescript-config": "^0.0.18",
-    "eslint": "^10.5.0",
-    "syncpack": "^15.3.1",
-    "typescript": "^6.0.3"
+    "eslint": "^10.9.1",
+    "syncpack": "^15.3.3",
+    "typescript": "^7.0.2"
   }
 }

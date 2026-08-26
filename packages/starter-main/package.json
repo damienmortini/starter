@@ -12,10 +12,9 @@
     "build": "tsc && cp src/*.css dist/"
   },
   "dependencies": {
-    "lit-html": "^3.3.2"
+    "lit-html": "^3.3.3"
   },
   "devDependencies": {
-    "@damienmortini/typescript-config": "^0.0.18",
-    "typescript": "^6.0.3"
+    "typescript": "^7.0.2"
   }
 }
