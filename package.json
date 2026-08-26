@@ -4,44 +4,25 @@
   "private": true,
   "type": "module",
   "author": "Damien Mortini",
+  "packageManager": "pnpm@11.20.0",
   "scripts": {
-    "start": "wireit",
-    "serve": "server --resolve-modules",
-    "clean": "rimraf --glob \"packages/**/node_modules\"",
-    "test": "eslint packages",
-    "packages:build": "wireit",
-    "packages:watch": "wireit",
-    "update": "npm i",
-    "upgrade": "syncpack update && syncpack fix-mismatches && npm i"
+    "build": "pnpm -r run build",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "prepare": "git config core.hooksPath hooks",
+    "start": "server --resolve-modules",
+    "test": "eslint packages && pnpm run typecheck",
+    "typecheck": "for project in packages/*/tsconfig.json; do tsc --noEmit --incremental false --project \"$project\" || exit 1; done",
+    "update": "pnpm i",
+    "upgrade": "syncpack update && syncpack fix && pnpm i"
   },
-  "wireit": {
-    "start": {
-      "command": "npm run serve",
-      "dependencies": [
-        "packages:watch"
-      ],
-      "service": true
-    },
-    "packages:watch": {
-      "command": "npm run packages:build --watch",
-      "message": "Watching packages",
-      "service": true
-    },
-    "packages:build": {
-      "dependencies": [
-        "./packages/starter-main:build"
-      ]
-    }
-  },
-  "workspaces": [
-    "packages/**/*"
-  ],
   "devDependencies": {
     "@damienmortini/eslint-config": "^0.0.32",
     "@damienmortini/server": "^1.0.90",
-    "@damienmortini/typescript-config": "^0.0.16",
-    "syncpack": "14.2.0",
-    "rimraf": "^6.1.3",
-    "wireit": "^0.14.13"
+    "@damienmortini/starter-main": "workspace:*",
+    "@damienmortini/typescript-config": "^0.0.18",
+    "eslint": "^10.5.0",
+    "syncpack": "^15.3.1",
+    "typescript": "^6.0.3"
   }
 }

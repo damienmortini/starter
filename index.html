@@ -23,6 +23,22 @@
   <body>
     <starter-main></starter-main>
 
+    <!--
+      Bare specifiers so the same source runs under the dev server, which injects an import
+      map of its own, and as a static build on GitHub Pages, which injects nothing — the map
+      below is what stands in for the server there, pointing at the built output and the
+      hoisted `node_modules`.
+    -->
+    <script type="importmap">
+      {
+        "imports": {
+          "@damienmortini/starter-main": "./packages/starter-main/dist/index.js",
+          "lit-html": "./node_modules/lit-html/lit-html.js",
+          "lit-html/": "./node_modules/lit-html/"
+        }
+      }
+    </script>
+
     <script type="module">
       import '@damienmortini/starter-main'
     </script>

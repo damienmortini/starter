@@ -1,0 +1,6 @@
+# `hoisted` because `index.html` resolves its imports through real `node_modules/…` paths on
+# GitHub Pages, where nothing serves an import map for it.
+nodeLinker: hoisted
+linkWorkspacePackages: true
+packages:
+  - "packages/**"

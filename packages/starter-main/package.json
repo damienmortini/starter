@@ -1,32 +1,21 @@
 {
   "name": "@damienmortini/starter-main",
-  "private": true,
   "version": "0.0.0",
+  "private": true,
   "type": "module",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "scripts": {
-    "build": "wireit"
-  },
-  "wireit": {
-    "build": {
-      "command": "package-builder",
-      "clean": "if-file-deleted",
-      "files": [
-        "src/**/*",
-        "tsconfig.json"
-      ],
-      "output": [
-        "dist/**"
-      ]
-    }
+    "build": "tsc && cp src/*.css dist/"
   },
   "dependencies": {
     "lit-html": "^3.3.2"
   },
   "devDependencies": {
-    "@damienmortini/package-builder": "^0.0.11",
-    "@damienmortini/typescript-config": "^0.0.16",
-    "wireit": "^0.14.13"
+    "@damienmortini/typescript-config": "^0.0.18",
+    "typescript": "^6.0.3"
   }
 }
