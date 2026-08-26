@@ -25,6 +25,28 @@ import map so the same file works both under the dev server and as a static buil
 Add a package by creating `packages/<name>/` with a `package.json`, a `tsconfig.json`
 extending the root one, and a `src/index.ts`.
 
+## TypeScript
+
+`tsc` is TypeScript 7, and it is the only compiler this repository installs.
+
+`typescript-eslint` cannot use it — TypeScript 7 ships no programmatic compiler API until
+7.1, and typescript-eslint refuses to load without one. It does not need this repository to
+solve that: [`@damienmortini/eslint-config`](https://www.npmjs.com/package/@damienmortini/eslint-config)
+depends on TypeScript 6 itself, and pnpm gives the parser that copy. Nothing here has to
+name a second compiler, and `pnpm test` passes with `typescript` at 7.
+
+Should `eslint` ever start failing on `does not support TS 7.0`, that pin is what went
+away, and the fix is to install both compilers side by side:
+
+```json
+"@typescript/native": "npm:typescript@^7.0.2",
+"typescript": "npm:@typescript/typescript6@^6.0.2"
+```
+
+The package named `typescript` then becomes the TypeScript 6 compatibility shim, whose
+binary is `tsc6`, while `@typescript/native` owns `tsc`. Both aliases become unnecessary at
+TypeScript 7.1.
+
 ## Scripts
 
 | Script | What it does |
