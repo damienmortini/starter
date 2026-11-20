@@ -15,6 +15,8 @@ pnpm start
 `pnpm start` runs [`@damienmortini/server`](https://www.npmjs.com/package/@damienmortini/server),
 which serves each package's `dist/*.js` from its `src/*.ts` and rewrites bare specifiers to
 real paths. Edit a `.ts` file and reload — there is no build to run in development.
+It listens on `127.0.0.1` only; to open the page from another device, run
+`pnpm start --host 0.0.0.0`.
 
 ## Layout
 
