@@ -16,8 +16,8 @@ importers:
         specifier: ^0.0.32
         version: 0.0.32
       '@damienmortini/server':
-        specifier: ^1.0.90
-        version: 1.0.90
+        specifier: ^2.1.0
+        version: 2.1.0
       '@damienmortini/typescript-config':
         specifier: ^0.0.18
         version: 0.0.18
@@ -46,8 +46,8 @@ packages:
   '@damienmortini/eslint-config@0.0.32':
     resolution: {integrity: sha512-3muAabmzAX8fF0034lZJN6uzosG5RO4GBceCoyTSuxCCt9UsyYyVfUaR9UVHEVQkXA0LSn3j+FbiJR5mS4Zmow==}
 
-  '@damienmortini/server@1.0.90':
-    resolution: {integrity: sha512-W5sr0mTR9vfPQSTUtqYxro98GlwqSCXxEpDP+p97l5XIghqGp8YVtbCFV7M4sQoiu7bDfk2goj4iwjqPOYp9Tw==}
+  '@damienmortini/server@2.1.0':
+    resolution: {integrity: sha512-SCy8eq8zGaR1hsqKSvrqO2FtfHu1dXdE7jwfNPe36LUGrdnq8rv0irVk3g3rOJ88XHGWK6HNFXYYUBZzO8bVVQ==}
     hasBin: true
 
   '@damienmortini/typescript-config@0.0.18':
@@ -858,8 +858,8 @@ packages:
   uri-js@4.4.1:
     resolution: {integrity: sha512-7rKUyy33Q1yc98pQ1DAmLtwX109F7TIfWlW1Ydo8Wl1ii1SeHieeh0HHfPeL2fMXK6z0s8ecKs9frCuLJvndBg==}
 
-  uuid@14.0.0:
-    resolution: {integrity: sha512-Qo+uWgilfSmAhXCMav1uYFynlQO7fMFiMVZsQqZRMIXp0O7rR7qjkj+cPvBHLgBqi960QCoo/PH2/6ZtVqKvrg==}
+  uuid@14.0.2:
+    resolution: {integrity: sha512-xZe/16rV4aa+HGSOCiY2YeLT1OybRLrrkL/Rqaq7p7GMVXjFh+6wN4oMYgjFmnSnhY8t6Xpdl2l9qmnHYuMHwQ==}
     hasBin: true
 
   which-module@2.0.1:
@@ -877,18 +877,6 @@ packages:
   wrap-ansi@6.2.0:
     resolution: {integrity: sha512-r6lPcBGxZXlIcymEu7InxDMhdW0KDxpLgoFLcguasxCaJ/SOIZwINatK9KY/tf+ZrlywOKU0UDj3ATXUBfxJXA==}
     engines: {node: '>=8'}
-
-  ws@8.21.3:
-    resolution: {integrity: sha512-201TZ/kPWxoPr/OKWjquZR1SWKXcvxdH+e1xrx89b3YbmzLMFCLfnaG1HFIgWzJOEWZ7MvpK++odZufgYR50Rw==}
-    engines: {node: '>=10.0.0'}
-    peerDependencies:
-      bufferutil: ^4.0.1
-      utf-8-validate: '>=5.0.2'
-    peerDependenciesMeta:
-      bufferutil:
-        optional: true
-      utf-8-validate:
-        optional: true
 
   y18n@4.0.3:
     resolution: {integrity: sha512-JKhqTOwSrqNA1NY5lSztJ1GrBiUodLMmIZuLiDaMRJ+itFd+ABVE8XBjOvIWL+rSqNDC74LCSFmlb/U4UZ4hJQ==}
@@ -921,7 +909,7 @@ snapshots:
       - jiti
       - supports-color
 
-  '@damienmortini/server@1.0.90':
+  '@damienmortini/server@2.1.0':
     dependencies:
       chokidar: 5.0.0
       get-port: 7.2.0
@@ -929,11 +917,7 @@ snapshots:
       mime-types: 3.0.2
       qrcode: 1.5.4
       selfsigned: 5.5.0
-      uuid: 14.0.0
-      ws: 8.21.3
-    transitivePeerDependencies:
-      - bufferutil
-      - utf-8-validate
+      uuid: 14.0.2
 
   '@damienmortini/typescript-config@0.0.18':
     dependencies:
@@ -1752,7 +1736,7 @@ snapshots:
     dependencies:
       punycode: 2.3.1
 
-  uuid@14.0.0: {}
+  uuid@14.0.2: {}
 
   which-module@2.0.1: {}
 
@@ -1767,8 +1751,6 @@ snapshots:
       ansi-styles: 4.3.0
       string-width: 4.2.3
       strip-ansi: 6.0.1
-
-  ws@8.21.3: {}
 
   y18n@4.0.3: {}
 
